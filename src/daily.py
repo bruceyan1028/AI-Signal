@@ -924,7 +924,9 @@ def select_candidates(
         selected.append(item)
         p0_count += int(is_p0)
         per_source[item["source_id"]] += 1
-    technical.sort(key=lambda item: (-_eff_quality(item), -item["stamp"]))
+    # 技术开源的回看窗口可能长至一周。先按真实发布时间取满配额，
+    # 再以质量分打破同一时点的并列，避免周刊源的旧批量条目挤掉新更新。
+    technical.sort(key=lambda item: (-item["stamp"], -_eff_quality(item)))
     video.sort(key=lambda item: (-_eff_quality(item), -item["stamp"]))
     # 播客、社媒帖子不设候选上限，回看窗口和各通道自身的过滤逻辑约束体量。
     return selected + technical[: config.DAILY_TECHNICAL_LIMIT] + video[: config.DAILY_MAX_VIDEOS] + podcast + social
@@ -1088,6 +1090,7 @@ def _signal_from_fields(record_id: str, fields: dict[str, Any], analysis: dict[s
         "category": signal_category(fields, analysis),
         "contentType": content_type(fields),
         "priority": priority,
+        "publishedAt": published,
         "publishedDate": datetime.fromtimestamp(published / 1000, CN_TZ).strftime("%Y-%m-%d") if published else "",
         "summary": analysis["summary_cn"],
         "why": analysis["why"],
@@ -1415,7 +1418,14 @@ def partition_output_signals(
             str(signal.get("publishedDate") or ""),
         )
 
-    technical = sorted((s for s in analyzed if is_technical(s)), key=independent_key, reverse=True)
+    technical = sorted(
+        (s for s in analyzed if is_technical(s)),
+        key=lambda s: (
+            int(s.get("publishedAt") or 0),
+            *independent_key(s),
+        ),
+        reverse=True,
+    )
     video = sorted((s for s in analyzed if s.get("contentType") == "视频"), key=independent_key, reverse=True)
     podcast = sorted((s for s in analyzed if s.get("contentType") == "播客"), key=independent_key, reverse=True)
     social = sorted((s for s in analyzed if s.get("contentType") == SOCIAL_CONTENT_TYPE), key=lambda s: str(s.get("publishedDate") or ""), reverse=True)

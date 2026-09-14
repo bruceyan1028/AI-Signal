@@ -702,6 +702,39 @@ class DailyTests(unittest.TestCase):
         self.assertEqual(podcast, [])
         self.assertEqual(social, [])
 
+    def test_technical_output_prioritizes_publish_time_over_quality(self) -> None:
+        ranked = [
+            {
+                "recordId": "old-high-quality",
+                "sourceId": "weekly-papers",
+                "contentType": "论文",
+                "publishedAt": 1_000,
+                "qualityScore": 100,
+                "impact": 100,
+                "novelty": 100,
+                "actionability": 100,
+            },
+            {
+                "recordId": "fresh-low-quality",
+                "sourceId": "daily-code",
+                "contentType": "Github热榜",
+                "publishedAt": 2_000,
+                "qualityScore": 1,
+                "impact": 1,
+                "novelty": 1,
+                "actionability": 1,
+            },
+        ]
+
+        _, technical, _, _, _ = daily.partition_output_signals(
+            ranked, 3, {"weekly-papers", "daily-code"}
+        )
+
+        self.assertEqual(
+            [item["recordId"] for item in technical],
+            ["fresh-low-quality", "old-high-quality"],
+        )
+
     def test_papers_do_not_count_toward_daily_output_limit(self) -> None:
         ranked = [
             {"recordId": f"paper-{index}", "contentType": "论文"}
@@ -722,7 +755,7 @@ class DailyTests(unittest.TestCase):
         self.assertEqual(podcast, [])
         self.assertEqual(social, [])
 
-    def test_technical_candidates_ignore_source_priority(self) -> None:
+    def test_technical_candidates_prioritize_recency_over_quality_and_source_priority(self) -> None:
         now = datetime.now(timezone.utc)
         stamp = int(now.timestamp() * 1000)
         records = [
@@ -734,6 +767,40 @@ class DailyTests(unittest.TestCase):
             now=now, technical_source_ids={"tech-p0", "tech-p2"},
         )
         self.assertEqual([item["record_id"] for item in selected], ["p2", "p0"])
+
+    def test_technical_candidates_prioritize_newer_items_when_limit_applies(self) -> None:
+        now = datetime.now(timezone.utc)
+        stamp = int(now.timestamp() * 1000)
+        records = [
+            {
+                "record_id": f"old-{index}",
+                "fields": {
+                    "source_id": "weekly-papers",
+                    "发布时间": stamp - (48 + index) * 3600 * 1000,
+                    "质量分": 100,
+                },
+            }
+            for index in range(config.DAILY_TECHNICAL_LIMIT)
+        ] + [
+            {
+                "record_id": "fresh",
+                "fields": {
+                    "source_id": "daily-code",
+                    "发布时间": stamp - 3600 * 1000,
+                    "质量分": 1,
+                },
+            }
+        ]
+        selected = daily.select_candidates(
+            records,
+            {"weekly-papers": "P0", "daily-code": "P2"},
+            {"weekly-papers", "daily-code"},
+            {"weekly-papers": 7 * 24, "daily-code": 24},
+            now=now,
+            technical_source_ids={"weekly-papers", "daily-code"},
+        )
+        self.assertEqual(selected[0]["record_id"], "fresh")
+        self.assertEqual(len(selected), config.DAILY_TECHNICAL_LIMIT)
 
     def test_candidate_does_not_use_collection_time_as_publish_time(self) -> None:
         now = datetime.now(timezone.utc)
