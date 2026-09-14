@@ -1651,7 +1651,7 @@ const App = {
     if(!s) return;
     s.status=code; s.on=code==='active'; s.statusLabel=STATUS_LABELS[code]||code;
     this.saveLocalSourcePreference(s);
-    state.sourceSync={...state.sourceSync,message:'已暂存本地选择；连接配置台后可写回飞书'};
+    state.sourceSync={...state.sourceSync,message:'已更新当前页面选择'};
     render();
   },
   setPriority(id,p){
@@ -1660,7 +1660,7 @@ const App = {
     if(!s) return;
     s.priority=p;
     this.saveLocalSourcePreference(s);
-    state.sourceSync={...state.sourceSync,message:'已暂存本地选择；连接配置台后可写回飞书'};
+    state.sourceSync={...state.sourceSync,message:'已更新当前页面选择'};
     render();
   },
   saveLocalSourcePreference(source){
