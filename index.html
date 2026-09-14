@@ -1375,7 +1375,7 @@ const App = {
   },
   goSources(){ state.page='sources'; state.detailRank=null; render(); },
   goTasks(){ state.page='tasks'; state.detailRank=null; render(); },
-  goTimeline(){ state.page='tasks'; state.taskTab='timeline'; state.detailRank=null; render(); },
+  goTimeline(){ state.page='timeline'; state.taskTab='timeline'; state.detailRank=null; render(); },
   setTaskTab(t){ state.taskTab=t; render(); },
   setTimelineEntity(e){ state.timelineEntity=e; render(); },
   openDetail(rank){ state.detailSignal=signals.find(x=>x.rank===rank)||null; state.detailRank=rank; state.detailTab='正文'; state.notesOpen=false; state.dialogueOpen=false; renderDetailLayer(); const ov=document.querySelector('.detail-overlay'); if(ov) ov.scrollTop=0; },
@@ -1833,6 +1833,7 @@ function headerHtml(A){
   const items = [
     { key: 'brief',   label: '今日简报', act: 'App.goBrief()',   icon: '<path d="M4 5h16M4 10h16M4 15h10M4 20h7"/>' },
     { key: 'sources', label: '信号源', act: 'App.goSources()', icon: '<path d="M12 3v18M5 8l7-5 7 5M5 8v8l7 5 7-5V8"/>' },
+    { key: 'timeline', label: '动向追踪', act: 'App.goTimeline()', icon: '<path d="M4 19V5M4 19h16M8 15l3-4 3 2 5-7"/>' },
     { key: 'tasks',   label: '任务视图', act: 'App.goTasks()', icon: '<rect x="3" y="4" width="7" height="7" rx="1.4"/><rect x="14" y="4" width="7" height="4" rx="1.4"/><rect x="3" y="15" width="7" height="5" rx="1.4"/><rect x="14" y="11" width="7" height="9" rx="1.4"/>' },
   ];
   const navBtns = items.map(it => {
@@ -4045,8 +4046,8 @@ function weeklyRefChip(A,recordId){
 }
 
 // 任务视图:AI 周报 / 多模型辩论 / 动向追踪
-function tasksHtml(A){
-  const tabs = [['report','AI 自动周报'],['debate','多模型辩论'],['timeline','动向追踪'],['meetings','会议助手']];
+function tasksHtml(A, standalone=false){
+  const tabs = standalone ? [] : [['report','AI 自动周报'],['debate','多模型辩论'],['meetings','会议助手']];
   const tabNav = tabs.map(([k,l])=>{ const on=state.taskTab===k; const badge=k==='report'?(weeklyReport?'':previewBadge('待生成')):k==='timeline'?'':previewBadge('预览'); return `<button onclick="App.setTaskTab('${k}')" style="display:inline-flex;align-items:center;gap:7px;height:38px;padding:0 18px;border-radius:10px;border:1px solid ${on?A.accentBorder:UI.border};background:${on?A.accentSoft:'transparent'};color:${on?A.accentBright:UI.text2};font-size:13px;font-weight:${on?700:600};cursor:pointer;">${l}${badge}</button>`; }).join('');
 
   let body = '';
@@ -4236,7 +4237,8 @@ function tasksHtml(A){
     const custom = Object.keys(state.customTimelines).filter(e=>!builtIn.includes(e));
     const entities = [...builtIn, ...custom];
     const ent = getTimeline(state.timelineEntity).length ? state.timelineEntity : entities[0];
-    const events = getTimeline(ent).slice().sort((a,b)=>a.date.localeCompare(b.date));
+    // 事件证据按最新日期置顶，便于先查看最近发生的动向。
+    const events = getTimeline(ent).slice().sort((a,b)=>b.date.localeCompare(a.date));
     const entBtns = entities.map(e=>{ const on=e===ent; const isCustom=!!state.customTimelines[e]; return `<button onclick="App.setTimelineEntity('${e}')" class="chip-btn" style="height: 32px; padding: 0 14px; border-radius: 999px; border: 1px solid ${on?A.accentBorder:UI.border}; background: ${on?A.accentSoft:'transparent'}; color: ${on?A.accentBright:UI.text2}; font-size: 12.5px; font-weight: ${on?700:600}; cursor: pointer;">${isCustom?'✎ ':''}${esc(e)}</button>`; }).join('');
     const tl = events.map((ev,i)=>{ const last=i===events.length-1; return `
       <div style="position: relative; padding: 0 0 ${last?'0':'26px'} 30px;">
@@ -4285,14 +4287,14 @@ function tasksHtml(A){
     <div class="page-shell" style="max-width: 1180px; margin: 0 auto; padding: 40px 36px 72px;">
       <section style="margin-bottom: 20px;">
         <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; flex-wrap: wrap;">
-          <h1 class="page-title" style="margin: 0; font-size: 27px; font-weight: 700; letter-spacing: -.015em; color: var(--ds-text);">任务视图</h1>
-          ${previewBadge('部分预览')}
-          <span style="font-size: 12.5px; color: ${UI.text3};">周报 · 多模型辩论 · 动向追踪 · 会议助手</span>
+          <h1 class="page-title" style="margin: 0; font-size: 27px; font-weight: 700; letter-spacing: -.015em; color: var(--ds-text);">${standalone?'动向追踪':'任务视图'}</h1>
+          ${standalone?'':previewBadge('部分预览')}
+          <span style="font-size: 12.5px; color: ${UI.text3};">${standalone?'机构 / 人物 / 技术的持续变化':'周报 · 多模型辩论 · 会议助手'}</span>
         </div>
-        <p style="margin: 0; font-size: 13.5px; line-height: 1.7; color: ${UI.text2}; max-width: 720px;">由 AI 基于信号库自动生成的周报、可发起的多模型交叉辩论、机构 / 人物 / 技术的动向追踪,以及自动参会记纪要的会议助手。</p>
+        <p style="margin: 0; font-size: 13.5px; line-height: 1.7; color: ${UI.text2}; max-width: 720px;">${standalone?'聚合机构、人物与技术相关信号，按时间排列并持续更新。':'由 AI 基于信号库自动生成的周报、可发起的多模型交叉辩论,以及自动参会记纪要的会议助手。'}</p>
       </section>
-      ${previewNotice('部分功能仍为预览', 'AI 自动周报和动向追踪已接入真实数据；多模型辩论和会议助手仍为界面预览。')}
-      <div style="display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap;">${tabNav}</div>
+      ${standalone?'':previewNotice('部分功能仍为预览', 'AI 自动周报已接入真实数据；多模型辩论和会议助手仍为界面预览。')}
+      ${standalone?'':`<div style="display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap;">${tabNav}</div>`}
       ${body}
     </div>
   </main>`;
@@ -4307,7 +4309,7 @@ function render(){
   const scrollY = stay ? window.scrollY : 0;
   const railTop = stay ? (document.querySelector('.feed-data') || {}).scrollTop || 0 : 0;
   const A = computeAccents();
-  const page = state.page==='brief' ? briefHtml(A) : state.page==='sources' ? sourcesHtml(A) : tasksHtml(A);
+  const page = state.page==='brief' ? briefHtml(A) : state.page==='sources' ? sourcesHtml(A) : state.page==='timeline' ? tasksHtml(A, true) : tasksHtml(A);
   document.getElementById('app').innerHTML = `<div style="position: relative; z-index: 1; min-height: 100vh; background: ${UI.canvas}; padding-bottom: 48px;">${headerHtml(A)}${page}</div>${bottomBarHtml(A)}`;
   renderedPage = state.page;
   // 换页从头看,别把上一页的滚动深度带过来
