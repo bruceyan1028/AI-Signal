@@ -315,24 +315,27 @@ def validate_synthesis(
     top = list(dict.fromkeys(top))[:5] or fallback_ids[:5]
     headline = str(raw.get("headline") or "").strip()
     thesis = str(raw.get("thesis") or "").strip()
-    if not headline or not thesis or not areas:
-        raise RuntimeError("周报 LLM 输出缺少 headline、thesis 或 areas")
+    if not headline or not thesis:
+        raise RuntimeError("周报 LLM 输出缺少 headline 或 thesis")
+    events = [
+        {
+            "title": str(item.get("title") or "").strip(),
+            "verdict": str(item.get("verdict") or "").strip(),
+            "facts": str(item.get("facts") or "").strip(),
+            "sourceSynthesis": str(item.get("sourceSynthesis") or "").strip(),
+            "publicReaction": str(item.get("publicReaction") or "").strip(),
+            "refs": [str(ref) for ref in item.get("refs") or [] if str(ref) in valid_ids][:8],
+        }
+        for item in (raw.get("events") or [])
+        if isinstance(item, dict) and str(item.get("title") or "").strip() and str(item.get("verdict") or "").strip()
+    ][:5]
+    if not areas and not events:
+        raise RuntimeError("周报 LLM 输出缺少 events 或 areas")
     return {
         "headline": headline,
         "thesis": thesis,
         "areas": areas[:6],
-        "events": [
-            {
-                "title": str(item.get("title") or "").strip(),
-                "verdict": str(item.get("verdict") or "").strip(),
-                "facts": str(item.get("facts") or "").strip(),
-                "sourceSynthesis": str(item.get("sourceSynthesis") or "").strip(),
-                "publicReaction": str(item.get("publicReaction") or "").strip(),
-                "refs": [str(ref) for ref in item.get("refs") or [] if str(ref) in valid_ids][:8],
-            }
-            for item in (raw.get("events") or [])
-            if isinstance(item, dict) and str(item.get("title") or "").strip() and str(item.get("verdict") or "").strip()
-        ][:5],
+        "events": events,
         "topSignals": top,
         "keyChanges": [
             {
