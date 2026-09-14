@@ -2757,7 +2757,7 @@ function feedNavHtml(A, counts){
     <div class="nav-block sections">
       <div style="height: 3px; background: ${A.accent};"></div>
       <div style="padding: 12px 8px 14px;">
-        <div class="nav-label" style="padding: 0 9px 7px; font-family: ${mono}; font-size: 10px; font-weight: 700; letter-spacing: .14em; color: #8f887a;">SECTIONS</div>
+        <div class="nav-label" style="padding: 0 9px 7px; font-family: ${mono}; font-size: 10px; font-weight: 700; letter-spacing: .14em; color: #8f887a;">主题领域</div>
         <div class="nav-group">
           ${cats.map(f => navItem(f, !counts[f])).join('')}
         </div>
@@ -2767,7 +2767,7 @@ function feedNavHtml(A, counts){
     <div class="nav-block formats">
       <div style="height: 3px; background: #34d399;"></div>
       <div style="padding: 12px 8px 14px;">
-        <div class="nav-label" style="padding: 0 9px 7px; font-family: ${mono}; font-size: 10px; font-weight: 700; letter-spacing: .14em; color: #8f887a;">FORMATS</div>
+        <div class="nav-label" style="padding: 0 9px 7px; font-family: ${mono}; font-size: 10px; font-weight: 700; letter-spacing: .14em; color: #8f887a;">内容类型</div>
         <div class="nav-group">
           ${FORMAT_FILTERS.map(f => navItem(f, !counts[f])).join('')}
         </div>
