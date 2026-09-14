@@ -137,7 +137,7 @@ def ensure_pending_analyses(
     feishu.batch_update_records(token, config.FEISHU_ENTRY_TABLE_ID, updates)
 
 
-def signal_from_candidate(item: dict[str, Any]) -> dict[str, Any] | None:
+def signal_from_candidate(item: dict[str, Any], *, include_peers: bool = True) -> dict[str, Any] | None:
     fields = item.get("fields") or {}
     analysis = daily._existing_analysis(fields)
     if analysis is None:
@@ -149,6 +149,16 @@ def signal_from_candidate(item: dict[str, Any]) -> dict[str, Any] | None:
         priority=str(item.get("priority") or "P2"),
     )
     signal["qualityScore"] = float(daily.scalar(fields.get("质量分")) or 0)
+    if include_peers:
+        peers = []
+        for peer in item.get("eventPeers") or []:
+            peer_signal = signal_from_candidate(peer, include_peers=False)
+            if peer_signal:
+                peer_signal["eventRole"] = str(peer.get("eventRole") or "")
+                peer_signal["eventPerspective"] = str(peer.get("eventPerspective") or "")
+                peers.append(peer_signal)
+        if peers:
+            signal["eventPeers"] = peers
     return signal
 
 
@@ -236,7 +246,9 @@ def synthesize(
             f"[{signal['recordId']}] {signal.get('titleCn') or signal.get('title')}｜"
             f"{signal.get('source')}｜{signal.get('publishedDate')}｜{signal.get('category')}｜"
             f"影响{signal.get('impact')} 新颖{signal.get('novelty')} 可行动{signal.get('actionability')}｜"
-            f"摘要：{signal.get('summary')}｜为什么重要：{signal.get('why')}"
+            f"摘要：{signal.get('summary')}｜为什么重要：{signal.get('why')}｜"
+            f"跨源聚合：{json.dumps(signal.get('eventAggregation') or {}, ensure_ascii=False)}｜"
+            f"舆论样本：{json.dumps(signal.get('topComments') or [], ensure_ascii=False)}"
         )
         for signal in signals
     )
@@ -248,11 +260,13 @@ def synthesize(
     }, ensure_ascii=False)
     prompt = f"""你是面向产品和技术负责人的 AI 情报主编。只依据给定信号输出严格 JSON，不得虚构事实、数字、因果关系或引用。
 你的任务不是复述新闻，而是找出本周真正发生的变化。每个判断必须能被 refs 指向的信号支持。
+优先从跨源聚合完整或带有热门评论的信号中选事件；sourceSynthesis 必须比较不同来源各自新增的信息、确认和分歧；publicReaction 只能基于提供的评论样本，样本不足时写“暂无足够公开舆论样本”，不得臆测舆论方向。
 禁止使用“值得关注、持续观察、快速发展、赋能行业、意义重大、加强布局”等没有对象、指标或动作的空话；如果证据不足就明确写“证据不足”。
 输出字段：
 headline：本周唯一主线，一句话，必须包含具体对象或变化；
 thesis：180-320字，只写“发生了什么 → 为什么重要 → 对业务的直接含义”，至少包含2个具体信号对象；
-areas：3-6项，每项含 cat、title、insight、evidence、implication、action、confidence、refs；同时保留 text 作为精简合并段；refs 只能使用方括号中的 recordId；
+events：3-5项，每项含 title、verdict、facts、sourceSynthesis、publicReaction、refs；每项对应一个关键事件，优先选择有多个来源或有明显舆论反馈的事件；refs 只能使用方括号中的 recordId；
+areas：仅作为兼容字段，3-6项，每项含 cat、title、insight、evidence、implication、action、confidence、refs；不要写空泛的领域趋势；refs 只能使用方括号中的 recordId；
 topSignals：最重要的3-5个 recordId；
 risks、opportunities、actions、nextWeek：各2-4条中文字符串，每条必须包含对象、条件或验证动作，不能写口号；
 keyChanges：2-4项，每项含 title、change、evidence、refs；只写有明确证据的变化。
@@ -310,6 +324,18 @@ def validate_synthesis(
         "headline": headline,
         "thesis": thesis,
         "areas": areas[:6],
+        "events": [
+            {
+                "title": str(item.get("title") or "").strip(),
+                "verdict": str(item.get("verdict") or "").strip(),
+                "facts": str(item.get("facts") or "").strip(),
+                "sourceSynthesis": str(item.get("sourceSynthesis") or "").strip(),
+                "publicReaction": str(item.get("publicReaction") or "").strip(),
+                "refs": [str(ref) for ref in item.get("refs") or [] if str(ref) in valid_ids][:8],
+            }
+            for item in (raw.get("events") or [])
+            if isinstance(item, dict) and str(item.get("title") or "").strip() and str(item.get("verdict") or "").strip()
+        ][:5],
         "topSignals": top,
         "risks": strings("risks"),
         "opportunities": strings("opportunities"),
@@ -399,6 +425,7 @@ def generate(end_day: date | None = None) -> dict[str, Any]:
         ),
         reverse=True,
     )
+    signals = cluster.attach_aggregations(signals)
     if not signals:
         raise RuntimeError("近七天没有可用于周报的已分析信号")
     previous = _previous_weekly(token, weekly_table_id, current_week)

@@ -4109,6 +4109,16 @@ function tasksHtml(A, standalone=false){
           ${a.action?`<div style="margin-top:8px;padding:8px 10px;background:${A.accentFaint};border-left:2px solid ${A.accent};font-size:12px;line-height:1.6;color:${UI.text};"><strong>动作：</strong>${esc(a.action)}</div>`:''}
         </div>
       </div>`).join('');
+    const eventTones = [A.accent,'#b23a6a','#a06600','#1f7a45','#5a4fb5'];
+    const eventsHtml = (rep.events||[]).map((e,i)=>`
+      <article class="weekly-panel" style="margin-bottom:12px;border-left:4px solid ${eventTones[i%eventTones.length]};">
+        <div style="display:flex;align-items:flex-start;gap:9px;"><span style="font-family:'Geist Mono',monospace;font-size:11px;color:${A.accentBright};">事件 0${i+1}</span><h3 style="margin:0;font-size:15px;line-height:1.45;color:${UI.text};">${esc(e.title)}</h3></div>
+        <div style="margin:10px 0 0;font-size:13px;font-weight:700;line-height:1.65;color:${UI.text};">结论：${esc(e.verdict)}</div>
+        ${e.facts?`<div style="margin-top:7px;font-size:12.5px;line-height:1.7;color:${UI.text2};"><strong>发生了什么：</strong>${esc(e.facts)}</div>`:''}
+        ${e.sourceSynthesis?`<div style="margin-top:7px;font-size:12.5px;line-height:1.7;color:${UI.text2};"><strong>多来源合并：</strong>${esc(e.sourceSynthesis)}</div>`:''}
+        ${e.publicReaction?`<div style="margin-top:7px;padding:8px 10px;background:#f5f6f8;font-size:12px;line-height:1.65;color:${UI.text2};"><strong>公开舆论：</strong>${esc(e.publicReaction)}</div>`:''}
+        <div style="margin-top:9px;">${(e.refs||[]).map(r=>weeklyRefChip(A,r)).join('')}</div>
+      </article>`).join('');
     const topHtml = rep.topSignals.map(recordId=>{ const s=weeklySignalById(recordId); if(!s) return ''; return `
       <div onclick="App.openWeeklyDetail('${esc(recordId)}')" class="rel-card" style="cursor: pointer; display: flex; gap: 10px; align-items: center; padding: 10px 12px; border-radius: 10px; border: 1px solid ${UI.border}; background: rgba(22,19,15,.02); transition: border-color .15s, background .15s;">
         ${topicAvatarHtml(s)}
@@ -4148,7 +4158,7 @@ function tasksHtml(A, standalone=false){
           <p style="margin: 0 0 6px; font-size: 14px; line-height: 1.85; color: ${UI.text2};">${esc(rep.thesis)}</p>
           <div class="weekly-grid" style="margin-top:24px;"><div class="weekly-panel"><div class="weekly-panel-title">主题热度</div>${categoryChart}</div><div class="weekly-panel"><div class="weekly-panel-title">每日信号量</div>${dailyChart}</div></div>
           ${changesHtml?`<section class="weekly-panel" style="margin-top:16px;"><div class="weekly-panel-title">本周真正的变化</div><div class="weekly-evidence">${changesHtml}</div></section>`:''}
-          <div class="weekly-panel" style="margin-top:16px;"><div class="weekly-panel-title">分领域判断</div><div>${areasHtml}</div></div>
+          ${eventsHtml?`<section style="margin-top:16px;"><div class="weekly-panel-title">关键事件分析</div>${eventsHtml}</section>`:`<div class="weekly-panel" style="margin-top:16px;"><div class="weekly-panel-title">分领域判断</div><div>${areasHtml}</div></div>`}
           <div style="font-size: 13px; font-weight: 700; color: var(--ds-text); margin: 26px 0 12px;">本周 Top 信号</div>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px;">${topHtml}</div>
           <div class="weekly-grid" style="margin-top:24px;"><div class="weekly-panel" style="border-left:3px solid #c22f2a;">${listBlock('风险提示', rep.risks||[])}</div><div class="weekly-panel" style="border-left:3px solid #1f7a45;">${listBlock('机会点', rep.opportunities||[])}</div></div>
