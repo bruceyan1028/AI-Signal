@@ -381,11 +381,11 @@
    "dedup_key": "normalize(url)",
    "dimension": "技术研究开源",
    "endpoint": {
-    "link": "https://rdi.berkeley.edu/feed",
-    "text": "https://rdi.berkeley.edu/feed"
+    "link": "https://rdi.berkeley.edu/blog",
+    "text": "https://rdi.berkeley.edu/blog"
    },
    "extra_config": "{\"whitelist_review\":\"每季度\",\"cross_source_dedup\":\"与arXiv关联作者/项目名合并\"}",
-   "fetch_method": "RSS",
+   "fetch_method": "Scrape",
    "keyword_regex": "(transformer|moe|mamba|agent|tool-use|reasoning|planning|long-context|multimodal|rlhf|dpo|grpo|inference|rag|benchmark|sota|alignment|safety|llm|diffusion|world-model|code-generation)",
    "lookback_window": "24h",
    "name": "Berkeley RDI",
