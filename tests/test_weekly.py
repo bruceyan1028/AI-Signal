@@ -97,13 +97,23 @@ class WeeklyReportTest(unittest.TestCase):
         self.assertEqual(metrics["高影响(≥80)"]["value"], "1")
         self.assertEqual(metrics["平均影响分"], {"label": "平均影响分", "value": "80", "sub": "较上周 +5"})
 
+    def test_breakdowns_are_chart_ready_and_deterministic(self):
+        signals = [
+            {"category": "模型", "impact": 90, "publishedDate": "2026-08-17"},
+            {"category": "模型", "impact": 70, "publishedDate": "2026-08-17"},
+            {"category": "算力", "impact": 82, "publishedDate": "2026-08-16"},
+        ]
+        result = weekly.deterministic_breakdowns(signals)
+        self.assertEqual(result["categories"][0], {"category": "模型", "highImpact": 1, "count": 2, "avgImpact": 80})
+        self.assertEqual(result["daily"], [{"date": "2026-08-16", "count": 1}, {"date": "2026-08-17", "count": 2}])
+
     def test_invalid_llm_references_are_removed(self):
         result = weekly.validate_synthesis(
             {
                 "headline": "主线",
                 "thesis": "综述",
                 "areas": [
-                    {"cat": "模型", "text": "观察", "refs": ["r1", "unknown"]}
+                    {"cat": "模型", "title": "模型变化", "text": "观察", "insight": "判断", "refs": ["r1", "unknown"]}
                 ],
                 "topSignals": ["unknown"],
                 "risks": ["风险"],

@@ -147,7 +147,6 @@ def signal_from_candidate(item: dict[str, Any]) -> dict[str, Any] | None:
         fields,
         analysis,
         priority=str(item.get("priority") or "P2"),
-        tier=str(daily.scalar(fields.get("层级")) or ""),
     )
     signal["qualityScore"] = float(daily.scalar(fields.get("质量分")) or 0)
     return signal
@@ -183,6 +182,31 @@ def deterministic_metrics(
     return result
 
 
+def deterministic_breakdowns(signals: list[dict[str, Any]]) -> dict[str, Any]:
+    """Build chart-ready facts without asking the LLM to count or rank anything."""
+    by_category: dict[str, dict[str, Any]] = {}
+    by_day: dict[str, int] = {}
+    for signal in signals:
+        category = str(signal.get("category") or "其他")
+        bucket = by_category.setdefault(category, {"category": category, "count": 0, "highImpact": 0, "_sum": 0})
+        impact = int(signal.get("impact") or 0)
+        bucket["count"] += 1
+        bucket["highImpact"] += int(impact >= 80)
+        bucket["_sum"] += impact
+        day = str(signal.get("publishedDate") or "")
+        if day:
+            by_day[day] = by_day.get(day, 0) + 1
+    categories = []
+    for bucket in by_category.values():
+        count = bucket.pop("count")
+        total = bucket.pop("_sum")
+        bucket["count"] = count
+        bucket["avgImpact"] = round(total / count) if count else 0
+        categories.append(bucket)
+    categories.sort(key=lambda item: (item["count"], item["avgImpact"]), reverse=True)
+    return {"categories": categories[:8], "daily": [{"date": day, "count": by_day[day]} for day in sorted(by_day)]}
+
+
 def _previous_weekly(
     token: str, table_id: str, current_week_id: str
 ) -> dict[str, Any] | None:
@@ -205,24 +229,35 @@ def synthesize(
     signals: list[dict[str, Any]],
     metrics: list[dict[str, str]],
     pending_ids: set[str],
+    previous: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     numbered = "\n".join(
         (
             f"[{signal['recordId']}] {signal.get('titleCn') or signal.get('title')}｜"
-            f"{signal.get('source')}｜{signal.get('category')}｜影响{signal.get('impact')}｜"
-            f"{signal.get('summary')}"
+            f"{signal.get('source')}｜{signal.get('publishedDate')}｜{signal.get('category')}｜"
+            f"影响{signal.get('impact')} 新颖{signal.get('novelty')} 可行动{signal.get('actionability')}｜"
+            f"摘要：{signal.get('summary')}｜为什么重要：{signal.get('why')}"
         )
         for signal in signals
     )
     pending_note = "、".join(sorted(pending_ids)) or "无"
-    prompt = f"""你是 AI 情报主编。只依据给定信号输出严格 JSON，不得虚构事实或数字。
+    previous_context = json.dumps({
+        "headline": (previous or {}).get("headline", ""),
+        "keyChanges": (previous or {}).get("keyChanges", []),
+        "metrics": (previous or {}).get("metrics", []),
+    }, ensure_ascii=False)
+    prompt = f"""你是面向产品和技术负责人的 AI 情报主编。只依据给定信号输出严格 JSON，不得虚构事实、数字、因果关系或引用。
+你的任务不是复述新闻，而是找出本周真正发生的变化。每个判断必须能被 refs 指向的信号支持。
+禁止使用“值得关注、持续观察、快速发展、赋能行业、意义重大、加强布局”等没有对象、指标或动作的空话；如果证据不足就明确写“证据不足”。
 输出字段：
-headline：本周唯一主线，一句话；
-thesis：300-500字综述；
-areas：3-6项，每项含 cat、text、refs；refs 只能使用方括号中的 recordId；
+headline：本周唯一主线，一句话，必须包含具体对象或变化；
+thesis：180-320字，只写“发生了什么 → 为什么重要 → 对业务的直接含义”，至少包含2个具体信号对象；
+areas：3-6项，每项含 cat、title、insight、evidence、implication、action、confidence、refs；同时保留 text 作为精简合并段；refs 只能使用方括号中的 recordId；
 topSignals：最重要的3-5个 recordId；
-risks、opportunities、actions、nextWeek：各3-5条中文字符串。
-指标由程序计算，不要在正文改写或新增统计数字。
+risks、opportunities、actions、nextWeek：各2-4条中文字符串，每条必须包含对象、条件或验证动作，不能写口号；
+keyChanges：2-4项，每项含 title、change、evidence、refs；只写有明确证据的变化。
+指标与图表数据由程序计算，不要在正文改写或新增统计数字。
+上期周报上下文（仅用于识别变化，不得把上期结论当作本期事实）：{previous_context}
 管理员额外关注 recordId：{pending_note}
 确定性指标：{json.dumps(metrics, ensure_ascii=False)}
 信号：
@@ -246,9 +281,25 @@ def validate_synthesis(
             continue
         refs = [str(ref) for ref in item.get("refs") or [] if str(ref) in valid_ids]
         text = str(item.get("text") or "").strip()
+        if not text:
+            text = "；".join(
+                str(item.get(key) or "").strip()
+                for key in ("insight", "evidence", "implication", "action")
+                if str(item.get(key) or "").strip()
+            )
         category = str(item.get("cat") or "").strip()
         if text and category:
-            areas.append({"cat": category, "text": text, "refs": refs[:8]})
+            areas.append({
+                "cat": category,
+                "title": str(item.get("title") or category).strip(),
+                "text": text,
+                "insight": str(item.get("insight") or "").strip(),
+                "evidence": str(item.get("evidence") or "").strip(),
+                "implication": str(item.get("implication") or "").strip(),
+                "action": str(item.get("action") or "").strip(),
+                "confidence": str(item.get("confidence") or "medium").strip().lower(),
+                "refs": refs[:8],
+            })
     top = [str(ref) for ref in raw.get("topSignals") or [] if str(ref) in valid_ids]
     top = list(dict.fromkeys(top))[:5] or fallback_ids[:5]
     headline = str(raw.get("headline") or "").strip()
@@ -264,6 +315,16 @@ def validate_synthesis(
         "opportunities": strings("opportunities"),
         "actions": strings("actions"),
         "nextWeek": strings("nextWeek"),
+        "keyChanges": [
+            {
+                "title": str(item.get("title") or "").strip(),
+                "change": str(item.get("change") or "").strip(),
+                "evidence": str(item.get("evidence") or "").strip(),
+                "refs": [str(ref) for ref in item.get("refs") or [] if str(ref) in valid_ids][:8],
+            }
+            for item in (raw.get("keyChanges") or [])
+            if isinstance(item, dict) and str(item.get("title") or "").strip() and str(item.get("change") or "").strip()
+        ][:4],
     }
 
 
@@ -342,7 +403,8 @@ def generate(end_day: date | None = None) -> dict[str, Any]:
         raise RuntimeError("近七天没有可用于周报的已分析信号")
     previous = _previous_weekly(token, weekly_table_id, current_week)
     metrics = deterministic_metrics(signals, previous)
-    raw = synthesize(signals, metrics, pending_ids)
+    breakdowns = deterministic_breakdowns(signals)
+    raw = synthesize(signals, metrics, pending_ids, previous)
     synthesized = validate_synthesis(
         raw,
         {str(signal["recordId"]) for signal in signals},
@@ -370,6 +432,7 @@ def generate(end_day: date | None = None) -> dict[str, Any]:
         "period": f"{start_day.isoformat()} → {end_day.isoformat()}",
         "title": f"AI Signal 自动周报 · {current_week}",
         "metrics": metrics,
+        "breakdowns": breakdowns,
         "signals": signals,
         "pendingFocus": pending_focus,
         "generatedAt": datetime.now(CN_TZ).isoformat(timespec="seconds"),

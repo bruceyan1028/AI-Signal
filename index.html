@@ -128,6 +128,16 @@
   .feed-data > * { flex: none; }
   .feed-data::-webkit-scrollbar { width: 7px; }
   .feed-data::-webkit-scrollbar-thumb { background: rgba(255,255,255,.32); }
+  .weekly-grid { display:grid; grid-template-columns:minmax(0,1.55fr) minmax(260px,.85fr); gap:16px; }
+  .weekly-panel { border:1px solid var(--ds-border); background:var(--ds-card); padding:20px 22px; }
+  .weekly-panel-title { display:flex; align-items:center; gap:8px; margin:0 0 14px; font-size:13px; font-weight:700; color:var(--ds-text); }
+  .weekly-panel-title::before { content:''; width:4px; height:15px; background:var(--ds-accent); }
+  .weekly-evidence { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+  .weekly-evidence-card { padding:13px 14px; border:1px solid var(--ds-border); border-left:3px solid var(--ds-accent); background:#f8f9fc; }
+  .weekly-bar-row { display:grid; grid-template-columns:100px 1fr 28px; gap:8px; align-items:center; margin:9px 0; font-size:11px; }
+  .weekly-bar { height:8px; background:#edf0f5; overflow:hidden; }
+  .weekly-bar > i { display:block; height:100%; background:var(--ds-accent); }
+  @media (max-width: 760px) { .weekly-grid,.weekly-evidence { grid-template-columns:1fr; } }
   .feed-data::-webkit-scrollbar-track { background: transparent; }
   .quote-row { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 6px; align-items: baseline; padding: 5px 8px; border-bottom: 1px solid rgba(255,255,255,.05); text-decoration: none; color: inherit; }
   .quote-row:hover { background: #fff; }
@@ -4080,20 +4090,23 @@ function tasksHtml(A, standalone=false){
         <div style="display: flex; flex-direction: column; gap: 9px;">${items || `<div style="font-size: 12px; color: ${UI.text3}; padding: 18px 0; text-align: center; line-height: 1.7;">暂无待分析条目<br>在今日简报的信号卡片右上角点 ＋ 添加</div>`}</div>
       </div>`;
     };
-    const metricsHtml = rep.metrics.map(m=>`<div style="padding: 14px 16px; border-radius: 12px; background: rgba(22,19,15,.03); border: 1px solid ${UI.border};">
+    const metricsHtml = (rep.metrics||[]).map(m=>`<div style="padding: 14px 16px; border-radius: 12px; background: ${A.accentSoft}; border: 1px solid ${A.accentBorder};">
         <div style="font-size: 22px; font-weight: 700; color: var(--ds-text); font-variant-numeric: tabular-nums; line-height: 1;">${m.value}</div>
         <div style="margin-top: 5px; font-size: 11px; color: ${UI.text3};">${esc(m.label)}</div>
         <div style="margin-top: 2px; font-size: 10px; color: ${A.accentBright};">${esc(m.sub)}</div>
       </div>`).join('');
-    const areasHtml = rep.areas.map((a,i)=>`
+    const areasHtml = (rep.areas||[]).map((a,i)=>`
       <div style="display: flex; gap: 14px; padding: 16px 0; border-top: 1px solid ${UI.hair};">
         <span style="flex: none; width: 26px; font-family: 'Geist Mono', monospace; font-size: 12px; color: ${A.accentBright};">0${i+1}</span>
         <div style="flex: 1;">
           <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px; flex-wrap: wrap;">
-            <span style="font-size: 13px; font-weight: 700; color: var(--ds-text);">${esc(normalizeCategory(a.cat))}</span>
+            <span style="font-size: 13px; font-weight: 700; color: var(--ds-text);">${esc(a.title||normalizeCategory(a.cat))}</span><span style="font-size:10px;color:${UI.text3};">${esc(normalizeCategory(a.cat))}</span>
             ${(a.refs||[]).map(r=>weeklyRefChip(A,r)).join('')}
           </div>
-          <div style="font-size: 13px; line-height: 1.7; color: ${UI.text2};">${esc(a.text)}</div>
+          <div style="font-size:13px;line-height:1.7;color:${UI.text};"><strong>判断：</strong>${esc(a.insight||a.text)}</div>
+          ${a.evidence?`<div style="margin-top:6px;font-size:12px;line-height:1.65;color:${UI.text2};"><strong>证据：</strong>${esc(a.evidence)}</div>`:''}
+          ${a.implication?`<div style="margin-top:6px;font-size:12px;line-height:1.65;color:${UI.text2};"><strong>影响：</strong>${esc(a.implication)}</div>`:''}
+          ${a.action?`<div style="margin-top:8px;padding:8px 10px;background:${A.accentFaint};border-left:2px solid ${A.accent};font-size:12px;line-height:1.6;color:${UI.text};"><strong>动作：</strong>${esc(a.action)}</div>`:''}
         </div>
       </div>`).join('');
     const topHtml = rep.topSignals.map(recordId=>{ const s=weeklySignalById(recordId); if(!s) return ''; return `
@@ -4102,6 +4115,20 @@ function tasksHtml(A, standalone=false){
         <div style="min-width: 0; flex: 1;"><div style="font-size: 12.5px; font-weight: 600; color: ${UI.text}; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${esc(s.zhTitle)}</div><div style="font-size: 10.5px; color: ${UI.text3}; font-family: 'Geist Mono', monospace;">${s.date}</div></div>
       </div>`; }).join('');
     const listBlock = (title,items)=>`<div style="font-size: 13px; font-weight: 700; color: var(--ds-text); margin: 24px 0 10px;">${title}</div><ul style="margin: 0; padding-left: 18px;">${items.map(x=>`<li style="margin: 0 0 8px; font-size: 13px; line-height: 1.7; color: ${UI.text2};">${esc(x)}</li>`).join('')}</ul>`;
+    const fallbackBreakdowns = (()=>{
+      const cats={}, days={};
+      (rep.signals||[]).forEach(s=>{ const c=s.category||'其他'; cats[c] = cats[c] || {category:c,count:0,highImpact:0,avgImpact:0,_sum:0}; cats[c].count++; cats[c].highImpact += Number(s.impact||0)>=80?1:0; cats[c]._sum += Number(s.impact||0); const d=s.publishedDate||''; if(d) days[d]=(days[d]||0)+1; });
+      const categories=Object.values(cats).map(x=>({...x,avgImpact:x.count?Math.round(x._sum/x.count):0})).sort((a,b)=>b.count-a.count||b.avgImpact-a.avgImpact).slice(0,8);
+      return {categories,daily:Object.keys(days).sort().map(date=>({date,count:days[date]}))};
+    })();
+    const breakdowns = rep.breakdowns||fallbackBreakdowns;
+    const categories = breakdowns.categories||[];
+    const maxCategory = Math.max(1,...categories.map(x=>Number(x.count)||0));
+    const categoryChart = categories.length ? categories.map(x=>`<div class="weekly-bar-row"><span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${esc(normalizeCategory(x.category))}</span><span class="weekly-bar"><i style="width:${Math.round((Number(x.count)||0)/maxCategory*100)}%"></i></span><strong>${x.count}</strong></div>`).join('') : `<div style="font-size:12px;color:${UI.text3};">暂无分类数据</div>`;
+    const daily = breakdowns.daily||[];
+    const maxDay = Math.max(1,...daily.map(x=>Number(x.count)||0));
+    const dailyChart = daily.length ? daily.map(x=>`<div class="weekly-bar-row"><span>${esc(String(x.date).slice(5))}</span><span class="weekly-bar"><i style="width:${Math.round((Number(x.count)||0)/maxDay*100)}%;background:${A.accentBright}"></i></span><strong>${x.count}</strong></div>`).join('') : `<div style="font-size:12px;color:${UI.text3};">暂无日期数据</div>`;
+    const changesHtml = (rep.keyChanges||[]).map(c=>`<div class="weekly-evidence-card"><div style="font-size:13px;font-weight:700;color:${UI.text};">${esc(c.title)}</div><div style="margin-top:6px;font-size:12px;line-height:1.65;color:${UI.text2};">${esc(c.change)}</div>${c.evidence?`<div style="margin-top:6px;font-size:11px;line-height:1.55;color:${UI.text3};">证据：${esc(c.evidence)}</div>`:''}<div style="margin-top:8px;">${(c.refs||[]).map(r=>weeklyRefChip(A,r)).join('')}</div></div>`).join('');
     const focusHtml = (rep.pendingFocus||[]).length ? `
       <div style="margin-top: 24px; padding: 14px 16px; border-radius: 12px; background: ${A.accentSoft}; border: 1px solid ${A.accentBorder}; border-left: 3px solid ${A.accent};">
         <div style="font-size: 12px; font-weight: 700; color: ${A.accentBright}; margin-bottom: 8px;">★ 本期额外关注 ${rep.pendingFocus.length} 条</div>
@@ -4119,14 +4146,14 @@ function tasksHtml(A, standalone=false){
           <h1 style="margin: 0 0 16px; font-size: 24px; line-height: 1.45; font-weight: 700; letter-spacing: -.01em; color: var(--ds-text);">${esc(rep.headline)}</h1>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px; margin-bottom: 22px;">${metricsHtml}</div>
           <p style="margin: 0 0 6px; font-size: 14px; line-height: 1.85; color: ${UI.text2};">${esc(rep.thesis)}</p>
-          <div style="font-size: 13px; font-weight: 700; color: var(--ds-text); margin: 20px 0 2px;">分领域观察</div>
-          <div>${areasHtml}</div>
+          <div class="weekly-grid" style="margin-top:24px;"><div class="weekly-panel"><div class="weekly-panel-title">主题热度</div>${categoryChart}</div><div class="weekly-panel"><div class="weekly-panel-title">每日信号量</div>${dailyChart}</div></div>
+          ${changesHtml?`<section class="weekly-panel" style="margin-top:16px;"><div class="weekly-panel-title">本周真正的变化</div><div class="weekly-evidence">${changesHtml}</div></section>`:''}
+          <div class="weekly-panel" style="margin-top:16px;"><div class="weekly-panel-title">分领域判断</div><div>${areasHtml}</div></div>
           <div style="font-size: 13px; font-weight: 700; color: var(--ds-text); margin: 26px 0 12px;">本周 Top 信号</div>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px;">${topHtml}</div>
-          ${listBlock('风险提示', rep.risks)}
-          ${listBlock('机会点', rep.opportunities)}
+          <div class="weekly-grid" style="margin-top:24px;"><div class="weekly-panel" style="border-left:3px solid #c22f2a;">${listBlock('风险提示', rep.risks||[])}</div><div class="weekly-panel" style="border-left:3px solid #1f7a45;">${listBlock('机会点', rep.opportunities||[])}</div></div>
           <div style="font-size: 13px; font-weight: 700; color: var(--ds-text); margin: 24px 0 10px;">建议行动</div>
-          <ol style="margin: 0; padding-left: 20px;">${rep.actions.map(a=>`<li style="margin: 0 0 9px; font-size: 13px; line-height: 1.7; color: ${UI.text2};">${esc(a)}</li>`).join('')}</ol>
+          <ol style="margin: 0; padding-left: 20px;">${(rep.actions||[]).map(a=>`<li style="margin: 0 0 9px; font-size: 13px; line-height: 1.7; color: ${UI.text2};">${esc(a)}</li>`).join('')}</ol>
           ${listBlock('下周关注', rep.nextWeek)}
           ${focusHtml}
         </div>
