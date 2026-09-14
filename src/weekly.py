@@ -266,9 +266,8 @@ def synthesize(
 headline：本周唯一主线，一句话，必须包含具体对象或变化；
 thesis：180-320字，只写“发生了什么 → 为什么重要 → 对业务的直接含义”，至少包含2个具体信号对象；
 events：3-5项，每项含 title、verdict、facts、sourceSynthesis、publicReaction、refs；每项对应一个关键事件，优先选择有多个来源或有明显舆论反馈的事件；refs 只能使用方括号中的 recordId；
-areas：仅作为兼容字段，3-6项，每项含 cat、title、insight、evidence、implication、action、confidence、refs；不要写空泛的领域趋势；refs 只能使用方括号中的 recordId；
+areas：仅作为兼容字段，3-6项，每项含 cat、title、insight、evidence、refs；不要写空泛的领域趋势；refs 只能使用方括号中的 recordId；
 topSignals：最重要的3-5个 recordId；
-risks、opportunities、actions、nextWeek：各2-4条中文字符串，每条必须包含对象、条件或验证动作，不能写口号；
 keyChanges：2-4项，每项含 title、change、evidence、refs；只写有明确证据的变化。
 指标与图表数据由程序计算，不要在正文改写或新增统计数字。
 上期周报上下文（仅用于识别变化，不得把上期结论当作本期事实）：{previous_context}
@@ -309,8 +308,6 @@ def validate_synthesis(
                 "text": text,
                 "insight": str(item.get("insight") or "").strip(),
                 "evidence": str(item.get("evidence") or "").strip(),
-                "implication": str(item.get("implication") or "").strip(),
-                "action": str(item.get("action") or "").strip(),
                 "confidence": str(item.get("confidence") or "medium").strip().lower(),
                 "refs": refs[:8],
             })
@@ -337,10 +334,6 @@ def validate_synthesis(
             if isinstance(item, dict) and str(item.get("title") or "").strip() and str(item.get("verdict") or "").strip()
         ][:5],
         "topSignals": top,
-        "risks": strings("risks"),
-        "opportunities": strings("opportunities"),
-        "actions": strings("actions"),
-        "nextWeek": strings("nextWeek"),
         "keyChanges": [
             {
                 "title": str(item.get("title") or "").strip(),

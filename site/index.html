@@ -4110,6 +4110,27 @@ function tasksHtml(A, standalone=false){
         </div>
       </div>`).join('');
     const eventTones = [A.accent,'#b23a6a','#a06600','#1f7a45','#5a4fb5'];
+    const eventSourceTones = ['#eef3ff','#f8edf4','#fff5df','#eaf6ef','#f0edff'];
+    const eventSourcesHtml = (refs=[]) => {
+      const seen = new Set();
+      const cards = [];
+      refs.forEach(ref=>{
+        const signal = weeklySignalById(ref);
+        if(!signal) return;
+        const groups = signal.eventAggregation && Array.isArray(signal.eventAggregation.groups) ? signal.eventAggregation.groups : [];
+        groups.forEach(group=>(group.items||[]).forEach(item=>{
+          const key = `${item.source||''}|${item.url||''}`;
+          if(seen.has(key)) return; seen.add(key);
+          cards.push({source:item.source||'未知来源',title:item.title||'查看原文',note:item.note||'',url:item.url||'',tone:eventSourceTones[cards.length%eventSourceTones.length]});
+        }));
+        const primaryKey = `${signal.source||''}|${signal.url||''}`;
+        if(signal.url && !seen.has(primaryKey)){
+          seen.add(primaryKey);
+          cards.unshift({source:signal.source||'主来源',title:signal.zhTitle||signal.title||'查看原文',note:'主条目',url:signal.url,tone:eventSourceTones[0]});
+        }
+      });
+      return cards.length ? `<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;margin-top:12px;">${cards.map(c=>`<a href="${esc(c.url)}" target="_blank" rel="noopener" style="display:block;padding:10px 11px;border:1px solid ${UI.border};background:${c.tone};color:${UI.text};text-decoration:none;"><div style="font-size:10.5px;font-weight:700;color:${UI.text3};white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${esc(c.source)}</div><div style="margin-top:5px;font-size:12px;line-height:1.45;font-weight:600;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">${esc(c.title)}</div>${c.note?`<div style="margin-top:5px;font-size:10.5px;line-height:1.4;color:${UI.text3};">${esc(c.note)}</div>`:''}<div style="margin-top:6px;font-size:10px;color:${A.accentBright};">打开原文 ↗</div></a>`).join('')}</div>` : '';
+    };
     const eventsHtml = (rep.events||[]).map((e,i)=>`
       <article class="weekly-panel" style="margin-bottom:12px;border-left:4px solid ${eventTones[i%eventTones.length]};">
         <div style="display:flex;align-items:flex-start;gap:9px;"><span style="font-family:'Geist Mono',monospace;font-size:11px;color:${A.accentBright};">事件 0${i+1}</span><h3 style="margin:0;font-size:15px;line-height:1.45;color:${UI.text};">${esc(e.title)}</h3></div>
@@ -4117,6 +4138,7 @@ function tasksHtml(A, standalone=false){
         ${e.facts?`<div style="margin-top:7px;font-size:12.5px;line-height:1.7;color:${UI.text2};"><strong>发生了什么：</strong>${esc(e.facts)}</div>`:''}
         ${e.sourceSynthesis?`<div style="margin-top:7px;font-size:12.5px;line-height:1.7;color:${UI.text2};"><strong>多来源合并：</strong>${esc(e.sourceSynthesis)}</div>`:''}
         ${e.publicReaction?`<div style="margin-top:7px;padding:8px 10px;background:#f5f6f8;font-size:12px;line-height:1.65;color:${UI.text2};"><strong>公开舆论：</strong>${esc(e.publicReaction)}</div>`:''}
+        ${eventSourcesHtml(e.refs||[])}
         <div style="margin-top:9px;">${(e.refs||[]).map(r=>weeklyRefChip(A,r)).join('')}</div>
       </article>`).join('');
     const topHtml = rep.topSignals.map(recordId=>{ const s=weeklySignalById(recordId); if(!s) return ''; return `
@@ -4161,10 +4183,6 @@ function tasksHtml(A, standalone=false){
           ${eventsHtml?`<section style="margin-top:16px;"><div class="weekly-panel-title">关键事件分析</div>${eventsHtml}</section>`:`<div class="weekly-panel" style="margin-top:16px;"><div class="weekly-panel-title">分领域判断</div><div>${areasHtml}</div></div>`}
           <div style="font-size: 13px; font-weight: 700; color: var(--ds-text); margin: 26px 0 12px;">本周 Top 信号</div>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px;">${topHtml}</div>
-          <div class="weekly-grid" style="margin-top:24px;"><div class="weekly-panel" style="border-left:3px solid #c22f2a;">${listBlock('风险提示', rep.risks||[])}</div><div class="weekly-panel" style="border-left:3px solid #1f7a45;">${listBlock('机会点', rep.opportunities||[])}</div></div>
-          <div style="font-size: 13px; font-weight: 700; color: var(--ds-text); margin: 24px 0 10px;">建议行动</div>
-          <ol style="margin: 0; padding-left: 20px;">${(rep.actions||[]).map(a=>`<li style="margin: 0 0 9px; font-size: 13px; line-height: 1.7; color: ${UI.text2};">${esc(a)}</li>`).join('')}</ol>
-          ${listBlock('下周关注', rep.nextWeek)}
           ${focusHtml}
         </div>
       </div>`;
