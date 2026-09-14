@@ -3971,7 +3971,6 @@ function sourcesHtml(A){
           ${row.status==='experimental'
             ? `<span title="链路尚未验收，正式流水线不跑；诊断通过后再打开开关" style="font-size: 11.5px; font-weight: 700; color: ${rowTone.color};">${esc(row.statusLabel)}</span>`
             : `<button onclick="App.setStatus(${rowId},'experimental')" title="改过配置后标记为待测，正式流水线暂不跑" style="padding: 0; border: none; background: transparent; color: ${rowTone.color}; font-size: 11.5px; font-weight: 700; cursor: pointer; border-bottom: 1px dotted ${UI.border2};">${esc(row.statusLabel)}</button>`}
-          ${!canStatus?`<span style="font-size:10px;color:${UI.text3};">本地选择</span>`:''}
         </div>`;
     const priorityCell = `<div style="display: inline-flex; border: 1px solid ${UI.border}; border-radius: 8px; overflow: hidden; width: fit-content; background: rgba(22,19,15,.02);">${priorityOrder.map(p=>{ const on=row.priority===p; return `<button onclick="App.setPriority(${rowId},'${p}')" title="设为${p}优先级${canPriority?'并写回飞书':'（暂存本地）'}" style="height: 26px; padding: 0 9px; border: none; background: ${on?A.accentSoft:'transparent'}; color: ${on?A.accentBright:UI.text3}; font-size: 12px; font-weight: ${on?700:600}; cursor: pointer;">${p}</button>`; }).join('')}</div>`;
     const briefTone = row.briefCount>0 ? UI.text : UI.text3;
@@ -4031,7 +4030,7 @@ function sourcesHtml(A){
       </section>
       ${sync.status==='error' ? previewNotice('暂时读不到信号源', esc(sync.message)) : ''}
       ${state.sourceOrigin==='seed' ? previewNotice('采集统计暂缺', '这份快照来自仓库里的配置文件而非飞书实时数据，「最近采集」和「入库」两列会是空的；「入选」列仍是真实简报统计。') : ''}
-      ${!canStatus && sync.status!=='error' ? previewNotice('公开站为只读快照', '接入开关和优先级现在可以先在本页试选；要让选择真正写回飞书，请在本机运行配置台（python -m src.sources_api）。') : ''}
+      ${!canStatus && sync.status!=='error' ? previewNotice('公开站为只读快照', '接入开关和优先级可在本页调整；需要写回飞书时，请在本机运行配置台。') : ''}
 
       <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; margin-bottom: 16px;">
         ${chatPanel}
