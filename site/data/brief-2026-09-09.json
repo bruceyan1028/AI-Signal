@@ -91,9 +91,22 @@
       "mediaAssets": {
         "images": [
           {
-            "url": "https://oss.zhidx.com/1954ff6b97f32d7c55b5a329ee3d3d27/6aa0a180/uploads/2026/09/6aa0aa0e41722_6aa0aa0e3e814_6aa0aa0e3e7d9_OpenAI%E7%A0%B4%E8%A7%A3%E9%9A%BE%E9%A2%98%E4%B8%8E%E5%89%BD%E7%AA%83%E4%BA%89%E8%AE%AE%E6%BC%AB%E7%94%BB-%E6%8B%B7%E8%B4%9D.png",
-            "alt": "OpenAI称内部多智能体系统攻克纳维–斯托克斯问题，陷研究路线争议",
-            "kind": "article-cover"
+            "url": "https://oss.zhidx.com/9c36fd8b7e9adb893f08110930a6d9e2/6aa0a180/uploads/2026/09/6aa0a4641aa55_6aa0a464176af_6aa0a46417679_ScreenShot_2026-09-09_081117_124.png",
+            "alt": "纳维–斯托克斯方程难题",
+            "kind": "article-figure",
+            "afterHeading": "一、千禧年七大难题之一：纳维-斯托克斯方程"
+          },
+          {
+            "url": "https://oss.zhidx.com/a09922a3b9acf0daa5cc9022aa442868/6aa0a180/uploads/2026/09/6aa0a484ab070_6aa0a484a64ef_6aa0a484a64a6_ScreenShot_2026-09-09_081128_425.png",
+            "alt": "多智能体协同求解示意",
+            "kind": "article-figure",
+            "afterHeading": "二、多智能体协同攻破，先用100智能体、50小时解决难度更低问题"
+          },
+          {
+            "url": "https://oss.zhidx.com/cea6346d456053efb814c22cd2fb5a38/6aa0a180/uploads/2026/09/6aa09e4b62f65_6aa09e4b5fea4_6aa09e4b5fe68_ScreenShot_2026-09-09_074515_657.png",
+            "alt": "巴克马斯特质疑研究优先权",
+            "kind": "article-figure",
+            "afterHeading": "三、纽约大学数学教授发文声讨，怀疑OpenAI"
           }
         ],
         "videos": [],
@@ -165,9 +178,28 @@
       "mediaAssets": {
         "images": [
           {
-            "url": "https://oss.zhidx.com/53d10a888aa78cb970a657fcba5d6dbb/6aa0a180/uploads/2026/09/6a9fc019851e5_6a9fc019826d0_6a9fc019826a3_%E5%A4%B4%E5%9B%BE1.png",
-            "alt": "MiniCPM5-2B开源：2B参数端侧模型主打Agent能力",
-            "kind": "article-cover"
+            "url": "https://oss.zhidx.com/2c606804778e7ff58c5f94d3624f4391/6aa0a180/uploads/2026/09/6a9fb985b8238_6a9fb985b4b0c_6a9fb985b4ac2_%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE-2026-09-08-152448.png",
+            "alt": "MiniCPM5-2B开源页面",
+            "kind": "article-figure",
+            "afterHeading": "MiniCPM5-2B开源地址（含模型与UltraData系列数据）"
+          },
+          {
+            "url": "https://oss.zhidx.com/e30d1ea9d42cd170be9908a07375c723/6aa0a180/uploads/2026/09/6a9fb9872537f_6a9fb9872228c_6a9fb98722259_%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE-2026-09-08-152231.png",
+            "alt": "模型参数与得分对比",
+            "kind": "article-figure",
+            "afterHeading": "一、4B以下开源模型第一，超过Gemma 4等参数规模更大模型"
+          },
+          {
+            "url": "https://oss.zhidx.com/b31ec5969e8a6f6673305bf1e99c4acf/6aa0a180/uploads/2026/09/6a9fb97b87db0_6a9fb97b8497f_6a9fb97b8493f_%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE-2026-09-08-152823.png",
+            "alt": "真实任务评测得分",
+            "kind": "article-figure",
+            "afterHeading": "一、4B以下开源模型第一，超过Gemma 4等参数规模更大模型"
+          },
+          {
+            "url": "https://oss.zhidx.com/8d9ede84f4b83c7d39ebd030031bab5e/6aa0a180/uploads/2026/09/6a9fbc9ebf93f_6a9fbc9eaf228_6a9fbc9eaf1f7_%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE-2026-09-08-153559.png",
+            "alt": "34项基准评测成绩",
+            "kind": "article-figure",
+            "afterHeading": "一、4B以下开源模型第一，超过Gemma 4等参数规模更大模型"
           }
         ],
         "videos": [],
@@ -227,10 +259,7 @@
         "videos": [],
         "documents": [],
         "cover": "media/articles/recvuGBG2G1NEt-33423c5ab792.webp",
-        "curatedBy": "vision",
-        "curationVersion": 2,
-        "coverConfidence": 0.9,
-        "coverVisualQuality": 0.84
+        "curatedBy": "llm"
       },
       "editorialStructure": "source",
       "eventAggregation": {
@@ -282,10 +311,7 @@
         "videos": [],
         "documents": [],
         "cover": "media/articles/recvuGBG2GvRka-c417f9bbd73b.webp",
-        "curatedBy": "vision",
-        "curationVersion": 2,
-        "coverConfidence": 0.98,
-        "coverVisualQuality": 0.91
+        "curatedBy": "llm"
       },
       "editorialStructure": "",
       "eventAggregation": {
@@ -331,29 +357,26 @@
         "产品",
         "AI"
       ],
-      "imageUrl": "media/articles/recvuGBG2Gz6jP-60aea815f90f.png",
+      "imageUrl": "media/articles/recvuGBG2Gz6jP-b4cc4cceb614.jpg",
       "mediaAssets": {
         "images": [
           {
-            "url": "media/articles/recvuGBG2Gz6jP-443fae7c1f8f.png",
-            "alt": "Buffmee自动化评估流程",
+            "url": "media/articles/recvuGBG2Gz6jP-60aea815f90f.png",
+            "alt": "Buffmee多媒体内容接入示意",
             "kind": "article-figure",
-            "afterHeading": "为多样内容建立自动化评估 || Establish automated evaluation for diverse content",
-            "afterText": "",
-            "layout": "wide",
-            "confidence": 0.97,
-            "topicRelevance": 0.99,
-            "visualQuality": 0.82,
-            "coverSuitable": false
+            "afterHeading": "为多样内容建立自动化评估 || Establish automated evaluation for diverse content"
+          },
+          {
+            "url": "media/articles/recvuGBG2Gz6jP-443fae7c1f8f.png",
+            "alt": "自动化评估与基准数据集",
+            "kind": "article-figure",
+            "afterHeading": "可靠评估的四项核心原则 || Four core principles for reliable evaluation"
           }
         ],
         "videos": [],
         "documents": [],
-        "cover": "media/articles/recvuGBG2Gz6jP-60aea815f90f.png",
-        "curatedBy": "vision",
-        "curationVersion": 2,
-        "coverConfidence": 0.93,
-        "coverVisualQuality": 0.84
+        "cover": "media/articles/recvuGBG2Gz6jP-b4cc4cceb614.jpg",
+        "curatedBy": "llm"
       },
       "editorialStructure": "source",
       "eventAggregation": {
@@ -398,29 +421,38 @@
         "Agent",
         "产品"
       ],
-      "imageUrl": "https://oss.zhidx.com/087023f2e951893b5f60212ff9c25553/6aa0a180/uploads/2026/08/6a8e83febdbab_6a8e83feb0621_6a8e83feb05e4_%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE-2026-08-26-141211.png",
+      "imageUrl": "https://oss.zhidx.com/92d1cd2b39b0a77f5281b7ab9543cfe8/6aa0a180/uploads/2026/08/6a901ec4af87f_6a901ec49eda9_6a901ec49ed4b_cover_01_%E9%87%91%E5%B8%81%E4%BC%81%E4%B8%9A%E6%84%8F%E8%B1%A1_900x383.jpg",
       "mediaAssets": {
         "images": [
           {
-            "url": "https://oss.zhidx.com/0c81ba817d679fa92101ca3994c2b209/6aa0a180/uploads/2026/08/6a8e47c5b2cbb_6a8e47c5adbd0_6a8e47c5adb81_%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE-2026-08-26-095553.png",
-            "alt": "全球AI融资事件数量对比",
+            "url": "https://oss.zhidx.com/c28994ac8d6a5ace59706c4925f2e6ce/6aa0a180/uploads/2026/08/6a8e46a84be93_6a8e46a848d3c_6a8e46a848cf5_%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE-2026-08-26-094212.png",
+            "alt": "全球亿元级AI融资地区分布",
             "kind": "article-figure",
-            "afterHeading": "一、全球165起上亿元融资，中国数量第一，美国金额领先",
-            "afterText": "",
-            "layout": "portrait",
-            "confidence": 0.96,
-            "topicRelevance": 0.98,
-            "visualQuality": 0.82,
-            "coverSuitable": false
+            "afterHeading": "一、全球165起上亿元融资，中国数量第一，美国金额领先"
+          },
+          {
+            "url": "https://oss.zhidx.com/0c81ba817d679fa92101ca3994c2b209/6aa0a180/uploads/2026/08/6a8e47c5b2cbb_6a8e47c5adbd0_6a8e47c5adb81_%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE-2026-08-26-095553.png",
+            "alt": "全球AI融资金额分布",
+            "kind": "article-figure",
+            "afterHeading": "一、全球165起上亿元融资，中国数量第一，美国金额领先"
+          },
+          {
+            "url": "https://oss.zhidx.com/087023f2e951893b5f60212ff9c25553/6aa0a180/uploads/2026/08/6a8e83febdbab_6a8e83feb0621_6a8e83feb05e4_%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE-2026-08-26-141211.png",
+            "alt": "国内AI融资金额地区分布",
+            "kind": "article-figure",
+            "afterHeading": "二、国内77起上亿元融资， 北京项目最多，杭州金额最高"
+          },
+          {
+            "url": "https://oss.zhidx.com/7db49cf7e9cfd8915189e734fcfd8e0d/6aa0a180/uploads/2026/07/6a559dba04956_6a559db9f3929_6a559db9f38dd_%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE-2026-07-14-102306.png",
+            "alt": "国内AI融资金额前五",
+            "kind": "article-figure",
+            "afterHeading": "三、DeepSeek领跑融资榜，头部五家公司半年融近千亿"
           }
         ],
         "videos": [],
         "documents": [],
-        "cover": "https://oss.zhidx.com/087023f2e951893b5f60212ff9c25553/6aa0a180/uploads/2026/08/6a8e83febdbab_6a8e83feb0621_6a8e83feb05e4_%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE-2026-08-26-141211.png",
-        "curatedBy": "vision",
-        "curationVersion": 2,
-        "coverConfidence": 0.78,
-        "coverVisualQuality": 0.84
+        "cover": "https://oss.zhidx.com/92d1cd2b39b0a77f5281b7ab9543cfe8/6aa0a180/uploads/2026/08/6a901ec4af87f_6a901ec49eda9_6a901ec49ed4b_cover_01_%E9%87%91%E5%B8%81%E4%BC%81%E4%B8%9A%E6%84%8F%E8%B1%A1_900x383.jpg",
+        "curatedBy": "llm"
       },
       "editorialStructure": "",
       "body": "超3000亿！中国AI创企半年猛吸金，77笔上亿融资流向谁？\n\n来源：智东西\n\n2026年上半年，全球AI产业链大额融资事件密集发生。\n\n据智东西不完全统计，2026年上半年，全球AI产业链上亿元融资事件共 165起 ，融资总额约 2.7万亿元 。\n\n其中，中美企业是绝对主力：中国企业上亿元融资事件 共77起 ，事件数量上 位居第一 ，金额合计约 1262亿元 ；美国企业上亿元融资事件 共71起 ，金额合计约 2.46万亿元 ，融资金额远高于其他国家。\n\n聚焦国内市场，从地域看，国内AI上亿元融资主要集中在 北京、上海、杭州、深圳 等城市，其中北京融资事件数量最多，上半年共有 42起 ；杭州虽然项目数量不及北京，但受DeepSeek单笔500亿元融资拉动，融资 金额位居第一 。\n\n从领域看，国内AI产业链上亿元融资一方面继续流向 基础模型、算力与推理部署 等底层能力，另一方面也在向 视频生成、AI Agent、医疗、企业服务 等应用场景扩散。\n\n从企业来看， DeepSeek、阶跃星辰、月之暗面 是上半年国内融资金额最高的三家公司，三者累计融资合计 约900亿元 。\n\n放宽到整个中国AI一级市场来看，融资热度同样在继续升温。\n\n据IT桔子报道，2026年上半年，中国AI创业公司总融资额突破 3000亿元 。\n\n不过，这一统计口径覆盖的公司范围面更广，覆盖具身智能、芯片等领域，且既包括上亿元融资项目，也包括亿元以下融资项目。 仅6个月，中国AI创业公司的融资体量已超过2025年全年。\n\n上半年AI产业链融资的资金主要流向哪里？\n\n中美AI企业融资具体情况如何？\n\n国内AI融资有哪些细分方向、哪些头部公司？\n\n本文将从 全球融资分布、国内融资地域分布、融资轮次、企业成立时间、领域分布和巨额融资企业 等维度，对2026年上半年AI产业链上亿元融资进行梳理。\n\n智东西将2026年上半年国内AI产业链上亿元融资项目的基本情况、融资金额、主营业务和主要投资方整理如下：\n\n▲2026上半年国内AI产业链上亿元融资情况统计（智东西制表）（统计时间：2026年1月-2026年6月）\n\n## 一、全球165起上亿元融资，中国数量第一，美国金额领先\n\n据智东西统计，2026年上半年，全球AI产业链的超亿元融资事件共计 165起 ，总融资额 超过2.7万亿元 。\n\n从融资事件数量来看， 中国和美国 是全球AI产业链融资最集中的两个市场。\n\n其中，中国企业上亿元融资事件共 77起 ，美国企业共 71起 ，两者合计占比近九成。\n\n英国、韩国、德国、以色列、荷兰、法国、阿根廷、澳大利亚、沙特 等国家也有上亿元融资出现，但数量与中美差距明显。\n\n▲2026年上半年全球AI产业链上亿元融资地区分布情况（智东西制图）\n\n从融资金额来看，美国企业优势更明显。\n\n据智东西统计，美国企业上亿元融资金额合计约 2.46万亿元 ，占比约 91.2% ；中国企业上亿元融资金额合计约 1263亿元 ，占比约 4.7% ；其他国家企业合计融资约 1100亿元 ，占比约 4.1% 。\n\n▲2026年上半年全球AI产业链亿元级融资金额分布情况（智东西制图）\n\n美国融资金额大幅领先，主要由OpenAI、Anthropic、xAI等头部企业拉动。\n\n其中，OpenAI今年上半年披露的两笔战略投资合计达到 2320亿美元（约合1.56万亿元人民币） ；Anthropic两轮融资合计达到 950亿美元（约合6384亿元人民币） 。\n\nxAI在被SpaceX收购前，于1月完成 200亿美元（约合1344亿元人民币） E轮融资。\n\n仅这三家公司，今年上半年披露的大额融资合计就 超过2.33万亿元人民币 ，直接拉高了全球AI产业链亿元级融资总额。\n\n从融资轮次来看，A轮融资最多，共31起；B轮22起，种子轮20起，战略投资17起，天使轮14起，C轮和Pre-A轮各13起。\n\n整体来看，亿元级融资主要发生在企业创立的 早中期阶段 。\n\n▲2026年上半年全球AI产业链亿元级融资轮次分布情况（智东西制图）\n\n## 二、国内77起上亿元融资， 北京项目最多，杭州金额最高\n\n聚焦国内市场，据智东西不完全统计，2026年上半年中国AI产业链上亿元融资共77起，融资总额约1262亿元。\n\n从地域分布来看， 北京是国内AI融资最集中的城市 ，上半年共有 42起 上亿元融资；上海位居第二，共16起；杭州、深圳分别为6起、5起；广州、合肥、苏州各有2起，嘉兴、厦门各有1起。\n\n▲2026年上半年中国AI产业链上亿元融资地区分布情况（智东西制图）\n\n从融资金额来看，杭州、北京、上海位居前三。\n\n其中，杭州上亿元融资事件的融资总额约 507亿元 ，主要由DeepSeek的500亿元A轮融资拉动；北京融资金额约 463.4亿元 ，上海融资金额约 268.3亿元 。\n\n深圳、合肥、苏州、厦门、广州、嘉兴等城市融资金额相对较小。\n\n▲2026年上半年中国AI产业链上亿元融资金额地区分布情况（智东西制图）\n\n从融资轮次来看，国内AI产业链上亿元融资仍主要集中在 早中期 。\n\n天使轮最多，共13起；Pre-A轮12起；A轮11起；B+轮8起；种子轮7起；A+轮、B轮各6起。\n\n战略投资和C轮各4起，Pre-IPO、D轮各2起，E轮和C+轮各1起。\n\n▲2026年上半年中国AI产业链上亿元融资轮次分布情况（智东西制图）\n\n从企业成立时间来看，2026年上半年获得国内AI产业链上亿元融资的公司，整体呈现出明显的 “新公司密集融资” 特点。\n\n这77起融资事件对应58家企业，其中不少公司成立于 2023年 前后。\n\nDeepSeek、阶跃星辰、月之暗面、硅基流动、生数科技、三启万物等公司，都是大模型热潮启动后快速成长起来的新一批AI创业公司。\n\n它们围绕通用大模型、AI基础设施、视频生成、3D生成、AI Agent等方向展开业务。\n\n▲2026年上半年中国AI产业链上企业成立时间（智东西制图）\n\n整体来看，国内上亿元AI融资在地域和企业阶段上都呈现出较强集中度。\n\n北京、上海、杭州、深圳是主要融资高地 ，其中北京项目数量最多，覆盖大模型、AI应用、世界模型、AI Infra等多个方向；杭州融资金额最高，主要由DeepSeek单笔大额融资拉动。\n\n同时， 获得上亿元融资的企业多集中成立于2023年前后 ，说明大模型热潮之后成长起来的新一批AI创业公司，已经成为国内AI一级市场的重要融资主体。\n\n## 三、DeepSeek领跑融资榜，头部五家公司半年融近千亿\n\n从企业累计融资金额来看，2026年上半年国内AI产业链融资金额前五名分别为 DeepSeek、阶跃星辰、月之暗面、华深智药和硅基流动 。\n\n其中，DeepSeek上半年累计融资500亿元，位居第一；阶跃星辰累计融资约218亿元，位居第二；月之暗面累计融资约181.4亿元，位居第三；华深智药累计融资约52.9亿元；硅基流动累计融资超34.8亿元。\n\n▲2026年上半年国内AI产业链融资金额前五（智东西制图）\n\n1、DeepSeek\n\nDeepSeek 2023年成立于杭州，由量化机构幻方量化创始人 梁文锋 创办。\n\n今年4月，公司发布并开源DeepSeek-V4预览版。\n\n7月底，DeepSeek-V4-Flash正式版上线。\n\n8月，DeepSeek又先后发布DeepSeek-V4-Pro正式版、DeepSeek Harness开发者预览版以及多模态视觉理解模型DeepSeek-V4-Flash-Vision-Exp，持续吸引开发者。\n\n▲DeepSeek创始人梁文锋\n\n2、阶跃星辰：\n\n阶跃星辰2023年成立于上海，由微软前全球副总裁 姜大昕 博士创办并担任CEO，旷视科技联合创始人、千里科技董事长 印奇 正式出任董事长。\n\n该公司已发布Step系列通用大模型矩阵，能力覆盖语言、多模态和推理。\n\n今年5月，阶跃星辰发布并开源 Step 3.7 Flash 模型。\n\n7月，阶跃星辰又推出首个智能体原生操作系统 Step AOS（Step Agentic-native OS） 、个人智能体 Amoo 以及大模型原生AI终端品牌 STEPX ，其大模型原生智能体手机 STEPX Neo 也完成亮相，阶跃星辰开始布局AI硬件赛道。\n\n▲阶跃星辰董事长印奇\n\n3、月之暗面\n\n月之暗面2023年在北京成立，其创始人兼CEO 杨植麟 本科毕业于清华大学计算机系，博士毕业于卡内基梅隆大学，曾就职于谷歌Brain和Meta AI。\n\n超3000亿！中国AI创企半年猛吸金，77笔上亿融资流向谁？\n\n来源：智东西\n\n今年7月，Kimi发布并开源旗舰模型 Kimi K3 ，其前端编程能力一度超过Claude Fable 5，登顶Arena相关榜单，引发海内外广泛关注。\n\n▲月之暗面创始人杨植麟\n\n## 4、华深智药\n\n华深智药于2021年在北京成立，是一家 AI驱动的新药研发公司 ，孵化于 清华大学智能产业研究院 。该公司主要通过大模型、多模态数据和自动化实验平台推进药物发现与药物设计。\n\n其创始人兼CEO 彭健 是清华大学智能产业研究员高级访问教授，曾获计算生物领域最高奖奥弗顿奖。\n\n值得注意的是，华深智药是上半年国内亿元级AI产业链融资中为数不多的AI制药企业。\n\n▲华深智药创始人彭健\n\n## 5、硅基流动\n\n硅基流动成立于2023年，总部位于北京，是一家 第三方“词元（Token）供应商” ，推出了API服务、专属实例、企业级MaaS平台及大模型一体机等解决方案。\n\n其创始人、CEO 袁进辉 师从中国人工智能奠基者张钹院士，2008年7月在清华大学计算机系获得工学博士学位，他曾担任微软亚洲研究院主管研究员，2016年选择离职创业。\n\n今年6月底，硅基流动已向 港交所递交上市申请 ，拟按第18C章特专科技公司规则在港交所主板上市，华泰国际、海通国际为联席保荐人。\n\n▲硅基流动创始人袁进辉\n\n从融资集中度来看，DeepSeek、阶跃星辰、月之暗面、华深智药和硅基流动累计融资超过 987.1亿元 ，约占2026年上半年国内超亿元AI融资总额的 78% 。\n\n这五家公司业务覆盖 基础模型、Agent终端、AI制药和Token基础设施 等领域，在各自方向持续推进技术升级和产业落地。\n\n除了上述五家公司，面壁智能也是今年融资节奏较快的公司。\n\n面壁智能称，其2026年上半年累计融资金额已 超过50亿元 。\n\n不过，由于其最新一轮融资公布时间为 7月15日 ，超出本文“2026年1月1日-6月30日”的统计区间，因此这笔融资未被计入。\n\n若将该轮融资纳入统计，面壁智能则可跻身国内AI产业链累计融资金额前五。\n\n## 四、应用类融资占比最高，视频生成、AI Agent成热门方向\n\n聚焦上亿元融资项目，国内AI产业链融资正在从通用大模型向应用、基础设施和新一代模型形态扩散。\n\n据智东西统计，在上半年国内AI产业链上亿元融资中， AI应用方向融资事件最多，共33起，占比43% ； 世界模型/物理AI 共15起，占比19%； AI Infra 共13起，占比17%； 通用大模型 共12起，占比16%； 数据服务 共4起，占比5%。\n\n▲2026年上半年中国AI产业链上亿元融资领域分布情况（智东西制图）\n\n在AI应用方向中， 视频/图像/3D生成 融资最集中，共13起，占AI应用融资的39%； AI Agent 共6起，占比18%；企业应用、AI医疗/药物各4起，占比均为12%；AI金融、AI营销等方向也有融资出现。\n\n国内AI融资正在从模型能力本身，进一步 向具体场景和产品落地延伸 。资本一边继续投向模型、推理部署、算力基础设施、数据服务等底层能力，一边也在寻找视频生成、AI Agent、企业服务、医疗、金融等场景中的实际落地机会。\n\n相比单纯讲大模型能力，能否进入具体行业、形成产品和收入，正在成为国内AI融资中的重要判断标准。\n\n## 结语：AI融资继续升温，钱更集中流向头部和应用\n\n今年上半年，中美两国占据了近九成的融资事件和几乎全部的融资金额体量。\n\n美国市场凭借OpenAI、Anthropic等头部模型公司，单笔融资规模动辄百亿乃至千亿美元级别，其资金向极少数龙头集中；而中国AI融资虽然单笔体量较小，但融资事件数更多、覆盖方向更分散，基础模型、视频生成、AI Infra、AI制药等多个细分赛道均有亿元级融资落地。\n\n细分来看，国内天使轮和A轮融资占比偏高，大量2023年后成立的新公司在今年上半年密集获得大额资金。\n\n同时，资金也在明显向应用层倾斜：AI应用类融资占到了总量的四成以上，视频生成和AI Agent成为最受关注的落地方向。\n\n整体来看，AI行业融资正逐渐告别粗放式的概念炒作阶段，进入技术迭代与商业落地并重的理性发展周期，资本更加看重技术落地能力、场景适配价值与商业化潜力。\n\n这种融资逻辑的转变，或将持续推动国内AI产业从技术追赶，稳步走向规模化、产业化的良性发展阶段。",
@@ -469,41 +501,31 @@
         "监管",
         "硬件"
       ],
-      "imageUrl": "media/generated/generated-a461ab4c7a2f3f65d1.png",
+      "imageUrl": "media/articles/recvuGBG2GzSmj-729f9a7fcedd.jpg",
       "mediaAssets": {
         "images": [
           {
             "url": "media/articles/recvuGBG2GzSmj-5f8e0a806f0f.png",
-            "alt": "STV合成转运载体设计与筛选",
+            "alt": "生成式AI设计的RNA转运载体",
             "kind": "article-figure",
-            "afterHeading": "用生成式AI从头设计RNA转运蛋白",
-            "afterText": "团队将膜结合域、出芽域、RNA结合域等天然功能模块与生成式AI设计的结构蛋白支架融合，从100多",
-            "layout": "portrait",
-            "confidence": 0.99,
-            "topicRelevance": 1.0,
-            "visualQuality": 0.78,
-            "coverSuitable": false
+            "afterHeading": "用生成式AI从头设计RNA转运蛋白"
           },
           {
             "url": "media/articles/recvuGBG2GzSmj-9742cf6e0251.jpg",
-            "alt": "WorkBuddy鸿蒙手表端界面",
+            "alt": "小米18 Fold折叠屏手机",
             "kind": "article-figure",
-            "afterHeading": "腾讯WorkBuddy手表端上线鸿蒙生态",
-            "afterText": "9月7日，腾讯WorkBuddy手表端在华为全场景新品发布会中首发，正式登陆华为鸿蒙智能手表平台",
-            "layout": "wide",
-            "confidence": 0.96,
-            "topicRelevance": 0.98,
-            "visualQuality": 0.72,
-            "coverSuitable": false
+            "afterHeading": "小米多款新品重磅亮相"
+          },
+          {
+            "url": "media/articles/recvuGBG2GzSmj-e65eea872d31.gif",
+            "alt": "鸿蒙手表调用AI助理",
+            "kind": "article-figure",
+            "afterHeading": "腾讯WorkBuddy手表端上线鸿蒙生态"
           }
         ],
         "videos": [],
-        "cover": "media/generated/generated-a461ab4c7a2f3f65d1.png",
-        "curatedBy": "generated",
-        "curationVersion": 2,
-        "coverConfidence": 0.0,
-        "coverVisualQuality": 0.0,
-        "coverKind": "generated-cover"
+        "cover": "media/articles/recvuGBG2GzSmj-729f9a7fcedd.jpg",
+        "curatedBy": "llm"
       },
       "editorialStructure": "",
       "body": "今天是9月8日，星期二。1522年的今天，麦哲伦-埃尔卡诺探险队的维多利亚号返回塞维利亚，完成人类首次环球航行。\n\n## 重点新闻速览\n\n1.OpenAI智能体劫持德国网站发布万余条信息\n\n2.长鑫存储LPDDR6芯片正式量产\n\n3.最高人民法院首次发布AI司法裁判规则\n\n4.“中国天眼”FAST首次在疏散星团潮汐尾中发现脉冲星\n\n5.小米多款新品重磅亮相\n\n## 科技\n\n## OpenAI智能体劫持德国网站发布万余条信息\n\n近日， OpenAI承认其AI智能体今年5月至6月间劫持了德国程序员维基网站DSEWiki，发布超过1.5万条信息，将其改造为智能体间相互交流和协作的留言板。部分智能体将已获得的任务答案发布在网站上供其他智能体使用，还讨论并测试了绕过沙箱限制的方法。（路透社）\n\n## 瑞士联邦政府启动3000台电脑开源办公试点\n\n近日，瑞士联邦委员会公布概念验证“PoC BOSS”结果，批准联邦总理府启动开源办公试点。试点采用德国开源平台openDesk，探索替代Microsoft 365的可行性。试点覆盖3000台工作站，约占联邦雇员7%，预算900万瑞士法郎（约7469万元人民币），目标2027年底完成迁移，成功后将推广至全部54000台。\n\n开源平台openDesk整合Collabora Online、Nextcloud、Jitsi等组件，替代文档、邮件、视频会议等核心功能。此前172人参与的验证显示文档处理和邮件评价良好，但大规模视频会议存在局限，试点期新系统与Microsoft 365并行运行。（瑞士联邦总理府）\n\n## 长鑫存储LPDDR6芯片正式量产\n\n近日，长鑫存储官宣自主研发的LPDDR6内存芯片正式量产。产品单颗粒容量16GB、封装容量16GB，峰值速率12800Mbps，相比上代LPDDR5X带宽提升60%、功耗降低20%。芯片采用双子通道架构配合智能训练机制，引入双轨DVFS设计和动态效率模式，在不同负载下保持最佳能效比。\n\n长鑫LPDDR6首发搭载于小米18 Fold折叠旗舰手机，与小米自研玄戒O3处理器完成联合调优，实现国产自研SoC与自研DRAM在同一旗舰上的首次协同商用。（证券时报）\n\n## 基元律动发布首个Agent-Native模型NeoHorse\n\n9月7日，华为诺亚方舟实验室前主任、盘古大模型负责人王云鹤创办的基元律动发布首个Agent-Native模型NeoHorse。\n\n该模型由无问芯穹提供算力支持与Infra优化，清华大学、北京大学团队参与算法和训练方法研究。NeoHorse-1包含4B和9B两个版本，重点面向Agent工作中的工具调用、环境反馈读取、错误发现和路径调整等能力，在覆盖Harness Agent、工具使用、代码和指令遵循等10项评测中表现突出。（新浪科技）\n\n## 最高人民法院首次发布AI司法裁判规则\n\n9月7日，最高人民法院发布《关于依法审理涉人工智能纠纷案件的意见》，共24条。这是中国首部由最高审判机关发布的AI司法裁判规则文件，覆盖AI换脸拟声、AI幻觉、个人信息保护、算法歧视、大数据杀熟、自动驾驶、开源软件、模型训练及AI生成证据等问题。\n\n该意见还明确了“留白”使用他人作品训练大模型的法律边界，为AI产业司法实践提供了系统性裁判依据。（中国法院网）\n\n## 科学\n\n## 用生成式AI从头设计RNA转运蛋白\n\n近日，慕尼黑亥姆霍兹干细胞与发育遗传学研究所、发育遗传学研究所与慕尼黑工业大学联合团队在《自然》发表论文，报道一类全新RNA转运系统——合成转运载体（STV）。\n\n团队将膜结合域、出芽域、RNA结合域等天然功能模块与生成式AI设计的结构蛋白支架融合，从100多种候选中筛选出STV-C8。该载体采用自然界未见的C8对称平面几何结构，在培养细胞中递送RNA的效率远超脂质纳米颗粒和病毒样颗粒，达到同等蛋白表达所需RNA剂量低万倍以上，且可装载不同RNA货物并靶向特定细胞。小鼠静脉注射后RNA主要在肺部表达，未见免疫或毒性反应；团队还将CRISPR-Cas9组件装入STV-C8注射至猪肌肉，成功敲除杜氏肌营养不良相关的外显子片段。（Nature）\n\n自下而上组装STV RNA载体的设计与筛选过程 | doi.org/10.1038/s41586-026-10952-3\n\n## “中国天眼”FAST首次在疏散星团潮汐尾中发现脉冲星\n\n9月7日，中国科学院紫金山天文台、国家天文台和清华大学联合团队在《科学通报》发表成果：借助FAST、南非MeerKAT和加拿大-法国-夏威夷望远镜CFHT，首次在约80亿年历史的古老疏散星团NGC 6791的潮汐尾中识别出一颗脉冲星PSR J1921+3745（自转周期约1.9秒），填补了中子星从诞生星团进入银河系盘的关键演化空白。\n\n动力学模拟显示，该脉冲星属于电子俘获型超新星产生的低踢速中子星，可被星团保留数十亿年后随瓦解逐步释放至潮汐尾，与观测位置吻合。（Science Bulletin）\n\n## 智趣\n\n## 小米多款新品重磅亮相\n\n9月7日，小米在北京举办秋季旗舰新品发布会，一次性发布折叠屏手机小米18 Fold、平板9 Pro Max、澎程系列4款增程SUV，并公布3颗自研玄戒芯片进展。\n\n小米18 Fold定位“中折叠”，起售价10999元，首发搭载3nm玄戒O3处理器和长鑫存储LPDDR6内存，配备7.58英寸内屏与5.38英寸外屏，采用新一代龙骨转轴和双层UTG超薄玻璃，2亿像素主摄加5000万像素潜望长焦，6000mAh电池，9月10日开售。\n\n平板9 Pro Max搭载同款玄戒O3，13.3英寸3.4K屏幕，12000mAh电池，4799元起。\n\n澎程系列覆盖增程SUV，N70 Pro 20.99万元（纯电续航351公里/综合1351公里）、N70 Max 23.99万元（纯电505公里/综合1461公里）、N90 Max 26.99万元（综合1705公里）、N90 Max探索版29.99万元（带电动升降顶舱）。\n\n玄戒O3采用十核全大核架构，集成240亿晶体管，CPU性能较前代提升60%、GPU提升85%。（小米）\n\n小米18 Fold | 小米商城\n\n## 腾讯WorkBuddy手表端上线鸿蒙生态\n\n9月7日，腾讯WorkBuddy手表端在华为全场景新品发布会中首发，正式登陆华为鸿蒙智能手表平台，抬腕即可调用AI助理，打破此前AI助理仅局限于电脑与手机应用的使用边界。\n\n该版本已适配HUAWEI WATCH 5系列、WATCH Ultimate 2、WATCH ULTIMATE DESIGN系列及最新发布的WATCH 6系列。WorkBuddy鸿蒙手表端支持多端状态实时同步，待办任务、灵感和AI对话记录可在手表、手机、平板、电脑与云端之间自动同步。电脑端生成的报告可在手腕上查阅，长篇分析可用音频模式收听。（IT之家）\n\n腾讯WorkBuddy手表端上线鸿蒙生态 | 公众号@腾讯WorkBuddy",
@@ -552,16 +574,13 @@
         "端侧",
         "产品"
       ],
-      "imageUrl": "media/articles/recvuGBG2Gzk0y-dba15a2c54ef.jpg",
+      "imageUrl": "https://oss.zhidx.com/80fbcf32933e497249da5090173f5a4e/6aa0a180/uploads/2026/09/6a99c6aa1b8ca_6a99c6aa18aba_6a99c6aa18a52_Photo_1074805952_DJI_20260903161914_0243_D_JPG_4845568_0_202693161916_photo_original.jpg",
       "mediaAssets": {
         "images": [],
         "videos": [],
         "documents": [],
-        "cover": "media/articles/recvuGBG2Gzk0y-dba15a2c54ef.jpg",
-        "curatedBy": "vision",
-        "curationVersion": 2,
-        "coverConfidence": 0.94,
-        "coverVisualQuality": 0.82
+        "cover": "https://oss.zhidx.com/80fbcf32933e497249da5090173f5a4e/6aa0a180/uploads/2026/09/6a99c6aa1b8ca_6a99c6aa18aba_6a99c6aa18a52_Photo_1074805952_DJI_20260903161914_0243_D_JPG_4845568_0_202693161916_photo_original.jpg",
+        "curatedBy": "llm"
       },
       "editorialStructure": "",
       "body": "扛起联想六成收入的人，怎么看AI PC的下一站？\n\n来源：智东西\n\n智东西9月8日报道，在2026年德国柏林消费电子展（IFA）联想创新世界大会上，联想 推出了覆盖多品类的AI终端阵容 。\n\n其中全球首批搭载NVIDIA RTX Spark超级芯片的Yoga笔记本，把千亿参数大模型“装进”了1.6千克的机身；两款预示未来形态的概念机等，都引起多方关注。\n\n与此同时，联想个人智能体Qira（国内名：天禧）完成重大升级，横跨PC、平板、手机、手表，实现“一个个人AI，贯穿所有终端”的产品承诺。\n\n大会期间，我们与联想集团执行副总裁、智能设备业务集团（IDG）总裁 Luca Rossi（卢卡·罗西） ，联想集团副总裁、AI生态负责人 Dan Dery（丹·德里） ，联想集团高级副总裁、IDG商用产品中心及全球中小企业业务总经理 于海 等核心高管进行了深度对话。\n\n▲Luca Rossi\n\n## Luca Rossi执掌贡献联想 超六成营收\n\n的IDG智能设备业务集团，主要覆盖PC、平板电脑和智能手机等业务。\n\n此前2026年4月1日至6月30日，联想刚刚 取得集团历史最佳季度业绩 ，营收同比增长43%达到1834亿元人民币，其中IDG营收达到1164亿元。\n\nAI PC市场份额攀升至25.1%，高居全球第一。\n\n谈及AI PC的发展趋势，Luca Rossi告诉我们， AI PC的“ChatGPT时刻”正在发生 。\n\n客户对AI PC的需求已经回升，核心驱动力是 “经济账”： 云端Token的成本太高，企业用户面对巨额云账单的痛感正在触发AI PC的真实需求。\n\n未来12个月，这个势能将加速释放。\n\n关于Qira，联想不打算与ChatGPT等头部模型正面竞争，而是做“ 系统级AI ”。\n\n相比于市面上其他AI方案，Qira根植于操作系统之上，打通多设备、多OS，理解用户当下的工作上下文并主动提供建议，而非被动应答。\n\n智能体Qira不挑设备： 16GB PC就能跑，Android 17手机适配。\n\n对于接下来12个月的市场环境，Luca认为未来 三到四个季度 ，内存价格高企和供应偏紧的局面仍会持续。\n\n但他强调，这种压力不会扼杀AI PC的势头，因为需求仍将超过供给，用户对更高算力、更强本地AI体验的硬性需求，正在对冲价格上涨的阻力。\n\n以下是Luca等几位高管的主要问题解答实录，我们做了不改变原意的编辑。\n\n## 一、AI PC的“ChatGPT时刻”正在发生，高额云账单是推动力\n\nQ1：联想此前披露AI PC市场份额全球第一。您如何看待这股增长势头？未来12个月，哪些核心因素会进一步拉动AI PC出货量增长？\n\n我们正在持续优化成本，并拥有全球最好的产品组合。\n\n随着我们在舞台上发布了更多优秀新品，客户现在是否愿意继续等待？\n\n我认为，现在是让客户真正体验AI的时候了。\n\nQ2：AI PC的发展会分为几个阶段？我们当前处在哪个阶段？AI PC什么时候会迎来属于自己的ChatGPT式爆发时刻？\n\n行业持续演进，我认为没有终点。\n\n今天AI PC是14 TOPS，未来你会看到低于TOPS的，也可能几年后达到1000TOPS。\n\n今天叫 AI PC，明天可能叫Agentic AI PC，再往后我不知道。\n\n所以演进不会结束。\n\n至于“ChatGPT时刻”，即明显突破的时间点，我认为这正在发生。\n\n客户对AI PC的需求已在上升，因为他们看到工作负载从云端向设备迁移。\n\n例如，企业和小型企业发现云上Token成本极高，每月数百甚至数千美元，如果把工作负载迁移到设备上，就能立刻节省成本，这直接拉动AI PC需求。\n\n当然，云也在快速进化，超大规模服务商也提供很多好东西。\n\n现实是：未来不会只有云或只有设备，复杂负载在云上，简单负载在设备上，而安全性和延迟要求高的则在设备上发挥更大作用。\n\n## 二、千亿参数模型塞进PC，联想给创作者换了个“大脑”\n\nQ3：联想将NVIDIA RTX Spark带到联想PC系列，而Yoga是第一次，可以跑千亿参数模型。您认为它在Yoga产品族中有什么特别之处？\n\nYoga系列中，Yoga Pro更专注于创作者。\n\n借助NVIDIA Spark架构，尤其是统一内存带来的强大性能，对创作者、高端用户、程序员等都非常友好。\n\n我们相信这是未来Spark的关键属性，你会在未来消费产品中看到越来越多的Spark组合。\n\n从Qira的角度来说，我们希望它能够增强用户在多设备上的体验。\n\n如果我们能够真正为客户创造价值，那么这也会成为消费者购买摩托罗拉、Yoga或平板电脑的又一个理由。\n\nQ4：Project Swan和 Project AeroBlade两款概念机的下一步是什么？\n\n我们正在完成这些POC项目的评估，很快你们就会看到至少其中一个进入市场。\n\n其中一个项目目前还在进行技术优化，我们希望确保产品本身足够成熟。\n\n我们不希望用户需要携带一个厚度达到20毫米的过重的产品。\n\n我们会确保相对薄、轻、面板足够平整，并且有足够可靠性，保证三到五年的使用寿命。\n\n这些都是我们目前评估时关注的关键技术点，其中一个产品很快就会进入市场。\n\n## 三、智能体Qira不挑设备：16GB PC就能跑，Android 17手机适配\n\nQ5：你刚刚宣布大量搭载Qira的设备已经上市，请问让它们具备可用性的关键是什么？拉动AI使用增长的影响因素是什么？\n\n我们的目标是覆盖尽可能广泛的设备基础，让Qira进入尽可能多的主流产品。\n\n我们不仅关注最新、最好的产品，也会考虑现有设备。\n\n我们已经宣布，Qira可以运行在16GB内存的PC上；对于智能手机，我们也在持续缩小它的资源占用和能力要求。\n\n现在的标准是，只要手机升级到Android 17，就可以获得Qira。\n\n我们的目标是最大范围的安装基础，无论什么限制或要求，我们都会找到方法让旧产品也能使用Qira。\n\n我们正在完成推出阶段的细化，进一步明确哪些设备、什么时候能够获得Qira。\n\n由于这件事并不简单，我们希望给用户尽可能清晰的信息，各个负责设备的业务部门也都会参与其中。\n\nQ6：在您的预期中，联想智能体 Qira（国内名：天禧）与 ChatGPT 等其他平台相比，竞争力如何？\n\n简短来说，我们并不打算与它们直接竞争，因为我们做的是不同类型的产品。\n\nQira是一种系统级AI，它存在于设备之上，并能够跨设备扩展。\n\n它与一个可以在多个平台运行的AI应用不同，而是整个操作系统都被赋予了智能。\n\n它能够理解你所处的上下文，帮助你处理跨设备的通知，关注不同设备上正在发生的事情，并根据上下文建议你下一步应该做什么。\n\n所以这是非常不同的一种产品。\n\n正如你在台上看到的，我们也不会回避与这些公司合作。\n\n它们可以成为Qira的目的地，而Qira是系统，是一个开放的平台，目标是连接越来越多的服务、应用和目的地。\n\nQ7：你们提到了“One Personal AI, Multiple Devices （一个个人 AI，多个设备） ”概念，它的核心逻辑是什么？如何平衡云端和端侧方案？\n\n如果今天你使用自己喜欢的聊天机器人，你与云端对话，但云端没有你任何上下文，不知道你此刻在做什么，屏幕上有哪个文档，你的个人情境对云端是不可见的。\n\n而Qira正好相反，它知道你现在是在处理Word还是Excel，知道你10分钟或10小时前是否在平板上处理过同一个Excel文件，所以体验是连贯的，并且对你当下所做之事有感知。\n\n这是两者根本区别。\n\n当然，复杂负载在云端处理更好，但你可以选择。\n\n我们Qira的增值不在于处理繁重负载，而在于提供连续性，以及处理那些需要低延迟、高速和极高数据保密性的较轻负载。\n\n作为用户，你会喜欢AI基于你当前操作主动建议，这与传统聊天方式不同，传统是你问它答，而Qira是因你正在做某事而主动提醒。\n\n这在传统云方法中不会发生，我们期望用户会欣赏这一点。\n\n## 四、Qira能连苹果吗？能，但这不是联想一家说了算\n\nQ8：全球版Qira和中国本地化的天禧，联想如何平衡两者的功能差异？\n\n我认为这很简单，我们正在走一条“双路径”。\n\n目前，Qira是面向中国以外的国际市场。\n\n在中国，我们采用天禧这一方案，它包含Qira的一些元素，同时也加入了一些中国生态所独有的元素。\n\n两个生态系统在某些方面确实不同，我们同等重视，让Qira在全球成功，同时在中国通过天禧提供强大的智能体体验，这个安排不会改变。\n\nQ9：有没有办法让联想笔记本电脑用户与iPhone等生态系统之间实现更好的连接？Qira能否连接联想、摩托罗拉之外的设备？\n\n# 扛起联想六成收入的人，怎么看AI PC的下一站？\n\n来源：智东西\n\n从技术上来说，这是可行的，但这需要另一方同意。我们管理和开发自家设备上的东西，无法控制非自家设备。\n\n我们的观点是，如果用户拥有多个设备，就应该从中受益，因为跨设备可以创造很好的体验。这并不是因为我们想限制用户只能使用我们的设备，而是因为我们制造这些设备，也了解它们是如何工作的，因此我们能够实现更深层次的集成，让体验变得更好。\n\nQ10：你说隐私保护是基础，现在AI可以阅读Gmail、Slack、Outlook并预测用户下一步行动，那么AI“入侵”的边界在哪里？\n\n如果用户认为这是一个具有侵入性的解决方案，而且这种反馈来自用户，我们就会改变方向。\n\n隐私方面，Qira是系统级AI，类似于你的操作系统（Windows或Android）能够看到你打开的内容，并在旧有方式下建议你下一步做什么。Qira做的是类似的事情，只不过是通过AI来完成。\n\n与其他AI解决方案相比，Qira主要在本地运行。它处理的用户数据不会离开设备，而且会使用用户自己的密钥进行加密。但仅仅承诺隐私是不够的。我们正在加入相应功能，让用户自己能够进行验证和访问，从而真正了解这些数据是如何被处理的。\n\n## 五、内存涨价、设备涨价仍会持续，或2028年恢复平衡\n\nQ11：您认为产品涨价，是源于内存、存储硬件成本上涨吗？还是因为PC市场趋于饱和？\n\n我不认为是后者。如果按你所说，那一两年前也成立，但市场当时仍有良好增长。PC和智能手机是成熟行业，PC规模长期在2.5亿到3.2亿台之间。\n\n目前需求低迷的主要原因是内存成本上涨，让人们觉得可以等六个月或一年再买，或者买不起。但长期潜在需求仍然强劲。\n\n我认为未来云超大规模商会发现，在云上运行所有图像生成的商业模式不可持续，你付20美元，他们成本500美元。他们会反思，然后人们发现云很昂贵。如果简单的图像能在PC上处理，我就做，复杂的再上云。\n\n因此未来三四季度市场会承压，之后内存供需改善，到2028-2029年可能恢复平衡，设备（PC、智能手机、新品类）增长会回归。价格已经在上涨，未来三到六个月仍会上涨，但根据供需方程，上涨趋势会缓和，可能趋于稳定。\n\nQ12：如今联想主导着IT市场，但是智能手机份额相对不大，您如何看待这一情况？\n\n实际上，这两个业务起点非常不同。摩托罗拉是2014年从谷歌收购的，当时情况并不太好，随后进入转型阶段。过去几年，我们不仅将产品路线图转变为极具竞争力和吸引力的智能手机组合，还开始进一步强化全球市场地位。\n\n目前，摩托罗拉已经是拉丁美洲第二大品牌，在北美排名第三。在欧洲，我们的增长速度快于其他品牌，在意大利、波兰、罗马尼亚等我们较早进入的市场，已经实现了两位数份额。我们也是亚洲增长最快的品牌之一，在印度大市场表现尤其突出，在日本排名第二。\n\n摩托罗拉正逐步成为手机行业更大的参与者，Qira也是这一过程的一部分，给用户多一个购买理由。\n\n与此同时，联想在PC市场拥有庞大的用户基础，我们在平板电脑领域也很强，我认为未来在可穿戴设备领域也会拥有一席之地。总体而言，我们正在构建完整的生态系统。我们知道我们从哪里来，也知道往哪里去。",
@@ -613,59 +632,32 @@
         "images": [
           {
             "url": "media/huxiu/recvuGBG2GeoR7-1.gif",
-            "alt": "GPT Image 2.5多轮编辑对比",
+            "alt": "局部编辑前后效果演示",
             "kind": "article-figure",
-            "afterHeading": "修改效果更好",
-            "afterText": "GPT Image 2.5试图把这种“牵一发而动全身”压下去，OpenAI称，新模型可以只修改用",
-            "layout": "wide",
-            "confidence": 0.96,
-            "topicRelevance": 0.98,
-            "visualQuality": 0.82,
-            "coverSuitable": false
+            "afterHeading": "修改效果更好"
           },
           {
             "url": "media/huxiu/recvuGBG2GeoR7-2.gif",
-            "alt": "连续生成动画画面更稳定",
+            "alt": "多轮连续编辑一致性演示",
             "kind": "article-figure",
-            "afterHeading": "",
-            "afterText": "简单来说，就是一张图改完第一轮之后，可以直接接着改第二轮、第三轮；此前已经做好的修改尽量保留下来",
-            "layout": "wide",
-            "confidence": 0.92,
-            "topicRelevance": 0.91,
-            "visualQuality": 0.8,
-            "coverSuitable": false
+            "afterHeading": "修改效果更好"
           },
           {
             "url": "media/huxiu/recvuGBG2GeoR7-3.png",
-            "alt": "GPT Image 2.5登顶文生图竞技场",
+            "alt": "新模型Arena评测提升",
             "kind": "article-figure",
-            "afterHeading": "",
-            "afterText": "在Arena最新公布的结果里，Sunburst和Flare直接包揽了文生图、单图编辑和多图编辑三",
-            "layout": "portrait",
-            "confidence": 0.98,
-            "topicRelevance": 0.96,
-            "visualQuality": 0.86,
-            "coverSuitable": false
+            "afterHeading": "修改效果更好"
           },
           {
             "url": "media/huxiu/recvuGBG2GeoR7-4.png",
-            "alt": "人物主体编辑前后对比",
+            "alt": "跨场景主体保真效果",
             "kind": "article-figure",
-            "afterHeading": "还有什么变化",
-            "afterText": "但和Image 2更强调“一次生成就能直接拿来用”不同，Image 2.5这次把大量展示空间留给",
-            "layout": "portrait",
-            "confidence": 0.94,
-            "topicRelevance": 0.93,
-            "visualQuality": 0.84,
-            "coverSuitable": false
+            "afterHeading": "还有什么变化"
           }
         ],
         "videos": [],
         "cover": "media/articles/recvuGBG2GeoR7-b71cc3347f2b.jpg",
-        "curatedBy": "vision",
-        "curationVersion": 2,
-        "coverConfidence": 0.84,
-        "coverVisualQuality": 0.88
+        "curatedBy": "llm"
       },
       "editorialStructure": "",
       "body": "GPT Image 2.5来了，OpenAI开始抄Banana的作业\n\n**GPT Image 2.5提升了编辑精度与多轮一致性，在Arena评测中包揽前三，但核心功能一年前已被NanoBanana实现，OpenAI属于“补课”而非创新。**\n\n**要点**\n\n**1. 编辑能力是本次升级核心**\n\n新模型支持精确局部编辑和多轮连续编辑，承诺图片质量不随修改轮数增加而劣化，解决了此前“牵一发而动全身”的老问题。\n\n**2. 功能创新性不足，竞品早已布局**\n\nNanoBanana一代已把连续编辑作为核心能力，谷歌随后做了可视化圈选编辑，大香蕉Pro更进一步实现相机、灯光、构图等多主体控制。\n\n**3. 在Arena评测中包揽文生图、单图编辑、多图编辑三项第一**\n\nSunburst和Flare相较GPT Image 2提升显著，多图编辑分数提高81分和47分，其中Sunburst侧重质量，Flare降低50%延迟且定价不变。\n\n**4. 用户探索出定格动画、透明底素材等新玩法**\n\n开发者用连续生成画面串成动画，或从草图生成动作序列帧；Sunburst输出的透明背景图获得好评，可直接用于游戏和设计。\n\n**5. 模型未能彻底解决所有老问题**\n\n手部画坏、高频噪声、过度锐化等问题仍存在；在严格还原产品场景下，NanoBanana 2和Pro依然更可靠，复杂指令偶尔被错误理解。\n\n本文来自微信公众号： 字母AI ，作者：袁心玥，题图来自：视觉中国\n\nGPT Image 2.5凌晨突发，把改图能力端了出来。\n\n局部编辑、连续编辑、多轮一致性乃至图片上直接标注修改，OpenAI这次把“无需抽卡，拥抱多轮修改”当成了主菜。\n\n但问题是，这菜多少有点没新意——同样的东西，NanoBanana一年前就已经玩过了。\n\nNanoBanana一代就已经把连续编辑做成了核心能力；第一代发布四个月后，谷歌连可视化圈选编辑的产品交互都做了；到大香蕉 （Pro） 那里，谷歌已经把这条路往前走到了相机、灯光、构图和多主体控制；二代香蕉又把Pro的核心能力压到了Flash的速度。\n\nOpenAI也算是补了NanoBanana的课，但显然还没毕业。\n\n## 修改效果更好\n\n抛开“新不新”这个问题，GPT Image 2.5这次的升级幅度其实不算小。\n\nOpenAI自己把重点写得很明确：更精确的编辑、更稳定的多轮一致性，以及更快的生成速度。\n\n相比Images 2.0，新模型最高可以降低50%的生成延迟，同时改善参考图主体保真度、自然光照和纹理表现。\n\n但在官方文档里被OpenAI反复强调的，还是“编辑”。\n\n首先是Precision Editing （精确编辑） 。\n\n之前的Image 2.0虽然也能改，但往往改得不够精准，只想动一个局部，整张图却可能跟着大变样，图片主体的位置甚至都会发生偏移。\n\nGPT Image 2.5试图把这种“牵一发而动全身”压下去，OpenAI称，新模型可以只修改用户指定的元素，同时尽可能保持主体、构图、背景乃至品牌视觉不变。\n\n即使面对更复杂的主体和背景，也可以单独替换商品、文案或者局部元素。\n\n更重要的是Multi-turn Editing Consistency （多轮编辑一致性） 。\n\n简单来说，就是一张图改完第一轮之后，可以直接接着改第二轮、第三轮；此前已经做好的修改尽量保留下来，新一轮修改继续建立在上一轮结果之上，而不是每次重新理解、重新生成。\n\nOpenAI专门强调了一个过去很麻烦的问题：图片质量不应该随着编辑轮数增加而一路劣化。\n\n体现在gif图里，就是图不停改，但不再乱动，看起来更稳定。\n\nGPT Image 2.5这次把API分成两个版本：偏速度的Flare （闪光） 和偏最高质量的Sunburst （翻译过来是“从云隙射下的阳光”，只看名字的话，应该有更强的光影效果和更高的审美） ；要我说，OpenAI最近和有什么起名癖似的，尽整些花里胡哨的。\n\n在Arena最新公布的结果里，Sunburst和Flare直接包揽了文生图、单图编辑和多图编辑三个竞技场的第一、第二名。\n\n加上Image 2，前三已被GPT Image包圆。\n\n不过需要区分的是，Arena这里测的是“多图输入编辑”，并不是OpenAI官方强调的“多轮图像编辑”。\n\n更值得注意的是它们相对GPT Image 2的提升幅度。\n\nSunburst在文生图上提高了40分，单图编辑提高59分，多图编辑则直接提高了81分；Flare分别提高18、30和47分。\n\n至少在大模型盲测竞技场上，Image 2.5这次最明显的提升，集中在对已有图片的编辑能力上，尤其是同时处理多张参考图的复杂编辑任务。\n\n在API侧，Flare被OpenAI定义为默认模型，相比GPT Image 2在获得更高质量的同时，延迟降低50%；Sunburst则牺牲一些速度，换取更精细的控制，主要面向广告素材、商品图等场景。\n\n定价方面，OpenAI最新价格页显示，GPT Image 2.5 Flare和Sunburst的图像输入都是8美元/百万token、图像输出30美元/百万token、文本输入5美元/百万token，和GPT Image 2一毛一样。\n\n有意思的是，Flare和Sunburst一个主打速度，一个主打质量，但API账单暂时看不出区别，合理怀疑OpenAI又出bug了。\n\n## 还有什么变化\n\n相比Midjourney更容易让人想到“把一张图片做得更有风格”，OpenAI更喜欢把文字、图片、布局和信息揉在一起，直接生成一个视觉成品。\n\n比如海报、商品素材、信息图、人物照片、品牌视觉，以及各种带有大量文字和排版的设计——Image 2.5在这方面和Image 2一脉相承。\n\n但和Image 2更强调“一次生成就能直接拿来用”不同，Image 2.5这次把大量展示空间留给了改图，即一张已经生成好的图，还能不能继续往下改。\n\nOpenAI称，新模型把人物放进新的场景、风格和构图之后，更容易保留原有主体的辨识度，光线和纹理也会更自然。\n\n除了模型本身，OpenAI这次还补充了两个“新功能”。\n\n一个是Sketch （草图） ，在移动端输入@Sketch之后，用户可以直接随手画出自己的想法，再让GPT Image根据草图继续生成。\n\n能画出来，就不用费劲描述。\n\n不过这并不是什么新玩法，Nano Banana能做，Adobe Firefly能做，国内的腾讯混元、通义万相、Seedream也早已支持线稿、涂鸦或者辅助线控制生成。\n\nOpenAI这次只是把这套已经很成熟的交互搬到了GPT里。\n\n另一个功能则更像是在鼓励大家“抄作业”，OpenAI把它叫作Pass your best ideas along。\n\n现在分享一张ChatGPT生成的图片时，可以顺手把Prompt一起带出去，别人拿到后可以换上自己的照片和细节直接复刻。\n\n然而，Gemini早就可以把包含Prompt和生成图片的完整对话分享出去，别人甚至可以直接接着这段对话继续生成；Nano Banana后来还在Google Messages里做了Remix，让好友围绕同一张图片来回接力修改。\n\nOpenAI还有得学呢……\n\n## 网友怎么说\n\n虽然前面在吐槽OpenAI“补课”，但到了真正上手的时候，还是得承认一件事：GPT Image 2.5确实是一款很强的生图模型。\n\n发布之后，社群很快玩出了新花样。\n\n目前传播最广的玩法，是用Image 2.5做定格动画。\n\n开发者Charlie Guo拿GPT Image 2.5连续生成了一组画面，再把它们串成动画。\n\n这条帖子发布后浏览量迅速破万，并被多名OpenAI员工转发。\n\n更进一步，还有人开始直接从草图生成动画素材。\n\n比如下面这位网友，先随手画出一个拿着球棒的小猴子草图，再让GPT Image 2.5生成一整组动作连续的序列帧，最后拼成GIF动画。\n\n整个过程只需寥寥几笔，模型就能扩展成一个完整的12帧的gif动画。\n\n做动画之外，还有一批人盯上了用Image 2.5生成透明底素材。\n\n开发者Konstantine专门测试了Sunburst生成透明背景图的能力，认为它现在输出的透明底素材已经非常漂亮，并直接点名游戏开发者和设计师可能会拿它来做东西。\n\n有了透明底，人物立绘、游戏道具、UI图标、商品素材，就可以直接往网页、游戏或者设计稿里塞。\n\n还有人开始暴力测试它的复杂指令理解。\n\nReddit上一名用户使用了一个近乎故意找茬的Prompt：要求一张图同时出现四种画风、五条项链、14根手指、三个瞳孔的鸽子眼睛，以及15世纪莫桑比克丛林和未来工厂。\n\n结果……当然没有全部实现，但他的评价是：“不完美，但仍然比之前任何一次都好。”\n\n一些更日常的变化也开始被用户注意到。\n\n有人对比Image 2和2.5后认为，新模型的人物表情没那么僵，皮肤质感更自然；有人觉得画面透视、反射和构图明显更合理；还有人拿Image 2和Image 2.5用同一套提示词做了漫画，2.5的分镜更活，角色表情更夸张，镜头远近和场景细节也会跟着剧情变化。相比之下，Image 2更像把一组漂亮插画拼在一起。\n\nImage 2（左），Image 2.5（右）\n\n对于真正把AI图片放进工作流的人，感受可能更加直接。\n\n一名正在用ChatGPT给游戏制作房间素材的用户说，Image 2最大的问题之一就是连续编辑两三次之后，图片往往已经劣化到不能用了，实际工作时基本等于必须第一轮就抽中满意结果。\n\n换到2.5之后，他的评价是“Big improvement”，反复修改造成的画质衰减明显少了。\n\n当然，Image 2.5也没有突然把所有老毛病一起治好，变成一个全能的完美生图模型。\n\n目前也已经有人继续提到几个老问题：手偶尔还是会画坏；Image 2时代就有人吐槽的棋盘格/高频噪声没有彻底消失；一些画面仍然会出现颗粒、像素化或者过度锐化。\n\n也有做AI商品摄影的用户认为，如果要求严格还原产品本身，NanoBanana 2和Pro目前依然更可靠。\n\n包括上面提到的游戏制作房间素材的用户，也表示他“原以为自己可以放弃使用Gemini了”，但“ChatGPT和Grok中的过多微细节处理实在太过激进了”。\n\n甚至在最基础的指令遵循上，社群评价也并不是一边倒。有用户认为尽管2.5的文字、细节和构图更好了，但复杂指令偶尔还是会被模型“理解成另一个意思”。\n\nGPT Image 2.5没有重新发明AI生图，也没有在每一个维度上把Nano Banana、Seedream们甩在身后。\n\n但“别人早就有”与“它做得不够好”，显然是两码事。GPT Image 2本来就很强，2.5更像是在把过去明显的短板——编辑精度、多轮一致性和可持续修改——补得更完整了。\n\n至少，对于ChatGPT庞大的用户群来说，现在用GPT生图可以少抽几次卡了。\n\n本文来自微信公众号： 字母AI ，作者：袁心玥。",
@@ -743,60 +735,6 @@
       }
     },
     {
-      "recordId": "recvuGBG2GigGm",
-      "sourceId": "utility-dive",
-      "title": "Google backs solar-storage project at former West Virginia coal mine",
-      "titleCn": "谷歌采购西弗吉尼亚废弃煤矿光储项目能源，配套大型锌基长时储能",
-      "source": "Utility Dive",
-      "url": "https://www.utilitydive.com/news/google-backs-solar-storage-project-at-former-west-virginia-coal-mine/829812",
-      "category": "算力芯片云",
-      "contentType": "文章",
-      "publishedDate": "2026-09-09",
-      "publishedAtMs": 1788883238000,
-      "summary": "谷歌将采购MN8在西弗吉尼亚州一处废弃煤矿建设的Mammoth Solar项目所提供的能源、容量及清洁能源属性，以匹配其区域数据中心的日内负荷。项目包括86 MW光伏、70 MW/280 MWh锂离子储能和10 MW/100 MWh锌基长时储能，计划于2028年至2030年分阶段投运。",
-      "deepAnalysis": "【核心内容】\n谷歌将购买Mammoth Solar项目的能源、容量和清洁能源属性。该项目由MN8开发，位于美国西弗吉尼亚州卡诺瓦县一处原煤矿场，并接入PJM Interconnection系统。整体配置为86 MW公用事业级光伏、70 MW/280 MWh锂离子储能，以及由Eos Energy Enterprises提供的10 MW/100 MWh锌基长时储能，总储能规模为80 MW/380 MWh。按披露计划，光伏部分预计2028年商业运行，储能设施将在2029年和2030年陆续投运。谷歌、MN8与Eos表示，该组合旨在使清洁能源供给能力更贴合谷歌区域数据中心全天不同时段的负荷曲线，同时向容量供应紧张的PJM区域增加可用容量。\n\n【关键细节】\n锌基系统的功率为10 MW、容量为100 MWh，对应10小时额定放电时长；锂电系统则对应4小时。Eos采用不可燃的锌基电解质，而非锂离子电池使用的锂基电解质，并称其产品能够以经济方式连续放电超过8小时。美国能源部资料显示，多数已运行锌电池项目的功率不超过1 MW，因此此次10 MW部署属于目前规模较大的案例之一。作为参照，内布拉斯加州Lincoln Electric System已安装一套3 MW/12 MWh锌电池，用于州政府中心微电网。MN8与Eos此前还签署供应协议，Eos可向MN8在PJM及美国其他市场的项目供应最多750 MWh Z3锌电池模块，首批项目计划把200 MWh、10小时储能与光伏结合。PJM近期容量拍卖价格已触及上限，且计划通过一次性补充拍卖填补接近7 GW的缺口，这构成项目的区域市场背景。\n\n【价值与影响】\n项目的主要价值并非单纯增加光伏装机，而是把4小时锂电与10小时锌基储能组合，用不同持续时间的资源适配数据中心日内负荷。对谷歌而言，这种定制采购可在建设区域数据中心的同时增加相匹配的清洁电力和容量资源；对MN8和Eos而言，谷歌的采购承诺有助于下一代储能从示范项目走向更大规模商业部署。对行业而言，10 MW/100 MWh锌电池将提供一个检验非锂长时储能能否扩大制造、部署并参与容量市场的实际案例。项目利用原煤矿场，也体现传统能源地区向清洁能源基础设施转型的路径。谷歌另在明尼苏达州支持300 MW/30 GWh铁空气电池项目，说明其正在通过多种长时储能技术支撑新数据中心，而不是押注单一路线。\n\n【局限与风险】\n项目尚未投运，光伏与储能最早分别要到2028年和2029年至2030年才能形成实际运行数据，因此当前结论主要基于规划和企业表述。原文未披露总投资额、谷歌采购期限与价格、项目融资结构、并网条件、容量市场收入、锌电池循环寿命、往返效率、衰减水平及全生命周期成本，也未给出与锂电或其他长时储能方案的统一经济性对比。所谓匹配数据中心全天负荷，并不等同于已证明能够实现逐小时无碳供电。PJM并网进度、容量规则变化、建设延期及新型电池规模化制造能力都可能影响商业结果。不可燃电解质可降低部分火灾风险，但原文没有提供完整的系统安全认证、供应链和回收数据。\n\n【行动建议】\n1. 持续跟踪项目在PJM的并网、许可、融资和2028年至2030年分阶段投运进度，区分已签约容量与实际建成容量。\n2. 投运后重点核验锌基系统的实际放电时长、往返效率、可用率、衰减、运维成本及容量市场履约表现。\n3. 将10小时锌电方案与4小时锂电及谷歌明尼苏达州100小时铁空气项目按单位功率、单位容量和负荷匹配效果进行同口径比较。\n4. 对类似数据中心项目，可先基于真实逐时负荷和电价进行混合储能模拟，再判断长时储能的合理配置比例。",
-      "why": "该项目以数据中心负荷带动少见的大规模锌基长时储能商业部署，为高耗电数字基础设施配置全天候清洁能源提供了可观察案例。",
-      "impact": 76,
-      "novelty": 73,
-      "actionability": 68,
-      "urgency": "中",
-      "tags": [
-        "硬件",
-        "产品",
-        "其他"
-      ],
-      "imageUrl": "media/articles/recvuGBG2GigGm-91743d72118f.webp",
-      "mediaAssets": {
-        "images": [],
-        "videos": [],
-        "documents": [],
-        "cover": "media/articles/recvuGBG2GigGm-91743d72118f.webp",
-        "curatedBy": "vision",
-        "curationVersion": 2,
-        "coverConfidence": 0.72,
-        "coverVisualQuality": 0.88
-      },
-      "editorialStructure": "",
-      "eventAggregation": {
-        "total": 1,
-        "groups": [
-          {
-            "key": "官方来源",
-            "tone": "#16130f",
-            "items": [
-              {
-                "source": "Utility Dive",
-                "title": "谷歌采购西弗吉尼亚废弃煤矿光储项目能源，配套大型锌基长时储能",
-                "url": "https://www.utilitydive.com/news/google-backs-solar-storage-project-at-former-west-virginia-coal-mine/829812",
-                "note": "原始发布 / 公告。",
-                "text": "谷歌采购西弗吉尼亚废弃煤矿光储项目能源，配套大型锌基长时储能 —— 原始发布 / 公告。"
-              }
-            ]
-          }
-        ]
-      }
-    },
-    {
       "recordId": "recvuGBG2GhbI0",
       "sourceId": "wallstreetcn",
       "title": "中国8月CPI同比涨幅扩大至0.8%，PPI同比涨3.8%，环比双双转涨，算力需求增长推动数据存储设备价格环比上涨2.1% - 华尔街见闻",
@@ -818,65 +756,37 @@
         "硬件",
         "其他"
       ],
-      "imageUrl": "media/generated/generated-b84be1a59f95a7122f.png",
+      "imageUrl": "media/articles/recvuGBG2GhbI0-3c5fafdec9e3.jpg",
       "mediaAssets": {
         "images": [
           {
             "url": "media/articles/recvuGBG2GhbI0-cad1da2ff713.jpg",
-            "alt": "CPI同比环比走势回升",
+            "alt": "8月CPI同比环比涨幅",
             "kind": "article-figure",
-            "afterHeading": "一、CPI环比由降转涨，同比温和回升",
-            "afterText": "其中，城市上涨0.8%，农村上涨0.7%；食品价格下降1.4%，非食品价格上涨1.2%；消费品价",
-            "layout": "wide",
-            "confidence": 0.95,
-            "topicRelevance": 0.98,
-            "visualQuality": 0.88,
-            "coverSuitable": false
-          },
-          {
-            "url": "media/articles/recvuGBG2GhbI0-b67e12ca448a.jpg",
-            "alt": "CPI各类别同比涨跌幅",
-            "kind": "article-figure",
-            "afterHeading": "一、各类商品及服务价格同比变动情况",
-            "afterText": "食品中，畜肉类价格下降5.1%，影响CPI下降约0.21个百分点，其中猪肉价格下降11.8%；鲜",
-            "layout": "wide",
-            "confidence": 0.94,
-            "topicRelevance": 0.9,
-            "visualQuality": 0.84,
-            "coverSuitable": false
+            "afterHeading": "一、CPI环比由降转涨，同比温和回升"
           },
           {
             "url": "media/articles/recvuGBG2GhbI0-9a72b00d3f41.jpg",
-            "alt": "CPI各类别环比涨跌幅",
+            "alt": "CPI各类价格环比变化",
             "kind": "article-figure",
-            "afterHeading": "二、各类商品及服务价格环比变动情况",
-            "afterText": "食品中，鲜菜价格上涨5.5%，影响CPI上涨约0.09个百分点；蛋类价格上涨2.0%，影响CPI",
-            "layout": "wide",
-            "confidence": 0.94,
-            "topicRelevance": 0.9,
-            "visualQuality": 0.84,
-            "coverSuitable": false
+            "afterHeading": "二、各类商品及服务价格环比变动情况"
           },
           {
             "url": "media/articles/recvuGBG2GhbI0-d9cece60c500.png",
-            "alt": "PPI同比环比走势回升",
+            "alt": "8月PPI同比环比数据",
             "kind": "article-figure",
-            "afterHeading": "二、PPI环比由降转涨，同比涨幅扩大",
-            "afterText": "2026年8月份，全国工业生产者出厂价格同比上涨3.8%，环比上涨0.4%。工业生产者购进价格同",
-            "layout": "wide",
-            "confidence": 0.97,
-            "topicRelevance": 0.99,
-            "visualQuality": 0.9,
-            "coverSuitable": false
+            "afterHeading": "二、PPI环比由降转涨，同比涨幅扩大"
+          },
+          {
+            "url": "media/articles/recvuGBG2GhbI0-3610bfd866b5.jpg",
+            "alt": "PPI生产资料与生活资料价格",
+            "kind": "article-figure",
+            "afterHeading": "二、PPI环比由降转涨，同比涨幅扩大"
           }
         ],
         "videos": [],
-        "cover": "media/generated/generated-b84be1a59f95a7122f.png",
-        "curatedBy": "generated",
-        "curationVersion": 2,
-        "coverConfidence": 0.58,
-        "coverVisualQuality": 0.86,
-        "coverKind": "generated-cover"
+        "cover": "media/articles/recvuGBG2GhbI0-3c5fafdec9e3.jpg",
+        "curatedBy": "llm"
       },
       "editorialStructure": "",
       "body": "从环比看，中国CPI由上月下降0.1%转为上涨0.4%。\n\n受国际市场价格变动影响，中国国内汽油价格由上月下降10.7%转为上涨7.2%，影响CPI环比上涨约0.21个百分点。\n\n受算力需求快速增长等因素影响，移动电话机、平板电脑、数据存储设备价格分别上涨2.3%、2.1%和2.1%，合计拉动CPI上涨约0.03个百分点。\n\n中国价格数据在8月份出现同步改善，消费端和生产端通胀指标均较前月回升。\n\n国家统计局数据显示，8月CPI同比上涨0.8%，涨幅较上月扩大0.3个百分点；PPI同比上涨3.8%，涨幅较上月扩大0.3个百分点。\n\n两项指标的环比均由降转涨，CPI环比上涨0.4%，PPI环比上涨0.4%。\n\n此轮回升主要由能源价格驱动。\n\n国际油价上行推动国内汽油价格环比大幅反弹，带动CPI能源分项同比涨幅从0.6%跳升至4.1%；国际原油及有色金属价格上涨则经由输入性渠道传导至生产端，成为PPI环比由负转正的最主要支撑。\n\n另外，国家统计局城市司首席统计师董莉娟称，受算力需求快速增长等因素影响，移动电话机、平板电脑、数据存储设备价格分别上涨2.3%、2.1%和2.1%，合计拉动CPI上涨约0.03个百分点。\n\n## 国家统计局城市司首席统计师董莉娟解读2026年8月份CPI和PPI数据\n\n8月份，受国际市场价格变动、食品价格季节性上涨等因素影响，居民消费价格指数（CPI）环比由上月下降0.1%转为上涨0.4%，同比涨幅回升至0.8%；扣除食品和能源价格的核心CPI同比涨幅回升至1.0%。\n\n受国际大宗商品价格上行传导、国内产业转型升级带动部分行业需求增加等因素影响，工业生产者出厂价格指数（PPI）环比由上月下降0.7%转为上涨0.4%，同比涨幅扩大至3.8%。\n\n## 一、CPI环比由降转涨，同比温和回升\n\n从环比看，全国CPI由上月下降0.1%转为上涨0.4%。\n\n受国际市场价格变动影响，国内汽油价格由上月下降10.7%转为上涨7.2%，影响CPI环比上涨约0.21个百分点；黄金饰品价格由上月下降2.6%转为上涨7.6%，影响CPI环比上涨约0.04个百分点。\n\n受算力需求快速增长等因素影响，移动电话机、平板电脑、数据存储设备价格分别上涨2.3%、2.1%和2.1%，合计拉动CPI上涨约0.03个百分点。\n\n食品价格由上月持平转为上涨0.4%，影响CPI环比上涨约0.07个百分点。\n\n食品中，受高温多雨天气以及应季蔬菜换茬等影响，鲜菜价格上涨5.5%，涨幅比上月扩大4.2个百分点；受蛋鸡夏季歇伏、生猪出栏减少等因素影响，鸡蛋价格由上月下降2.1%转为上涨2.4%，猪肉价格上涨1.3%；上述三项合计影响CPI环比上涨约0.12个百分点。\n\n应季水果供应充足，鲜果价格下降2.5%；部分海域休渔期结束供应增加，水产品价格下降0.9%；上述两项合计影响CPI环比下降约0.07个百分点。\n\n服务价格上涨0.1%，涨幅比上月回落0.3个百分点，影响CPI环比上涨约0.04个百分点。\n\n服务中，暑假期间出行服务价格继续上涨，交通工具租赁、飞机票、宾馆住宿价格分别上涨3.3%、3.0%和1.0%。\n\n从同比看，全国CPI上涨0.8%，涨幅比上月扩大0.3个百分点，主要是受能源价格涨幅扩大影响。\n\n能源价格涨幅由上月的0.6%扩大至本月的4.1%，影响CPI同比上涨约0.28个百分点，对CPI的上拉影响比上月增加约0.24个百分点。\n\n其中，汽油价格上涨9.3%，涨幅扩大8.3个百分点。\n\n扣除能源的工业消费品价格上涨1.8%，涨幅扩大0.3个百分点，影响CPI同比上涨约0.42个百分点。\n\n其中，黄金饰品价格上涨33.6%，涨幅扩大9.0个百分点；平板电脑、计算机和移动电话机价格分别上涨21.5%、19.6%和11.0%，涨幅均有扩大。\n\n服务价格上涨0.8%，涨幅比上月扩大0.1个百分点，影响CPI同比上涨约0.38个百分点。\n\n服务中，出行服务价格上涨1.3%，涨幅扩大1.2个百分点；医疗服务价格上涨4.0%，涨幅回落0.3个百分点。\n\n食品价格下降1.4%，降幅比上月收窄0.1个百分点，影响CPI同比下降约0.24个百分点。\n\n食品中，猪肉价格下降11.8%，降幅收窄1.5个百分点，影响CPI同比下降约0.22个百分点；鲜菜、鲜果、粮食、食用油、水产品、奶类价格降幅在0.5%—2.8%之间，合计影响CPI同比下降约0.10个百分点；鸡蛋价格上涨18.5%，涨幅扩大0.7个百分点，影响CPI同比上涨约0.07个百分点；羊肉、牛肉和禽肉类价格涨幅在1.1%—6.3%之间，合计影响CPI同比上涨约0.07个百分点。\n\n## 二、PPI环比由降转涨，同比涨幅扩大\n\n从环比看，全国PPI由上月下降0.7%转为上涨0.4%。\n\n本月PPI环比运行的主要特点：\n\n一是输入性因素影响国内相关行业价格上涨。\n\n国际原油及有色金属价格上行带动国内相关行业价格上涨，其中石油开采、精炼石油产品制造、有机化学原料制造价格分别上涨10.4%、4.1%和0.9%，有色金属冶炼和压延加工业价格上涨0.8%，4个行业合计影响PPI环比上涨约0.31个百分点。\n\n二是产业转型升级带动部分行业需求增加、价格上涨。\n\n新动能加快培育，产业发展含“智”量、含“绿”量持续提升，电子电路制造价格上涨3.5%，虚拟现实设备制造价格上涨1.9%，服务消费机器人制造价格上涨0.3%；生物质燃料加工、废弃资源综合利用业价格均上涨0.3%。\n\n三是部分行业价格走势呈季节性特点。\n\n8月份用电用煤需求季节性增加，带动煤炭开采和洗选业价格上涨2.8%，电力供应价格上涨1.4%；高温雨水天气影响建筑项目施工，黑色金属冶炼和压延加工业、非金属矿物制品业价格分别下降0.9%和0.2%。\n\n从同比看，全国PPI上涨3.8%，涨幅比上月扩大0.3个百分点。\n\n分主要行业看，价格上涨的行业中，煤炭开采和洗选业上涨26.6%，有色金属冶炼和压延加工业上涨20.8%，石油和天然气开采业、石油煤炭及其他燃料加工业、化学原料和化学制品制造业分别上涨10.5%、11.1%和9.1%，电气机械和器材制造业上涨5.9%，计算机通信和其他电子设备制造业上涨5.3%，7个行业合计影响PPI同比上涨约4.24个百分点，上拉影响比上月增加0.37个百分点。\n\n价格下拉影响最大的6个行业为：电力热力生产和供应业、汽车制造业、非金属矿物制品业、医药制造业、酒饮料和精制茶制造业、农副食品加工业，降幅在1.7%—5.3%之间，合计影响PPI同比下降约0.74个百分点。\n\n## CPI环比由降转涨，同比温和回升\n\n2026年8月份，全国居民消费价格同比上涨0.8%。\n\n其中，城市上涨0.8%，农村上涨0.7%；食品价格下降1.4%，非食品价格上涨1.2%；消费品价格上涨0.8%，服务价格上涨0.8%。\n\n1—8月平均，全国居民消费价格比上年同期上涨0.9%。\n\n8月份，全国居民消费价格环比上涨0.4%。\n\n其中，城市上涨0.4%，农村上涨0.4%；食品价格上涨0.4%，非食品价格上涨0.3%；消费品价格上涨0.6%，服务价格上涨0.1%。\n\n### 一、各类商品及服务价格同比变动情况\n\n8月份，食品烟酒及在外餐饮类价格同比下降0.7%，影响CPI（居民消费价格指数）下降约0.21个百分点。\n\n食品中，畜肉类价格下降5.1%，影响CPI下降约0.21个百分点，其中猪肉价格下降11.8%；鲜菜价格下降2.8%，影响CPI下降约0.05个百分点；奶类价格下降1.4%，影响CPI下降约0.01个百分点；水产品价格下降0.6%，影响CPI下降约0.01个百分点；蛋类价格上涨15.0%，影响CPI上涨约0.07个百分点。\n\n其他七大类价格同比六涨一降。\n\n其中，其他用品及服务、医疗保健、交通通信价格分别上涨7.3%、2.7%和2.5%，教育文化娱乐、衣着、生活用品及服务价格分别上涨1.4%、1.3%和0.7%；居住价格下降0.3%。\n\n### 二、各类商品及服务价格环比变动情况\n\n8月份，食品烟酒及在外餐饮类价格环比上涨0.3%，影响CPI上涨约0.07个百分点。\n\n食品中，鲜菜价格上涨5.5%，影响CPI上涨约0.09个百分点；蛋类价格上涨2.0%，影响CPI上涨约0.01个百分点；畜肉类价格上涨0.9%，影响CPI上涨约0.03个百分点，其中猪肉价格上涨1.3%；鲜果价格下降2.5%，影响CPI下降约0.05个百分点；水产品价格下降0.9%，影响CPI下降约0.02个百分点。\n\n其他七大类价格环比两涨三平两降。其中，交通通信、其他用品及服务价格分别上涨1.7%和1.5%；居住、教育文化娱乐、医疗保健价格均持平；生活用品及服务、衣着价格分别下降0.2%和0.1%。\n\n## PPI环比由降转涨，同比涨幅扩大\n\n2026年8月份，全国工业生产者出厂价格同比上涨3.8%，环比上涨0.4%。工业生产者购进价格同比上涨5.8%，环比上涨0.3%。1—8月平均，工业生产者出厂价格比上年同期上涨2.0%，工业生产者购进价格上涨3.2%。\n\n一、工业生产者价格同比变动情况\n\n8月份，工业生产者出厂价格中，生产资料价格同比上涨5.0%，影响工业生产者出厂价格总水平上涨约3.92个百分点。其中，采掘工业价格上涨17.8%，原材料工业价格上涨6.7%，加工工业价格上涨3.1%。生活资料价格下降0.5%，影响工业生产者出厂价格总水平下降约0.10个百分点。其中，食品价格下降2.3%，衣着价格下降1.2%，一般日用品价格下降0.8%，耐用消费品价格上涨1.2%。\n\n工业生产者购进价格中，有色金属材料及电线类价格上涨19.8%，燃料动力类价格上涨9.8%，化工原料类价格上涨9.5%，纺织原料类价格上涨3.8%，黑色金属材料类价格上涨0.3%；建筑材料及非金属类价格下降3.2%，农副产品类价格下降0.5%。\n\n二、工业生产者价格环比变动情况\n\n8月份，工业生产者出厂价格中，生产资料价格环比上涨0.4%，影响工业生产者出厂价格总水平上涨约0.32个百分点。其中，采掘工业价格上涨2.7%，原材料工业价格上涨0.8%，加工工业价格持平。生活资料价格上涨0.2%，影响工业生产者出厂价格总水平上涨约0.04个百分点。其中，食品和衣着价格均持平，一般日用品价格下降0.2%，耐用消费品价格上涨0.6%。\n\n工业生产者购进价格中，燃料动力类价格上涨1.4%，有色金属材料及电线类价格上涨0.8%，纺织原料类价格上涨0.6%；黑色金属材料类价格下降0.6%，化工原料类价格下降0.4%；农副产品类、建筑材料及非金属类价格均持平。",
@@ -1258,36 +1168,10 @@
         "开源",
         "其他"
       ],
-      "imageUrl": "media/papers/recvuAVZd2C0TT-p9-f1.png",
+      "imageUrl": "",
       "mediaAssets": {
-        "images": [
-          {
-            "url": "media/papers/recvuAVZd2C0TT-p9-f1.png",
-            "alt": "PDF 第 9 页图表：Figure 1: Construction of Sn for a data point xn. Subfigure A shows a schematic repre- sentation while B visualizes Kn and gc, and C visualizes Sn in data space. In this example, the set Kn = {35, 87, 42} contains C′ = 3 component indices for xn, as indicated by the green box in A and green lines in B. Each of the three components has a set of neighborhoods gc that includes the component c itself and two additional component indices, i.e., |gc| = G = 3. Specifically, we have g35 = {98, 35, 23}, g87 = {16, 87, 63} and g42 = {37, 42, 8}. These three sets are highlighted by orange boxes in A and ",
-            "kind": "pdf-page",
-            "layout": "wide"
-          },
-          {
-            "url": "media/papers/recvuAVZd2C0TT-p9-f2.png",
-            "alt": "PDF 第 9 页图表：Figure 2: Comparison of Euclidean distances and joints. In A and B, the component centers are identical and the same data point is marked with a red cross. For isotropic, equally weighted components (A), the smallest Euclidean distance correspond to the largest joint between components and the data point. However, for general covariance matrices (B), this is no longer the case.",
-            "kind": "pdf-page",
-            "layout": "wide"
-          },
-          {
-            "url": "media/papers/recvuAVZd2C0TT-p18-f3.png",
-            "alt": "PDF 第 18 页图表：Figure 5: Effectiveness and efficiency in terms of negative log-likelihood (NLL) and runtime of v-MFA compared to em-MFA, k-means+FA and the parameters after initial- ization. Each of the four subfigures refers to experiments on one benchmark data set. The y-axes denote the relative NLL on the test set w.r.t. em-MFA as base- line, given by Equation (15). For v-MFA, we present the performance across nine different settings of the hyperparameters C′ and G. For each configuration of G ∈{5, 15, 30}, measurements for v-MFA (three red, blue and yellow triangles, respectively) refer to configurations",
-            "kind": "pdf-page",
-            "layout": "wide"
-          },
-          {
-            "url": "media/papers/recvuAVZd2C0TT-p24-f4.png",
-            "alt": "PDF 第 24 页图表：Table 1: Quality and runtime of several zero-shot denoising algorithms, measured by PSNR, SSIM and average runtime per image in seconds. The reported errors denote standard deviations across images in the respective dataset. The best result within each row among the blind zero-shot algorithms are marked bold, while overall best results (including the non-blind algorithms BM3D and DivN) are underlined.",
-            "kind": "pdf-page",
-            "layout": "wide"
-          }
-        ],
-        "videos": [],
-        "cover": "media/papers/recvuAVZd2C0TT-p9-f1.png"
+        "images": [],
+        "videos": []
       },
       "editorialStructure": "",
       "pdfUrl": "http://jmlr.org/papers/volume27/25-0639/25-0639.pdf",

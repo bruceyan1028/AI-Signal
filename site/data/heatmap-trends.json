@@ -1,450 +1,444 @@
 {
-  "generatedAt": "2026-09-11T12:09:31+08:00",
+  "generatedAt": "2026-09-14T12:16:14+08:00",
   "days": [
-    "2026-09-05",
-    "2026-09-06",
-    "2026-09-07",
     "2026-09-08",
     "2026-09-09",
     "2026-09-10",
-    "2026-09-11"
+    "2026-09-11",
+    "2026-09-12",
+    "2026-09-13",
+    "2026-09-14"
   ],
   "topics": [
-    "deepseek-v4-1-flash",
-    "meta-muse-ai-agent",
-    "anthropic",
-    "ai-healthcare-regulation-recommendations",
-    "navier-stokes-openai"
+    "demis-hassabis",
+    "ki-anthropic",
+    "dario-amodei",
+    "anthropic-ai",
+    "bill-ackman"
   ],
   "labels": {
-    "deepseek-v4-1-flash": "deepseek v4.1 flash",
-    "meta-muse-ai-agent": "meta muse ai agent",
-    "anthropic": "anthropic",
-    "ai-healthcare-regulation-recommendations": "ai healthcare regulation recommendations uk",
-    "navier-stokes-openai": "navier stokes openai"
+    "demis-hassabis": "demis hassabis",
+    "ki-anthropic": "ki anthropic",
+    "dario-amodei": "dario amodei",
+    "anthropic-ai": "anthropic ai",
+    "bill-ackman": "bill ackman"
   },
   "queries": {
-    "deepseek-v4-1-flash": {
-      "g": "deepseek v4.1 flash",
-      "x": "\"deepseek v4.1 flash\" -is:retweet"
+    "demis-hassabis": {
+      "g": "demis hassabis",
+      "x": "\"demis hassabis\" -is:retweet"
     },
-    "meta-muse-ai-agent": {
-      "g": "meta muse ai agent",
-      "x": "\"meta muse ai agent\" -is:retweet"
+    "ki-anthropic": {
+      "g": "ki anthropic",
+      "x": "\"ki anthropic\" -is:retweet"
     },
-    "anthropic": {
-      "g": "anthropic",
-      "x": "\"anthropic\" -is:retweet"
+    "dario-amodei": {
+      "g": "dario amodei",
+      "x": "\"dario amodei\" -is:retweet"
     },
-    "ai-healthcare-regulation-recommendations": {
-      "g": "ai healthcare regulation recommendations uk",
-      "x": "\"ai healthcare regulation recommendations uk\" -is:retweet"
+    "anthropic-ai": {
+      "g": "anthropic ai",
+      "x": "\"anthropic ai\" -is:retweet"
     },
-    "navier-stokes-openai": {
-      "g": "navier stokes openai",
-      "x": "\"navier stokes openai\" -is:retweet"
+    "bill-ackman": {
+      "g": "bill ackman",
+      "x": "\"bill ackman\" -is:retweet"
     }
   },
   "scopes": {
-    "deepseek-v4-1-flash": "global",
-    "meta-muse-ai-agent": "global",
-    "anthropic": "global",
-    "ai-healthcare-regulation-recommendations": "country",
-    "navier-stokes-openai": "country"
+    "demis-hassabis": "global",
+    "ki-anthropic": "global",
+    "dario-amodei": "global",
+    "anthropic-ai": "country",
+    "bill-ackman": "country"
   },
   "marks": {
-    "deepseek-v4-1-flash": "🌐",
-    "meta-muse-ai-agent": "🌐",
-    "anthropic": "🌐",
-    "ai-healthcare-regulation-recommendations": "🇬🇧",
-    "navier-stokes-openai": "🇦🇺"
+    "demis-hassabis": "🌐",
+    "ki-anthropic": "🌐",
+    "dario-amodei": "🌐",
+    "anthropic-ai": "🇬🇧",
+    "bill-ackman": "🇩🇪"
   },
   "breakouts": [
-    "deepseek-v4-1-flash",
-    "meta-muse-ai-agent",
-    "anthropic",
-    "ai-healthcare-regulation-recommendations",
-    "navier-stokes-openai"
+    "demis-hassabis",
+    "ki-anthropic",
+    "dario-amodei",
+    "anthropic-ai",
+    "bill-ackman"
   ],
   "selection": {
     "method": "google-trending-ai",
     "volumes": {
-      "deepseek-v4-1-flash": 500,
-      "meta-muse-ai-agent": 200000,
-      "anthropic": 50000,
-      "ai-healthcare-regulation-recommendations": 100,
-      "navier-stokes-openai": 200
+      "demis-hassabis": 10000,
+      "ki-anthropic": 20000,
+      "dario-amodei": 20000,
+      "anthropic-ai": 10000,
+      "bill-ackman": 5000
     },
     "geos": {
-      "deepseek-v4-1-flash": [
-        "US"
-      ],
-      "meta-muse-ai-agent": [
+      "demis-hassabis": [
         "IN"
       ],
-      "anthropic": [
-        "US",
+      "ki-anthropic": [
+        "DE"
+      ],
+      "dario-amodei": [
+        "US"
+      ],
+      "anthropic-ai": [
         "GB",
-        "DE",
-        "JP",
         "AU",
         "CA"
       ],
-      "ai-healthcare-regulation-recommendations": [
-        "GB"
-      ],
-      "navier-stokes-openai": [
-        "AU"
+      "bill-ackman": [
+        "DE"
       ]
     },
     "plot_geo": {
-      "deepseek-v4-1-flash": "",
-      "meta-muse-ai-agent": "",
-      "anthropic": "",
-      "ai-healthcare-regulation-recommendations": "GB",
-      "navier-stokes-openai": "AU"
+      "demis-hassabis": "",
+      "ki-anthropic": "",
+      "dario-amodei": "",
+      "anthropic-ai": "GB",
+      "bill-ackman": "DE"
     },
     "breakouts": [
-      "deepseek-v4-1-flash",
-      "meta-muse-ai-agent",
-      "anthropic",
-      "ai-healthcare-regulation-recommendations",
-      "navier-stokes-openai"
+      "demis-hassabis",
+      "ki-anthropic",
+      "dario-amodei",
+      "anthropic-ai",
+      "bill-ackman"
     ]
   },
   "google-trends": {
     "error": "",
     "topics": [
-      "deepseek-v4-1-flash",
-      "meta-muse-ai-agent",
-      "anthropic",
-      "ai-healthcare-regulation-recommendations",
-      "navier-stokes-openai"
+      "demis-hassabis",
+      "ki-anthropic",
+      "dario-amodei",
+      "anthropic-ai",
+      "bill-ackman"
     ],
     "labels": {
-      "deepseek-v4-1-flash": "deepseek v4.1 flash",
-      "meta-muse-ai-agent": "meta muse ai agent",
-      "anthropic": "anthropic",
-      "ai-healthcare-regulation-recommendations": "ai healthcare regulation recommendations uk",
-      "navier-stokes-openai": "navier stokes openai"
+      "demis-hassabis": "demis hassabis",
+      "ki-anthropic": "ki anthropic",
+      "dario-amodei": "dario amodei",
+      "anthropic-ai": "anthropic ai",
+      "bill-ackman": "bill ackman"
     },
     "queries": {
-      "deepseek-v4-1-flash": {
-        "g": "deepseek v4.1 flash",
-        "x": "\"deepseek v4.1 flash\" -is:retweet"
+      "demis-hassabis": {
+        "g": "demis hassabis",
+        "x": "\"demis hassabis\" -is:retweet"
       },
-      "meta-muse-ai-agent": {
-        "g": "meta muse ai agent",
-        "x": "\"meta muse ai agent\" -is:retweet"
+      "ki-anthropic": {
+        "g": "ki anthropic",
+        "x": "\"ki anthropic\" -is:retweet"
       },
-      "anthropic": {
-        "g": "anthropic",
-        "x": "\"anthropic\" -is:retweet"
+      "dario-amodei": {
+        "g": "dario amodei",
+        "x": "\"dario amodei\" -is:retweet"
       },
-      "ai-healthcare-regulation-recommendations": {
-        "g": "ai healthcare regulation recommendations uk",
-        "x": "\"ai healthcare regulation recommendations uk\" -is:retweet"
+      "anthropic-ai": {
+        "g": "anthropic ai",
+        "x": "\"anthropic ai\" -is:retweet"
       },
-      "navier-stokes-openai": {
-        "g": "navier stokes openai",
-        "x": "\"navier stokes openai\" -is:retweet"
+      "bill-ackman": {
+        "g": "bill ackman",
+        "x": "\"bill ackman\" -is:retweet"
       }
     },
     "scopes": {
-      "deepseek-v4-1-flash": "global",
-      "meta-muse-ai-agent": "global",
-      "anthropic": "global",
-      "ai-healthcare-regulation-recommendations": "country",
-      "navier-stokes-openai": "country"
+      "demis-hassabis": "global",
+      "ki-anthropic": "global",
+      "dario-amodei": "global",
+      "anthropic-ai": "country",
+      "bill-ackman": "country"
     },
     "marks": {
-      "deepseek-v4-1-flash": "🌐",
-      "meta-muse-ai-agent": "🌐",
-      "anthropic": "🌐",
-      "ai-healthcare-regulation-recommendations": "🇬🇧",
-      "navier-stokes-openai": "🇦🇺"
+      "demis-hassabis": "🌐",
+      "ki-anthropic": "🌐",
+      "dario-amodei": "🌐",
+      "anthropic-ai": "🇬🇧",
+      "bill-ackman": "🇩🇪"
     },
     "breakouts": [
-      "deepseek-v4-1-flash",
-      "meta-muse-ai-agent",
-      "anthropic",
-      "ai-healthcare-regulation-recommendations",
-      "navier-stokes-openai"
+      "demis-hassabis",
+      "ki-anthropic",
+      "dario-amodei",
+      "anthropic-ai",
+      "bill-ackman"
     ],
     "selection": {
       "volumes": {
-        "deepseek-v4-1-flash": 500,
-        "meta-muse-ai-agent": 200000,
-        "anthropic": 50000,
-        "ai-healthcare-regulation-recommendations": 100,
-        "navier-stokes-openai": 200
+        "demis-hassabis": 10000,
+        "ki-anthropic": 20000,
+        "dario-amodei": 20000,
+        "anthropic-ai": 10000,
+        "bill-ackman": 5000
       },
       "geos": {
-        "deepseek-v4-1-flash": [
-          "US"
-        ],
-        "meta-muse-ai-agent": [
+        "demis-hassabis": [
           "IN"
         ],
-        "anthropic": [
-          "US",
+        "ki-anthropic": [
+          "DE"
+        ],
+        "dario-amodei": [
+          "US"
+        ],
+        "anthropic-ai": [
           "GB",
-          "DE",
-          "JP",
           "AU",
           "CA"
         ],
-        "ai-healthcare-regulation-recommendations": [
-          "GB"
-        ],
-        "navier-stokes-openai": [
-          "AU"
+        "bill-ackman": [
+          "DE"
         ]
       },
       "plot_geo": {
-        "deepseek-v4-1-flash": "",
-        "meta-muse-ai-agent": "",
-        "anthropic": "",
-        "ai-healthcare-regulation-recommendations": "GB",
-        "navier-stokes-openai": "AU"
+        "demis-hassabis": "",
+        "ki-anthropic": "",
+        "dario-amodei": "",
+        "anthropic-ai": "GB",
+        "bill-ackman": "DE"
       },
       "method": "google-trending-ai"
     },
     "matrix": {
       "raw": [
         [
-          0.0,
-          0.0,
-          0.0,
-          9.0,
-          26.0,
-          97.0,
+          22.0,
+          22.0,
+          22.0,
+          20.0,
+          24.0,
+          51.0,
           100.0
         ],
         [
-          0.0,
-          0.0,
-          0.0,
           3.0,
+          8.0,
+          11.0,
+          9.0,
+          8.0,
           100.0,
-          100.0,
-          54.0
+          74.0
         ],
         [
+          4.0,
+          6.0,
+          6.0,
+          5.0,
+          40.0,
+          100.0,
+          60.0
+        ],
+        [
+          20.0,
+          43.0,
           37.0,
-          35.0,
-          45.0,
-          45.0,
-          95.0,
-          100.0,
-          90.0
-        ],
-        [
-          0.0,
-          0.0,
-          0.0,
-          0.0,
-          0.0,
-          79.0,
+          36.0,
+          21.0,
+          94.0,
           100.0
         ],
         [
-          0.0,
-          0.0,
-          0.0,
-          21.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
           100.0,
-          28.0,
-          44.0
+          10.0,
+          33.0
         ]
       ],
       "normalized": [
         [
-          0.0,
-          0.0,
-          0.0,
-          0.09,
-          0.26,
-          0.97,
+          0.22,
+          0.22,
+          0.22,
+          0.2,
+          0.24,
+          0.51,
           1.0
         ],
         [
-          0.0,
-          0.0,
-          0.0,
           0.03,
+          0.08,
+          0.11,
+          0.09,
+          0.08,
           1.0,
-          1.0,
-          0.54
+          0.74
         ],
         [
+          0.04,
+          0.06,
+          0.06,
+          0.05,
+          0.4,
+          1.0,
+          0.6
+        ],
+        [
+          0.2,
+          0.43,
           0.37,
-          0.35,
-          0.45,
-          0.45,
-          0.95,
-          1.0,
-          0.9
-        ],
-        [
-          0.0,
-          0.0,
-          0.0,
-          0.0,
-          0.0,
-          0.79,
+          0.36,
+          0.21,
+          0.94,
           1.0
         ],
         [
-          0.0,
-          0.0,
-          0.0,
-          0.21,
+          0.01,
+          0.01,
+          0.01,
+          0.01,
           1.0,
-          0.28,
-          0.44
+          0.1,
+          0.33
         ]
       ]
     },
     "trend": {
-      "deepseek-v4-1-flash": 4.545,
-      "meta-muse-ai-agent": 1.596,
-      "anthropic": 1.513,
-      "ai-healthcare-regulation-recommendations": 7.595,
-      "navier-stokes-openai": 1.772
+      "demis-hassabis": 3.727,
+      "ki-anthropic": 3.194,
+      "dario-amodei": 2.236,
+      "anthropic-ai": 2.39,
+      "bill-ackman": 1.737
     },
     "items": {
-      "deepseek-v4-1-flash|2026-09-05": [
-        "g-deepseek-v4-1-flash"
+      "demis-hassabis|2026-09-08": [
+        "g-demis-hassabis"
       ],
-      "deepseek-v4-1-flash|2026-09-06": [
-        "g-deepseek-v4-1-flash"
+      "demis-hassabis|2026-09-09": [
+        "g-demis-hassabis"
       ],
-      "deepseek-v4-1-flash|2026-09-07": [
-        "g-deepseek-v4-1-flash"
+      "demis-hassabis|2026-09-10": [
+        "g-demis-hassabis"
       ],
-      "deepseek-v4-1-flash|2026-09-08": [
-        "g-deepseek-v4-1-flash"
+      "demis-hassabis|2026-09-11": [
+        "g-demis-hassabis"
       ],
-      "deepseek-v4-1-flash|2026-09-09": [
-        "g-deepseek-v4-1-flash"
+      "demis-hassabis|2026-09-12": [
+        "g-demis-hassabis"
       ],
-      "deepseek-v4-1-flash|2026-09-10": [
-        "g-deepseek-v4-1-flash"
+      "demis-hassabis|2026-09-13": [
+        "g-demis-hassabis"
       ],
-      "deepseek-v4-1-flash|2026-09-11": [
-        "g-deepseek-v4-1-flash"
+      "demis-hassabis|2026-09-14": [
+        "g-demis-hassabis"
       ],
-      "meta-muse-ai-agent|2026-09-05": [
-        "g-meta-muse-ai-agent"
+      "ki-anthropic|2026-09-08": [
+        "g-ki-anthropic"
       ],
-      "meta-muse-ai-agent|2026-09-06": [
-        "g-meta-muse-ai-agent"
+      "ki-anthropic|2026-09-09": [
+        "g-ki-anthropic"
       ],
-      "meta-muse-ai-agent|2026-09-07": [
-        "g-meta-muse-ai-agent"
+      "ki-anthropic|2026-09-10": [
+        "g-ki-anthropic"
       ],
-      "meta-muse-ai-agent|2026-09-08": [
-        "g-meta-muse-ai-agent"
+      "ki-anthropic|2026-09-11": [
+        "g-ki-anthropic"
       ],
-      "meta-muse-ai-agent|2026-09-09": [
-        "g-meta-muse-ai-agent"
+      "ki-anthropic|2026-09-12": [
+        "g-ki-anthropic"
       ],
-      "meta-muse-ai-agent|2026-09-10": [
-        "g-meta-muse-ai-agent"
+      "ki-anthropic|2026-09-13": [
+        "g-ki-anthropic"
       ],
-      "meta-muse-ai-agent|2026-09-11": [
-        "g-meta-muse-ai-agent"
+      "ki-anthropic|2026-09-14": [
+        "g-ki-anthropic"
       ],
-      "anthropic|2026-09-05": [
-        "g-anthropic"
+      "dario-amodei|2026-09-08": [
+        "g-dario-amodei"
       ],
-      "anthropic|2026-09-06": [
-        "g-anthropic"
+      "dario-amodei|2026-09-09": [
+        "g-dario-amodei"
       ],
-      "anthropic|2026-09-07": [
-        "g-anthropic"
+      "dario-amodei|2026-09-10": [
+        "g-dario-amodei"
       ],
-      "anthropic|2026-09-08": [
-        "g-anthropic"
+      "dario-amodei|2026-09-11": [
+        "g-dario-amodei"
       ],
-      "anthropic|2026-09-09": [
-        "g-anthropic"
+      "dario-amodei|2026-09-12": [
+        "g-dario-amodei"
       ],
-      "anthropic|2026-09-10": [
-        "g-anthropic"
+      "dario-amodei|2026-09-13": [
+        "g-dario-amodei"
       ],
-      "anthropic|2026-09-11": [
-        "g-anthropic"
+      "dario-amodei|2026-09-14": [
+        "g-dario-amodei"
       ],
-      "ai-healthcare-regulation-recommendations|2026-09-05": [
-        "g-ai-healthcare-regulation-recommendations"
+      "anthropic-ai|2026-09-08": [
+        "g-anthropic-ai"
       ],
-      "ai-healthcare-regulation-recommendations|2026-09-06": [
-        "g-ai-healthcare-regulation-recommendations"
+      "anthropic-ai|2026-09-09": [
+        "g-anthropic-ai"
       ],
-      "ai-healthcare-regulation-recommendations|2026-09-07": [
-        "g-ai-healthcare-regulation-recommendations"
+      "anthropic-ai|2026-09-10": [
+        "g-anthropic-ai"
       ],
-      "ai-healthcare-regulation-recommendations|2026-09-08": [
-        "g-ai-healthcare-regulation-recommendations"
+      "anthropic-ai|2026-09-11": [
+        "g-anthropic-ai"
       ],
-      "ai-healthcare-regulation-recommendations|2026-09-09": [
-        "g-ai-healthcare-regulation-recommendations"
+      "anthropic-ai|2026-09-12": [
+        "g-anthropic-ai"
       ],
-      "ai-healthcare-regulation-recommendations|2026-09-10": [
-        "g-ai-healthcare-regulation-recommendations"
+      "anthropic-ai|2026-09-13": [
+        "g-anthropic-ai"
       ],
-      "ai-healthcare-regulation-recommendations|2026-09-11": [
-        "g-ai-healthcare-regulation-recommendations"
+      "anthropic-ai|2026-09-14": [
+        "g-anthropic-ai"
       ],
-      "navier-stokes-openai|2026-09-05": [
-        "g-navier-stokes-openai"
+      "bill-ackman|2026-09-08": [
+        "g-bill-ackman"
       ],
-      "navier-stokes-openai|2026-09-06": [
-        "g-navier-stokes-openai"
+      "bill-ackman|2026-09-09": [
+        "g-bill-ackman"
       ],
-      "navier-stokes-openai|2026-09-07": [
-        "g-navier-stokes-openai"
+      "bill-ackman|2026-09-10": [
+        "g-bill-ackman"
       ],
-      "navier-stokes-openai|2026-09-08": [
-        "g-navier-stokes-openai"
+      "bill-ackman|2026-09-11": [
+        "g-bill-ackman"
       ],
-      "navier-stokes-openai|2026-09-09": [
-        "g-navier-stokes-openai"
+      "bill-ackman|2026-09-12": [
+        "g-bill-ackman"
       ],
-      "navier-stokes-openai|2026-09-10": [
-        "g-navier-stokes-openai"
+      "bill-ackman|2026-09-13": [
+        "g-bill-ackman"
       ],
-      "navier-stokes-openai|2026-09-11": [
-        "g-navier-stokes-openai"
+      "bill-ackman|2026-09-14": [
+        "g-bill-ackman"
       ]
     },
     "itemIndex": {
-      "g-deepseek-v4-1-flash": {
-        "title": "Google Trends · deepseek v4.1 flash",
+      "g-demis-hassabis": {
+        "title": "Google Trends · demis hassabis",
         "source": "Google Trends",
-        "url": "https://trends.google.com/trends/explore?date=now%207-d&q=deepseek%20v4.1%20flash"
+        "url": "https://trends.google.com/trends/explore?date=now%207-d&q=demis%20hassabis"
       },
-      "g-meta-muse-ai-agent": {
-        "title": "Google Trends · meta muse ai agent",
+      "g-ki-anthropic": {
+        "title": "Google Trends · ki anthropic",
         "source": "Google Trends",
-        "url": "https://trends.google.com/trends/explore?date=now%207-d&q=meta%20muse%20ai%20agent"
+        "url": "https://trends.google.com/trends/explore?date=now%207-d&q=ki%20anthropic"
       },
-      "g-anthropic": {
-        "title": "Google Trends · anthropic",
+      "g-dario-amodei": {
+        "title": "Google Trends · dario amodei",
         "source": "Google Trends",
-        "url": "https://trends.google.com/trends/explore?date=now%207-d&q=anthropic"
+        "url": "https://trends.google.com/trends/explore?date=now%207-d&q=dario%20amodei"
       },
-      "g-ai-healthcare-regulation-recommendations": {
-        "title": "Google Trends · ai healthcare regulation recommendations uk",
+      "g-anthropic-ai": {
+        "title": "Google Trends · anthropic ai",
         "source": "Google Trends",
-        "url": "https://trends.google.com/trends/explore?date=now%207-d&q=ai%20healthcare%20regulation%20recommendations%20uk&geo=GB"
+        "url": "https://trends.google.com/trends/explore?date=now%207-d&q=anthropic%20ai&geo=GB"
       },
-      "g-navier-stokes-openai": {
-        "title": "Google Trends · navier stokes openai",
+      "g-bill-ackman": {
+        "title": "Google Trends · bill ackman",
         "source": "Google Trends",
-        "url": "https://trends.google.com/trends/explore?date=now%207-d&q=navier%20stokes%20openai&geo=AU"
+        "url": "https://trends.google.com/trends/explore?date=now%207-d&q=bill%20ackman&geo=DE"
       }
     }
   },
@@ -500,59 +494,50 @@
     "matrix": {
       "raw": [
         [
-          10085.0,
-          5394.0,
-          6237.0,
-          9067.0,
+          11131.0,
           27920.0,
-          24948.0,
-          4044.0
+          24847.0,
+          21978.0,
+          22578.0,
+          24582.0,
+          3757.0
         ],
         [
-          31908.0,
-          17433.0,
-          20256.0,
-          36463.0,
+          42730.0,
           45487.0,
-          28877.0,
-          4441.0
+          28737.0,
+          23518.0,
+          22450.0,
+          25255.0,
+          3671.0
         ]
       ],
       "normalized": [
         [
-          0.3612,
-          0.1932,
-          0.2234,
-          0.3247,
+          0.3987,
           1.0,
-          0.8936,
-          0.1448
+          0.8899,
+          0.7872,
+          0.8087,
+          0.8804,
+          0.1346
         ],
         [
-          0.7015,
-          0.3833,
-          0.4453,
-          0.8016,
+          0.9394,
           1.0,
-          0.6348,
-          0.0976
+          0.6318,
+          0.517,
+          0.4935,
+          0.5552,
+          0.0807
         ]
       ]
     },
     "trend": {
-      "anthropic": 0.29,
-      "openai": 0.148
+      "anthropic": 0.169,
+      "openai": 0.117
     },
     "items": {
-      "anthropic|2026-09-05": [
-        "x-anthropic"
-      ],
-      "anthropic|2026-09-06": [
-        "x-anthropic"
-      ],
-      "anthropic|2026-09-07": [
-        "x-anthropic"
-      ],
       "anthropic|2026-09-08": [
         "x-anthropic"
       ],
@@ -565,14 +550,14 @@
       "anthropic|2026-09-11": [
         "x-anthropic"
       ],
-      "openai|2026-09-05": [
-        "x-openai"
+      "anthropic|2026-09-12": [
+        "x-anthropic"
       ],
-      "openai|2026-09-06": [
-        "x-openai"
+      "anthropic|2026-09-13": [
+        "x-anthropic"
       ],
-      "openai|2026-09-07": [
-        "x-openai"
+      "anthropic|2026-09-14": [
+        "x-anthropic"
       ],
       "openai|2026-09-08": [
         "x-openai"
@@ -584,6 +569,15 @@
         "x-openai"
       ],
       "openai|2026-09-11": [
+        "x-openai"
+      ],
+      "openai|2026-09-12": [
+        "x-openai"
+      ],
+      "openai|2026-09-13": [
+        "x-openai"
+      ],
+      "openai|2026-09-14": [
         "x-openai"
       ]
     },

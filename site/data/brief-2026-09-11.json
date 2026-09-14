@@ -1184,36 +1184,10 @@
         "开源",
         "其他"
       ],
-      "imageUrl": "media/papers/recvuAVZd2C0TT-p9-f1.png",
+      "imageUrl": "",
       "mediaAssets": {
-        "images": [
-          {
-            "url": "media/papers/recvuAVZd2C0TT-p9-f1.png",
-            "alt": "PDF 第 9 页图表：Figure 1: Construction of Sn for a data point xn. Subfigure A shows a schematic repre- sentation while B visualizes Kn and gc, and C visualizes Sn in data space. In this example, the set Kn = {35, 87, 42} contains C′ = 3 component indices for xn, as indicated by the green box in A and green lines in B. Each of the three components has a set of neighborhoods gc that includes the component c itself and two additional component indices, i.e., |gc| = G = 3. Specifically, we have g35 = {98, 35, 23}, g87 = {16, 87, 63} and g42 = {37, 42, 8}. These three sets are highlighted by orange boxes in A and ",
-            "kind": "pdf-page",
-            "layout": "wide"
-          },
-          {
-            "url": "media/papers/recvuAVZd2C0TT-p9-f2.png",
-            "alt": "PDF 第 9 页图表：Figure 2: Comparison of Euclidean distances and joints. In A and B, the component centers are identical and the same data point is marked with a red cross. For isotropic, equally weighted components (A), the smallest Euclidean distance correspond to the largest joint between components and the data point. However, for general covariance matrices (B), this is no longer the case.",
-            "kind": "pdf-page",
-            "layout": "wide"
-          },
-          {
-            "url": "media/papers/recvuAVZd2C0TT-p18-f3.png",
-            "alt": "PDF 第 18 页图表：Figure 5: Effectiveness and efficiency in terms of negative log-likelihood (NLL) and runtime of v-MFA compared to em-MFA, k-means+FA and the parameters after initial- ization. Each of the four subfigures refers to experiments on one benchmark data set. The y-axes denote the relative NLL on the test set w.r.t. em-MFA as base- line, given by Equation (15). For v-MFA, we present the performance across nine different settings of the hyperparameters C′ and G. For each configuration of G ∈{5, 15, 30}, measurements for v-MFA (three red, blue and yellow triangles, respectively) refer to configurations",
-            "kind": "pdf-page",
-            "layout": "wide"
-          },
-          {
-            "url": "media/papers/recvuAVZd2C0TT-p24-f4.png",
-            "alt": "PDF 第 24 页图表：Table 1: Quality and runtime of several zero-shot denoising algorithms, measured by PSNR, SSIM and average runtime per image in seconds. The reported errors denote standard deviations across images in the respective dataset. The best result within each row among the blind zero-shot algorithms are marked bold, while overall best results (including the non-blind algorithms BM3D and DivN) are underlined.",
-            "kind": "pdf-page",
-            "layout": "wide"
-          }
-        ],
-        "videos": [],
-        "cover": "media/papers/recvuAVZd2C0TT-p9-f1.png"
+        "images": [],
+        "videos": []
       },
       "editorialStructure": "",
       "pdfUrl": "http://jmlr.org/papers/volume27/25-0639/25-0639.pdf",
@@ -1651,7 +1625,7 @@
       },
       "editorialStructure": "",
       "eventAggregation": {
-        "total": 1,
+        "total": 2,
         "groups": [
           {
             "key": "官方来源",
@@ -1663,6 +1637,19 @@
                 "url": "https://www.youtube.com/watch?v=2yha1vhnmk0",
                 "note": "原始发布 / 公告。",
                 "text": "OpenAI 推出 Agents API，将 Codex 运行框架托管能力开放给应用 —— 原始发布 / 公告。"
+              }
+            ]
+          },
+          {
+            "key": "相关报道",
+            "tone": "#2b6cb0",
+            "items": [
+              {
+                "source": "The Decoder",
+                "title": "OpenAI公测Agents API：开放Codex与ChatGPT背后的长时运行代理基础设施",
+                "url": "https://the-decoder.com/openais-new-agents-api-gives-developers-the-infrastructure-behind-codex-and-chatgpt",
+                "note": "同事件的其它源头报道。",
+                "text": "OpenAI公测Agents API：开放Codex与ChatGPT背后的长时运行代理基础设施 —— 同事件的其它源头报道。"
               }
             ]
           }

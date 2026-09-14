@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-14 11:55",
+  "generatedAt": "2026-09-14 12:15",
   "origin": "feishu",
   "briefWindowDays": 7,
   "sources": [
@@ -290,7 +290,7 @@
       "lookback": "24h",
       "last": "09-14 10:15",
       "perDay": 0,
-      "briefCount": 5
+      "briefCount": 4
     },
     {
       "id": "youtube-openai",
@@ -494,7 +494,7 @@
       "lookback": "24h",
       "last": "09-14 10:15",
       "perDay": 4,
-      "briefCount": 7
+      "briefCount": 8
     },
     {
       "id": "lab-berkeley-rdi",
@@ -647,7 +647,7 @@
       "lookback": "24h",
       "last": "09-14 10:15",
       "perDay": 3,
-      "briefCount": 3
+      "briefCount": 4
     },
     {
       "id": "lab-nyu-cilvr",
@@ -715,7 +715,7 @@
       "lookback": "24h",
       "last": "09-14 10:15",
       "perDay": 5,
-      "briefCount": 8
+      "briefCount": 5
     },
     {
       "id": "youtube-two-minute-papers",
@@ -766,7 +766,7 @@
       "lookback": "24h",
       "last": "09-14 10:15",
       "perDay": 1,
-      "briefCount": 14
+      "briefCount": 15
     },
     {
       "id": "huxiu",
@@ -800,7 +800,7 @@
       "lookback": "24h",
       "last": "09-14 10:15",
       "perDay": 1,
-      "briefCount": 1
+      "briefCount": 0
     },
     {
       "id": "podcast-ai-alchemy",
