@@ -138,7 +138,15 @@
   .weekly-bar { height:8px; background:#edf0f5; overflow:hidden; }
   .weekly-bar > i { display:block; height:100%; background:var(--ds-accent); }
   @media (max-width: 760px) { .weekly-grid,.weekly-evidence { grid-template-columns:1fr; } }
-  @media (max-width: 760px) { .source-group { overflow-x:auto !important; } .source-group > div { min-width:760px; } }
+  @media (max-width: 760px) {
+    .source-group { overflow:hidden !important; }
+    .source-group-head { display:none !important; }
+    .source-group .src-row { min-width:0 !important; grid-template-columns:minmax(0,1fr) auto !important; gap:10px 12px !important; padding:14px 16px !important; min-height:0 !important; }
+    .source-group .src-row > * { min-width:0; }
+    .source-group .src-row > a:first-child, .source-group .src-row > span:first-child { grid-column:1 / -1; font-size:14px !important; padding-bottom:3px; border-bottom:1px solid var(--ds-hair); }
+    .source-group .src-row > span:nth-child(3) { justify-self:start; }
+    .source-group .src-row > span:nth-child(5), .source-group .src-row > span:nth-child(6), .source-group .src-row > span:nth-child(7) { text-align:left !important; }
+  }
   .feed-data::-webkit-scrollbar-track { background: transparent; }
   .quote-row { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 6px; align-items: baseline; padding: 5px 8px; border-bottom: 1px solid rgba(255,255,255,.05); text-decoration: none; color: inherit; }
   .quote-row:hover { background: #fff; }
@@ -4001,7 +4009,7 @@ function sourcesHtml(A){
       <div style="display:flex;align-items:center;gap:10px;padding:13px 17px;background:color-mix(in srgb, ${tone} 8%, white);border-bottom:1px solid ${UI.border};">
         <span style="width:10px;height:10px;background:${tone};display:inline-block;"></span><strong style="font-size:14px;color:${UI.text};">${esc(type)}</strong><span style="font:11px 'Geist Mono',monospace;color:${UI.text3};">${rows.length} 个来源</span><span style="margin-left:auto;font-size:11px;color:${UI.text3};">已接入 ${rows.filter(x=>x.status==='active').length}</span>
       </div>
-      <div style="display:grid;grid-template-columns:${grid};padding:0 20px;height:38px;align-items:center;background:rgba(22,19,15,.025);border-bottom:1px solid ${UI.border};font-size:10px;font-weight:700;letter-spacing:.05em;color:${UI.text3};">
+      <div class="source-group-head" style="display:grid;grid-template-columns:${grid};padding:0 20px;height:38px;align-items:center;background:rgba(22,19,15,.025);border-bottom:1px solid ${UI.border};font-size:10px;font-weight:700;letter-spacing:.05em;color:${UI.text3};">
         <span>来源名称</span><span>${canStatus?'接入开关':'接入状态'}</span><span>载体 / 方式</span><span>优先级</span><span>最近采集</span><span style="text-align:right;">入库</span><span style="text-align:right;">入选</span>${canConfig?'<span></span>':''}<span></span>
       </div>${renderRows(rows)}</section>`;
   };
