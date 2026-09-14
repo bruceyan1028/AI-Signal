@@ -138,6 +138,7 @@
   .weekly-bar { height:8px; background:#edf0f5; overflow:hidden; }
   .weekly-bar > i { display:block; height:100%; background:var(--ds-accent); }
   @media (max-width: 760px) { .weekly-grid,.weekly-evidence { grid-template-columns:1fr; } }
+  @media (max-width: 760px) { .source-group { overflow-x:auto !important; } .source-group > div { min-width:760px; } }
   .feed-data::-webkit-scrollbar-track { background: transparent; }
   .quote-row { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 6px; align-items: baseline; padding: 5px 8px; border-bottom: 1px solid rgba(255,255,255,.05); text-decoration: none; color: inherit; }
   .quote-row:hover { background: #fff; }
@@ -3930,7 +3931,7 @@ function sourcesHtml(A){
     ? `minmax(160px,1.6fr) 118px minmax(96px,1fr) 112px minmax(78px,.9fr) 52px 60px ${canConfig?'46px ':''}34px`
     : `minmax(160px,1.8fr) 76px minmax(96px,1fr) 52px minmax(78px,.9fr) 52px 60px ${canConfig?'46px ':''}34px`;
 
-  const rowsHtml = filtered.map(row => {
+  const renderRows = rows => rows.map(row => {
     const rowId = sourceIdArg(row.id);
     const detailOpen = canConfig && state.srcDetail.recordId===row.recordId;
     const rowTone = STATUS_TONES[row.status] || STATUS_TONES.paused;
@@ -3966,6 +3967,25 @@ function sourcesHtml(A){
     </div>
     ${detailOpen?`<div style="display: grid; grid-template-columns: 1fr;">${sourceConfigPanel(A)}</div>`:''}`;
   }).join('');
+
+  const sourceTone = (type, index) => {
+    const colors = ['#2458b5','#8b4aa8','#a06600','#1f7a45','#b23a6a','#5a4fb5','#bf4a1e','#2f6b2f'];
+    return colors[(typeOrder.indexOf(type) >= 0 ? typeOrder.indexOf(type) : index) % colors.length];
+  };
+  const groupHeader = (type, rows, index) => {
+    const tone = sourceTone(type, index);
+    return `<section class="source-group" style="border:1px solid ${UI.border};border-top:4px solid ${tone};background:${UI.panel};overflow:hidden;">
+      <div style="display:flex;align-items:center;gap:10px;padding:13px 17px;background:color-mix(in srgb, ${tone} 8%, white);border-bottom:1px solid ${UI.border};">
+        <span style="width:10px;height:10px;background:${tone};display:inline-block;"></span><strong style="font-size:14px;color:${UI.text};">${esc(type)}</strong><span style="font:11px 'Geist Mono',monospace;color:${UI.text3};">${rows.length} 个来源</span><span style="margin-left:auto;font-size:11px;color:${UI.text3};">已接入 ${rows.filter(x=>x.status==='active').length}</span>
+      </div>
+      <div style="display:grid;grid-template-columns:${grid};padding:0 20px;height:38px;align-items:center;background:rgba(22,19,15,.025);border-bottom:1px solid ${UI.border};font-size:10px;font-weight:700;letter-spacing:.05em;color:${UI.text3};">
+        <span>来源名称</span><span>${canStatus?'接入开关':'接入状态'}</span><span>载体 / 方式</span><span>优先级</span><span>最近采集</span><span style="text-align:right;">入库</span><span style="text-align:right;">入选</span>${canConfig?'<span></span>':''}<span></span>
+      </div>${renderRows(rows)}</section>`;
+  };
+  const groupedRowsHtml = typeOrder.map((type,index)=>{
+    const rows = filtered.filter(row=>row.type===type);
+    return rows.length ? groupHeader(type, rows, index) : '';
+  }).join('') || (filtered.length ? groupHeader('其他来源', filtered, 0) : '');
 
   const emptyHtml = filtered.length===0 ? `<div style="padding: 36px 20px; text-align: center; font-size: 13px; color: ${UI.text3};">${!state.sources.length?'尚未读取到信号源配置':query?`没有匹配「${esc(state.srcQuery)}」的信号源`:'当前筛选组合下没有信号源'}</div>` : '';
 
@@ -4033,11 +4053,8 @@ function sourcesHtml(A){
 
       <div style="padding: 0 4px 6px;">${srcTabsHtml}</div>
 
-      <section class="src-table" style="border: 1px solid ${UI.border}; border-radius: 12px; overflow: hidden; background: ${UI.panel}; position: relative;">
-        <div style="display: grid; grid-template-columns: ${grid}; padding: 0 20px; height: 44px; align-items: center; background: rgba(22,19,15,.03); border-bottom: 1px solid ${UI.border}; font-size: 11px; font-weight: 700; letter-spacing: .06em; color: ${UI.text3};">
-          <span>来源名称</span><span>${canStatus?'采集开关':'接入状态'}</span><span>载体 / 方式</span><span>优先级</span><span>最近采集</span><span style="text-align: right;">入库</span><span style="text-align: right;">入选</span>${canConfig?'<span></span>':''}<span></span>
-        </div>
-        ${rowsHtml}
+      <section style="display:flex;flex-direction:column;gap:16px;position:relative;">
+        ${groupedRowsHtml}
         ${emptyHtml}
       </section>
 
