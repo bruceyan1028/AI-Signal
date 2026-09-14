@@ -955,6 +955,10 @@ function isConfigHost(){
 }
 function applySourcePayload(body){
   state.sources = Array.isArray(body.sources) ? body.sources : [];
+  try {
+    const saved = JSON.parse(localStorage.getItem('ai-signal-source-preferences') || '{}');
+    state.sources = state.sources.map(source => saved[source.recordId] ? {...source, ...saved[source.recordId], statusLabel: STATUS_LABELS[saved[source.recordId].status] || source.statusLabel} : source);
+  } catch (_) {}
   state.sourceMeta = { ...state.sourceMeta, ...(body.meta || {}) };
   state.sourceStamp = body.generatedAt || '';
   state.sourceOrigin = body.origin || 'feishu';
@@ -1641,8 +1645,31 @@ const App = {
     }
     render();
   },
-  setStatus(id, code){ if(this.canWrite('status')) this.setSrc(id,{status:code}); },
-  setPriority(id,p){ if(this.canWrite('priority')) this.setSrc(id,{priority:p}); },
+  setStatus(id, code){
+    if(this.canWrite('status')) return this.setSrc(id,{status:code});
+    const s=state.sources.find(x=>String(x.id)===String(id));
+    if(!s) return;
+    s.status=code; s.on=code==='active'; s.statusLabel=STATUS_LABELS[code]||code;
+    this.saveLocalSourcePreference(s);
+    state.sourceSync={...state.sourceSync,message:'已暂存本地选择；连接配置台后可写回飞书'};
+    render();
+  },
+  setPriority(id,p){
+    if(this.canWrite('priority')) return this.setSrc(id,{priority:p});
+    const s=state.sources.find(x=>String(x.id)===String(id));
+    if(!s) return;
+    s.priority=p;
+    this.saveLocalSourcePreference(s);
+    state.sourceSync={...state.sourceSync,message:'已暂存本地选择；连接配置台后可写回飞书'};
+    render();
+  },
+  saveLocalSourcePreference(source){
+    try {
+      const saved=JSON.parse(localStorage.getItem('ai-signal-source-preferences') || '{}');
+      saved[source.recordId]={status:source.status, priority:source.priority};
+      localStorage.setItem('ai-signal-source-preferences', JSON.stringify(saved));
+    } catch (_) {}
+  },
   async toggleDetail(id){
     const source = state.sources.find(x=>String(x.id)===String(id));
     if(!source || !this.canWrite('config')) return;
@@ -3937,19 +3964,16 @@ function sourcesHtml(A){
     const rowTone = STATUS_TONES[row.status] || STATUS_TONES.paused;
     // 只读时一个徽章就够。可写时用开关：开=active 才进正式采集，关=paused 连旧条目也不再进简报。
     const enabled = row.status==='active';
-    const statusCell = canStatus
-      ? `<div style="display: inline-flex; align-items: center; gap: 8px;">
+    const statusCell = `<div style="display: inline-flex; align-items: center; gap: 8px;">
           <button onclick="App.toggleSrcEnabled(${rowId})" role="switch" aria-checked="${enabled}" aria-label="${esc(row.name)} 采集开关" title="${enabled?'点击停用：停止采集，且下一期简报不再收录该源':'点击启用：下一期开始正式采集该源'}" style="position: relative; flex: none; width: 38px; height: 21px; padding: 0; border-radius: 999px; border: 1px solid ${enabled?A.accentBorder:UI.border}; background: ${enabled?A.accentBright:'rgba(22,19,15,.06)'}; cursor: pointer;">
             <span style="position: absolute; top: 2px; left: ${enabled?'19px':'2px'}; width: 15px; height: 15px; border-radius: 50%; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.25);"></span>
           </button>
           ${row.status==='experimental'
             ? `<span title="链路尚未验收，正式流水线不跑；诊断通过后再打开开关" style="font-size: 11.5px; font-weight: 700; color: ${rowTone.color};">${esc(row.statusLabel)}</span>`
             : `<button onclick="App.setStatus(${rowId},'experimental')" title="改过配置后标记为待测，正式流水线暂不跑" style="padding: 0; border: none; background: transparent; color: ${rowTone.color}; font-size: 11.5px; font-weight: 700; cursor: pointer; border-bottom: 1px dotted ${UI.border2};">${esc(row.statusLabel)}</button>`}
-        </div>`
-      : `<span style="justify-self: start; padding: 3px 10px; border-radius: 999px; border: 1px solid ${rowTone.border}; background: ${rowTone.bg}; color: ${rowTone.color}; font-size: 11.5px; font-weight: 700;">${esc(row.statusLabel)}</span>`;
-    const priorityCell = canPriority
-      ? `<div style="display: inline-flex; border: 1px solid ${UI.border}; border-radius: 8px; overflow: hidden; width: fit-content; background: rgba(22,19,15,.02);">${priorityOrder.map(p=>{ const on=row.priority===p; return `<button onclick="App.setPriority(${rowId},'${p}')" title="设为${p}优先级" style="height: 26px; padding: 0 9px; border: none; background: ${on?A.accentSoft:'transparent'}; color: ${on?A.accentBright:UI.text3}; font-size: 12px; font-weight: ${on?700:600}; cursor: pointer;">${p}</button>`; }).join('')}</div>`
-      : `<span style="font-size: 12px; color: ${UI.text2};">${esc(row.priority)}</span>`;
+          ${!canStatus?`<span style="font-size:10px;color:${UI.text3};">本地选择</span>`:''}
+        </div>`;
+    const priorityCell = `<div style="display: inline-flex; border: 1px solid ${UI.border}; border-radius: 8px; overflow: hidden; width: fit-content; background: rgba(22,19,15,.02);">${priorityOrder.map(p=>{ const on=row.priority===p; return `<button onclick="App.setPriority(${rowId},'${p}')" title="设为${p}优先级${canPriority?'并写回飞书':'（暂存本地）'}" style="height: 26px; padding: 0 9px; border: none; background: ${on?A.accentSoft:'transparent'}; color: ${on?A.accentBright:UI.text3}; font-size: 12px; font-weight: ${on?700:600}; cursor: pointer;">${p}</button>`; }).join('')}</div>`;
     const briefTone = row.briefCount>0 ? UI.text : UI.text3;
     return `
     <div class="src-row" style="display: grid; grid-template-columns: ${grid}; padding: 0 20px; min-height: 58px; align-items: center; border-bottom: 1px solid ${UI.hair}; opacity: ${row.status==='paused'?'.55':'1'};">
@@ -4007,7 +4031,7 @@ function sourcesHtml(A){
       </section>
       ${sync.status==='error' ? previewNotice('暂时读不到信号源', esc(sync.message)) : ''}
       ${state.sourceOrigin==='seed' ? previewNotice('采集统计暂缺', '这份快照来自仓库里的配置文件而非飞书实时数据，「最近采集」和「入库」两列会是空的；「入选」列仍是真实简报统计。') : ''}
-      ${!canStatus && sync.status!=='error' ? previewNotice('只读快照', '这份页面随每日简报一同发布，可查看全部源的状态与产出。需要改配置时，在本机运行 python -m src.sources_api 打开配置台。') : ''}
+      ${!canStatus && sync.status!=='error' ? previewNotice('公开站为只读快照', '接入开关和优先级现在可以先在本页试选；要让选择真正写回飞书，请在本机运行配置台（python -m src.sources_api）。') : ''}
 
       <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; margin-bottom: 16px;">
         ${chatPanel}
