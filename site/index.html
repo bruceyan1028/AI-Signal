@@ -141,11 +141,13 @@
   @media (max-width: 760px) {
     .source-group { overflow:hidden !important; }
     .source-group-head { display:none !important; }
-    .source-group .src-row { min-width:0 !important; grid-template-columns:minmax(0,1fr) auto !important; gap:10px 12px !important; padding:14px 16px !important; min-height:0 !important; }
+    .source-group .src-row { min-width:0 !important; grid-template-columns:minmax(0,1fr) !important; gap:9px !important; padding:14px 16px !important; min-height:0 !important; }
     .source-group .src-row > * { min-width:0; }
-    .source-group .src-row > a:first-child, .source-group .src-row > span:first-child { grid-column:1 / -1; font-size:14px !important; padding-bottom:3px; border-bottom:1px solid var(--ds-hair); }
-    .source-group .src-row > span:nth-child(3) { justify-self:start; }
-    .source-group .src-row > span:nth-child(5), .source-group .src-row > span:nth-child(6), .source-group .src-row > span:nth-child(7) { text-align:left !important; }
+    .source-group .src-row > a:first-child, .source-group .src-row > span:first-child { grid-column:1; font-size:14px !important; padding-bottom:5px; border-bottom:1px solid var(--ds-hair); }
+    .source-group .src-row > div:nth-child(2) { white-space:nowrap; }
+    .source-group .src-row > span:nth-child(3), .source-group .src-row > div:nth-child(4), .source-group .src-row > span:nth-child(5), .source-group .src-row > span:nth-child(6), .source-group .src-row > span:nth-child(7) { justify-self:start; text-align:left !important; }
+    .source-group .src-row > div:nth-child(4)::before { content:'优先级  '; color:var(--ds-text-3); font-size:11px; font-weight:600; }
+    .source-group .src-row > span:nth-child(5)::before { content:'最近采集  '; color:var(--ds-text-3); font-size:11px; font-weight:600; }
   }
   .feed-data::-webkit-scrollbar-track { background: transparent; }
   .quote-row { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 6px; align-items: baseline; padding: 5px 8px; border-bottom: 1px solid rgba(255,255,255,.05); text-decoration: none; color: inherit; }
