@@ -1,378 +1,327 @@
 {
-  "generatedAt": "2026-09-14T12:16:14+08:00",
+  "generatedAt": "2026-09-15T14:21:41+08:00",
   "days": [
-    "2026-09-08",
     "2026-09-09",
     "2026-09-10",
     "2026-09-11",
     "2026-09-12",
     "2026-09-13",
-    "2026-09-14"
+    "2026-09-14",
+    "2026-09-15"
   ],
   "topics": [
-    "demis-hassabis",
-    "ki-anthropic",
-    "dario-amodei",
-    "anthropic-ai",
-    "bill-ackman"
+    "artificial-intelligence",
+    "politics",
+    "ai-anthropic",
+    "anthropic-ai"
   ],
   "labels": {
-    "demis-hassabis": "demis hassabis",
-    "ki-anthropic": "ki anthropic",
-    "dario-amodei": "dario amodei",
-    "anthropic-ai": "anthropic ai",
-    "bill-ackman": "bill ackman"
+    "artificial-intelligence": "artificial intelligence",
+    "politics": "politics",
+    "ai-anthropic": "ai anthropic",
+    "anthropic-ai": "anthropic ai"
   },
   "queries": {
-    "demis-hassabis": {
-      "g": "demis hassabis",
-      "x": "\"demis hassabis\" -is:retweet"
+    "artificial-intelligence": {
+      "g": "artificial intelligence",
+      "x": "\"artificial intelligence\" -is:retweet"
     },
-    "ki-anthropic": {
-      "g": "ki anthropic",
-      "x": "\"ki anthropic\" -is:retweet"
+    "politics": {
+      "g": "politics",
+      "x": "\"politics\" -is:retweet"
     },
-    "dario-amodei": {
-      "g": "dario amodei",
-      "x": "\"dario amodei\" -is:retweet"
+    "ai-anthropic": {
+      "g": "ai anthropic",
+      "x": "\"ai anthropic\" -is:retweet"
     },
     "anthropic-ai": {
       "g": "anthropic ai",
       "x": "\"anthropic ai\" -is:retweet"
-    },
-    "bill-ackman": {
-      "g": "bill ackman",
-      "x": "\"bill ackman\" -is:retweet"
     }
   },
   "scopes": {
-    "demis-hassabis": "global",
-    "ki-anthropic": "global",
-    "dario-amodei": "global",
-    "anthropic-ai": "country",
-    "bill-ackman": "country"
+    "artificial-intelligence": "global",
+    "politics": "global",
+    "ai-anthropic": "global",
+    "anthropic-ai": "global"
   },
   "marks": {
-    "demis-hassabis": "🌐",
-    "ki-anthropic": "🌐",
-    "dario-amodei": "🌐",
-    "anthropic-ai": "🇬🇧",
-    "bill-ackman": "🇩🇪"
+    "artificial-intelligence": "🌐",
+    "politics": "🌐",
+    "ai-anthropic": "🌐",
+    "anthropic-ai": "🌐"
   },
   "breakouts": [
-    "demis-hassabis",
-    "ki-anthropic",
-    "dario-amodei",
-    "anthropic-ai",
-    "bill-ackman"
+    "artificial-intelligence",
+    "politics",
+    "ai-anthropic",
+    "anthropic-ai"
   ],
   "selection": {
     "method": "google-trending-ai",
     "volumes": {
-      "demis-hassabis": 10000,
-      "ki-anthropic": 20000,
-      "dario-amodei": 20000,
-      "anthropic-ai": 10000,
-      "bill-ackman": 5000
+      "artificial-intelligence": 2000,
+      "politics": 1000,
+      "ai-anthropic": 200,
+      "anthropic-ai": 10000
     },
     "geos": {
-      "demis-hassabis": [
+      "artificial-intelligence": [
         "IN"
       ],
-      "ki-anthropic": [
-        "DE"
+      "politics": [
+        "CA"
       ],
-      "dario-amodei": [
-        "US"
+      "ai-anthropic": [
+        "CA"
       ],
       "anthropic-ai": [
         "GB",
         "AU",
         "CA"
-      ],
-      "bill-ackman": [
-        "DE"
       ]
     },
     "plot_geo": {
-      "demis-hassabis": "",
-      "ki-anthropic": "",
-      "dario-amodei": "",
-      "anthropic-ai": "GB",
-      "bill-ackman": "DE"
+      "artificial-intelligence": "",
+      "politics": "",
+      "ai-anthropic": "",
+      "anthropic-ai": ""
     },
     "breakouts": [
-      "demis-hassabis",
-      "ki-anthropic",
-      "dario-amodei",
-      "anthropic-ai",
-      "bill-ackman"
+      "artificial-intelligence",
+      "politics",
+      "ai-anthropic",
+      "anthropic-ai"
     ]
   },
   "google-trends": {
     "error": "",
     "topics": [
-      "demis-hassabis",
-      "ki-anthropic",
-      "dario-amodei",
-      "anthropic-ai",
-      "bill-ackman"
+      "artificial-intelligence",
+      "politics",
+      "ai-anthropic",
+      "anthropic-ai"
     ],
     "labels": {
-      "demis-hassabis": "demis hassabis",
-      "ki-anthropic": "ki anthropic",
-      "dario-amodei": "dario amodei",
-      "anthropic-ai": "anthropic ai",
-      "bill-ackman": "bill ackman"
+      "artificial-intelligence": "artificial intelligence",
+      "politics": "politics",
+      "ai-anthropic": "ai anthropic",
+      "anthropic-ai": "anthropic ai"
     },
     "queries": {
-      "demis-hassabis": {
-        "g": "demis hassabis",
-        "x": "\"demis hassabis\" -is:retweet"
+      "artificial-intelligence": {
+        "g": "artificial intelligence",
+        "x": "\"artificial intelligence\" -is:retweet"
       },
-      "ki-anthropic": {
-        "g": "ki anthropic",
-        "x": "\"ki anthropic\" -is:retweet"
+      "politics": {
+        "g": "politics",
+        "x": "\"politics\" -is:retweet"
       },
-      "dario-amodei": {
-        "g": "dario amodei",
-        "x": "\"dario amodei\" -is:retweet"
+      "ai-anthropic": {
+        "g": "ai anthropic",
+        "x": "\"ai anthropic\" -is:retweet"
       },
       "anthropic-ai": {
         "g": "anthropic ai",
         "x": "\"anthropic ai\" -is:retweet"
-      },
-      "bill-ackman": {
-        "g": "bill ackman",
-        "x": "\"bill ackman\" -is:retweet"
       }
     },
     "scopes": {
-      "demis-hassabis": "global",
-      "ki-anthropic": "global",
-      "dario-amodei": "global",
-      "anthropic-ai": "country",
-      "bill-ackman": "country"
+      "artificial-intelligence": "global",
+      "politics": "global",
+      "ai-anthropic": "global",
+      "anthropic-ai": "global"
     },
     "marks": {
-      "demis-hassabis": "🌐",
-      "ki-anthropic": "🌐",
-      "dario-amodei": "🌐",
-      "anthropic-ai": "🇬🇧",
-      "bill-ackman": "🇩🇪"
+      "artificial-intelligence": "🌐",
+      "politics": "🌐",
+      "ai-anthropic": "🌐",
+      "anthropic-ai": "🌐"
     },
     "breakouts": [
-      "demis-hassabis",
-      "ki-anthropic",
-      "dario-amodei",
-      "anthropic-ai",
-      "bill-ackman"
+      "artificial-intelligence",
+      "politics",
+      "ai-anthropic",
+      "anthropic-ai"
     ],
     "selection": {
       "volumes": {
-        "demis-hassabis": 10000,
-        "ki-anthropic": 20000,
-        "dario-amodei": 20000,
-        "anthropic-ai": 10000,
-        "bill-ackman": 5000
+        "artificial-intelligence": 2000,
+        "politics": 1000,
+        "ai-anthropic": 200,
+        "anthropic-ai": 10000
       },
       "geos": {
-        "demis-hassabis": [
+        "artificial-intelligence": [
           "IN"
         ],
-        "ki-anthropic": [
-          "DE"
+        "politics": [
+          "CA"
         ],
-        "dario-amodei": [
-          "US"
+        "ai-anthropic": [
+          "CA"
         ],
         "anthropic-ai": [
           "GB",
           "AU",
           "CA"
-        ],
-        "bill-ackman": [
-          "DE"
         ]
       },
       "plot_geo": {
-        "demis-hassabis": "",
-        "ki-anthropic": "",
-        "dario-amodei": "",
-        "anthropic-ai": "GB",
-        "bill-ackman": "DE"
+        "artificial-intelligence": "",
+        "politics": "",
+        "ai-anthropic": "",
+        "anthropic-ai": ""
       },
       "method": "google-trending-ai"
     },
     "matrix": {
       "raw": [
         [
-          22.0,
-          22.0,
-          22.0,
-          20.0,
-          24.0,
-          51.0,
-          100.0
-        ],
-        [
-          3.0,
-          8.0,
-          11.0,
-          9.0,
-          8.0,
-          100.0,
-          74.0
-        ],
-        [
-          4.0,
-          6.0,
-          6.0,
-          5.0,
-          40.0,
-          100.0,
-          60.0
-        ],
-        [
-          20.0,
+          52.0,
+          48.0,
           43.0,
-          37.0,
-          36.0,
-          21.0,
-          94.0,
+          32.0,
+          39.0,
+          68.0,
           100.0
         ],
         [
-          1.0,
-          1.0,
-          1.0,
-          1.0,
-          100.0,
-          10.0,
-          33.0
+          74.0,
+          77.0,
+          72.0,
+          59.0,
+          62.0,
+          85.0,
+          100.0
+        ],
+        [
+          78.0,
+          87.0,
+          64.0,
+          51.0,
+          76.0,
+          87.0,
+          100.0
+        ],
+        [
+          78.0,
+          87.0,
+          64.0,
+          52.0,
+          77.0,
+          87.0,
+          100.0
         ]
       ],
       "normalized": [
         [
-          0.22,
-          0.22,
-          0.22,
-          0.2,
-          0.24,
-          0.51,
-          1.0
-        ],
-        [
-          0.03,
-          0.08,
-          0.11,
-          0.09,
-          0.08,
-          1.0,
-          0.74
-        ],
-        [
-          0.04,
-          0.06,
-          0.06,
-          0.05,
-          0.4,
-          1.0,
-          0.6
-        ],
-        [
-          0.2,
+          0.52,
+          0.48,
           0.43,
-          0.37,
-          0.36,
-          0.21,
-          0.94,
+          0.32,
+          0.39,
+          0.68,
           1.0
         ],
         [
-          0.01,
-          0.01,
-          0.01,
-          0.01,
-          1.0,
-          0.1,
-          0.33
+          0.74,
+          0.77,
+          0.72,
+          0.59,
+          0.62,
+          0.85,
+          1.0
+        ],
+        [
+          0.78,
+          0.87,
+          0.64,
+          0.51,
+          0.76,
+          0.87,
+          1.0
+        ],
+        [
+          0.78,
+          0.87,
+          0.64,
+          0.52,
+          0.77,
+          0.87,
+          1.0
         ]
       ]
     },
     "trend": {
-      "demis-hassabis": 3.727,
-      "ki-anthropic": 3.194,
-      "dario-amodei": 2.236,
-      "anthropic-ai": 2.39,
-      "bill-ackman": 1.737
+      "artificial-intelligence": 2.128,
+      "politics": 1.399,
+      "ai-anthropic": 1.354,
+      "anthropic-ai": 1.348
     },
     "items": {
-      "demis-hassabis|2026-09-08": [
-        "g-demis-hassabis"
+      "artificial-intelligence|2026-09-09": [
+        "g-artificial-intelligence"
       ],
-      "demis-hassabis|2026-09-09": [
-        "g-demis-hassabis"
+      "artificial-intelligence|2026-09-10": [
+        "g-artificial-intelligence"
       ],
-      "demis-hassabis|2026-09-10": [
-        "g-demis-hassabis"
+      "artificial-intelligence|2026-09-11": [
+        "g-artificial-intelligence"
       ],
-      "demis-hassabis|2026-09-11": [
-        "g-demis-hassabis"
+      "artificial-intelligence|2026-09-12": [
+        "g-artificial-intelligence"
       ],
-      "demis-hassabis|2026-09-12": [
-        "g-demis-hassabis"
+      "artificial-intelligence|2026-09-13": [
+        "g-artificial-intelligence"
       ],
-      "demis-hassabis|2026-09-13": [
-        "g-demis-hassabis"
+      "artificial-intelligence|2026-09-14": [
+        "g-artificial-intelligence"
       ],
-      "demis-hassabis|2026-09-14": [
-        "g-demis-hassabis"
+      "artificial-intelligence|2026-09-15": [
+        "g-artificial-intelligence"
       ],
-      "ki-anthropic|2026-09-08": [
-        "g-ki-anthropic"
+      "politics|2026-09-09": [
+        "g-politics"
       ],
-      "ki-anthropic|2026-09-09": [
-        "g-ki-anthropic"
+      "politics|2026-09-10": [
+        "g-politics"
       ],
-      "ki-anthropic|2026-09-10": [
-        "g-ki-anthropic"
+      "politics|2026-09-11": [
+        "g-politics"
       ],
-      "ki-anthropic|2026-09-11": [
-        "g-ki-anthropic"
+      "politics|2026-09-12": [
+        "g-politics"
       ],
-      "ki-anthropic|2026-09-12": [
-        "g-ki-anthropic"
+      "politics|2026-09-13": [
+        "g-politics"
       ],
-      "ki-anthropic|2026-09-13": [
-        "g-ki-anthropic"
+      "politics|2026-09-14": [
+        "g-politics"
       ],
-      "ki-anthropic|2026-09-14": [
-        "g-ki-anthropic"
+      "politics|2026-09-15": [
+        "g-politics"
       ],
-      "dario-amodei|2026-09-08": [
-        "g-dario-amodei"
+      "ai-anthropic|2026-09-09": [
+        "g-ai-anthropic"
       ],
-      "dario-amodei|2026-09-09": [
-        "g-dario-amodei"
+      "ai-anthropic|2026-09-10": [
+        "g-ai-anthropic"
       ],
-      "dario-amodei|2026-09-10": [
-        "g-dario-amodei"
+      "ai-anthropic|2026-09-11": [
+        "g-ai-anthropic"
       ],
-      "dario-amodei|2026-09-11": [
-        "g-dario-amodei"
+      "ai-anthropic|2026-09-12": [
+        "g-ai-anthropic"
       ],
-      "dario-amodei|2026-09-12": [
-        "g-dario-amodei"
+      "ai-anthropic|2026-09-13": [
+        "g-ai-anthropic"
       ],
-      "dario-amodei|2026-09-13": [
-        "g-dario-amodei"
+      "ai-anthropic|2026-09-14": [
+        "g-ai-anthropic"
       ],
-      "dario-amodei|2026-09-14": [
-        "g-dario-amodei"
-      ],
-      "anthropic-ai|2026-09-08": [
-        "g-anthropic-ai"
+      "ai-anthropic|2026-09-15": [
+        "g-ai-anthropic"
       ],
       "anthropic-ai|2026-09-09": [
         "g-anthropic-ai"
@@ -392,53 +341,30 @@
       "anthropic-ai|2026-09-14": [
         "g-anthropic-ai"
       ],
-      "bill-ackman|2026-09-08": [
-        "g-bill-ackman"
-      ],
-      "bill-ackman|2026-09-09": [
-        "g-bill-ackman"
-      ],
-      "bill-ackman|2026-09-10": [
-        "g-bill-ackman"
-      ],
-      "bill-ackman|2026-09-11": [
-        "g-bill-ackman"
-      ],
-      "bill-ackman|2026-09-12": [
-        "g-bill-ackman"
-      ],
-      "bill-ackman|2026-09-13": [
-        "g-bill-ackman"
-      ],
-      "bill-ackman|2026-09-14": [
-        "g-bill-ackman"
+      "anthropic-ai|2026-09-15": [
+        "g-anthropic-ai"
       ]
     },
     "itemIndex": {
-      "g-demis-hassabis": {
-        "title": "Google Trends · demis hassabis",
+      "g-artificial-intelligence": {
+        "title": "Google Trends · artificial intelligence",
         "source": "Google Trends",
-        "url": "https://trends.google.com/trends/explore?date=now%207-d&q=demis%20hassabis"
+        "url": "https://trends.google.com/trends/explore?date=now%207-d&q=artificial%20intelligence"
       },
-      "g-ki-anthropic": {
-        "title": "Google Trends · ki anthropic",
+      "g-politics": {
+        "title": "Google Trends · politics",
         "source": "Google Trends",
-        "url": "https://trends.google.com/trends/explore?date=now%207-d&q=ki%20anthropic"
+        "url": "https://trends.google.com/trends/explore?date=now%207-d&q=politics"
       },
-      "g-dario-amodei": {
-        "title": "Google Trends · dario amodei",
+      "g-ai-anthropic": {
+        "title": "Google Trends · ai anthropic",
         "source": "Google Trends",
-        "url": "https://trends.google.com/trends/explore?date=now%207-d&q=dario%20amodei"
+        "url": "https://trends.google.com/trends/explore?date=now%207-d&q=ai%20anthropic"
       },
       "g-anthropic-ai": {
         "title": "Google Trends · anthropic ai",
         "source": "Google Trends",
-        "url": "https://trends.google.com/trends/explore?date=now%207-d&q=anthropic%20ai&geo=GB"
-      },
-      "g-bill-ackman": {
-        "title": "Google Trends · bill ackman",
-        "source": "Google Trends",
-        "url": "https://trends.google.com/trends/explore?date=now%207-d&q=bill%20ackman&geo=DE"
+        "url": "https://trends.google.com/trends/explore?date=now%207-d&q=anthropic%20ai"
       }
     }
   },
@@ -494,53 +420,50 @@
     "matrix": {
       "raw": [
         [
-          11131.0,
-          27920.0,
+          31986.0,
           24847.0,
           21978.0,
           22578.0,
-          24582.0,
-          3757.0
+          24450.0,
+          25463.0,
+          5123.0
         ],
         [
-          42730.0,
-          45487.0,
+          69034.0,
           28737.0,
           23518.0,
           22450.0,
-          25255.0,
-          3671.0
+          25125.0,
+          25139.0,
+          5181.0
         ]
       ],
       "normalized": [
         [
-          0.3987,
           1.0,
-          0.8899,
-          0.7872,
-          0.8087,
-          0.8804,
-          0.1346
+          0.7768,
+          0.6871,
+          0.7059,
+          0.7644,
+          0.7961,
+          0.1602
         ],
         [
-          0.9394,
           1.0,
-          0.6318,
-          0.517,
-          0.4935,
-          0.5552,
-          0.0807
+          0.4163,
+          0.3407,
+          0.3252,
+          0.364,
+          0.3642,
+          0.075
         ]
       ]
     },
     "trend": {
-      "anthropic": 0.169,
-      "openai": 0.117
+      "anthropic": 0.203,
+      "openai": 0.16
     },
     "items": {
-      "anthropic|2026-09-08": [
-        "x-anthropic"
-      ],
       "anthropic|2026-09-09": [
         "x-anthropic"
       ],
@@ -559,8 +482,8 @@
       "anthropic|2026-09-14": [
         "x-anthropic"
       ],
-      "openai|2026-09-08": [
-        "x-openai"
+      "anthropic|2026-09-15": [
+        "x-anthropic"
       ],
       "openai|2026-09-09": [
         "x-openai"
@@ -578,6 +501,9 @@
         "x-openai"
       ],
       "openai|2026-09-14": [
+        "x-openai"
+      ],
+      "openai|2026-09-15": [
         "x-openai"
       ]
     },

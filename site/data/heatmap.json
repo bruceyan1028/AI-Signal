@@ -5,7 +5,8 @@
     "2026-W34",
     "2026-W35",
     "2026-W36",
-    "2026-W37"
+    "2026-W37",
+    "2026-W38"
   ],
   "topics": [
     "agent",
@@ -41,7 +42,8 @@
         6,
         14,
         45,
-        15
+        15,
+        3
       ],
       [
         0,
@@ -49,7 +51,8 @@
         3,
         12,
         13,
-        6
+        6,
+        1
       ],
       [
         0,
@@ -57,7 +60,8 @@
         0,
         9,
         22,
-        7
+        7,
+        1
       ],
       [
         0,
@@ -65,7 +69,8 @@
         3,
         7,
         9,
-        2
+        2,
+        1
       ],
       [
         0,
@@ -73,7 +78,8 @@
         2,
         0,
         13,
-        3
+        3,
+        0
       ],
       [
         5,
@@ -81,7 +87,8 @@
         6,
         6,
         26,
-        10
+        10,
+        2
       ],
       [
         0,
@@ -89,6 +96,7 @@
         0,
         4,
         9,
+        2,
         2
       ],
       [
@@ -97,7 +105,8 @@
         0,
         0,
         18,
-        3
+        3,
+        8
       ],
       [
         4,
@@ -105,7 +114,8 @@
         4,
         5,
         26,
-        21
+        21,
+        2
       ],
       [
         8,
@@ -113,7 +123,8 @@
         3,
         1,
         15,
-        5
+        5,
+        4
       ],
       [
         0,
@@ -121,7 +132,8 @@
         0,
         0,
         23,
-        6
+        6,
+        1
       ]
     ],
     "normalized": [
@@ -131,7 +143,8 @@
         0.1333,
         0.3111,
         1.0,
-        0.3333
+        0.3333,
+        0.0667
       ],
       [
         0.0,
@@ -139,7 +152,8 @@
         0.2308,
         0.9231,
         1.0,
-        0.4615
+        0.4615,
+        0.0769
       ],
       [
         0.0,
@@ -147,7 +161,8 @@
         0.0,
         0.4091,
         1.0,
-        0.3182
+        0.3182,
+        0.0455
       ],
       [
         0.0,
@@ -155,7 +170,8 @@
         0.3333,
         0.7778,
         1.0,
-        0.2222
+        0.2222,
+        0.1111
       ],
       [
         0.0,
@@ -163,7 +179,8 @@
         0.1538,
         0.0,
         1.0,
-        0.2308
+        0.2308,
+        0.0
       ],
       [
         0.1923,
@@ -171,7 +188,8 @@
         0.2308,
         0.2308,
         1.0,
-        0.3846
+        0.3846,
+        0.0769
       ],
       [
         0.0,
@@ -179,6 +197,7 @@
         0.0,
         0.4444,
         1.0,
+        0.2222,
         0.2222
       ],
       [
@@ -187,7 +206,8 @@
         0.0,
         0.0,
         1.0,
-        0.1667
+        0.1667,
+        0.4444
       ],
       [
         0.1538,
@@ -195,7 +215,8 @@
         0.1538,
         0.1923,
         1.0,
-        0.8077
+        0.8077,
+        0.0769
       ],
       [
         0.5333,
@@ -203,7 +224,8 @@
         0.2,
         0.0667,
         1.0,
-        0.3333
+        0.3333,
+        0.2667
       ],
       [
         0.0,
@@ -211,7 +233,8 @@
         0.0,
         0.0,
         1.0,
-        0.2609
+        0.2609,
+        0.0435
       ]
     ]
   },
@@ -678,6 +701,51 @@
     "open-source-model|2026-W37": [
       "recvuMBkvfcUT6",
       "recvuMBkvfz9IT"
+    ],
+    "other|2026-W38": [
+      "8c3db9b7-bd65-4158-99b9-05939fea20b4"
+    ],
+    "infra|2026-W38": [
+      "a73346e1-1cf6-40ca-ab95-f6a7bd842bb8",
+      "4b97cf0a-770d-48e8-930b-829812e388bd"
+    ],
+    "safety-policy|2026-W38": [
+      "0729416e-1c7e-40a7-ac01-4a14ca9e95c2",
+      "2329013c-c599-438c-9167-3f852578cf09",
+      "25d355e9-2e80-4fa6-95c7-4b73e1fde734",
+      "2051c3c2-d597-4425-b9a7-509a07fe24de",
+      "092de246-6c53-4ce2-a156-6450e9de4cfb",
+      "bedaa4b3-6eff-43c2-9f60-a010a436f8fb",
+      "dd8cf6cd-d688-4f59-a6c0-d20f56b3b59b",
+      "e719bea2-2391-470d-b080-5048011c3bcd"
+    ],
+    "agent|2026-W38": [
+      "2329013c-c599-438c-9167-3f852578cf09",
+      "c15a0b35-2bd3-451e-8a50-8bbb0fcbb794",
+      "eec76c26-aeeb-434b-aaba-f50336bf2a74"
+    ],
+    "open-source-model|2026-W38": [
+      "25d355e9-2e80-4fa6-95c7-4b73e1fde734"
+    ],
+    "embodied|2026-W38": [
+      "49f00809-94b1-4a3c-a82e-caf3b40bdef6",
+      "2a205df8-17af-480c-86e2-ee7c4cfb7d46"
+    ],
+    "multimodal|2026-W38": [
+      "2a205df8-17af-480c-86e2-ee7c4cfb7d46"
+    ],
+    "reasoning|2026-W38": [
+      "6d39b8ad-1988-44a3-8aa6-609a9da9308c"
+    ],
+    "funding|2026-W38": [
+      "0266c840-83a1-4943-bd6e-547d23e5ed60",
+      "c15a0b35-2bd3-451e-8a50-8bbb0fcbb794",
+      "bedaa4b3-6eff-43c2-9f60-a010a436f8fb",
+      "0562f7a4-feb5-40b4-8f4a-ea2dc27afaa3"
+    ],
+    "product|2026-W38": [
+      "eec76c26-aeeb-434b-aaba-f50336bf2a74",
+      "0562f7a4-feb5-40b4-8f4a-ea2dc27afaa3"
     ]
   },
   "itemIndex": {
@@ -2070,20 +2138,110 @@
       "title": "NVIDIA RTX 加速 Adobe Premiere 视频剪辑工作流",
       "source": "NVIDIA YouTube",
       "url": "https://www.youtube.com/watch?v=v0hx37eqcmi"
+    },
+    "8c3db9b7-bd65-4158-99b9-05939fea20b4": {
+      "title": "中国团队用“荀子AI”发现帕金森病潜在靶点并在小鼠中验证CHK2",
+      "source": "MIT Technology Review China",
+      "url": "https://www.mittrchina.com/news/detail/16948"
+    },
+    "a73346e1-1cf6-40ca-ab95-f6a7bd842bb8": {
+      "title": "地平线征程系列智驾芯片累计出货突破1500万套",
+      "source": "AI科技评论 / 雷峰网",
+      "url": "https://www.leiphone.com/category/transportation/dmdded44lisytsbx.html"
+    },
+    "0729416e-1c7e-40a7-ac01-4a14ca9e95c2": {
+      "title": "中国反驳美国AI安全减速主张，称其可能固化美国技术优势",
+      "source": "The Decoder",
+      "url": "https://the-decoder.com/china-fires-back-at-u-s-ai-safety-warnings-calling-them-fearmongering-to-lock-in-american-advantage"
+    },
+    "2329013c-c599-438c-9167-3f852578cf09": {
+      "title": "AI巨头呼吁减速，商业竞争与地缘政治让行业难踩刹车",
+      "source": "虎嗅",
+      "url": "https://www.huxiu.com/article/4891194.html"
+    },
+    "25d355e9-2e80-4fa6-95c7-4b73e1fde734": {
+      "title": "蚂蚁发布内生式大模型安全护栏SingProbe",
+      "source": "AI科技评论 / 雷峰网",
+      "url": "https://www.leiphone.com/category/industrynews/pvwjskm5meed1h5n.html"
+    },
+    "49f00809-94b1-4a3c-a82e-caf3b40bdef6": {
+      "title": "具脑磐石发布类脑认知世界模型 Cog-WM 1.0",
+      "source": "AI科技评论 / 雷峰网",
+      "url": "https://www.leiphone.com/category/robot/dq92tskeagmal0rp.html"
+    },
+    "2a205df8-17af-480c-86e2-ee7c4cfb7d46": {
+      "title": "Motus2将世界模型用于灵巧操作，真机任务成功率达75%",
+      "source": "MIT Technology Review China",
+      "url": "https://www.mittrchina.com/news/detail/16949"
+    },
+    "6d39b8ad-1988-44a3-8aa6-609a9da9308c": {
+      "title": "详解GPT-6 Astra：循环Transformer与隐藏思维链争议",
+      "source": "华尔街见闻",
+      "url": "https://wallstreetcn.com/articles/3781759"
+    },
+    "2051c3c2-d597-4425-b9a7-509a07fe24de": {
+      "title": "微软AI行为准则：强调可读推理、拒绝意识拟人化与模型权利",
+      "source": "The Decoder",
+      "url": "https://the-decoder.com/microsofts-ai-rulebook-readable-thinking-no-inner-life-and-definitely-no-rights"
+    },
+    "0266c840-83a1-4943-bd6e-547d23e5ed60": {
+      "title": "Anthropic拟赴纳斯达克上市，凭盈利预期争取投资者支持",
+      "source": "The Decoder",
+      "url": "https://the-decoder.com/anthropic-eyes-nasdaq-listing-as-a-second-profitable-quarter-aims-to-win-over-investors-ahead-of-a-mega-ipo"
+    },
+    "092de246-6c53-4ce2-a156-6450e9de4cfb": {
+      "title": "OpenAI被曝雇用数百名合同工审阅ChatGPT对话",
+      "source": "The Decoder",
+      "url": "https://the-decoder.com/openai-has-hundreds-of-contract-workers-reading-your-chatgpt-conversations"
+    },
+    "c15a0b35-2bd3-451e-8a50-8bbb0fcbb794": {
+      "title": "Superhuman收购Fathom，加速会议记录向代理式生产力平台演进",
+      "source": "TechCrunch AI",
+      "url": "https://techcrunch.com/2026/09/14/superhuman-acquires-yc-backed-notetaker-fathom-as-productivity-platforms-push-for-agentic-work"
+    },
+    "bedaa4b3-6eff-43c2-9f60-a010a436f8fb": {
+      "title": "AI“减速”倡议与前沿实验室加速扩张的矛盾",
+      "source": "虎嗅",
+      "url": "https://www.huxiu.com/article/4891209.html"
+    },
+    "dd8cf6cd-d688-4f59-a6c0-d20f56b3b59b": {
+      "title": "AI会杀死我们吗，为什么最懂的人现在最害怕？",
+      "source": "虎嗅",
+      "url": "https://www.huxiu.com/article/4891202.html"
+    },
+    "4b97cf0a-770d-48e8-930b-829812e388bd": {
+      "title": "乌兰察布五千亿算力投资的收益与隐性成本",
+      "source": "虎嗅",
+      "url": "https://www.huxiu.com/article/4891178.html"
+    },
+    "eec76c26-aeeb-434b-aaba-f50336bf2a74": {
+      "title": "Fyxer借助OpenAI模型打造可信赖的AI高管助手",
+      "source": "OpenAI News",
+      "url": "https://openai.com/index/fyxer"
+    },
+    "0562f7a4-feb5-40b4-8f4a-ea2dc27afaa3": {
+      "title": "前 Spotify 创新负责人创办音乐互动应用初创公司 A Vinyl Bar in Shibuya",
+      "source": "TechCrunch AI",
+      "url": "https://techcrunch.com/2026/09/14/a-vinyl-bar-in-shibuya-is-a-startup-offering-fun-music-apps"
+    },
+    "e719bea2-2391-470d-b080-5048011c3bcd": {
+      "title": "听见人工智能如何让自然重获新生：TechCrunch Disrupt 2026",
+      "source": "TechCrunch AI",
+      "url": "https://techcrunch.com/2026/09/14/hear-how-ai-can-engineer-natures-comeback-at-techcrunch-disrupt-2026"
     }
   },
   "trend": {
-    "agent": 5.0,
-    "reasoning": 2.235,
-    "multimodal": 5.273,
-    "open-source-model": 2.2,
-    "rag-search": 16.0,
-    "infra": 3.273,
-    "embodied": 5.5,
-    "safety-policy": 21.0,
-    "product": 5.875,
-    "funding": 2.222,
-    "other": 2.0
+    "agent": 0.652,
+    "reasoning": 0.583,
+    "multimodal": 0.606,
+    "open-source-model": 0.395,
+    "rag-search": 0.5,
+    "infra": 0.625,
+    "embodied": 0.769,
+    "safety-policy": 1.375,
+    "product": 1.369,
+    "funding": 0.682,
+    "other": 0.761
   },
-  "window_end": "2026-W37"
+  "window_end": "2026-W38"
 }
