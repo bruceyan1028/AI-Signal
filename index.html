@@ -147,6 +147,8 @@
     .source-group .src-row > div:nth-child(2) { display:flex !important; align-items:center; width:max-content; max-width:100%; white-space:nowrap; }
     .source-group .src-row > span:nth-child(3), .source-group .src-row > div:nth-child(4), .source-group .src-row > span:nth-child(5), .source-group .src-row > span:nth-child(6), .source-group .src-row > span:nth-child(7) { justify-self:start; width:100%; box-sizing:border-box; text-align:left !important; }
     .source-group .src-row > div:nth-child(4), .source-group .src-row > span:nth-child(5) { padding:9px 11px; border:1px solid var(--ds-hair); background:rgba(22,19,15,.025); }
+    .source-type-divider { grid-template-columns:minmax(0,1fr) !important; padding:0 16px !important; }
+    .source-type-divider > span { grid-column:1 !important; }
     .source-group .src-row > div:nth-child(4)::before, .source-group .src-row > span:nth-child(5)::before { display:block; content:'优先级'; margin-bottom:6px; color:var(--ds-text-3); font-size:10px; line-height:1; font-weight:700; letter-spacing:.04em; }
     .source-group .src-row > span:nth-child(5)::before { content:'最近采集'; }
     .source-group .src-row > div:nth-child(4) > div { max-width:100%; }
@@ -3983,7 +3985,7 @@ function sourcesHtml(A){
   const canConfig = writable.includes('config');
   const grid = canStatus
     ? `minmax(160px,1.6fr) 118px minmax(96px,1fr) 112px minmax(78px,.9fr) 52px 60px ${canConfig?'46px ':''}34px`
-    : `minmax(160px,1.8fr) 76px minmax(96px,1fr) 52px minmax(78px,.9fr) 52px 60px ${canConfig?'46px ':''}34px`;
+    : `minmax(160px,1.8fr) 104px minmax(96px,1fr) 112px minmax(112px,.9fr) 52px 60px ${canConfig?'46px ':''}34px`;
 
   const renderRows = rows => rows.map(row => {
     const rowId = sourceIdArg(row.id);
@@ -3991,7 +3993,7 @@ function sourcesHtml(A){
     const rowTone = STATUS_TONES[row.status] || STATUS_TONES.paused;
     // 只读时一个徽章就够。可写时用开关：开=active 才进正式采集，关=paused 连旧条目也不再进简报。
     const enabled = row.status==='active';
-    const statusCell = `<div style="display: inline-flex; align-items: center; gap: 8px;">
+    const statusCell = `<div style="display: inline-flex; align-items: center; gap: 8px; white-space: nowrap;">
           <button onclick="App.toggleSrcEnabled(${rowId})" role="switch" aria-checked="${enabled}" aria-label="${esc(row.name)} 采集开关" title="${enabled?'点击停用：停止采集，且下一期简报不再收录该源':'点击启用：下一期开始正式采集该源'}" style="position: relative; flex: none; width: 38px; height: 21px; padding: 0; border-radius: 999px; border: 1px solid ${enabled?A.accentBorder:UI.border}; background: ${enabled?A.accentBright:'rgba(22,19,15,.06)'}; cursor: pointer;">
             <span style="position: absolute; top: 2px; left: ${enabled?'19px':'2px'}; width: 15px; height: 15px; border-radius: 50%; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.25);"></span>
           </button>
@@ -4002,14 +4004,14 @@ function sourcesHtml(A){
     const priorityCell = `<div style="display: inline-flex; border: 1px solid ${UI.border}; border-radius: 8px; overflow: hidden; width: fit-content; background: rgba(22,19,15,.02);">${priorityOrder.map(p=>{ const on=row.priority===p; return `<button onclick="App.setPriority(${rowId},'${p}')" title="设为${p}优先级${canPriority?'并写回飞书':'（暂存本地）'}" style="height: 26px; padding: 0 9px; border: none; background: ${on?A.accentSoft:'transparent'}; color: ${on?A.accentBright:UI.text3}; font-size: 12px; font-weight: ${on?700:600}; cursor: pointer;">${p}</button>`; }).join('')}</div>`;
     const briefTone = row.briefCount>0 ? UI.text : UI.text3;
     return `
-    <div class="src-row" style="display: grid; grid-template-columns: ${grid}; padding: 0 20px; min-height: 58px; align-items: center; border-bottom: 1px solid ${UI.hair}; opacity: ${row.status==='paused'?'.55':'1'};">
+    <div class="src-row" style="display: grid; grid-template-columns: ${grid}; padding: 0 20px; min-height: 48px; align-items: center; border-bottom: 1px solid ${UI.hair}; opacity: ${row.status==='paused'?'.55':'1'};">
       ${row.url
         ? `<a href="${esc(row.url)}" target="_blank" rel="noopener noreferrer" title="${esc(row.url)}" style="padding-right: 12px; font-size: 13.5px; font-weight: 600; color: ${UI.text}; text-decoration: none; border-bottom: 1px solid transparent;" onmouseover="this.style.color='${A.accentBright}';this.style.borderBottomColor='${A.accentBorder}'" onmouseout="this.style.color='${UI.text}';this.style.borderBottomColor='transparent'">${esc(row.name)}</a>`
         : `<span style="padding-right: 12px; font-size: 13.5px; font-weight: 600; color: ${UI.text};">${esc(row.name)}</span>`}
       ${statusCell}
       <span style="font-size: 12px; color: ${UI.text2}; display: inline-flex; flex-direction: column; gap: 3px; align-items: flex-start;"><span style="padding: 3px 10px; border-radius: 999px; border: 1px solid ${UI.border}; background: rgba(22,19,15,.03);">${esc(row.format)}</span><span style="font-size: 10px; color: ${UI.text3};">${esc(row.fetchMethod)}</span></span>
       ${priorityCell}
-      <span style="font-size: 12px; color: ${UI.text3}; font-family: 'Geist Mono', ui-monospace, Menlo, monospace;">${esc(row.last||'从未')}</span>
+      <span style="font-size: 12px; color: ${UI.text3}; font-family: 'Geist Mono', ui-monospace, Menlo, monospace; white-space: nowrap;">${esc(row.last||'从未')}</span>
       <span style="font-size: 12px; color: ${UI.text3}; text-align: right; font-family: 'Geist Mono', ui-monospace, Menlo, monospace;">${row.perDay}</span>
       <span title="近 ${state.briefWindowDays||7} 期简报里选中的条数" style="font-size: 12.5px; font-weight: 700; color: ${briefTone}; text-align: right; font-family: 'Geist Mono', ui-monospace, Menlo, monospace;">${row.briefCount}</span>
       ${canConfig?`<button onclick="App.toggleDetail(${rowId})" title="展开完整采集配置：时间窗、关键词正则、extra_config" style="justify-self: end; height: 26px; padding: 0 9px; border-radius: 7px; border: 1px solid ${detailOpen?A.accentBorder:UI.border}; background: ${detailOpen?A.accentSoft:'transparent'}; color: ${detailOpen?A.accentBright:UI.text3}; font-size: 11px; font-weight: 700; cursor: pointer;">配置</button>`:''}
@@ -4034,8 +4036,18 @@ function sourcesHtml(A){
   };
   const groupedRowsHtml = typeOrder.map((type,index)=>{
     const rows = filtered.filter(row=>row.type===type);
-    return rows.length ? groupHeader(type, rows, index) : '';
+    if(!rows.length) return '';
+    const tone = sourceTone(type, index);
+    return `<div class="source-type-divider" style="display:grid;grid-template-columns:${grid};padding:0 20px;height:30px;align-items:center;background:color-mix(in srgb, ${tone} 7%, white);border-top:1px solid ${UI.border};border-bottom:1px solid ${UI.hair};font-size:11px;color:${UI.text2};"><span style="grid-column:1 / -1;display:flex;align-items:center;gap:8px;"><i style="width:7px;height:7px;background:${tone};display:inline-block;"></i><strong style="font-size:11.5px;color:${UI.text};">${esc(type)}</strong><span style="font-family:'Geist Mono',monospace;color:${UI.text3};">${rows.length} 个来源 · 已接入 ${rows.filter(x=>x.status==='active').length}</span></span></div>${renderRows(rows)}`;
   }).join('') || (filtered.length ? groupHeader('其他来源', filtered, 0) : '');
+
+  const sourceBoardHtml = filtered.length ? `<section class="source-group source-board" style="border:1px solid ${UI.border};background:${UI.panel};overflow:hidden;">
+      <div style="display:flex;align-items:center;gap:10px;padding:9px 17px;background:rgba(22,19,15,.025);border-bottom:1px solid ${UI.border};">
+        <strong style="font-size:13px;color:${UI.text};">全部信号源</strong><span style="font:11px 'Geist Mono',monospace;color:${UI.text3};">${filtered.length} 个来源</span><span style="margin-left:auto;font-size:11px;color:${UI.text3};">已接入 ${filtered.filter(x=>x.status==='active').length}</span>
+      </div>
+      <div class="source-group-head" style="display:grid;grid-template-columns:${grid};padding:0 20px;height:34px;align-items:center;background:rgba(22,19,15,.018);border-bottom:1px solid ${UI.border};font-size:10px;font-weight:700;letter-spacing:.05em;color:${UI.text3};">
+        <span>来源名称</span><span>${canStatus?'接入开关':'接入状态'}</span><span>载体 / 方式</span><span>优先级</span><span>最近采集</span><span style="text-align:right;">入库</span><span style="text-align:right;">入选</span>${canConfig?'<span></span>':''}<span></span>
+      </div>${groupedRowsHtml}</section>` : '';
 
   const emptyHtml = filtered.length===0 ? `<div style="padding: 36px 20px; text-align: center; font-size: 13px; color: ${UI.text3};">${!state.sources.length?'尚未读取到信号源配置':query?`没有匹配「${esc(state.srcQuery)}」的信号源`:'当前筛选组合下没有信号源'}</div>` : '';
 
@@ -4104,7 +4116,7 @@ function sourcesHtml(A){
       <div style="padding: 0 4px 6px;">${srcTabsHtml}</div>
 
       <section style="display:flex;flex-direction:column;gap:16px;position:relative;">
-        ${groupedRowsHtml}
+        ${sourceBoardHtml}
         ${emptyHtml}
       </section>
 
