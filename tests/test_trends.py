@@ -228,7 +228,7 @@ class GoogleSoloTest(_NoRawMixin):
 
 
 class XCountsTest(_NoRawMixin):
-    def test_buckets_daily_counts(self):
+    def test_buckets_daily_counts_filters_low_heat_topics(self):
         days = _days()
         block = trends.fetch_x(
             days,
@@ -237,11 +237,8 @@ class XCountsTest(_NoRawMixin):
             api_get=_x_counts(days),
             sleep_fn=lambda _: None,
         )
-        self.assertFalse(block["error"])
-        row = block["matrix"]["raw"][0]
-        self.assertEqual(len(row), 7)
-        self.assertEqual(row[-1], 70.0)
-        self.assertEqual(len(block["matrix"]["raw"]), 10)
+        self.assertEqual(block["error"], "X 暂无达到热度门槛的 AI 话题")
+        self.assertEqual(block["topics"], [])
 
     def test_missing_token_does_not_call_api(self):
         days = _days()
@@ -314,6 +311,8 @@ class BuildPayloadTest(_NoRawMixin):
             today=date(2026, 8, 28),
             topics=_specs(),
             google_fn=lambda _: google,
+            x_topics=_specs(),
+            x_fn=lambda days: trends.empty_source(days, topics=list(trends.TOPICS), error="X boom"),
         )
         self.assertEqual(payload["days"], days)
         self.assertEqual(payload["topics"], list(trends.TOPICS))
@@ -321,7 +320,8 @@ class BuildPayloadTest(_NoRawMixin):
         self.assertEqual(len(payload["google-trends"]["matrix"]["raw"]), 10)
         self.assertTrue(all(len(row) == 7 for row in payload["google-trends"]["matrix"]["raw"]))
         self.assertFalse(payload["google-trends"]["error"])
-        self.assertNotIn("x", payload)
+        self.assertEqual(len(payload["x"]["matrix"]["raw"]), 10)
+        self.assertEqual(payload["x"]["error"], "X boom")
         self.assertIn("agent", payload["queries"])
 
     def test_failed_side_keeps_overlapping_days_from_yesterday(self):
@@ -342,6 +342,8 @@ class BuildPayloadTest(_NoRawMixin):
             google_fn=lambda days: trends.empty_source(
                 days, topics=list(trends.TOPICS), error="Trends blocked"
             ),
+            x_topics=_specs(),
+            x_fn=lambda days: trends.empty_source(days, topics=list(trends.TOPICS), error="X blocked"),
         )
         row = payload["google-trends"]["matrix"]["raw"][0]
         self.assertEqual(payload["google-trends"]["error"], "Trends blocked")
@@ -361,6 +363,7 @@ class BuildPayloadTest(_NoRawMixin):
             previous=previous,
             select_fn=lambda: [],
             google_fn=lambda days: trends.empty_source(days, topics=["claude-code"], error="skip"),
+            x_topics=[],
         )
         self.assertEqual(payload["topics"], ["claude-code"])
         self.assertEqual(payload["labels"]["claude-code"], "claude code")
@@ -374,6 +377,7 @@ class BuildPayloadTest(_NoRawMixin):
             today=date(2026, 8, 28),
             topics=specs,
             google_fn=lambda days: trends.empty_source(days, topics=["dlss5", "flat"]),
+            x_topics=[],
         )
         self.assertEqual(payload["breakouts"], ["dlss5"])
         self.assertEqual(payload["selection"]["breakouts"], ["dlss5"])
@@ -390,6 +394,7 @@ class BuildPayloadTest(_NoRawMixin):
             today=date(2026, 8, 28),
             topics=_specs(),
             google_fn=lambda _: google,
+            x_topics=[],
         )
         with tempfile.TemporaryDirectory() as temp:
             output = Path(temp) / "heatmap-trends.json"

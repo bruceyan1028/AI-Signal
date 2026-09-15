@@ -1,8 +1,8 @@
-"""首页话题热力图：从 Google 热搜筛出明确的 AI 议题，再补近 7 日搜索热度。
+"""首页话题热力图：Google 搜索趋势与 X 话题热度各自筛高热度 AI 议题。
 
-只展示 Google 搜索趋势。社交平台的帖量不是搜索热度，容易被转发、刷量和社区
-结构放大，因此不作为这一看板的反向指标。Google 失败时，话题不变才沿用上一份
-快照的重叠日期。
+Google 行来自多地区 `trending_now`，X 行来自官方 Trends by WOEID；两边话题集
+完全独立。Google 用搜索兴趣曲线，X 用近 7 日帖子量。两个渠道都只显示通过热度
+门槛的项目；不以低热度词填充列表。
 
     python -m src.trends --output site/data/heatmap-trends.json
 """
@@ -36,6 +36,8 @@ TOPIC_SLEEP = 0.8
 GOOGLE_REQUEST_DELAY = 1.5
 MAX_TOPICS = 10
 MIN_ROWS = 4
+GOOGLE_MIN_PEAK = 60.0
+X_MIN_FULL_DAY_COUNT = 10_000.0
 RATIO_MIN = 1.5
 RATIO_RELAXED = 1.3
 RATIO_LAYERS: tuple[dict[str, Any], ...] = (
@@ -114,6 +116,17 @@ QUERIES: dict[str, dict[str, str]] = {
     "funding": {"g": "AI startup", "x": '("AI startup" OR "AI funding" OR #AIFunding) -is:retweet'},
 }
 
+# 热搜榜本身在某些日子只给出一两个 AI 词。补充这组具名实体作为候选，
+# 但仍必须通过各渠道实际热度门槛才会进入看板。
+HIGH_CONFIDENCE_QUERIES: dict[str, dict[str, str]] = {
+    "openai": {"g": "OpenAI", "x": 'OpenAI -is:retweet'},
+    "anthropic": {"g": "Anthropic", "x": 'Anthropic -is:retweet'},
+    "claude": {"g": "Claude AI", "x": '"Claude AI" -is:retweet'},
+    "gemini": {"g": "Google Gemini", "x": '"Google Gemini" -is:retweet'},
+    "nvidia-ai": {"g": "NVIDIA AI", "x": '"NVIDIA AI" -is:retweet'},
+    "deepseek": {"g": "DeepSeek", "x": 'DeepSeek -is:retweet'},
+}
+
 BatchFn = Callable[[list[str]], tuple[list[str], dict[str, list[float]], dict[str, list[str]]]]
 CountsFn = Callable[[str, str], dict[str, Any]]
 TrendingFn = Callable[[str], Iterable[Any]]
@@ -153,6 +166,22 @@ def editorial_specs() -> list[TopicSpec]:
         TopicSpec(id=key, label=TOPIC_LABELS[key], query_g=spec["g"], query_x=spec["x"])
         for key, spec in QUERIES.items()
     ]
+
+
+def supplemental_specs() -> list[TopicSpec]:
+    return [
+        TopicSpec(id=key, label=spec["g"], query_g=spec["g"], query_x=spec["x"])
+        for key, spec in HIGH_CONFIDENCE_QUERIES.items()
+    ]
+
+
+def add_supplemental_candidates(specs: list[TopicSpec]) -> list[TopicSpec]:
+    result = list(specs)
+    for candidate in supplemental_specs():
+        if any(_too_similar(candidate.label, existing.label) for existing in result):
+            continue
+        result.append(candidate)
+    return result
 
 
 def day_labels(today: date | None = None) -> list[str]:
@@ -329,6 +358,29 @@ def pick_scoped_rows(
             picked.append((scoped_spec(spec, scope="country", geo=geo, breakout=False), list(row)))
             used.add(spec.id)
     return picked[:max_rows]
+
+
+def high_google_rows(
+    candidates: list[TopicSpec], global_series: dict[str, list[float]], *, max_rows: int = MAX_TOPICS
+) -> list[tuple[TopicSpec, list[float]]]:
+    """Keep breakout rows, then strong absolute Google-interest rows.
+
+    This is intentionally a quality gate, not a density target: it may return
+    fewer than `max_rows` when a day has little relevant search activity.
+    """
+    picked = pick_scoped_rows(candidates, global_series, fill_hot=False, max_rows=max_rows)
+    used = {spec.id for spec, _row in picked}
+    for spec in sorted(candidates, key=lambda item: (-max(global_series.get(item.id) or [0.0]), -item.volume)):
+        if spec.id in used:
+            continue
+        row = global_series.get(spec.id) or []
+        if max(row or [0.0]) < GOOGLE_MIN_PEAK:
+            continue
+        picked.append((scoped_spec(spec, scope="global", breakout=False), list(row)))
+        used.add(spec.id)
+        if len(picked) >= max_rows:
+            break
+    return picked
 
 
 def empty_source(days: list[str], *, topics: list[str] | None = None, error: str = "") -> dict[str, Any]:
@@ -906,9 +958,7 @@ def fetch_google(
                             country_series[spec.id] = (geo, aligned)
                             break
                         sleep_fn(TOPIC_SLEEP)
-            # Do not fill a sparse day with lower-quality rows merely to keep a
-            # visually dense table. An empty panel is more honest than noise.
-            picked = pick_scoped_rows(specs, global_series, country_series, fill_hot=False)
+            picked = high_google_rows(specs, global_series)
             if not picked:
                 empty = empty_source(days, topics=[], error="近 7 日没有足够的破线话题")
                 empty["_chosen"] = []
@@ -1019,8 +1069,20 @@ def fetch_x(
         )
     if errors:
         log.warning("X counts 部分失败：%s", "；".join(errors))
-    log.info("X counts %d 话题 × %d 日", len(specs), len(days))
-    return _finish_source(days, raw_rows, specs, kind="x")
+    # The current Beijing day is incomplete. Rank against the preceding full
+    # days, so a topic is not wrongly removed merely because today's bucket is
+    # still accumulating.
+    hot_specs: list[TopicSpec] = []
+    hot_rows: list[list[float]] = []
+    for spec, row in zip(specs, raw_rows):
+        full_day_peak = max(row[:-1] or row or [0.0])
+        if full_day_peak >= X_MIN_FULL_DAY_COUNT:
+            hot_specs.append(spec)
+            hot_rows.append(row)
+    if not hot_specs:
+        return empty_source(days, topics=[], error="X 暂无达到热度门槛的 AI 话题")
+    log.info("X counts %d/%d 个高热度话题 × %d 日", len(hot_specs), len(specs), len(days))
+    return _finish_source(days, hot_rows, hot_specs, kind="x")
 
 
 def _has_values(block: dict[str, Any] | None) -> bool:
@@ -1109,8 +1171,11 @@ def build_payload(
     today: date | None = None,
     previous: dict[str, Any] | None = None,
     topics: list[TopicSpec] | None = None,
+    x_topics: list[TopicSpec] | None = None,
     select_fn: Callable[[], list[TopicSpec]] | None = None,
+    x_select_fn: Callable[[], list[TopicSpec]] | None = None,
     google_fn: Callable[[list[str]], dict[str, Any]] | None = None,
+    x_fn: Callable[[list[str]], dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
     days = day_labels(today)
     old_days = list((previous or {}).get("days") or [])
@@ -1125,6 +1190,8 @@ def build_payload(
             specs = []
         if not specs:
             specs = specs_from_payload(previous)
+        if topics is None and select_fn is None:
+            specs = add_supplemental_candidates(specs)
     if google_fn is None:
         google = fetch_google(days, topics=specs, breakout=True)
         if "_chosen" in google:
@@ -1134,7 +1201,30 @@ def build_payload(
         google.pop("_chosen", None)
     topic_ids, labels, queries = _payload_topics(specs)
     breakouts = [spec.id for spec in specs if spec.breakout]
+    if x_topics is not None:
+        x_specs = list(x_topics)
+    else:
+        x_picker = x_select_fn or select_x_trending_ai
+        try:
+            x_specs = list(x_picker() or [])
+        except Exception as exc:  # noqa: BLE001 - X 榜单失败只回退 X 自己昨天的话题
+            log.warning("X 热搜筛选失败：%s", exc)
+            x_specs = []
+        if not x_specs:
+            x_specs = specs_from_source((previous or {}).get("x"))
+        if x_topics is None and x_select_fn is None:
+            x_specs = add_supplemental_candidates(x_specs)
+    if x_specs:
+        x_block = (x_fn or (lambda days_arg: fetch_x(days_arg, topics=x_specs)))(days)
+    else:
+        x_block = empty_source(days, topics=[], error="X 热搜里今天没有筛出 AI 话题")
+    x_block["selection"] = {
+        **(x_block.get("selection") or {}),
+        "method": "x-trends-by-woeid",
+    }
     same_ids = topic_ids == list((previous or {}).get("topics") or [])
+    x_topic_ids = [spec.id for spec in x_specs]
+    same_x_ids = x_topic_ids == list(((previous or {}).get("x") or {}).get("topics") or [])
     if same_ids:
         google = coalesce(
             google,
@@ -1144,6 +1234,19 @@ def build_payload(
             specs=specs,
             kind="g",
         )
+    if same_x_ids:
+        x_block = coalesce(
+            x_block,
+            (previous or {}).get("x"),
+            old_days=old_days,
+            new_days=days,
+            specs=x_specs,
+            kind="x",
+        )
+        x_block["selection"] = {
+            **(x_block.get("selection") or {}),
+            "method": "x-trends-by-woeid",
+        }
     google["selection"] = {
         **(google.get("selection") or {}),
         "method": "google-trending-ai",
@@ -1165,6 +1268,7 @@ def build_payload(
             "breakouts": breakouts,
         },
         "google-trends": google,
+        "x": x_block,
     }
 
 
