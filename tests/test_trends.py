@@ -93,6 +93,10 @@ class AiFilterTest(unittest.TestCase):
         self.assertFalse(trends.is_ai_trend("iphone 18 pro"))
         self.assertFalse(trends.is_ai_trend("honor robot phone"))
         self.assertFalse(trends.is_ai_trend("real madrid vs málaga"))
+        self.assertFalse(trends.is_ai_trend("human extinction", ["artificial intelligence"]))
+        self.assertFalse(trends.is_ai_trend("nvidia share price"))
+        self.assertFalse(trends.is_ai_trend("artificial intelligence"))
+        self.assertFalse(trends.is_ai_trend("ki anthropic"))
 
     def test_selects_ai_hits_ranked_by_volume(self):
         hits = [
@@ -116,6 +120,13 @@ class AiFilterTest(unittest.TestCase):
         ]
         picked = trends.select_ai_topics(hits)
         self.assertEqual([spec.label for spec in picked], ["dlss 5", "openai"])
+
+    def test_drops_ai_prefix_and_suffix_variants(self):
+        hits = [
+            {"keyword": "Anthropic AI", "volume": 300, "geos": ["US"], "related": []},
+            {"keyword": "AI Anthropic", "volume": 200, "geos": ["GB"], "related": []},
+        ]
+        self.assertEqual([spec.label for spec in trends.select_ai_topics(hits)], ["Anthropic AI"])
 
 
 class BreakoutScopeTest(unittest.TestCase):
@@ -299,25 +310,18 @@ class BuildPayloadTest(_NoRawMixin):
             days, topics=_specs(), batch_fn=_google_solo(days), sleep_fn=lambda _: None
         )
 
-        def x_fail(_days_arg):
-            return trends.empty_source(_days_arg, topics=list(trends.TOPICS), error="X boom")
-
         payload = trends.build_payload(
             today=date(2026, 8, 28),
             topics=_specs(),
-            x_topics=_specs(),
             google_fn=lambda _: google,
-            x_fn=x_fail,
         )
         self.assertEqual(payload["days"], days)
         self.assertEqual(payload["topics"], list(trends.TOPICS))
         self.assertEqual(payload["selection"]["method"], "google-trending-ai")
         self.assertEqual(len(payload["google-trends"]["matrix"]["raw"]), 10)
-        self.assertEqual(len(payload["x"]["matrix"]["raw"]), 10)
         self.assertTrue(all(len(row) == 7 for row in payload["google-trends"]["matrix"]["raw"]))
-        self.assertTrue(all(len(row) == 7 for row in payload["x"]["matrix"]["raw"]))
         self.assertFalse(payload["google-trends"]["error"])
-        self.assertEqual(payload["x"]["error"], "X boom")
+        self.assertNotIn("x", payload)
         self.assertIn("agent", payload["queries"])
 
     def test_failed_side_keeps_overlapping_days_from_yesterday(self):
@@ -330,17 +334,14 @@ class BuildPayloadTest(_NoRawMixin):
             "days": old_days,
             "topics": list(trends.TOPICS),
             "google-trends": previous_google,
-            "x": trends.empty_source(old_days, topics=list(trends.TOPICS)),
         }
         payload = trends.build_payload(
             today=date(2026, 8, 28),
             previous=previous,
             topics=_specs(),
-            x_topics=_specs(),
             google_fn=lambda days: trends.empty_source(
                 days, topics=list(trends.TOPICS), error="Trends blocked"
             ),
-            x_fn=lambda days: trends.empty_source(days, topics=list(trends.TOPICS), error="no token"),
         )
         row = payload["google-trends"]["matrix"]["raw"][0]
         self.assertEqual(payload["google-trends"]["error"], "Trends blocked")
@@ -359,9 +360,7 @@ class BuildPayloadTest(_NoRawMixin):
             today=date(2026, 8, 28),
             previous=previous,
             select_fn=lambda: [],
-            x_topics=[],
             google_fn=lambda days: trends.empty_source(days, topics=["claude-code"], error="skip"),
-            x_fn=lambda days: trends.empty_source(days, topics=["claude-code"], error="skip"),
         )
         self.assertEqual(payload["topics"], ["claude-code"])
         self.assertEqual(payload["labels"]["claude-code"], "claude code")
@@ -374,9 +373,7 @@ class BuildPayloadTest(_NoRawMixin):
         payload = trends.build_payload(
             today=date(2026, 8, 28),
             topics=specs,
-            x_topics=specs,
             google_fn=lambda days: trends.empty_source(days, topics=["dlss5", "flat"]),
-            x_fn=lambda days: trends.empty_source(days, topics=["dlss5", "flat"]),
         )
         self.assertEqual(payload["breakouts"], ["dlss5"])
         self.assertEqual(payload["selection"]["breakouts"], ["dlss5"])
@@ -392,9 +389,7 @@ class BuildPayloadTest(_NoRawMixin):
         payload = trends.build_payload(
             today=date(2026, 8, 28),
             topics=_specs(),
-            x_topics=_specs(),
             google_fn=lambda _: google,
-            x_fn=lambda d: trends.empty_source(d, topics=list(trends.TOPICS), error="skip"),
         )
         with tempfile.TemporaryDirectory() as temp:
             output = Path(temp) / "heatmap-trends.json"

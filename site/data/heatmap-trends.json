@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-15T14:21:41+08:00",
+  "generatedAt": "2026-09-15T14:30:54+08:00",
   "days": [
     "2026-09-09",
     "2026-09-10",
@@ -10,71 +10,32 @@
     "2026-09-15"
   ],
   "topics": [
-    "artificial-intelligence",
-    "politics",
-    "ai-anthropic",
     "anthropic-ai"
   ],
   "labels": {
-    "artificial-intelligence": "artificial intelligence",
-    "politics": "politics",
-    "ai-anthropic": "ai anthropic",
     "anthropic-ai": "anthropic ai"
   },
   "queries": {
-    "artificial-intelligence": {
-      "g": "artificial intelligence",
-      "x": "\"artificial intelligence\" -is:retweet"
-    },
-    "politics": {
-      "g": "politics",
-      "x": "\"politics\" -is:retweet"
-    },
-    "ai-anthropic": {
-      "g": "ai anthropic",
-      "x": "\"ai anthropic\" -is:retweet"
-    },
     "anthropic-ai": {
       "g": "anthropic ai",
       "x": "\"anthropic ai\" -is:retweet"
     }
   },
   "scopes": {
-    "artificial-intelligence": "global",
-    "politics": "global",
-    "ai-anthropic": "global",
     "anthropic-ai": "global"
   },
   "marks": {
-    "artificial-intelligence": "🌐",
-    "politics": "🌐",
-    "ai-anthropic": "🌐",
     "anthropic-ai": "🌐"
   },
   "breakouts": [
-    "artificial-intelligence",
-    "politics",
-    "ai-anthropic",
     "anthropic-ai"
   ],
   "selection": {
     "method": "google-trending-ai",
     "volumes": {
-      "artificial-intelligence": 2000,
-      "politics": 1000,
-      "ai-anthropic": 200,
       "anthropic-ai": 10000
     },
     "geos": {
-      "artificial-intelligence": [
-        "IN"
-      ],
-      "politics": [
-        "CA"
-      ],
-      "ai-anthropic": [
-        "CA"
-      ],
       "anthropic-ai": [
         "GB",
         "AU",
@@ -82,85 +43,40 @@
       ]
     },
     "plot_geo": {
-      "artificial-intelligence": "",
-      "politics": "",
-      "ai-anthropic": "",
       "anthropic-ai": ""
     },
     "breakouts": [
-      "artificial-intelligence",
-      "politics",
-      "ai-anthropic",
       "anthropic-ai"
     ]
   },
   "google-trends": {
     "error": "",
     "topics": [
-      "artificial-intelligence",
-      "politics",
-      "ai-anthropic",
       "anthropic-ai"
     ],
     "labels": {
-      "artificial-intelligence": "artificial intelligence",
-      "politics": "politics",
-      "ai-anthropic": "ai anthropic",
       "anthropic-ai": "anthropic ai"
     },
     "queries": {
-      "artificial-intelligence": {
-        "g": "artificial intelligence",
-        "x": "\"artificial intelligence\" -is:retweet"
-      },
-      "politics": {
-        "g": "politics",
-        "x": "\"politics\" -is:retweet"
-      },
-      "ai-anthropic": {
-        "g": "ai anthropic",
-        "x": "\"ai anthropic\" -is:retweet"
-      },
       "anthropic-ai": {
         "g": "anthropic ai",
         "x": "\"anthropic ai\" -is:retweet"
       }
     },
     "scopes": {
-      "artificial-intelligence": "global",
-      "politics": "global",
-      "ai-anthropic": "global",
       "anthropic-ai": "global"
     },
     "marks": {
-      "artificial-intelligence": "🌐",
-      "politics": "🌐",
-      "ai-anthropic": "🌐",
       "anthropic-ai": "🌐"
     },
     "breakouts": [
-      "artificial-intelligence",
-      "politics",
-      "ai-anthropic",
       "anthropic-ai"
     ],
     "selection": {
       "volumes": {
-        "artificial-intelligence": 2000,
-        "politics": 1000,
-        "ai-anthropic": 200,
         "anthropic-ai": 10000
       },
       "geos": {
-        "artificial-intelligence": [
-          "IN"
-        ],
-        "politics": [
-          "CA"
-        ],
-        "ai-anthropic": [
-          "CA"
-        ],
         "anthropic-ai": [
           "GB",
           "AU",
@@ -168,9 +84,6 @@
         ]
       },
       "plot_geo": {
-        "artificial-intelligence": "",
-        "politics": "",
-        "ai-anthropic": "",
         "anthropic-ai": ""
       },
       "method": "google-trending-ai"
@@ -178,151 +91,31 @@
     "matrix": {
       "raw": [
         [
-          52.0,
-          48.0,
-          43.0,
-          32.0,
-          39.0,
-          68.0,
-          100.0
-        ],
-        [
-          74.0,
-          77.0,
-          72.0,
-          59.0,
-          62.0,
-          85.0,
-          100.0
-        ],
-        [
-          78.0,
-          87.0,
-          64.0,
-          51.0,
-          76.0,
-          87.0,
-          100.0
-        ],
-        [
-          78.0,
-          87.0,
+          79.0,
+          88.0,
           64.0,
           52.0,
           77.0,
-          87.0,
+          88.0,
           100.0
         ]
       ],
       "normalized": [
         [
-          0.52,
-          0.48,
-          0.43,
-          0.32,
-          0.39,
-          0.68,
-          1.0
-        ],
-        [
-          0.74,
-          0.77,
-          0.72,
-          0.59,
-          0.62,
-          0.85,
-          1.0
-        ],
-        [
-          0.78,
-          0.87,
-          0.64,
-          0.51,
-          0.76,
-          0.87,
-          1.0
-        ],
-        [
-          0.78,
-          0.87,
+          0.79,
+          0.88,
           0.64,
           0.52,
           0.77,
-          0.87,
+          0.88,
           1.0
         ]
       ]
     },
     "trend": {
-      "artificial-intelligence": 2.128,
-      "politics": 1.399,
-      "ai-anthropic": 1.354,
-      "anthropic-ai": 1.348
+      "anthropic-ai": 1.339
     },
     "items": {
-      "artificial-intelligence|2026-09-09": [
-        "g-artificial-intelligence"
-      ],
-      "artificial-intelligence|2026-09-10": [
-        "g-artificial-intelligence"
-      ],
-      "artificial-intelligence|2026-09-11": [
-        "g-artificial-intelligence"
-      ],
-      "artificial-intelligence|2026-09-12": [
-        "g-artificial-intelligence"
-      ],
-      "artificial-intelligence|2026-09-13": [
-        "g-artificial-intelligence"
-      ],
-      "artificial-intelligence|2026-09-14": [
-        "g-artificial-intelligence"
-      ],
-      "artificial-intelligence|2026-09-15": [
-        "g-artificial-intelligence"
-      ],
-      "politics|2026-09-09": [
-        "g-politics"
-      ],
-      "politics|2026-09-10": [
-        "g-politics"
-      ],
-      "politics|2026-09-11": [
-        "g-politics"
-      ],
-      "politics|2026-09-12": [
-        "g-politics"
-      ],
-      "politics|2026-09-13": [
-        "g-politics"
-      ],
-      "politics|2026-09-14": [
-        "g-politics"
-      ],
-      "politics|2026-09-15": [
-        "g-politics"
-      ],
-      "ai-anthropic|2026-09-09": [
-        "g-ai-anthropic"
-      ],
-      "ai-anthropic|2026-09-10": [
-        "g-ai-anthropic"
-      ],
-      "ai-anthropic|2026-09-11": [
-        "g-ai-anthropic"
-      ],
-      "ai-anthropic|2026-09-12": [
-        "g-ai-anthropic"
-      ],
-      "ai-anthropic|2026-09-13": [
-        "g-ai-anthropic"
-      ],
-      "ai-anthropic|2026-09-14": [
-        "g-ai-anthropic"
-      ],
-      "ai-anthropic|2026-09-15": [
-        "g-ai-anthropic"
-      ],
       "anthropic-ai|2026-09-09": [
         "g-anthropic-ai"
       ],
@@ -346,177 +139,10 @@
       ]
     },
     "itemIndex": {
-      "g-artificial-intelligence": {
-        "title": "Google Trends · artificial intelligence",
-        "source": "Google Trends",
-        "url": "https://trends.google.com/trends/explore?date=now%207-d&q=artificial%20intelligence"
-      },
-      "g-politics": {
-        "title": "Google Trends · politics",
-        "source": "Google Trends",
-        "url": "https://trends.google.com/trends/explore?date=now%207-d&q=politics"
-      },
-      "g-ai-anthropic": {
-        "title": "Google Trends · ai anthropic",
-        "source": "Google Trends",
-        "url": "https://trends.google.com/trends/explore?date=now%207-d&q=ai%20anthropic"
-      },
       "g-anthropic-ai": {
         "title": "Google Trends · anthropic ai",
         "source": "Google Trends",
         "url": "https://trends.google.com/trends/explore?date=now%207-d&q=anthropic%20ai"
-      }
-    }
-  },
-  "x": {
-    "error": "",
-    "topics": [
-      "anthropic",
-      "openai"
-    ],
-    "labels": {
-      "anthropic": "Anthropic",
-      "openai": "OpenAI"
-    },
-    "queries": {
-      "anthropic": {
-        "g": "Anthropic",
-        "x": "\"Anthropic\" -is:retweet"
-      },
-      "openai": {
-        "g": "OpenAI",
-        "x": "\"OpenAI\" -is:retweet"
-      }
-    },
-    "scopes": {
-      "anthropic": "global",
-      "openai": "country"
-    },
-    "marks": {
-      "anthropic": "🌐",
-      "openai": "🇬🇧"
-    },
-    "breakouts": [],
-    "selection": {
-      "volumes": {
-        "anthropic": 39,
-        "openai": 19
-      },
-      "geos": {
-        "anthropic": [
-          "US",
-          "GB"
-        ],
-        "openai": [
-          "GB"
-        ]
-      },
-      "plot_geo": {
-        "anthropic": "",
-        "openai": "GB"
-      },
-      "method": "x-trends-by-woeid"
-    },
-    "matrix": {
-      "raw": [
-        [
-          31986.0,
-          24847.0,
-          21978.0,
-          22578.0,
-          24450.0,
-          25463.0,
-          5123.0
-        ],
-        [
-          69034.0,
-          28737.0,
-          23518.0,
-          22450.0,
-          25125.0,
-          25139.0,
-          5181.0
-        ]
-      ],
-      "normalized": [
-        [
-          1.0,
-          0.7768,
-          0.6871,
-          0.7059,
-          0.7644,
-          0.7961,
-          0.1602
-        ],
-        [
-          1.0,
-          0.4163,
-          0.3407,
-          0.3252,
-          0.364,
-          0.3642,
-          0.075
-        ]
-      ]
-    },
-    "trend": {
-      "anthropic": 0.203,
-      "openai": 0.16
-    },
-    "items": {
-      "anthropic|2026-09-09": [
-        "x-anthropic"
-      ],
-      "anthropic|2026-09-10": [
-        "x-anthropic"
-      ],
-      "anthropic|2026-09-11": [
-        "x-anthropic"
-      ],
-      "anthropic|2026-09-12": [
-        "x-anthropic"
-      ],
-      "anthropic|2026-09-13": [
-        "x-anthropic"
-      ],
-      "anthropic|2026-09-14": [
-        "x-anthropic"
-      ],
-      "anthropic|2026-09-15": [
-        "x-anthropic"
-      ],
-      "openai|2026-09-09": [
-        "x-openai"
-      ],
-      "openai|2026-09-10": [
-        "x-openai"
-      ],
-      "openai|2026-09-11": [
-        "x-openai"
-      ],
-      "openai|2026-09-12": [
-        "x-openai"
-      ],
-      "openai|2026-09-13": [
-        "x-openai"
-      ],
-      "openai|2026-09-14": [
-        "x-openai"
-      ],
-      "openai|2026-09-15": [
-        "x-openai"
-      ]
-    },
-    "itemIndex": {
-      "x-anthropic": {
-        "title": "X 热搜 · \"Anthropic\" -is:retweet",
-        "source": "X",
-        "url": "https://x.com/search?q=%22Anthropic%22%20-is%3Aretweet&src=typed_query&f=live"
-      },
-      "x-openai": {
-        "title": "X 热搜 · \"OpenAI\" -is:retweet",
-        "source": "X",
-        "url": "https://x.com/search?q=%22OpenAI%22%20-is%3Aretweet&src=typed_query&f=live"
       }
     }
   }
