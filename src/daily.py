@@ -1754,7 +1754,10 @@ def generate(day: str | None = None) -> dict[str, Any]:
         media = signal.get("mediaAssets") or {"images": [], "videos": []}
         original_media = media
         original_image = str(signal.get("imageUrl") or "").strip()
-        if signal.get("contentType") in {"文章", "公众号", "视频", "播客"}:
+        if (
+            signal.get("contentType") in {"文章", "公众号", "视频", "播客"}
+            and not skip_visual_media
+        ):
             bundle = article_media.get(str(signal.get("recordId") or ""), {})
             media, curated_image = rss.select_pushed_article_images(
                 signal,
