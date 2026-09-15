@@ -2649,7 +2649,7 @@ function heatmapHtml(A){
     const breakouts = heatmap.breakouts || [];
     const hasBreakouts = Array.isArray(breakouts) && breakouts.length;
     const isBreakout = hasBreakouts && breakouts.includes(topic);
-    const badge = isBreakout ? '🔥' : (!hasBreakouts && tr > 1.5 ? '🔥' : (tr < 0.5 ? '❄️' : ''));
+    const badge = isBreakout ? '🔥' : (!hasBreakouts && tr > 1.5 ? '🔥' : '');
     const cells = days.map((day, j)=>{
       const raw = (rawM[i] && rawM[i][j]) || 0;
       const norm = (normM[i] && normM[i][j]) || 0;

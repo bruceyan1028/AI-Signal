@@ -368,13 +368,17 @@ def high_google_rows(
     This is intentionally a quality gate, not a density target: it may return
     fewer than `max_rows` when a day has little relevant search activity.
     """
-    picked = pick_scoped_rows(candidates, global_series, fill_hot=False, max_rows=max_rows)
+    picked = [
+        (spec, row)
+        for spec, row in pick_scoped_rows(candidates, global_series, fill_hot=False, max_rows=max_rows)
+        if row_ratio(row) >= 1.0
+    ]
     used = {spec.id for spec, _row in picked}
     for spec in sorted(candidates, key=lambda item: (-max(global_series.get(item.id) or [0.0]), -item.volume)):
         if spec.id in used:
             continue
         row = global_series.get(spec.id) or []
-        if max(row or [0.0]) < GOOGLE_MIN_PEAK:
+        if max(row or [0.0]) < GOOGLE_MIN_PEAK or row_ratio(row) < 1.0:
             continue
         picked.append((scoped_spec(spec, scope="global", breakout=False), list(row)))
         used.add(spec.id)
@@ -1069,14 +1073,18 @@ def fetch_x(
         )
     if errors:
         log.warning("X counts 部分失败：%s", "；".join(errors))
-    # The current Beijing day is incomplete. Rank against the preceding full
-    # days, so a topic is not wrongly removed merely because today's bucket is
-    # still accumulating.
+    # The current Beijing day is incomplete. Both the high-heat threshold and
+    # direction test use the latest complete day, so an accumulating bucket is
+    # never displayed as a false decline.
     hot_specs: list[TopicSpec] = []
     hot_rows: list[list[float]] = []
     for spec, row in zip(specs, raw_rows):
-        full_day_peak = max(row[:-1] or row or [0.0])
-        if full_day_peak >= X_MIN_FULL_DAY_COUNT:
+        complete = row[:-1] or row
+        latest_complete = complete[-1] if complete else 0.0
+        prior = complete[:-1]
+        prior_mean = sum(prior) / len(prior) if prior else 0.0
+        is_non_declining = not prior_mean or latest_complete >= prior_mean
+        if latest_complete >= X_MIN_FULL_DAY_COUNT and is_non_declining:
             hot_specs.append(spec)
             hot_rows.append(row)
     if not hot_specs:

@@ -128,6 +128,14 @@ class AiFilterTest(unittest.TestCase):
         ]
         self.assertEqual([spec.label for spec in trends.select_ai_topics(hits)], ["Anthropic AI"])
 
+    def test_high_google_rows_excludes_declining_interest(self):
+        specs = [
+            trends.TopicSpec("rising", "Rising", "Rising", "x"),
+            trends.TopicSpec("falling", "Falling", "Falling", "x"),
+        ]
+        rows = {"rising": [30, 35, 40, 45, 50, 55, 60], "falling": [100, 90, 80, 70, 60, 50, 40]}
+        self.assertEqual([spec.id for spec, _row in trends.high_google_rows(specs, rows)], ["rising"])
+
 
 class BreakoutScopeTest(unittest.TestCase):
     def test_flag_emoji_and_globe(self):
@@ -239,6 +247,22 @@ class XCountsTest(_NoRawMixin):
         )
         self.assertEqual(block["error"], "X 暂无达到热度门槛的 AI 话题")
         self.assertEqual(block["topics"], [])
+
+    def test_filters_high_volume_but_declining_x_topic(self):
+        days = _days()
+        spec = trends.TopicSpec("topic", "Topic", "Topic", "topic")
+
+        def counts(_query, _start):
+            return {
+                "data": [
+                    {"start": f"{day}T00:00:00Z", "tweet_count": count}
+                    for day, count in zip(days, [30_000, 25_000, 20_000, 15_000, 10_000, 9_000, 1_000])
+                ]
+            }
+
+        block = trends.fetch_x(days, topics=[spec], bearer="token", api_get=counts, sleep_fn=lambda _: None)
+        self.assertEqual(block["topics"], [])
+        self.assertEqual(block["error"], "X 暂无达到热度门槛的 AI 话题")
 
     def test_missing_token_does_not_call_api(self):
         days = _days()

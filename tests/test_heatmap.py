@@ -128,6 +128,6 @@ class FrontendContractTest(unittest.TestCase):
         self.assertIn("Google Trends", template)
         self.assertIn("🔥", template)
         self.assertIn("breakouts", template)
-        self.assertIn("❄️", template)
+        self.assertNotIn("❄️", template)
         rail = template.split("function dataRailHtml")[1].split("function heatmapHtml")[0]
         self.assertIn("${heatmapHtml(A)}", rail)
