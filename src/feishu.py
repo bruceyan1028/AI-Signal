@@ -1091,3 +1091,25 @@ def sync_param_collect_stats(
         id_to_record,
         time_window_counts,
     )
+
+
+# Keep the historical module API while allowing a deployment to move storage
+# to MySQL with one environment variable. Authentication and messaging remain
+# Feishu-only: a storage adapter must never replace a real tenant token with a
+# sentinel value, because notify.py sends cards through the Feishu IM API.
+if config.DB_BACKEND == "mysql":  # pragma: no cover - exercised by integration tests
+    from . import mysql_backend as _mysql
+    for _name in (
+        "read_param_records", "read_existing_dedup_keys",
+        "read_all_records", "read_all_records_with_ids", "batch_delete_records",
+        "batch_create_table_records", "batch_update_records", "create_record",
+        "delete_record", "update_record", "batch_create_records",
+        "sync_param_collect_stats", "ensure_daily_brief_table",
+        "ensure_weekly_report_table", "ensure_weekly_pending_table",
+        "ensure_tracked_entity_table", "ensure_tracked_event_table",
+        "ensure_entry_enrichment_fields", "ensure_paper_config_fields",
+        "ensure_social_config_fields", "ensure_source_type_field",
+        "ensure_select_option", "update_social_cursor_states",
+        "ensure_weekly_report_table", "ensure_weekly_pending_table",
+    ):
+        globals()[_name] = getattr(_mysql, _name, lambda *args, **kwargs: 0)

@@ -102,7 +102,12 @@ class GeneratedCoverTest(unittest.TestCase):
 class PaperCoverTest(unittest.TestCase):
     @mock.patch.object(publish.paper_fulltext, "write_visual_page_images")
     def test_first_rendered_pdf_figure_becomes_card_cover(self, render):
-        render.return_value = [{"filename": "paper-p2-f1.png", "alt": "实验结果"}]
+        def render_file(_pdf_url, _pages, target_dir, *_args):
+            Path(target_dir).mkdir(parents=True, exist_ok=True)
+            (Path(target_dir) / "paper-p2-f1.png").write_bytes(b"png")
+            return [{"filename": "paper-p2-f1.png", "alt": "实验结果"}]
+
+        render.side_effect = render_file
         brief = {
             "date": "2026-09-10",
             "signals": [],

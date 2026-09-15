@@ -8,6 +8,7 @@ import logging
 import os
 import re
 import shutil
+import tempfile
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -605,17 +606,19 @@ def mirror_social_videos(
             post["mediaAssets"] = media
 
 
-def build_site(
+def _build_site_into(
     briefs: list[dict[str, Any]],
-    site_dir: Path | str = ROOT / "site",
+    site_dir: Path | str,
     params: list[dict[str, Any]] | None = None,
+    previous_site: Path | str | None = None,
 ) -> Path:
     if not briefs:
         raise RuntimeError("没有可发布的已发布简报")
     site = Path(site_dir)
-    kept = stash_persistent_site_data(site)
-    kept_generated_covers = stash_generated_covers(site)
-    kept_article_images = stash_article_images(site)
+    previous = Path(previous_site) if previous_site else site
+    kept = stash_persistent_site_data(previous)
+    kept_generated_covers = stash_generated_covers(previous)
+    kept_article_images = stash_article_images(previous)
     if site.exists():
         shutil.rmtree(site)
     data_dir = site / "data"
@@ -779,6 +782,89 @@ def build_site(
     (site / ".nojekyll").write_text("", encoding="utf-8")
     restore_persistent_site_data(site, kept)
     return site
+
+
+def _brief_item_count(brief: dict[str, Any]) -> int:
+    return sum(
+        len(brief.get(section) or [])
+        for section in ("signals", "technicalSignals", "paperSignals", "videoSignals", "podcastSignals")
+    )
+
+
+def validate_brief_snapshots(briefs: list[dict[str, Any]], previous_site: Path) -> None:
+    """Reject an accidental partial rebuild before it can replace a public brief."""
+    if os.environ.get("PUBLISH_ALLOW_SIGNAL_DROP", "").strip() == "1":
+        return
+    for brief in briefs:
+        day = str(brief.get("date") or "")
+        if not day or _brief_item_count(brief) == 0:
+            raise RuntimeError(f"简报快照无有效条目：{day or '未知日期'}")
+        prior_path = previous_site / "data" / f"brief-{day}.json"
+        if not prior_path.exists():
+            continue
+        try:
+            previous = json.loads(prior_path.read_text(encoding="utf-8"))
+        except (OSError, ValueError) as exc:
+            raise RuntimeError(f"无法校验既有简报快照 {day}: {exc}") from exc
+        before, after = _brief_item_count(previous), _brief_item_count(brief)
+        if before and after < max(1, int(before * 0.75)):
+            raise RuntimeError(
+                f"拒绝覆盖 {day}：条目从 {before} 条降至 {after} 条；"
+                "如确认这是预期变更，显式设置 PUBLISH_ALLOW_SIGNAL_DROP=1"
+            )
+
+
+def validate_site_media(site: Path, briefs: list[dict[str, Any]]) -> None:
+    """Ensure generated JSON never points at a missing local media asset."""
+    missing: list[str] = []
+    for brief in briefs:
+        for section in ("signals", "technicalSignals", "paperSignals", "videoSignals", "podcastSignals"):
+            for signal in brief.get(section) or []:
+                media = signal.get("mediaAssets") or {}
+                urls = [signal.get("imageUrl"), media.get("cover")]
+                urls.extend(item.get("url") for item in media.get("images") or [] if isinstance(item, dict))
+                for url in (str(value or "") for value in urls):
+                    if url.startswith(("http://", "https://", "data:")) or not url:
+                        continue
+                    if not (site / url).is_file():
+                        missing.append(f"{signal.get('recordId') or signal.get('title')}: {url}")
+    if missing:
+        raise RuntimeError("站点存在缺失本地媒体：" + "；".join(missing[:8]))
+
+
+def build_site(
+    briefs: list[dict[str, Any]],
+    site_dir: Path | str = ROOT / "site",
+    params: list[dict[str, Any]] | None = None,
+) -> Path:
+    """Build a complete replacement next to the live site, then atomically swap it in.
+
+    Media/PDF rendering can be slow or fail after the output directory has been prepared.
+    Building in place used to leave Pages with an empty ``site/`` tree in that window.
+    """
+    target = Path(site_dir)
+    target.parent.mkdir(parents=True, exist_ok=True)
+    staging = Path(tempfile.mkdtemp(prefix=f".{target.name}-build-", dir=target.parent))
+    backup = target.with_name(f".{target.name}-previous")
+    try:
+        validate_brief_snapshots(briefs, target)
+        _build_site_into(briefs, staging, params=params, previous_site=target)
+        validate_site_media(staging, briefs)
+        if backup.exists():
+            shutil.rmtree(backup)
+        if target.exists():
+            target.replace(backup)
+        staging.replace(target)
+        if backup.exists():
+            shutil.rmtree(backup)
+        return target
+    except Exception:
+        # The old site remains untouched until both the build and its writes finish.
+        if staging.exists():
+            shutil.rmtree(staging)
+        if not target.exists() and backup.exists():
+            backup.replace(target)
+        raise
 
 
 def refresh_side_boards(site: Path | str) -> Path:
