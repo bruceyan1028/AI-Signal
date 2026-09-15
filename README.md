@@ -23,7 +23,7 @@ ORDER BY s.published_at DESC LIMIT 20;
 RSS / Scrape / Media / Social / Podcast
         │
         ▼
-清洗去重（时间窗、关键词、类型规则、白宫 AI 门槛）
+清洗去重（时间窗、关键词、类型规则）
         │
         ▼
 飞书条目表 ──► LLM 分析 ──► 每日简报 / 周报 / 动向追踪
@@ -139,7 +139,7 @@ site/（GitHub Pages） + 飞书消息卡片
 
 | 字段 | 含义 |
 | --- | --- |
-| `source_id` | 稳定 ID，代码按它分支（如 `anthropic-news`、`whitehouse-tech-actions`） |
+| `source_id` | 稳定 ID，代码按它分支（如 `anthropic-news`） |
 | `status` | `active` / `experimental` / `paused` |
 | `fetch_method` | `RSS` / `Scrape` / `Media` / `Social` / `Podcast` / `Manual` / … |
 | `endpoint` | 列表页、RSS 或频道入口 |
@@ -240,7 +240,7 @@ python -m src.health --days 30
 
 - `rss.backfill_full_text`：RSS 摘要过短时回源；直连失败再试 Jina。
 - `paper_fulltext.enrich_item`：仅对最终拟入库的论文下 PDF，抽章节与图表页。
-- `policy_document.enrich_items`：白宫源在 `document_pdf_enrich` 打开时拉官方 PDF。
+- `policy_document.enrich_items`：源配置打开 `document_pdf_enrich` 时拉取官方 PDF 附件。
 - 播客：`podcast:transcript` → 节目页/YouTube 字幕 → 托管 ASR（独立 `ASR_*`，不能假设文本 LLM 也能转写）。
 
 ---
@@ -256,10 +256,9 @@ python -m src.health --days 30
 5. 超出 `lookback_window`（`heat_keep` 超高热度旧文可例外）
 6. 正文过短（官方摘要 RSS 可先放行再补全）
 7. `keyword_regex`：标题命中即过；否则正文命中次数 ≥ `keyword_min_hits`（默认 1）
-8. **白宫源额外**：`whitehouse-tech-*` 必须标题或正文命中 AI/ML/模型词（`process.is_ai_policy_text`）。`science and technology`、`R&D` 不能单独过。简报候选也会再卡一次，避免已入库的航天/关税备忘录再进推送
-9. 论文再走 `typed_config` 信号分、录用、社区热度
+8. 论文再走 `typed_config` 信号分、录用、社区热度
 
-漏斗计数：`lookback`、`keyword_regex`、`not_ai_policy`、`min_content_chars`、`title_exclude_regex` 等。时间窗过滤条数回写参数表「时间窗过滤」。
+漏斗计数：`lookback`、`keyword_regex`、`min_content_chars`、`title_exclude_regex` 等。时间窗过滤条数回写参数表「时间窗过滤」。
 
 ### 论文质量
 
@@ -278,7 +277,6 @@ python -m src.health --days 30
 ```
 读 active 源 + 条目表
   → 仍在各源 lookback（且不超过 7 天）内的候选
-  → 白宫非 AI 文再滤一遍
   → 按 P0 优先、质量分、时间排序；给非 P0 留 DAILY_MIN_NON_P0
   → 论文独立板块；视频/播客/GitHub/每源上限
   → cluster.collapse_for_brief 标题近似折叠
@@ -290,7 +288,7 @@ python -m src.health --days 30
 
 规模默认：主候选 30、主输出信号 30；论文独立收录且默认隐藏，最多 4；视频 1–4、播客最多 2、GitHub 最多 5、每源最多 4。`DAILY_ANALYSIS_CONCURRENCY` 默认 3，遇到模型网关限流时应优先下调；RSS 源通过 `RSS_CONCURRENCY`（默认 6）受控并发抓取，单源重试不会阻塞其它源。
 
-分析字段：`title_cn`、`summary_cn`、`why`、`deep_analysis_cn`、`impact` / `novelty` / `actionability`（0–100）、`urgency`（高/中/低）、`topics`（从固定集合选 2–4 个）。端侧主题由规则强制补「端侧」；白宫政策强制补「监管」。
+分析字段：`title_cn`、`summary_cn`、`why`、`deep_analysis_cn`、`impact` / `novelty` / `actionability`（0–100）、`urgency`（高/中/低）、`topics`（从固定集合选 2–4 个）。端侧主题由规则强制补「端侧」。
 
 英文正文按优先级/影响分翻译，上限见 `BODY_TRANSLATE_*`。详情页展示深度解读，不堆整篇译文。
 
@@ -482,8 +480,8 @@ python -m src.sources_api    # http://127.0.0.1:8787 ，只绑回环
 | `sources` | 参数记录 → feed；载体类型推断；B 类；lookback 解析 |
 | `typed_config` | 五张二级表 → `source_id` 过滤参数 |
 | `rss` / `scrape` / `video` / `social` / `podcast` | 各通道抓取 |
-| `process` | 清洗、白宫 AI 门、`format_for_feishu` |
-| `paper_enrich` / `paper_fulltext` / `policy_document` | 论文质量、PDF 证据、白宫附件 |
+| `process` | 清洗、`format_for_feishu` |
+| `paper_enrich` / `paper_fulltext` / `policy_document` | 论文质量、PDF 证据、官方附件 |
 | `cluster` | 同事件折叠与详情聚合 |
 | `report` | 统一 LLM JSON（chat/completions，失败试 responses） |
 | `daily` / `weekly` / `timeline` | 简报、周报、追踪 |
@@ -516,7 +514,7 @@ python -m src.sources_api    # http://127.0.0.1:8787 ，只绑回环
 | `force_direct` | 跳过 Jina |
 | `allow_shallow_html` | 允许浅层 HTML |
 | `policy_stage_extract` | 抽政策阶段/机构 |
-| `document_pdf_enrich` / `max_document_pdfs` | 白宫 PDF |
+| `document_pdf_enrich` / `max_document_pdfs` | 官方 PDF 附件 |
 | `channel_id` / `max_items` / `include_shorts` | YouTube |
 | `modelscope_api` / `modelscope_mode` / `modelscope_owner` | ModelScope |
 | `seed_api` / `seed_locale` / `seed_article_type` | 字节 Seed 博客 |
@@ -626,7 +624,7 @@ python -m src.diag_scrape --write --source-id huxiu --limit 1
 
 ```bash
 python -m src.diag_scrape [--engine auto|jina|direct] [--limit N] [--source-id xxx]
-python -m src.diag_rss --source-id whitehouse-tech-actions
+python -m src.diag_rss --source-id anthropic-news
 python -m src.diag_paper
 python -m src.diag_video --source-id youtube-anthropic
 python -m src.diag_social --source-id social-media
@@ -650,9 +648,6 @@ python -m tools.export_seed
 
 **加一个官网新闻源（Scrape）**  
 一级参数加行 → 专用 `list_parser`（若通用抽链会按 URL 排序截断）→ 诊断 → active → export_seed。参考 `anthropic-news`。
-
-**白宫又进了非 AI 政策**  
-不要放宽 `science and technology`。改 `process.is_ai_policy_text` / 种子里的 `keyword_regex` 与 `title_exclude_regex`，并写回飞书两行 `whitehouse-tech-*`。已发布简报 JSON 要改站点数据才会从网页消失。
 
 **论文板块内容太多**
 调 `DAILY_MAX_PAPERS`、`MAX_ARXIV_ITEMS`、`ARXIV_QUALITY_WEIGHT` 或论文二级表阈值。论文不计入日报 30 条，网页默认隐藏，点击「论文」板块后显示。

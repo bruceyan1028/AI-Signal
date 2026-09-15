@@ -16,53 +16,14 @@ logging.basicConfig(
 )
 log = logging.getLogger("diag_rss")
 
-DEFAULT_SOURCE_IDS = ("whitehouse-tech-releases", "whitehouse-tech-actions")
-SEED_PATH = Path(__file__).with_name("seed_default.json")
-
-
-def sync_whitehouse_configs(token: str, status: str) -> dict[str, int]:
-    """从种子幂等同步 White House 两个源到一级参数。"""
-    if status not in {"experimental", "active"}:
-        raise ValueError(f"unsupported status: {status}")
-    bundle = json.loads(SEED_PATH.read_text(encoding="utf-8"))
-    param_rows = [
-        dict(row)
-        for row in bundle.get("一级参数") or []
-        if str(row.get("source_id") or "") in DEFAULT_SOURCE_IDS
-    ]
-    for row in param_rows:
-        row["status"] = status
-
-    table_id, key = config.FEISHU_PARAM_TABLE_ID, "source_id"
-    existing = {
-        str(sources.cell((record.get("fields") or {}).get(key)) or ""): record
-        for record in feishu.read_all_records_with_ids(token, table_id, [key])
-    }
-    updates = [
-        {
-            "record_id": existing[str(row[key])]["record_id"],
-            "fields": row,
-        }
-        for row in param_rows
-        if str(row[key]) in existing
-    ]
-    creates = [row for row in param_rows if str(row[key]) not in existing]
-    return {
-        "param_updated": feishu.batch_update_records(token, table_id, updates),
-        "param_created": feishu.batch_create_table_records(token, table_id, creates),
-    }
-
-
 def run(
     source_ids: list[str],
     *,
     write: bool,
     out_path: Path | None = None,
-    sync_status: str | None = None,
 ) -> dict[str, Any]:
     config.validate()
     token = feishu.get_tenant_access_token()
-    sync_result = sync_whitehouse_configs(token, sync_status) if sync_status else {}
     records = feishu.read_param_records(token)
     wanted = {source_id.strip() for source_id in source_ids if source_id.strip()}
     feeds = [
@@ -107,7 +68,6 @@ def run(
         "cleaned": len(cleaned),
         "new": len(new_items),
         "created": created,
-        "config_sync": sync_result,
         "policy_documents": policy_stats,
         "raw_by_source": dict(
             Counter(str((item.get("feed") or {}).get("id") or "") for item in raw_items)
@@ -139,23 +99,17 @@ if __name__ == "__main__":
         "--source-id",
         action="append",
         default=[],
-        help="可重复指定；默认诊断两个 White House 科技政策源",
+        help="可重复指定；至少指定一个 RSS source_id",
     )
     parser.add_argument("--write", action="store_true", help="将跨轮去重后的条目写入飞书")
-    parser.add_argument(
-        "--sync-status",
-        choices=["experimental", "active"],
-        help="诊断前幂等同步两个 White House 源到参数表和信号源表",
-    )
     parser.add_argument("--out", type=Path, help="可选 JSON 诊断结果路径")
     args = parser.parse_args()
     raise SystemExit(
         0
         if run(
-            args.source_id or list(DEFAULT_SOURCE_IDS),
+            args.source_id,
             write=args.write,
             out_path=args.out,
-            sync_status=args.sync_status,
         )
         else 1
     )
