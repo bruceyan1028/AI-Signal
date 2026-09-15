@@ -402,13 +402,10 @@
         "Agent",
         "产品"
       ],
-      "imageUrl": "media/generated/generated-918a5eb6d7fd7eb62b.png",
+      "imageUrl": "",
       "mediaAssets": {
         "images": [],
-        "videos": [],
-        "cover": "media/generated/generated-918a5eb6d7fd7eb62b.png",
-        "coverKind": "generated-cover",
-        "curatedBy": "generated"
+        "videos": []
       },
       "editorialStructure": "",
       "body": "OpenAI最强模型GPT-6 Astra正式登陆Amazon Bedrock-品玩\n\n品玩 / 硅星人\n\n品玩9月10日讯，据亚马逊官方消息，OpenAI最新旗舰模型GPT-6 Astra现已在Amazon Bedrock正式可用，企业可通过API直接调用，或在ChatGPT Work与Codex中配置接入。该模型具备深层推理与业务判断力，支持跨软件协同与浏览器操作，赋能财务分析、合同审查及代码治理等复杂场景。\n\n安全层面，Amazon Bedrock提供芯片级零运维人员访问、全流程加密及合规审计，推理数据不用于模型训练。GPT-6 Astra是首个达到“关键”级网络安全能力的模型，内置自动化防护机制，结合AWS底层安全体系，确保企业级AI工作流的安全与合规。\n\n此外，OpenAI同步推出ChatGPT Work企业级插件，将浏览器操作能力扩展至主流商业智能与财务软件，进一步加速企业AI落地。",

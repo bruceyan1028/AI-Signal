@@ -599,13 +599,10 @@
         "Agent",
         "产品"
       ],
-      "imageUrl": "media/generated/generated-5f37b8e0fbeb9af0aa.png",
+      "imageUrl": "",
       "mediaAssets": {
         "images": [],
-        "videos": [],
-        "cover": "media/generated/generated-5f37b8e0fbeb9af0aa.png",
-        "coverKind": "generated-cover",
-        "curatedBy": "generated"
+        "videos": []
       },
       "editorialStructure": "",
       "eventAggregation": {
@@ -873,6 +870,30 @@
       "mediaAssets": {
         "images": [
           {
+            "url": "media/papers/recvuYJJMOzmob-p4-f1.png",
+            "alt": "PDF 第 4 页图表：Table 1: The six pillars of patient communication noise, each grounded in clinical evidence and independently controllable.",
+            "kind": "pdf-page",
+            "layout": "wide"
+          },
+          {
+            "url": "media/papers/recvuYJJMOzmob-p8-f2.png",
+            "alt": "PDF 第 8 页图表：Table 2: Doctor LLMs evaluated and their diagnostic performance under clean (Level 0) vs. noisy (Levels 1–3) patient conditions. Clean/Noisy columns report Top-1 accuracy (%). All differences are statistically significant (paired t-test, ∗∗∗p < 0.001).",
+            "kind": "pdf-page",
+            "layout": "wide"
+          },
+          {
+            "url": "media/papers/recvuYJJMOzmob-p8-f3.png",
+            "alt": "PDF 第 8 页图表：Table 3: Inter-annotator agreement between human eval- uators (H1-H2) and LLM-Human agreement (LLM-H, averaged over both evaluators). κ = Cohen’s Kappa; r = Pearson correlation.",
+            "kind": "pdf-page",
+            "layout": "wide"
+          },
+          {
+            "url": "media/papers/recvuYJJMOzmob-p8-f4.png",
+            "alt": "PDF 第 8 页图表：Table 4: Ablation study on Verifier configurations. No Ctrl = unconstrained generation; Prompt = prompt- based verification without UMLS; Ours = full retrieval- augmented UMLS verification. Consistency Rate mea- sures the absence of hallucinations, contradictions, de- mographic drift, and history inconsistency (i.e., it is stricter than the complement of hallucination rate). Our approach achieves 72.3% relative reduction in halluci- nation rate with only 3.1% realism trade-off.",
+            "kind": "pdf-page",
+            "layout": "wide"
+          },
+          {
             "url": "https://arxiv.org/html/2604.10441v2/figures/figure_1_examples.png",
             "alt": "Figure 1: The Sim-to-Real gap: the same patient case (45F, myocardial infarction) yields different outcomes depending on communication style. Left: idealized patient enables correct diagnosis in 6 turns. Right: realistic patient (VeriSim) with memory and health-literacy noise causes misdiagnosis after 14 turns. The turn counts illustrate a single case and are not corpus averages; the measured corpus-level effect is a 34–55% increase in conversation length (Table 2 )."
           },
@@ -1022,6 +1043,30 @@
       "imageUrl": "https://arxiv.org/html/2509.21545v3/figs/is_pc_by_model_notrend.png",
       "mediaAssets": {
         "images": [
+          {
+            "url": "media/papers/recvuYLhbRgUAI-p6-f1.png",
+            "alt": "PDF 第 6 页图表：Figure 1: Partial correlations between baseline correctness and Delegate Game answer decision.",
+            "kind": "pdf-page",
+            "layout": "wide"
+          },
+          {
+            "url": "media/papers/recvuYLhbRgUAI-p6-f2.png",
+            "alt": "PDF 第 6 页图表：Figure 2: Partial correlations between baseline entropy and Delegate Game answer decision.",
+            "kind": "pdf-page",
+            "layout": "wide"
+          },
+          {
+            "url": "media/papers/recvuYLhbRgUAI-p8-f3.png",
+            "alt": "PDF 第 8 页图表：Figure 3: Normalized change rates in the Second Chance Game.",
+            "kind": "pdf-page",
+            "layout": "wide"
+          },
+          {
+            "url": "media/papers/recvuYLhbRgUAI-p8-f4.png",
+            "alt": "PDF 第 8 页图表：Table 2: Hypothetical strategies that would explain elevated change rates, and their predictions.",
+            "kind": "pdf-page",
+            "layout": "wide"
+          },
           {
             "url": "https://arxiv.org/html/2509.21545v3/figs/is_pc_by_model_notrend.png",
             "alt": "Figure 1: Partial correlations between baseline correctness and Delegate Game answer decision."
@@ -1195,6 +1240,30 @@
       "imageUrl": "https://arxiv.org/html/2609.11185v1/new_question_sample.png",
       "mediaAssets": {
         "images": [
+          {
+            "url": "media/papers/recvuYJJMOLaf9-p2-f1.png",
+            "alt": "PDF 第 2 页图表：Table 1: Comparison with prior RoB benchmarks. Cond. Reasoning: Conditional reasoning; Expert Align.: Expert rule alignment; Factual Adher. & Attrib.: Factual adherence & attribution. † indicates that the dataset is not publicly released.",
+            "kind": "pdf-page",
+            "layout": "wide"
+          },
+          {
+            "url": "media/papers/recvuYJJMOLaf9-p6-f2.png",
+            "alt": "PDF 第 6 页图表：Table 3: Main Performance on HLC Metrics. Atomic (CAR): Condition-Aware Ratio per domain (D2 to D4) and overall. Domain (LF): Logical Fidelity per RoB 2.0 domain (D1 to D5) and overall. VR: Verification Rate; BGR: Blind Guess Rate; RFR: Reasoning Failure Rate.",
+            "kind": "pdf-page",
+            "layout": "wide"
+          },
+          {
+            "url": "media/papers/recvuYJJMOLaf9-p6-f3.png",
+            "alt": "PDF 第 6 页图表：Figure 3: The heatmap shows Logical Fidelity by RoB 2.0 domain across all 10 evaluated models, with D2 and D3 emerging as critical consistency bottlenecks.",
+            "kind": "pdf-page",
+            "layout": "wide"
+          },
+          {
+            "url": "media/papers/recvuYJJMOLaf9-p6-f4.png",
+            "alt": "PDF 第 6 页图表：Table 3 presents a comprehensive evaluation of the 10 LLMs across the HLC metrics. The results re- veal a pronounced dichotomy between the models’ proficiency in rule-based branching and their se- vere limitations in multi-step logical synthesis. A systematic gap between evidential grounding and decision accuracy also emerges as a pervasive flaw across both open-weight and proprietary architec- tures. Appendix G provides detailed qualitative analyses and representative failure cases.",
+            "kind": "pdf-page",
+            "layout": "wide"
+          },
           {
             "url": "https://arxiv.org/html/2609.11185v1/new_question_sample.png",
             "alt": "Figure 1: The figure illustrates the reasoning gap in risk-of-bias assessment. While LLMs often make incorrect predictions through superficial keyword matching, the rigorous RoB 2.0 decision map reveals a severe Error Compounding Effect : atomic-level logical deviations propagate through multi-step synthesis, causing erroneous end-to-end judgments."
@@ -1976,36 +2045,10 @@
         "推理",
         "AI"
       ],
-      "imageUrl": "media/papers/recvuGBG2GdVmN-p7-f1.png",
+      "imageUrl": "",
       "mediaAssets": {
-        "images": [
-          {
-            "url": "media/papers/recvuGBG2GdVmN-p7-f1.png",
-            "alt": "PDF 第 7 页图表：Figure 1: An illustration of CoT and vanilla ICL. Figure (a) shows the CoT prompt and the corresponding output of ChatGPT (GPT-3.5-turbo-16k). The intermediate reasoning is shown in red. The output of ChatGPT follows the pattern in the prompt, which consists of a reasoning step, followed by the desired answer. Fig- ure (b) shows the result of using the corresponding vanilla ICL prompt, which includes of two input-output pairs. In this case, ChatGPT fails to provide the correct answer. Figure (c) illustrates a general pipeline of CoT prompting with n demonstration examples. Each example include",
-            "kind": "pdf-page",
-            "layout": "wide"
-          },
-          {
-            "url": "media/papers/recvuGBG2GdVmN-p8-f2.png",
-            "alt": "PDF 第 8 页图表：Figure 2: An illustration of the multi-step latent-variable model defined in (2). According to this graphical model, for any h ≥1, each step zi h of i-th example depends on the previous steps {zi ℓ}ℓ<h and the hidden concept θ∗.",
-            "kind": "pdf-page",
-            "layout": "wide"
-          },
-          {
-            "url": "media/papers/recvuGBG2GdVmN-p9-f3.png",
-            "alt": "PDF 第 9 页图表：Table 1: Summary of the three sources of errors in CoT prompting.",
-            "kind": "pdf-page",
-            "layout": "wide"
-          },
-          {
-            "url": "media/papers/recvuGBG2GdVmN-p16-f4.png",
-            "alt": "PDF 第 16 页图表：Table 2: Average accuracy of the six prompting methods on the CityEquation task. The results are based on 200 random testing instances. “PI CoT” stands for the par- tially informative chain of thought method.",
-            "kind": "pdf-page",
-            "layout": "wide"
-          }
-        ],
-        "videos": [],
-        "cover": "media/papers/recvuGBG2GdVmN-p7-f1.png"
+        "images": [],
+        "videos": []
       },
       "editorialStructure": "",
       "pdfUrl": "http://jmlr.org/papers/volume27/25-2240/25-2240.pdf",

@@ -631,12 +631,6 @@
       "mediaAssets": {
         "images": [
           {
-            "url": "media/huxiu/recvuGBG2GeoR7-1.gif",
-            "alt": "局部编辑前后效果演示",
-            "kind": "article-figure",
-            "afterHeading": "修改效果更好"
-          },
-          {
             "url": "media/huxiu/recvuGBG2GeoR7-2.gif",
             "alt": "多轮连续编辑一致性演示",
             "kind": "article-figure",
@@ -706,13 +700,10 @@
         "Agent",
         "产品"
       ],
-      "imageUrl": "media/generated/generated-c18178b39464dbc6be.png",
+      "imageUrl": "",
       "mediaAssets": {
         "images": [],
-        "videos": [],
-        "cover": "media/generated/generated-c18178b39464dbc6be.png",
-        "coverKind": "generated-cover",
-        "curatedBy": "generated"
+        "videos": []
       },
       "editorialStructure": "",
       "eventAggregation": {
