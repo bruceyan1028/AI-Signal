@@ -3426,7 +3426,11 @@ function articleBody(A, s){
   const fallbackStep = !['论文'].includes(s.kind) && images.length && deepParas.length
     ? Math.max(1, Math.ceil(deepParas.length / images.length))
     : 0;
-  const sourceStructured = s.editorialStructure === 'source';
+  // The Decoder's English articles are currently published with the analysis
+  // sections (【...】) rather than a verbatim body. Keep those sections in a
+  // readable article flow instead of rendering every one as a dashboard card.
+  const decoderStructured = String(s.source || '').trim().toLowerCase() === 'the decoder';
+  const sourceStructured = s.editorialStructure === 'source' || decoderStructured;
   const blocks = [];
   const paperFramework = s.kind==='论文' && s.deepAnalysis
     ? `<div style="margin:0 0 24px;padding:14px 16px;border-top:2px solid ${A.accent};border-bottom:1px solid ${UI.border};background:linear-gradient(90deg,${A.accentFaint},#fff);">
@@ -3446,7 +3450,7 @@ function articleBody(A, s){
         <div style="font-size:11.5px;line-height:1.8;color:${UI.text3};">政策效力 → 核心措施 → 时间表与执行 → AI/产业影响 → 待确认事项</div>
       </div>`
     : '';
-  const editorialFramework = sourceStructured && s.deepAnalysis
+  const editorialFramework = s.editorialStructure === 'source' && s.deepAnalysis
     ? `<div style="margin:0 0 26px;padding:11px 14px;border-left:3px solid ${A.accent};background:${A.accentFaint};font-size:12px;line-height:1.75;color:${UI.text3};">
         <strong style="color:${UI.text2};">原文结构精编</strong> · 沿用作者的小标题与论证顺序，仅压缩重复和低信息内容
       </div>`
@@ -3483,7 +3487,12 @@ function articleBody(A, s){
       } else {
         sectionCount += 1;
         const sectionNo = String(sectionCount).padStart(2, '0');
-        if(s.kind==='论文'){
+        if(decoderStructured){
+          blocks.push(`<section style="margin:28px 0 30px;">
+            <h3 style="margin:0 0 10px; padding-bottom:8px; border-bottom:1px solid ${UI.border}; font-size:17px; line-height:1.5; color:${UI.text};">${esc(section[1])}</h3>
+            ${section[2].trim()?`<div style="font-size:15px;line-height:2.08;color:${UI.text2};${proseStyle}">${zhProseHtml(esc(section[2].trim()).replace(/\n/g,'<br>'))}</div>`:''}
+          </section>`);
+        } else if(s.kind==='论文'){
         blocks.push(`<section style="position:relative;margin:8px 0 30px;padding-left:22px;border-left:2px solid ${A.accentBorder};">
           <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:10px;">
             <span style="font-family:'Geist Mono',monospace;font-size:10.5px;font-weight:800;color:${A.accentDeep};">${sectionNo}</span>
