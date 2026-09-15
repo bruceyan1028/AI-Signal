@@ -70,7 +70,10 @@ def _read_llm_response(response: Any, deadline: float) -> str:
     if time.monotonic() >= deadline:
         response.close()
         raise TimeoutError("LLM total timeout while reading response body")
-    return b"".join(chunks).decode(response.encoding or "utf-8", errors="replace")
+    encoding = getattr(response, "encoding", None)
+    if not isinstance(encoding, str) or not encoding.strip():
+        encoding = "utf-8"
+    return b"".join(chunks).decode(encoding, errors="replace")
 
 SCORE_META = [
     ("impact", "影响", "impact"),

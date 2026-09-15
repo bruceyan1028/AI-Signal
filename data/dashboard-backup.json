@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-09-11T11:39:34+08:00",
+  "generatedAt": "2026-09-15T14:09:56+08:00",
   "leaderboard": {
     "source": "Artificial Analysis",
     "sourceUrl": "https://artificialanalysis.ai/",
     "metric": "智能指数",
-    "updatedAt": "2026-09-11T11:39:36+08:00",
+    "updatedAt": "2026-09-15T14:09:57+08:00",
     "error": "",
     "models": [
       {
@@ -18,8 +18,8 @@
         "coding": 81.6,
         "math": null,
         "price": 20.0,
-        "speed": 69.0,
-        "latency": 131.81
+        "speed": 69.7,
+        "latency": 128.29
       },
       {
         "rank": 2,
@@ -32,8 +32,8 @@
         "coding": 76.9,
         "math": null,
         "price": 20.0,
-        "speed": 56.1,
-        "latency": 241.07
+        "speed": 63.6,
+        "latency": 172.63
       },
       {
         "rank": 3,
@@ -46,8 +46,8 @@
         "coding": 78.0,
         "math": null,
         "price": 10.0,
-        "speed": 58.1,
-        "latency": 33.71
+        "speed": 53.8,
+        "latency": 31.96
       },
       {
         "rank": 4,
@@ -60,8 +60,8 @@
         "coding": 76.5,
         "math": null,
         "price": 20.0,
-        "speed": 69.3,
-        "latency": 57.77
+        "speed": 68.6,
+        "latency": 44.03
       },
       {
         "rank": 5,
@@ -74,8 +74,8 @@
         "coding": 75.8,
         "math": null,
         "price": 2.0,
-        "speed": 454.8,
-        "latency": 28.71
+        "speed": 261.2,
+        "latency": 18.23
       },
       {
         "rank": 6,
@@ -88,8 +88,8 @@
         "coding": 77.4,
         "math": null,
         "price": 8.0,
-        "speed": 72.3,
-        "latency": 78.49
+        "speed": 62.0,
+        "latency": 66.05
       },
       {
         "rank": 7,
@@ -102,8 +102,8 @@
         "coding": 74.8,
         "math": null,
         "price": 2.15,
-        "speed": 53.5,
-        "latency": 2.99
+        "speed": 66.9,
+        "latency": 2.7
       },
       {
         "rank": 8,
@@ -116,8 +116,8 @@
         "coding": 76.8,
         "math": null,
         "price": 3.0,
-        "speed": 67.9,
-        "latency": 37.39
+        "speed": 58.4,
+        "latency": 35.57
       },
       {
         "rank": 9,
@@ -130,8 +130,8 @@
         "coding": 76.2,
         "math": null,
         "price": 6.0,
-        "speed": 37.0,
-        "latency": 2.58
+        "speed": 37.5,
+        "latency": 3.46
       },
       {
         "rank": 10,
@@ -144,8 +144,8 @@
         "coding": 76.7,
         "math": null,
         "price": 4.5,
-        "speed": 103.1,
-        "latency": 108.55
+        "speed": 119.2,
+        "latency": 102.93
       },
       {
         "rank": 11,
@@ -172,7 +172,7 @@
         "coding": 71.5,
         "math": null,
         "price": 0.24,
-        "speed": 92.4,
+        "speed": 113.6,
         "latency": 2.11
       }
     ],
@@ -182,7 +182,7 @@
         "label": "小模型",
         "note": "4B–40B",
         "sourceUrl": "https://artificialanalysis.ai/models/open-source/small",
-        "updatedAt": "2026-09-11T11:39:37+08:00",
+        "updatedAt": "2026-09-15T14:09:58+08:00",
         "error": "",
         "models": [
           {
@@ -223,6 +223,18 @@
           },
           {
             "rank": 4,
+            "slug": "k2-mova-36b-mid5",
+            "label": "K2 Horizon MoVA 36B A4B",
+            "name": "K2 Horizon MoVA 36B A4B",
+            "tag": "",
+            "creator": "MBZUAI Institute of Foundation Models",
+            "logoDomain": "",
+            "intelligence": 25.7,
+            "params": 36.0,
+            "url": "https://artificialanalysis.ai/models/k2-mova-36b-mid5"
+          },
+          {
+            "rank": 5,
             "slug": "qwen3-8-27b-non-reasoning",
             "label": "Qwen3.8 27B",
             "name": "Qwen3.8 27B",
@@ -234,7 +246,7 @@
             "url": "https://artificialanalysis.ai/models/qwen3-8-27b-non-reasoning"
           },
           {
-            "rank": 5,
+            "rank": 6,
             "slug": "qwen3-6-27b",
             "label": "Qwen3.6 27B",
             "name": "Qwen3.6 27B",
@@ -246,7 +258,7 @@
             "url": "https://artificialanalysis.ai/models/qwen3-6-27b"
           },
           {
-            "rank": 6,
+            "rank": 7,
             "slug": "g9v3-39a5b",
             "label": "G9v3-39A5B",
             "name": "G9v3-39A5B",
@@ -258,7 +270,19 @@
             "url": "https://artificialanalysis.ai/models/g9v3-39a5b"
           },
           {
-            "rank": 7,
+            "rank": 8,
+            "slug": "k2-7b-ph2",
+            "label": "K2 Horizon 7B",
+            "name": "K2 Horizon 7B",
+            "tag": "",
+            "creator": "MBZUAI Institute of Foundation Models",
+            "logoDomain": "",
+            "intelligence": 21.0,
+            "params": 7.0,
+            "url": "https://artificialanalysis.ai/models/k2-7b-ph2"
+          },
+          {
+            "rank": 9,
             "slug": "qwen3-6-27b-non-reasoning",
             "label": "Qwen3.6 27B (Non-reasoning)",
             "name": "Qwen3.6 27B",
@@ -270,7 +294,7 @@
             "url": "https://artificialanalysis.ai/models/qwen3-6-27b-non-reasoning"
           },
           {
-            "rank": 8,
+            "rank": 10,
             "slug": "qwen3-6-35b-a3b",
             "label": "Qwen3.6 35B A3B",
             "name": "Qwen3.6 35B A3B",
@@ -282,7 +306,7 @@
             "url": "https://artificialanalysis.ai/models/qwen3-6-35b-a3b"
           },
           {
-            "rank": 9,
+            "rank": 11,
             "slug": "muse-glimmer",
             "label": "Muse Glimmer (high)",
             "name": "Muse Glimmer",
@@ -294,7 +318,7 @@
             "url": "https://artificialanalysis.ai/models/muse-glimmer"
           },
           {
-            "rank": 10,
+            "rank": 12,
             "slug": "gemma-4-26b-a4b",
             "label": "Gemma 4 26B A4B",
             "name": "Gemma 4 26B A4B",
@@ -304,30 +328,6 @@
             "intelligence": 16.7,
             "params": 25.2,
             "url": "https://artificialanalysis.ai/models/gemma-4-26b-a4b"
-          },
-          {
-            "rank": 11,
-            "slug": "gemma-4-31b",
-            "label": "Gemma 4 31B",
-            "name": "Gemma 4 31B",
-            "tag": "",
-            "creator": "Google",
-            "logoDomain": "google.com",
-            "intelligence": 15.4,
-            "params": 30.7,
-            "url": "https://artificialanalysis.ai/models/gemma-4-31b"
-          },
-          {
-            "rank": 12,
-            "slug": "qwen3-6-35b-a3b-non-reasoning",
-            "label": "Qwen3.6 35B A3B (Non-reasoning)",
-            "name": "Qwen3.6 35B A3B",
-            "tag": "Non-reasoning",
-            "creator": "Alibaba",
-            "logoDomain": "qwen.ai",
-            "intelligence": 15.2,
-            "params": 36.0,
-            "url": "https://artificialanalysis.ai/models/qwen3-6-35b-a3b-non-reasoning"
           }
         ]
       },
@@ -336,11 +336,23 @@
         "label": "微型",
         "note": "≤4B",
         "sourceUrl": "https://artificialanalysis.ai/models/open-source/tiny",
-        "updatedAt": "2026-09-11T11:39:37+08:00",
+        "updatedAt": "2026-09-15T14:09:59+08:00",
         "error": "",
         "models": [
           {
             "rank": 1,
+            "slug": "k2-4b-ph1",
+            "label": "K2 Horizon 3.7B",
+            "name": "K2 Horizon 3.7B",
+            "tag": "",
+            "creator": "MBZUAI Institute of Foundation Models",
+            "logoDomain": "",
+            "intelligence": 16.2,
+            "params": 3.7,
+            "url": "https://artificialanalysis.ai/models/k2-4b-ph1"
+          },
+          {
+            "rank": 2,
             "slug": "minicpm5-2b",
             "label": "MiniCPM5-2B",
             "name": "MiniCPM5-2B",
@@ -352,7 +364,7 @@
             "url": "https://artificialanalysis.ai/models/minicpm5-2b"
           },
           {
-            "rank": 2,
+            "rank": 3,
             "slug": "g9v3-3b",
             "label": "G9v3-3B",
             "name": "G9v3-3B",
@@ -364,7 +376,7 @@
             "url": "https://artificialanalysis.ai/models/g9v3-3b"
           },
           {
-            "rank": 3,
+            "rank": 4,
             "slug": "granite-4-2-3b",
             "label": "Granite 4.2 3B",
             "name": "Granite 4.2 3B",
@@ -376,7 +388,7 @@
             "url": "https://artificialanalysis.ai/models/granite-4-2-3b"
           },
           {
-            "rank": 4,
+            "rank": 5,
             "slug": "minicpm5-1b",
             "label": "MiniCPM5-1B",
             "name": "MiniCPM5-1B",
@@ -388,7 +400,7 @@
             "url": "https://artificialanalysis.ai/models/minicpm5-1b"
           },
           {
-            "rank": 5,
+            "rank": 6,
             "slug": "minicpm5-1b-non-reasoning",
             "label": "MiniCPM5-1B (Non-reasoning)",
             "name": "MiniCPM5-1B",
@@ -400,7 +412,7 @@
             "url": "https://artificialanalysis.ai/models/minicpm5-1b-non-reasoning"
           },
           {
-            "rank": 6,
+            "rank": 7,
             "slug": "nanbeige4-1-3b",
             "label": "Nanbeige4.1-3B",
             "name": "Nanbeige4.1-3B",
@@ -412,7 +424,7 @@
             "url": "https://artificialanalysis.ai/models/nanbeige4-1-3b"
           },
           {
-            "rank": 7,
+            "rank": 8,
             "slug": "lfm2-5-2-6b",
             "label": "LFM2.5-2.6B",
             "name": "LFM2.5-2.6B",
@@ -424,7 +436,7 @@
             "url": "https://artificialanalysis.ai/models/lfm2-5-2-6b"
           },
           {
-            "rank": 8,
+            "rank": 9,
             "slug": "nvidia-nemotron-3-nano-4b",
             "label": "Nemotron 3 Nano 4B",
             "name": "Nemotron 3 Nano 4B",
@@ -436,7 +448,7 @@
             "url": "https://artificialanalysis.ai/models/nvidia-nemotron-3-nano-4b"
           },
           {
-            "rank": 9,
+            "rank": 10,
             "slug": "qwen3-5-2b",
             "label": "Qwen3.5 2B",
             "name": "Qwen3.5 2B",
@@ -448,7 +460,7 @@
             "url": "https://artificialanalysis.ai/models/qwen3-5-2b"
           },
           {
-            "rank": 10,
+            "rank": 11,
             "slug": "phi-4-mini",
             "label": "Phi-4 Mini",
             "name": "Phi-4 Mini",
@@ -460,7 +472,7 @@
             "url": "https://artificialanalysis.ai/models/phi-4-mini"
           },
           {
-            "rank": 11,
+            "rank": 12,
             "slug": "qwen3-5-2b-non-reasoning",
             "label": "Qwen3.5 2B (Non-reasoning)",
             "name": "Qwen3.5 2B",
@@ -470,18 +482,6 @@
             "intelligence": 6.2,
             "params": 2.27,
             "url": "https://artificialanalysis.ai/models/qwen3-5-2b-non-reasoning"
-          },
-          {
-            "rank": 12,
-            "slug": "qwen3-5-0-8b",
-            "label": "Qwen3.5 0.8B",
-            "name": "Qwen3.5 0.8B",
-            "tag": "",
-            "creator": "Alibaba",
-            "logoDomain": "qwen.ai",
-            "intelligence": 6.1,
-            "params": 0.87,
-            "url": "https://artificialanalysis.ai/models/qwen3-5-0-8b"
           }
         ]
       }
@@ -491,14 +491,14 @@
     "source": "Hugging Face",
     "sourceUrl": "https://huggingface.co/",
     "metric": "热度分",
-    "updatedAt": "2026-09-11T11:39:38+08:00",
+    "updatedAt": "2026-09-15T14:10:00+08:00",
     "error": "",
     "sections": [
       {
         "key": "models",
         "label": "Models",
         "sourceUrl": "https://huggingface.co/models",
-        "updatedAt": "2026-09-11T11:39:38+08:00",
+        "updatedAt": "2026-09-15T14:10:00+08:00",
         "error": "",
         "items": [
           {
@@ -506,9 +506,9 @@
             "repo": "deepseek-ai/DeepSeek-V4.1-Flash",
             "name": "DeepSeek-V4.1-Flash",
             "owner": "deepseek-ai",
-            "trending": 1372,
-            "likes": 1435,
-            "downloads": 6,
+            "trending": 2203,
+            "likes": 2503,
+            "downloads": 288414,
             "updatedAt": "2026-09-10",
             "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash",
             "logoDomain": "deepseek.com",
@@ -518,13 +518,28 @@
           },
           {
             "rank": 2,
+            "repo": "Edge0/Edge0-35B-A3B-preview",
+            "name": "Edge0-35B-A3B-preview",
+            "owner": "Edge0",
+            "trending": 1825,
+            "likes": 2190,
+            "downloads": 8109,
+            "updatedAt": "2026-09-14",
+            "url": "https://huggingface.co/Edge0/Edge0-35B-A3B-preview",
+            "logoDomain": "",
+            "params": 34.7,
+            "task": "文本生成",
+            "inference": false
+          },
+          {
+            "rank": 3,
             "repo": "openbmb/MiniCPM5-2B",
             "name": "MiniCPM5-2B",
             "owner": "openbmb",
-            "trending": 940,
-            "likes": 1128,
-            "downloads": 42289,
-            "updatedAt": "2026-09-10",
+            "trending": 860,
+            "likes": 1407,
+            "downloads": 206774,
+            "updatedAt": "2026-09-12",
             "url": "https://huggingface.co/openbmb/MiniCPM5-2B",
             "logoDomain": "openbmb.cn",
             "params": 2.5,
@@ -532,49 +547,34 @@
             "inference": false
           },
           {
-            "rank": 3,
-            "repo": "XHToken/Spark-X2.5-4B",
-            "name": "Spark-X2.5-4B",
-            "owner": "XHToken",
-            "trending": 737,
-            "likes": 1070,
-            "downloads": 15930,
-            "updatedAt": "2026-09-03",
-            "url": "https://huggingface.co/XHToken/Spark-X2.5-4B",
+            "rank": 4,
+            "repo": "nex-agi/Nex-N2.5-mini",
+            "name": "Nex-N2.5-mini",
+            "owner": "nex-agi",
+            "trending": 624,
+            "likes": 785,
+            "downloads": 4543,
+            "updatedAt": "2026-09-08",
+            "url": "https://huggingface.co/nex-agi/Nex-N2.5-mini",
             "logoDomain": "",
-            "params": 4.1,
+            "params": 35.1,
             "task": "文本生成",
             "inference": false
           },
           {
-            "rank": 4,
+            "rank": 5,
             "repo": "Qwen/Qwen3.8-27B",
             "name": "Qwen3.8-27B",
             "owner": "Qwen",
-            "trending": 531,
-            "likes": 14661,
-            "downloads": 7322476,
+            "trending": 576,
+            "likes": 15167,
+            "downloads": 7703400,
             "updatedAt": "2026-08-14",
             "url": "https://huggingface.co/Qwen/Qwen3.8-27B",
             "logoDomain": "qwen.ai",
             "params": 27.8,
             "task": "图文理解",
             "inference": true
-          },
-          {
-            "rank": 5,
-            "repo": "ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF",
-            "name": "Qwen3.8-27B-GSQ-RCO-GGUF",
-            "owner": "ISTA-DASLab",
-            "trending": 531,
-            "likes": 801,
-            "downloads": 614850,
-            "updatedAt": "2026-09-02",
-            "url": "https://huggingface.co/ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF",
-            "logoDomain": "",
-            "params": null,
-            "task": "图文理解",
-            "inference": false
           }
         ]
       },
@@ -582,7 +582,7 @@
         "key": "spaces",
         "label": "Spaces",
         "sourceUrl": "https://huggingface.co/spaces",
-        "updatedAt": "2026-09-11T11:39:39+08:00",
+        "updatedAt": "2026-09-15T14:10:01+08:00",
         "error": "",
         "items": [
           {
@@ -590,8 +590,8 @@
             "repo": "kulkas2pintu/wan555",
             "name": "Wan2.2 14B Fast Preview",
             "owner": "kulkas2pintu",
-            "trending": 155,
-            "likes": 1974,
+            "trending": 179,
+            "likes": 2139,
             "downloads": null,
             "updatedAt": "2026-09-10",
             "url": "https://huggingface.co/spaces/kulkas2pintu/wan555",
@@ -604,45 +604,11 @@
           },
           {
             "rank": 2,
-            "repo": "pollen-robotics/microduck-simulator",
-            "name": "Microduck Sandbox",
-            "owner": "pollen-robotics",
-            "trending": 100,
-            "likes": 495,
-            "downloads": null,
-            "updatedAt": "2026-09-10",
-            "url": "https://huggingface.co/spaces/pollen-robotics/microduck-simulator",
-            "logoDomain": "",
-            "emoji": "🐤",
-            "note": "",
-            "sdk": "docker",
-            "stage": "RUNNING",
-            "live": true
-          },
-          {
-            "rank": 3,
-            "repo": "kulkas2pintu/QWEN_EDIT_IMAGE",
-            "name": "Qwen-Image-Edit-2511-LoRAs-Fast",
-            "owner": "kulkas2pintu",
-            "trending": 78,
-            "likes": 243,
-            "downloads": null,
-            "updatedAt": "2026-07-30",
-            "url": "https://huggingface.co/spaces/kulkas2pintu/QWEN_EDIT_IMAGE",
-            "logoDomain": "",
-            "emoji": "🎃",
-            "note": "Demo of the Collection of Qwen Image Edit LoRAs",
-            "sdk": "gradio",
-            "stage": "RUNNING",
-            "live": true
-          },
-          {
-            "rank": 4,
             "repo": "ravenrose996688/Krea-2-Turbo_I2I",
             "name": "Krea 2 Turbo Image Generator",
             "owner": "ravenrose996688",
-            "trending": 72,
-            "likes": 103,
+            "trending": 139,
+            "likes": 222,
             "downloads": null,
             "updatedAt": "2026-08-19",
             "url": "https://huggingface.co/spaces/ravenrose996688/Krea-2-Turbo_I2I",
@@ -654,18 +620,52 @@
             "live": true
           },
           {
-            "rank": 5,
+            "rank": 3,
             "repo": "Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
             "name": "MiniMax H3 Turbo LoRA",
             "owner": "Pepe104",
-            "trending": 59,
-            "likes": 148,
+            "trending": 135,
+            "likes": 263,
             "downloads": null,
             "updatedAt": "2026-08-16",
             "url": "https://huggingface.co/spaces/Pepe104/MiniMax-H3-Turbo-Lora-UNCENSORED",
             "logoDomain": "",
             "emoji": "🎬",
             "note": "Video generation with a synchronized soundtrack",
+            "sdk": "gradio",
+            "stage": "RUNNING",
+            "live": true
+          },
+          {
+            "rank": 4,
+            "repo": "kulkas2pintu/QWEN_EDIT_IMAGE",
+            "name": "Qwen-Image-Edit-2511-LoRAs-Fast",
+            "owner": "kulkas2pintu",
+            "trending": 94,
+            "likes": 317,
+            "downloads": null,
+            "updatedAt": "2026-07-30",
+            "url": "https://huggingface.co/spaces/kulkas2pintu/QWEN_EDIT_IMAGE",
+            "logoDomain": "",
+            "emoji": "🎃",
+            "note": "Demo of the Collection of Qwen Image Edit LoRAs",
+            "sdk": "gradio",
+            "stage": "RUNNING",
+            "live": true
+          },
+          {
+            "rank": 5,
+            "repo": "STCM/wan2-2-fp8da-aoti-preview-2c-finishing",
+            "name": "Wan2.2 14B Cum explosion lora",
+            "owner": "STCM",
+            "trending": 80,
+            "likes": 126,
+            "downloads": null,
+            "updatedAt": "2026-07-28",
+            "url": "https://huggingface.co/spaces/STCM/wan2-2-fp8da-aoti-preview-2c-finishing",
+            "logoDomain": "",
+            "emoji": "🐌",
+            "note": "generate a video from an image with a text prompt with text",
             "sdk": "gradio",
             "stage": "RUNNING",
             "live": true
@@ -676,68 +676,68 @@
         "key": "datasets",
         "label": "Datasets",
         "sourceUrl": "https://huggingface.co/datasets",
-        "updatedAt": "2026-09-11T11:39:40+08:00",
+        "updatedAt": "2026-09-15T14:10:02+08:00",
         "error": "",
         "items": [
           {
             "rank": 1,
-            "repo": "kuben-developer/tiktok-videos-4b",
-            "name": "tiktok-videos-4b",
-            "owner": "kuben-developer",
-            "trending": 228,
-            "likes": 314,
-            "downloads": 9567,
-            "updatedAt": "2026-09-08",
-            "url": "https://huggingface.co/datasets/kuben-developer/tiktok-videos-4b",
+            "repo": "nyu-mll/glue",
+            "name": "glue",
+            "owner": "nyu-mll",
+            "trending": 166,
+            "likes": 1036,
+            "downloads": 807049,
+            "updatedAt": "2024-01-30",
+            "url": "https://huggingface.co/datasets/nyu-mll/glue",
             "logoDomain": ""
           },
           {
             "rank": 2,
+            "repo": "stanfordnlp/imdb",
+            "name": "imdb",
+            "owner": "stanfordnlp",
+            "trending": 165,
+            "likes": 990,
+            "downloads": 196734,
+            "updatedAt": "2024-01-04",
+            "url": "https://huggingface.co/datasets/stanfordnlp/imdb",
+            "logoDomain": ""
+          },
+          {
+            "rank": 3,
+            "repo": "rajpurkar/squad",
+            "name": "squad",
+            "owner": "rajpurkar",
+            "trending": 152,
+            "likes": 985,
+            "downloads": 254152,
+            "updatedAt": "2024-03-04",
+            "url": "https://huggingface.co/datasets/rajpurkar/squad",
+            "logoDomain": ""
+          },
+          {
+            "rank": 4,
             "repo": "openbmb/UltraData-SFT-Agent-2609",
             "name": "UltraData-SFT-Agent-2609",
             "owner": "openbmb",
-            "trending": 80,
-            "likes": 103,
-            "downloads": 4254,
+            "trending": 85,
+            "likes": 156,
+            "downloads": 9184,
             "updatedAt": "2026-09-06",
             "url": "https://huggingface.co/datasets/openbmb/UltraData-SFT-Agent-2609",
             "logoDomain": "openbmb.cn"
           },
           {
-            "rank": 3,
+            "rank": 5,
             "repo": "openbmb/UltraData-RL-2609",
             "name": "UltraData-RL-2609",
             "owner": "openbmb",
-            "trending": 76,
-            "likes": 98,
-            "downloads": 3646,
+            "trending": 63,
+            "likes": 131,
+            "downloads": 8137,
             "updatedAt": "2026-09-07",
             "url": "https://huggingface.co/datasets/openbmb/UltraData-RL-2609",
             "logoDomain": "openbmb.cn"
-          },
-          {
-            "rank": 4,
-            "repo": "openbmb/UltraData-Code",
-            "name": "UltraData-Code",
-            "owner": "openbmb",
-            "trending": 68,
-            "likes": 96,
-            "downloads": 6343,
-            "updatedAt": "2026-09-07",
-            "url": "https://huggingface.co/datasets/openbmb/UltraData-Code",
-            "logoDomain": "openbmb.cn"
-          },
-          {
-            "rank": 5,
-            "repo": "markov-ai/cad-1000-hours",
-            "name": "cad-1000-hours",
-            "owner": "markov-ai",
-            "trending": 58,
-            "likes": 422,
-            "downloads": 123223,
-            "updatedAt": "2026-09-10",
-            "url": "https://huggingface.co/datasets/markov-ai/cad-1000-hours",
-            "logoDomain": ""
           }
         ]
       }
@@ -746,7 +746,7 @@
   "market": {
     "source": "腾讯财经",
     "sourceUrl": "https://stockapp.finance.qq.com/",
-    "updatedAt": "2026-09-11T11:39:40+08:00",
+    "updatedAt": "2026-09-15T14:10:02+08:00",
     "error": "",
     "quotes": [
       {
@@ -757,15 +757,15 @@
         "logoDomain": "nvidia.com",
         "url": "https://www.nasdaq.com/market-activity/stocks/nvda",
         "currency": "USD",
-        "price": 218.36,
-        "change": -5.06,
-        "changePct": -2.26,
-        "open": 220.53,
-        "high": 220.99,
-        "low": 217.2,
-        "prevClose": 223.42,
-        "marketCap": 52727.4,
-        "quotedAt": "2026-09-10 16:00:01"
+        "price": 210.96,
+        "change": -7.33,
+        "changePct": -3.36,
+        "open": 211.24,
+        "high": 212.77,
+        "low": 208.93,
+        "prevClose": 218.29,
+        "marketCap": 50940.5,
+        "quotedAt": "2026-09-14 16:00:01"
       },
       {
         "code": "usAMD",
@@ -775,15 +775,15 @@
         "logoDomain": "amd.com",
         "url": "https://www.nasdaq.com/market-activity/stocks/amd",
         "currency": "USD",
-        "price": 503.6,
-        "change": -17.5,
-        "changePct": -3.36,
-        "open": 509.07,
-        "high": 516.33,
-        "low": 502.81,
-        "prevClose": 521.1,
-        "marketCap": 8221.1,
-        "quotedAt": "2026-09-10 16:00:01"
+        "price": 493.41,
+        "change": -22.72,
+        "changePct": -4.4,
+        "open": 486.28,
+        "high": 498.39,
+        "low": 480.33,
+        "prevClose": 516.13,
+        "marketCap": 8054.8,
+        "quotedAt": "2026-09-14 16:00:01"
       },
       {
         "code": "usAVGO",
@@ -793,15 +793,15 @@
         "logoDomain": "broadcom.com",
         "url": "https://www.nasdaq.com/market-activity/stocks/avgo",
         "currency": "USD",
-        "price": 360.83,
-        "change": -3.55,
-        "changePct": -0.97,
-        "open": 360.03,
-        "high": 365.27,
-        "low": 357.75,
-        "prevClose": 364.38,
-        "marketCap": 17166.8,
-        "quotedAt": "2026-09-10 16:00:01"
+        "price": 344.72,
+        "change": -17.27,
+        "changePct": -4.77,
+        "open": 349.63,
+        "high": 350.25,
+        "low": 343.91,
+        "prevClose": 361.99,
+        "marketCap": 16455.7,
+        "quotedAt": "2026-09-14 16:00:01"
       },
       {
         "code": "usTSM",
@@ -811,15 +811,15 @@
         "logoDomain": "tsmc.com",
         "url": "https://www.nasdaq.com/market-activity/stocks/tsm",
         "currency": "USD",
-        "price": 428.03,
-        "change": -7.33,
-        "changePct": -1.68,
-        "open": 426.44,
-        "high": 432.53,
-        "low": 424.05,
-        "prevClose": 435.36,
-        "marketCap": 22199.7,
-        "quotedAt": "2026-09-10 16:05:32"
+        "price": 418.01,
+        "change": -15.23,
+        "changePct": -3.52,
+        "open": 416.01,
+        "high": 424.45,
+        "low": 416.01,
+        "prevClose": 433.24,
+        "marketCap": 21680.0,
+        "quotedAt": "2026-09-14 16:04:34"
       },
       {
         "code": "usMU",
@@ -829,15 +829,15 @@
         "logoDomain": "micron.com",
         "url": "https://www.nasdaq.com/market-activity/stocks/mu",
         "currency": "USD",
-        "price": 977.41,
-        "change": -50.36,
-        "changePct": -4.9,
-        "open": 997.0,
-        "high": 999.0,
-        "low": 973.5,
-        "prevClose": 1027.77,
-        "marketCap": 11038.8,
-        "quotedAt": "2026-09-10 16:00:01"
+        "price": 924.03,
+        "change": -51.23,
+        "changePct": -5.25,
+        "open": 906.03,
+        "high": 932.21,
+        "low": 902.6,
+        "prevClose": 975.26,
+        "marketCap": 10435.9,
+        "quotedAt": "2026-09-14 16:00:01"
       },
       {
         "code": "usARM",
@@ -847,15 +847,15 @@
         "logoDomain": "arm.com",
         "url": "https://www.nasdaq.com/market-activity/stocks/arm",
         "currency": "USD",
-        "price": 254.18,
-        "change": -10.05,
-        "changePct": -3.8,
-        "open": 253.0,
-        "high": 257.92,
-        "low": 251.29,
-        "prevClose": 264.23,
-        "marketCap": 2714.6,
-        "quotedAt": "2026-09-10 16:00:01"
+        "price": 239.01,
+        "change": -25.78,
+        "changePct": -9.74,
+        "open": 242.38,
+        "high": 249.25,
+        "low": 238.03,
+        "prevClose": 264.79,
+        "marketCap": 2552.6,
+        "quotedAt": "2026-09-14 16:00:01"
       },
       {
         "code": "usMRVL",
@@ -865,15 +865,15 @@
         "logoDomain": "marvell.com",
         "url": "https://www.nasdaq.com/market-activity/stocks/mrvl",
         "currency": "USD",
-        "price": 226.96,
-        "change": -8.05,
-        "changePct": -3.43,
-        "open": 228.03,
-        "high": 234.49,
-        "low": 226.15,
-        "prevClose": 235.01,
-        "marketCap": 2039.7,
-        "quotedAt": "2026-09-10 16:00:01"
+        "price": 218.82,
+        "change": -17.28,
+        "changePct": -7.32,
+        "open": 215.81,
+        "high": 224.1,
+        "low": 213.63,
+        "prevClose": 236.1,
+        "marketCap": 1966.5,
+        "quotedAt": "2026-09-14 16:00:01"
       },
       {
         "code": "usMSFT",
@@ -883,15 +883,15 @@
         "logoDomain": "microsoft.com",
         "url": "https://www.nasdaq.com/market-activity/stocks/msft",
         "currency": "USD",
-        "price": 492.44,
-        "change": 0.79,
-        "changePct": 0.16,
-        "open": 488.32,
-        "high": 494.52,
-        "low": 486.0,
-        "prevClose": 491.65,
-        "marketCap": 36566.4,
-        "quotedAt": "2026-09-10 16:00:01"
+        "price": 505.41,
+        "change": 9.78,
+        "changePct": 1.97,
+        "open": 497.06,
+        "high": 509.95,
+        "low": 495.34,
+        "prevClose": 495.63,
+        "marketCap": 37529.4,
+        "quotedAt": "2026-09-14 16:00:01"
       },
       {
         "code": "usGOOGL",
@@ -901,15 +901,15 @@
         "logoDomain": "google.com",
         "url": "https://www.nasdaq.com/market-activity/stocks/googl",
         "currency": "USD",
-        "price": 332.6,
-        "change": 1.95,
-        "changePct": 0.59,
-        "open": 328.23,
-        "high": 333.23,
-        "low": 327.74,
-        "prevClose": 330.65,
-        "marketCap": 40676.8,
-        "quotedAt": "2026-09-10 16:00:01"
+        "price": 349.39,
+        "change": 10.89,
+        "changePct": 3.22,
+        "open": 343.12,
+        "high": 349.91,
+        "low": 342.14,
+        "prevClose": 338.5,
+        "marketCap": 42730.2,
+        "quotedAt": "2026-09-14 16:00:01"
       },
       {
         "code": "usAMZN",
@@ -919,15 +919,15 @@
         "logoDomain": "amazon.com",
         "url": "https://www.nasdaq.com/market-activity/stocks/amzn",
         "currency": "USD",
-        "price": 251.89,
-        "change": -0.51,
-        "changePct": -0.2,
-        "open": 250.11,
-        "high": 253.15,
-        "low": 249.58,
-        "prevClose": 252.4,
-        "marketCap": 27169.6,
-        "quotedAt": "2026-09-10 16:00:01"
+        "price": 253.54,
+        "change": -3.24,
+        "changePct": -1.26,
+        "open": 253.15,
+        "high": 255.95,
+        "low": 250.74,
+        "prevClose": 256.78,
+        "marketCap": 27347.6,
+        "quotedAt": "2026-09-14 16:00:01"
       },
       {
         "code": "usMETA",
@@ -937,15 +937,15 @@
         "logoDomain": "meta.com",
         "url": "https://www.nasdaq.com/market-activity/stocks/meta",
         "currency": "USD",
-        "price": 644.38,
-        "change": -9.31,
-        "changePct": -1.42,
-        "open": 653.71,
-        "high": 663.5,
-        "low": 642.14,
-        "prevClose": 653.69,
-        "marketCap": 16415.6,
-        "quotedAt": "2026-09-10 16:00:01"
+        "price": 665.6,
+        "change": 17.57,
+        "changePct": 2.71,
+        "open": 657.83,
+        "high": 668.6,
+        "low": 649.22,
+        "prevClose": 648.03,
+        "marketCap": 16956.2,
+        "quotedAt": "2026-09-14 16:00:01"
       },
       {
         "code": "usAAPL",
@@ -955,15 +955,15 @@
         "logoDomain": "apple.com",
         "url": "https://www.nasdaq.com/market-activity/stocks/aapl",
         "currency": "USD",
-        "price": 326.57,
-        "change": 11.23,
-        "changePct": 3.56,
-        "open": 316.67,
-        "high": 326.74,
-        "low": 316.51,
-        "prevClose": 315.34,
-        "marketCap": 47660.2,
-        "quotedAt": "2026-09-10 16:00:01"
+        "price": 333.08,
+        "change": 0.81,
+        "changePct": 0.24,
+        "open": 334.79,
+        "high": 335.5,
+        "low": 331.34,
+        "prevClose": 332.27,
+        "marketCap": 48610.3,
+        "quotedAt": "2026-09-14 16:00:01"
       },
       {
         "code": "usORCL",
@@ -973,15 +973,15 @@
         "logoDomain": "oracle.com",
         "url": "https://www.nasdaq.com/market-activity/stocks/orcl",
         "currency": "USD",
-        "price": 152.94,
-        "change": -8.69,
-        "changePct": -5.38,
-        "open": 158.38,
-        "high": 159.24,
-        "low": 152.52,
-        "prevClose": 161.63,
-        "marketCap": 4405.4,
-        "quotedAt": "2026-09-10 16:05:32"
+        "price": 144.79,
+        "change": -5.49,
+        "changePct": -3.65,
+        "open": 141.42,
+        "high": 145.33,
+        "low": 141.01,
+        "prevClose": 150.28,
+        "marketCap": 4378.1,
+        "quotedAt": "2026-09-14 16:04:34"
       },
       {
         "code": "usTSLA",
@@ -991,15 +991,15 @@
         "logoDomain": "tesla.com",
         "url": "https://www.nasdaq.com/market-activity/stocks/tsla",
         "currency": "USD",
-        "price": 363.56,
-        "change": -4.25,
-        "changePct": -1.16,
-        "open": 360.6,
-        "high": 369.21,
-        "low": 357.68,
-        "prevClose": 367.81,
-        "marketCap": 14359.0,
-        "quotedAt": "2026-09-10 16:00:01"
+        "price": 358.97,
+        "change": -6.47,
+        "changePct": -1.77,
+        "open": 359.78,
+        "high": 367.73,
+        "low": 357.04,
+        "prevClose": 365.44,
+        "marketCap": 14177.7,
+        "quotedAt": "2026-09-14 16:00:01"
       },
       {
         "code": "usSPCX",
@@ -1009,15 +1009,15 @@
         "logoDomain": "spacex.com",
         "url": "https://www.nasdaq.com/market-activity/stocks/spcx",
         "currency": "USD",
-        "price": 148.18,
-        "change": 0.63,
-        "changePct": 0.43,
-        "open": 145.0,
-        "high": 154.7,
-        "low": 144.89,
-        "prevClose": 147.55,
-        "marketCap": 19532.8,
-        "quotedAt": "2026-09-10 16:00:01"
+        "price": 148.15,
+        "change": -3.06,
+        "changePct": -2.02,
+        "open": 147.33,
+        "high": 152.56,
+        "low": 146.0,
+        "prevClose": 151.21,
+        "marketCap": 19528.8,
+        "quotedAt": "2026-09-14 16:00:01"
       },
       {
         "code": "usPLTR",
@@ -1027,15 +1027,15 @@
         "logoDomain": "palantir.com",
         "url": "https://www.nasdaq.com/market-activity/stocks/pltr",
         "currency": "USD",
-        "price": 165.86,
-        "change": -3.67,
-        "changePct": -2.16,
-        "open": 167.35,
-        "high": 169.0,
-        "low": 164.55,
-        "prevClose": 169.53,
-        "marketCap": 3985.7,
-        "quotedAt": "2026-09-10 16:00:01"
+        "price": 173.31,
+        "change": 6.08,
+        "changePct": 3.64,
+        "open": 169.7,
+        "high": 174.36,
+        "low": 166.42,
+        "prevClose": 167.23,
+        "marketCap": 4164.7,
+        "quotedAt": "2026-09-14 16:00:01"
       },
       {
         "code": "usCRWV",
@@ -1045,15 +1045,15 @@
         "logoDomain": "coreweave.com",
         "url": "https://www.nasdaq.com/market-activity/stocks/crwv",
         "currency": "USD",
-        "price": 89.12,
-        "change": -5.82,
-        "changePct": -6.13,
-        "open": 89.91,
-        "high": 92.19,
-        "low": 88.73,
-        "prevClose": 94.94,
-        "marketCap": 491.5,
-        "quotedAt": "2026-09-10 16:00:01"
+        "price": 82.98,
+        "change": -6.01,
+        "changePct": -6.75,
+        "open": 82.65,
+        "high": 85.93,
+        "low": 82.08,
+        "prevClose": 88.99,
+        "marketCap": 457.7,
+        "quotedAt": "2026-09-14 16:00:01"
       },
       {
         "code": "usSNOW",
@@ -1063,15 +1063,15 @@
         "logoDomain": "snowflake.com",
         "url": "https://www.nasdaq.com/market-activity/stocks/snow",
         "currency": "USD",
-        "price": 329.72,
-        "change": -1.76,
-        "changePct": -0.53,
-        "open": 329.7,
-        "high": 341.45,
-        "low": 325.01,
-        "prevClose": 331.48,
-        "marketCap": 1163.3,
-        "quotedAt": "2026-09-10 16:05:32"
+        "price": 332.35,
+        "change": 3.36,
+        "changePct": 1.02,
+        "open": 329.0,
+        "high": 336.49,
+        "low": 319.0,
+        "prevClose": 328.99,
+        "marketCap": 1172.5,
+        "quotedAt": "2026-09-14 16:04:34"
       },
       {
         "code": "sh688256",
@@ -1081,15 +1081,15 @@
         "logoDomain": "cambricon.com",
         "url": "https://www.sse.com.cn/assortment/stock/list/info/company/index.shtml?COMPANY_CODE=688256",
         "currency": "CNY",
-        "price": 1008.0,
-        "change": -35.84,
-        "changePct": -3.43,
-        "open": 1020.99,
-        "high": 1042.96,
-        "low": 1006.0,
-        "prevClose": 1043.84,
-        "marketCap": 6338.9,
-        "quotedAt": "20260911113913"
+        "price": 1080.8,
+        "change": 40.8,
+        "changePct": 3.92,
+        "open": 1045.0,
+        "high": 1109.99,
+        "low": 1040.02,
+        "prevClose": 1040.0,
+        "marketCap": 6796.6,
+        "quotedAt": "20260915140959"
       },
       {
         "code": "sh688836",
@@ -1099,15 +1099,15 @@
         "logoDomain": "unitree.com",
         "url": "https://www.sse.com.cn/assortment/stock/list/info/company/index.shtml?COMPANY_CODE=688836",
         "currency": "CNY",
-        "price": 473.7,
-        "change": -24.85,
-        "changePct": -4.98,
-        "open": 490.25,
-        "high": 497.87,
-        "low": 473.13,
-        "prevClose": 498.55,
-        "marketCap": 1916.0,
-        "quotedAt": "20260911113916"
+        "price": 471.99,
+        "change": 1.99,
+        "changePct": 0.42,
+        "open": 475.0,
+        "high": 483.0,
+        "low": 469.01,
+        "prevClose": 470.0,
+        "marketCap": 1909.0,
+        "quotedAt": "20260915141000"
       },
       {
         "code": "sh688041",
@@ -1117,15 +1117,15 @@
         "logoDomain": "",
         "url": "https://www.sse.com.cn/assortment/stock/list/info/company/index.shtml?COMPANY_CODE=688041",
         "currency": "CNY",
-        "price": 226.45,
-        "change": -5.92,
-        "changePct": -2.55,
-        "open": 228.02,
+        "price": 225.26,
+        "change": 1.57,
+        "changePct": 0.7,
+        "open": 224.6,
         "high": 231.5,
-        "low": 225.37,
-        "prevClose": 232.37,
-        "marketCap": 5263.5,
-        "quotedAt": "20260911113934"
+        "low": 222.6,
+        "prevClose": 223.69,
+        "marketCap": 5235.8,
+        "quotedAt": "20260915141001"
       },
       {
         "code": "sh688795",
@@ -1135,15 +1135,15 @@
         "logoDomain": "",
         "url": "https://www.sse.com.cn/assortment/stock/list/info/company/index.shtml?COMPANY_CODE=688795",
         "currency": "CNY",
-        "price": 347.85,
-        "change": -16.2,
-        "changePct": -4.45,
-        "open": 360.0,
-        "high": 364.0,
-        "low": 345.18,
-        "prevClose": 364.05,
-        "marketCap": 1635.0,
-        "quotedAt": "20260911113934"
+        "price": 351.69,
+        "change": 5.67,
+        "changePct": 1.64,
+        "open": 347.59,
+        "high": 361.22,
+        "low": 343.77,
+        "prevClose": 346.02,
+        "marketCap": 1653.0,
+        "quotedAt": "20260915141000"
       },
       {
         "code": "sh688802",
@@ -1153,15 +1153,15 @@
         "logoDomain": "",
         "url": "https://www.sse.com.cn/assortment/stock/list/info/company/index.shtml?COMPANY_CODE=688802",
         "currency": "CNY",
-        "price": 466.0,
-        "change": -27.8,
-        "changePct": -5.63,
-        "open": 482.51,
-        "high": 492.0,
-        "low": 465.0,
-        "prevClose": 493.8,
-        "marketCap": 1864.5,
-        "quotedAt": "20260911113924"
+        "price": 474.9,
+        "change": 13.8,
+        "changePct": 2.99,
+        "open": 459.63,
+        "high": 489.9,
+        "low": 456.23,
+        "prevClose": 461.1,
+        "marketCap": 1900.1,
+        "quotedAt": "20260915141000"
       },
       {
         "code": "sh688981",
@@ -1171,15 +1171,15 @@
         "logoDomain": "",
         "url": "https://www.sse.com.cn/assortment/stock/list/info/company/index.shtml?COMPANY_CODE=688981",
         "currency": "CNY",
-        "price": 116.1,
-        "change": -3.08,
-        "changePct": -2.58,
-        "open": 118.0,
-        "high": 118.4,
-        "low": 115.8,
-        "prevClose": 119.18,
-        "marketCap": 9940.8,
-        "quotedAt": "20260911113916"
+        "price": 115.24,
+        "change": 1.17,
+        "changePct": 1.03,
+        "open": 113.61,
+        "high": 117.37,
+        "low": 113.6,
+        "prevClose": 114.07,
+        "marketCap": 9867.1,
+        "quotedAt": "20260915141000"
       },
       {
         "code": "sz300308",
@@ -1189,15 +1189,15 @@
         "logoDomain": "innolight.com",
         "url": "https://www.szse.cn/certificate/individual/index.html?code=300308",
         "currency": "CNY",
-        "price": 906.37,
-        "change": 16.27,
-        "changePct": 1.83,
-        "open": 898.17,
-        "high": 929.8,
-        "low": 891.17,
-        "prevClose": 890.1,
-        "marketCap": 10676.2,
-        "quotedAt": "20260911113936"
+        "price": 869.91,
+        "change": -3.09,
+        "changePct": -0.35,
+        "open": 873.38,
+        "high": 883.73,
+        "low": 858.0,
+        "prevClose": 873.0,
+        "marketCap": 10246.8,
+        "quotedAt": "20260915141000"
       },
       {
         "code": "sz300502",
@@ -1207,15 +1207,15 @@
         "logoDomain": "eoptolink.com",
         "url": "https://www.szse.cn/certificate/individual/index.html?code=300502",
         "currency": "CNY",
-        "price": 415.0,
-        "change": 4.1,
-        "changePct": 1.0,
-        "open": 408.8,
-        "high": 423.8,
-        "low": 408.1,
-        "prevClose": 410.9,
-        "marketCap": 5786.2,
-        "quotedAt": "20260911113927"
+        "price": 401.2,
+        "change": -0.7,
+        "changePct": -0.17,
+        "open": 402.0,
+        "high": 406.99,
+        "low": 393.51,
+        "prevClose": 401.9,
+        "marketCap": 5595.7,
+        "quotedAt": "20260915141000"
       },
       {
         "code": "sz000977",
@@ -1225,15 +1225,15 @@
         "logoDomain": "inspur.com",
         "url": "https://www.szse.cn/certificate/individual/index.html?code=000977",
         "currency": "CNY",
-        "price": 68.37,
-        "change": -2.06,
-        "changePct": -2.92,
-        "open": 69.01,
-        "high": 69.61,
-        "low": 68.09,
-        "prevClose": 70.43,
-        "marketCap": 1004.0,
-        "quotedAt": "20260911113921"
+        "price": 69.11,
+        "change": 0.29,
+        "changePct": 0.42,
+        "open": 68.42,
+        "high": 69.5,
+        "low": 68.21,
+        "prevClose": 68.82,
+        "marketCap": 1014.9,
+        "quotedAt": "20260915141000"
       },
       {
         "code": "sh601138",
@@ -1243,15 +1243,15 @@
         "logoDomain": "fii-foxconn.com",
         "url": "https://www.sse.com.cn/assortment/stock/list/info/company/index.shtml?COMPANY_CODE=601138",
         "currency": "CNY",
-        "price": 63.06,
-        "change": -0.85,
-        "changePct": -1.33,
-        "open": 62.66,
-        "high": 64.49,
-        "low": 62.5,
-        "prevClose": 63.91,
-        "marketCap": 12513.7,
-        "quotedAt": "20260911113922"
+        "price": 60.98,
+        "change": -0.59,
+        "changePct": -0.96,
+        "open": 61.25,
+        "high": 62.49,
+        "low": 60.7,
+        "prevClose": 61.57,
+        "marketCap": 12100.9,
+        "quotedAt": "20260915140959"
       },
       {
         "code": "sz002230",
@@ -1261,15 +1261,15 @@
         "logoDomain": "iflytek.com",
         "url": "https://www.szse.cn/certificate/individual/index.html?code=002230",
         "currency": "CNY",
-        "price": 38.5,
-        "change": -0.66,
-        "changePct": -1.69,
-        "open": 38.9,
-        "high": 39.05,
-        "low": 38.15,
-        "prevClose": 39.16,
-        "marketCap": 924.8,
-        "quotedAt": "20260911113854"
+        "price": 39.25,
+        "change": -0.35,
+        "changePct": -0.88,
+        "open": 39.88,
+        "high": 39.96,
+        "low": 39.21,
+        "prevClose": 39.6,
+        "marketCap": 942.8,
+        "quotedAt": "20260915141000"
       },
       {
         "code": "sh688111",
@@ -1279,15 +1279,15 @@
         "logoDomain": "",
         "url": "https://www.sse.com.cn/assortment/stock/list/info/company/index.shtml?COMPANY_CODE=688111",
         "currency": "CNY",
-        "price": 226.72,
-        "change": -1.0,
-        "changePct": -0.44,
-        "open": 226.79,
-        "high": 229.5,
-        "low": 223.8,
-        "prevClose": 227.72,
-        "marketCap": 1052.0,
-        "quotedAt": "20260911113910"
+        "price": 226.32,
+        "change": -2.27,
+        "changePct": -0.99,
+        "open": 230.7,
+        "high": 233.44,
+        "low": 226.2,
+        "prevClose": 228.59,
+        "marketCap": 1050.2,
+        "quotedAt": "20260915141001"
       },
       {
         "code": "sz300418",
@@ -1297,15 +1297,15 @@
         "logoDomain": "",
         "url": "https://www.szse.cn/certificate/individual/index.html?code=300418",
         "currency": "CNY",
-        "price": 43.49,
-        "change": -0.77,
-        "changePct": -1.74,
-        "open": 44.03,
-        "high": 44.47,
-        "low": 43.28,
-        "prevClose": 44.26,
-        "marketCap": 558.9,
-        "quotedAt": "20260911113933"
+        "price": 42.87,
+        "change": -0.04,
+        "changePct": -0.09,
+        "open": 43.23,
+        "high": 43.96,
+        "low": 42.75,
+        "prevClose": 42.91,
+        "marketCap": 550.9,
+        "quotedAt": "20260915141000"
       },
       {
         "code": "sh601360",
@@ -1315,15 +1315,15 @@
         "logoDomain": "360.cn",
         "url": "https://www.sse.com.cn/assortment/stock/list/info/company/index.shtml?COMPANY_CODE=601360",
         "currency": "CNY",
-        "price": 8.66,
+        "price": 8.98,
         "change": -0.05,
-        "changePct": -0.57,
-        "open": 8.79,
-        "high": 8.83,
-        "low": 8.58,
-        "prevClose": 8.71,
-        "marketCap": 606.2,
-        "quotedAt": "20260911113932"
+        "changePct": -0.55,
+        "open": 9.21,
+        "high": 9.35,
+        "low": 8.93,
+        "prevClose": 9.03,
+        "marketCap": 628.6,
+        "quotedAt": "20260915140959"
       },
       {
         "code": "hk02513",
@@ -1333,15 +1333,15 @@
         "logoDomain": "z.ai",
         "url": "https://www.hkex.com.hk/Market-Data/Securities-Prices/Equities/Equities-Quote?sc_lang=zh-HK&sym=2513",
         "currency": "HKD",
-        "price": 788.0,
-        "change": -31.0,
-        "changePct": -3.79,
-        "open": 800.0,
-        "high": 847.5,
-        "low": 784.5,
-        "prevClose": 819.0,
-        "marketCap": 3669.1,
-        "quotedAt": "2026/09/11 11:24:34"
+        "price": 668.5,
+        "change": -52.5,
+        "changePct": -7.28,
+        "open": 727.0,
+        "high": 731.5,
+        "low": 667.0,
+        "prevClose": 721.0,
+        "marketCap": 3112.7,
+        "quotedAt": "2026/09/15 13:54:54"
       },
       {
         "code": "hk00100",
@@ -1351,15 +1351,15 @@
         "logoDomain": "minimaxi.com",
         "url": "https://www.hkex.com.hk/Market-Data/Securities-Prices/Equities/Equities-Quote?sc_lang=zh-HK&sym=100",
         "currency": "HKD",
-        "price": 265.4,
-        "change": -26.6,
-        "changePct": -9.11,
-        "open": 285.0,
-        "high": 296.8,
-        "low": 265.2,
-        "prevClose": 292.0,
-        "marketCap": 926.9,
-        "quotedAt": "2026/09/11 11:24:34"
+        "price": 235.6,
+        "change": -16.8,
+        "changePct": -6.66,
+        "open": 256.0,
+        "high": 259.2,
+        "low": 233.4,
+        "prevClose": 252.4,
+        "marketCap": 822.8,
+        "quotedAt": "2026/09/15 13:54:55"
       },
       {
         "code": "hk06082",
@@ -1369,15 +1369,15 @@
         "logoDomain": "",
         "url": "https://www.hkex.com.hk/Market-Data/Securities-Prices/Equities/Equities-Quote?sc_lang=zh-HK&sym=6082",
         "currency": "HKD",
-        "price": 34.66,
-        "change": -2.82,
-        "changePct": -7.52,
-        "open": 36.98,
-        "high": 36.98,
-        "low": 34.2,
-        "prevClose": 37.48,
-        "marketCap": 898.3,
-        "quotedAt": "2026/09/11 11:24:33"
+        "price": 34.96,
+        "change": 1.86,
+        "changePct": 5.62,
+        "open": 33.1,
+        "high": 35.8,
+        "low": 32.7,
+        "prevClose": 33.1,
+        "marketCap": 906.1,
+        "quotedAt": "2026/09/15 13:54:02"
       },
       {
         "code": "hk09903",
@@ -1387,15 +1387,15 @@
         "logoDomain": "",
         "url": "https://www.hkex.com.hk/Market-Data/Securities-Prices/Equities/Equities-Quote?sc_lang=zh-HK&sym=9903",
         "currency": "HKD",
-        "price": 303.8,
-        "change": -17.2,
-        "changePct": -5.36,
-        "open": 320.8,
-        "high": 321.0,
-        "low": 301.6,
-        "prevClose": 321.0,
-        "marketCap": 817.8,
-        "quotedAt": "2026/09/11 11:24:32"
+        "price": 111.7,
+        "change": 5.43,
+        "changePct": 5.11,
+        "open": 110.0,
+        "high": 120.8,
+        "low": 103.8,
+        "prevClose": 106.267,
+        "marketCap": 902.0,
+        "quotedAt": "2026/09/15 13:54:52"
       }
     ]
   }

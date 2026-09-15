@@ -1,6 +1,20 @@
 # 飞书 AI 情报（feishu-ai-signal）
 
-端到端 AI 行业情报系统：从飞书多维表读源配置，采集网页 / RSS / 视频 / 社媒 / 播客，清洗去重后写入条目表，再用 LLM 生成每日简报与周报，发布到 GitHub Pages，并通过飞书卡片推送到群聊。
+端到端 AI 行业情报系统：从配置库读取源配置，采集网页 / RSS / 视频 / 社媒 / 播客，清洗去重后写入条目表，再用 LLM 生成每日简报与周报，发布到 GitHub Pages，并通过飞书卡片推送到群聊。数据层支持飞书多维表和 MySQL。
+
+## MySQL 部署
+
+设置 `DB_BACKEND=mysql` 及 `MYSQL_HOST`、`MYSQL_PORT`、`MYSQL_USER`、`MYSQL_PASSWORD`、`MYSQL_DATABASE`。安装依赖后运行 `python3 -m src.mysql_backend` 初始化表结构。MySQL 模式使用 `records` 保存完整字段归档，同时维护 `sources` 和 `signals` 两张规范化查询表；`sources` 不再使用无业务价值的 `tier` 字段。
+
+常用查询示例：
+
+```sql
+SELECT s.title, s.source_id, so.name, s.impact_score
+FROM signals s LEFT JOIN sources so ON so.source_id = s.source_id
+ORDER BY s.published_at DESC LIMIT 20;
+```
+
+已有飞书数据可执行 `DB_BACKEND=feishu python3 -m tools.migrate_feishu_to_mysql` 完成一次迁移；核对输出的各表行数后，将运行环境切换为 `DB_BACKEND=mysql`。飞书机器人消息仍需配置飞书凭据，数据库读写不再依赖飞书 Base。
 
 ```
 飞书一级参数表（源配置，运行时唯一真相）

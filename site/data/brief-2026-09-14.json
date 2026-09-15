@@ -927,10 +927,36 @@
         "推理",
         "AI"
       ],
-      "imageUrl": "",
+      "imageUrl": "media/papers/recvuGBG2GdVmN-p7-f1.png",
       "mediaAssets": {
-        "images": [],
-        "videos": []
+        "images": [
+          {
+            "url": "media/papers/recvuGBG2GdVmN-p7-f1.png",
+            "alt": "PDF 第 7 页图表：Figure 1: An illustration of CoT and vanilla ICL. Figure (a) shows the CoT prompt and the corresponding output of ChatGPT (GPT-3.5-turbo-16k). The intermediate reasoning is shown in red. The output of ChatGPT follows the pattern in the prompt, which consists of a reasoning step, followed by the desired answer. Fig- ure (b) shows the result of using the corresponding vanilla ICL prompt, which includes of two input-output pairs. In this case, ChatGPT fails to provide the correct answer. Figure (c) illustrates a general pipeline of CoT prompting with n demonstration examples. Each example include",
+            "kind": "pdf-page",
+            "layout": "wide"
+          },
+          {
+            "url": "media/papers/recvuGBG2GdVmN-p8-f2.png",
+            "alt": "PDF 第 8 页图表：Figure 2: An illustration of the multi-step latent-variable model defined in (2). According to this graphical model, for any h ≥1, each step zi h of i-th example depends on the previous steps {zi ℓ}ℓ<h and the hidden concept θ∗.",
+            "kind": "pdf-page",
+            "layout": "wide"
+          },
+          {
+            "url": "media/papers/recvuGBG2GdVmN-p9-f3.png",
+            "alt": "PDF 第 9 页图表：Table 1: Summary of the three sources of errors in CoT prompting.",
+            "kind": "pdf-page",
+            "layout": "wide"
+          },
+          {
+            "url": "media/papers/recvuGBG2GdVmN-p16-f4.png",
+            "alt": "PDF 第 16 页图表：Table 2: Average accuracy of the six prompting methods on the CityEquation task. The results are based on 200 random testing instances. “PI CoT” stands for the par- tially informative chain of thought method.",
+            "kind": "pdf-page",
+            "layout": "wide"
+          }
+        ],
+        "videos": [],
+        "cover": "media/papers/recvuGBG2GdVmN-p7-f1.png"
       },
       "editorialStructure": "",
       "pdfUrl": "http://jmlr.org/papers/volume27/25-2240/25-2240.pdf",

@@ -92,9 +92,10 @@ class PaperFullTextTest(unittest.TestCase):
     def test_llm_json_sends_images_in_chat_format(self, post: MagicMock) -> None:
         response = MagicMock()
         response.status_code = 200
-        response.json.return_value = {
-            "choices": [{"message": {"content": '{"ok": true}'}}]
-        }
+        response.encoding = "utf-8"
+        response.iter_content.return_value = [
+            b'{"choices": [{"message": {"content": "{\\"ok\\": true}"}}]}'
+        ]
         post.return_value = response
         result = report._llm_json(
             "Read the chart",

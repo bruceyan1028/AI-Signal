@@ -970,7 +970,7 @@ class FrontendContractTest(unittest.TestCase):
         template = Path("index.html").read_text(encoding="utf-8")
         narrow = template.split("@media (max-width: 1280px) {")[1].split("\n  }")[0]
         self.assertIn("flex-wrap: wrap", _css_rule(narrow, ".hf-meta"))
-        mobile = template.split("@media (max-width: 760px) {")[1].split("\n  }")[0]
+        mobile = template.rsplit("@media (max-width: 760px) {", 1)[1].split("\n  }")[0]
         self.assertIn("flex-wrap: nowrap", _css_rule(mobile, ".hf-meta"))
 
     def test_hf_update_date_sits_at_the_right_of_the_title_line(self):

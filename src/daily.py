@@ -1241,18 +1241,16 @@ def _ensure_deep_analysis(
         or scalar(fields.get("AI深度解读"))
         or ""
     ).strip()
-    if cached and (
-        not preserve_structure
-        or (
-            _EDITORIAL_HEADING_RE.search(cached)
-            and not editorial_headings_need_cn(cached)
-        )
-    ):
+    stale_editorial = preserve_structure and (
+        not _EDITORIAL_HEADING_RE.search(cached)
+        or editorial_headings_need_cn(cached)
+    )
+    if cached and not stale_editorial:
         analysis["deep_analysis_cn"] = cached
         if preserve_structure:
             analysis["editorial_structure"] = "source"
         return {}
-    if not config.DAILY_FILL_LEGACY_DEEP_ANALYSIS:
+    if not stale_editorial and not config.DAILY_FILL_LEGACY_DEEP_ANALYSIS:
         # 这类条目已有可用摘要，只是缺历史长解读。把它留给异步维护任务，
         # 避免日报在主线程中逐条等待 LLM，导致整份简报看似卡死。
         return {}

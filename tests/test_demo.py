@@ -1071,9 +1071,8 @@ class DeliveryTests(unittest.TestCase):
         self.assertIn("toggleFilter(f)", template)
         self.assertIn("clearFilters()", template)
         self.assertIn("function matchesFeed", template)
-        self.assertIn("hidden: {}", template)
-        self.assertIn("隐藏「${f}」", template)
-        self.assertNotIn("只看${f}", template)
+        self.assertIn("activeFilter: null", template)
+        self.assertIn("state.activeFilter === f ? null : f", template)
         self.assertIn("function dataRailHtml", template)
         # 要点全宽在最上，下面才是左栏 / 全部信号 / 右栏
         self.assertIn("techDivider(A, '01', '今日核心要点'", template)

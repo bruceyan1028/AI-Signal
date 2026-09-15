@@ -1436,7 +1436,7 @@ class DeepAnalysisTest(unittest.TestCase):
         deep = "## 直接原因\n精编。\n\n## 深层原因\n精编。\n\n## 行业影响\n精编。"
         with mock.patch.object(
             daily.report, "_llm_json", return_value={"deep_analysis_cn": deep}
-        ) as llm:
+        ) as llm, mock.patch.object(daily.config, "DAILY_FILL_LEGACY_DEEP_ANALYSIS", True):
             updates = daily._ensure_deep_analysis(fields, analysis)
         self.assertEqual(updates, {"AI深度解读": deep})
         self.assertIn("不得套用", llm.call_args.args[0])
@@ -1471,7 +1471,7 @@ class DeepAnalysisTest(unittest.TestCase):
         )
         with mock.patch.object(
             daily.report, "_llm_json", return_value={"deep_analysis_cn": deep}
-        ) as llm:
+        ) as llm, mock.patch.object(daily.config, "DAILY_FILL_LEGACY_DEEP_ANALYSIS", True):
             updates = daily._ensure_deep_analysis(fields, analysis)
         self.assertEqual(updates, {"AI深度解读": deep})
         self.assertEqual(fields["AI深度解读"], deep)

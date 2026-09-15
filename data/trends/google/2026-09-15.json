@@ -1,0 +1,270 @@
+[
+  {
+    "keywords": [
+      "anthropic ai"
+    ],
+    "geo": "",
+    "dates": [
+      "2026-09-07",
+      "2026-09-08",
+      "2026-09-09",
+      "2026-09-10",
+      "2026-09-11",
+      "2026-09-12",
+      "2026-09-13",
+      "2026-09-14",
+      "2026-09-15"
+    ],
+    "series": {
+      "anthropic ai": [
+        41.0,
+        42.0,
+        94.0,
+        97.0,
+        74.0,
+        59.0,
+        88.0,
+        100.0,
+        92.0
+      ]
+    },
+    "related": {
+      "anthropic ai": [
+        "anthropic ai researcher quits",
+        "jacob coxon anthropic",
+        "jacob coxon leaves anthropic ai",
+        "anthropic researcher quits",
+        "anthropic ai researcher quits safety concerns"
+      ]
+    }
+  },
+  {
+    "keywords": [
+      "OpenAI"
+    ],
+    "geo": "",
+    "dates": [
+      "2026-09-07",
+      "2026-09-08",
+      "2026-09-09",
+      "2026-09-10",
+      "2026-09-11",
+      "2026-09-12",
+      "2026-09-13",
+      "2026-09-14",
+      "2026-09-15"
+    ],
+    "series": {
+      "OpenAI": [
+        92.0,
+        95.0,
+        100.0,
+        79.0,
+        63.0,
+        49.0,
+        48.0,
+        65.0,
+        76.0
+      ]
+    },
+    "related": {
+      "OpenAI": [
+        "navier stokes equation openai",
+        "navier stokes equation",
+        "jacob coxon openai",
+        "jacob coxon",
+        "navier stokes"
+      ]
+    }
+  },
+  {
+    "keywords": [
+      "Claude AI"
+    ],
+    "geo": "",
+    "dates": [
+      "2026-09-07",
+      "2026-09-08",
+      "2026-09-09",
+      "2026-09-10",
+      "2026-09-11",
+      "2026-09-12",
+      "2026-09-13",
+      "2026-09-14",
+      "2026-09-15"
+    ],
+    "series": {
+      "Claude AI": [
+        94.0,
+        97.0,
+        100.0,
+        91.0,
+        67.0,
+        48.0,
+        49.0,
+        65.0,
+        69.0
+      ]
+    },
+    "related": {
+      "Claude AI": [
+        "claude ai fermat last theorem",
+        "gpt 6 astra",
+        "chatgpt astra",
+        "astra ai",
+        "muse ai"
+      ]
+    }
+  },
+  {
+    "keywords": [
+      "Google Gemini"
+    ],
+    "geo": "",
+    "dates": [
+      "2026-09-07",
+      "2026-09-08",
+      "2026-09-09",
+      "2026-09-10",
+      "2026-09-11",
+      "2026-09-12",
+      "2026-09-13",
+      "2026-09-14",
+      "2026-09-15"
+    ],
+    "series": {
+      "Google Gemini": [
+        74.0,
+        85.0,
+        88.0,
+        100.0,
+        89.0,
+        68.0,
+        62.0,
+        72.0,
+        74.0
+      ]
+    },
+    "related": {
+      "Google Gemini": [
+        "gemini live features google keep",
+        "prompt seen",
+        "google gemini prompt"
+      ]
+    }
+  },
+  {
+    "keywords": [
+      "NVIDIA AI"
+    ],
+    "geo": "",
+    "dates": [
+      "2026-09-07",
+      "2026-09-08",
+      "2026-09-09",
+      "2026-09-10",
+      "2026-09-11",
+      "2026-09-12",
+      "2026-09-13",
+      "2026-09-14",
+      "2026-09-15"
+    ],
+    "series": {
+      "NVIDIA AI": [
+        90.0,
+        88.0,
+        71.0,
+        66.0,
+        53.0,
+        38.0,
+        41.0,
+        80.0,
+        100.0
+      ]
+    },
+    "related": {
+      "NVIDIA AI": [
+        "capitec nvidia ai hardware deployment",
+        "latham & watkins buys nvidia servers to set up in-house ai systems"
+      ]
+    }
+  },
+  {
+    "keywords": [
+      "DeepSeek"
+    ],
+    "geo": "",
+    "dates": [
+      "2026-09-07",
+      "2026-09-08",
+      "2026-09-09",
+      "2026-09-10",
+      "2026-09-11",
+      "2026-09-12",
+      "2026-09-13",
+      "2026-09-14",
+      "2026-09-15"
+    ],
+    "series": {
+      "DeepSeek": [
+        86.0,
+        89.0,
+        86.0,
+        100.0,
+        82.0,
+        63.0,
+        57.0,
+        87.0,
+        91.0
+      ]
+    },
+    "related": {
+      "DeepSeek": [
+        "deepseek v4.1 flash",
+        "deepseek v4.1",
+        "deepseek 4.1 flash",
+        "deepseek v4.1 benchmark",
+        "deepseek v4.1 flash benchmark"
+      ]
+    }
+  },
+  {
+    "keywords": [
+      "anthropic ai"
+    ],
+    "geo": "CA",
+    "dates": [
+      "2026-09-07",
+      "2026-09-08",
+      "2026-09-09",
+      "2026-09-10",
+      "2026-09-11",
+      "2026-09-12",
+      "2026-09-13",
+      "2026-09-14",
+      "2026-09-15"
+    ],
+    "series": {
+      "anthropic ai": [
+        10.0,
+        13.0,
+        36.0,
+        82.0,
+        45.0,
+        32.0,
+        38.0,
+        100.0,
+        47.0
+      ]
+    },
+    "related": {
+      "anthropic ai": [
+        "mark carney european union",
+        "jacob coxon",
+        "lake erie",
+        "anthropic ai researcher quits",
+        "anthropic researcher quits"
+      ]
+    }
+  }
+]

@@ -1,0 +1,14 @@
+CREATE DATABASE IF NOT EXISTS feishu_ai_signal CHARACTER SET utf8mb4;
+USE feishu_ai_signal;
+
+CREATE TABLE IF NOT EXISTS records (
+  id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  table_key VARCHAR(128) NOT NULL,
+  record_id VARCHAR(128) NOT NULL,
+  fields JSON NOT NULL,
+  created_at TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+  updated_at TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6),
+  PRIMARY KEY (id),
+  UNIQUE KEY uq_table_record (table_key, record_id),
+  KEY idx_table (table_key)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

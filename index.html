@@ -3463,6 +3463,11 @@ function articleBody(A, s){
     : 0;
   let sectionCount = 0;
   let placedImages = !llmPlaced && sourceStructured && images.length ? 1 : 0;
+  const pendingImages = [];
+  const flushHeading = heading => {
+    placer.forHeading(heading).forEach(item=>pendingImages.push(figure(item)));
+    blocks.push(...pendingImages.splice(0));
+  };
   deepParas.forEach((para, index)=>{
     const sourceSection = sourceStructured ? para.match(/^##\s+([^\n]+)\n?([\s\S]*)$/) : null;
     const section = para.match(/^【([^】]+)】[：:]?\s*([\s\S]*)$/);
@@ -3477,8 +3482,8 @@ function articleBody(A, s){
         </div>
         ${sourceSection[2].trim()?`<div style="font-size:15px;line-height:2.08;color:${UI.text2};${proseStyle}">${zhProseHtml(esc(sourceSection[2].trim()).replace(/\n/g,'<br>'))}</div>`:''}
       </section>`);
-      placer.forHeading(headCn).forEach(item=>blocks.push(figure(item)));
-      placer.forHeading(sourceSection[1]).forEach(item=>blocks.push(figure(item)));
+      flushHeading(headCn);
+      flushHeading(sourceSection[1]);
       placer.forParagraph(sourceSection[2]).forEach(item=>blocks.push(figure(item)));
     } else if(section){
       const isPodcastBoundary = s.kind==='播客' && /信息边界|资料边界/.test(section[1]);
@@ -3519,7 +3524,7 @@ function articleBody(A, s){
             ${section[2].trim()?`<div style="padding:15px 17px 16px;font-size:14.5px;line-height:2;color:${UI.text2};${proseStyle}">${zhProseHtml(esc(section[2].trim()).replace(/\n/g,'<br>'))}</div>`:''}
           </section>`);
         }
-        placer.forHeading(section[1]).forEach(item=>blocks.push(figure(item)));
+        flushHeading(section[1]);
         placer.forParagraph(section[2]).forEach(item=>blocks.push(figure(item)));
       }
     } else if(sourceStructured) {
