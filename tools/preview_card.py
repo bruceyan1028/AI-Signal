@@ -185,7 +185,7 @@ def run() -> int:
 
     brief = json.loads(Path(args.input).read_text(encoding="utf-8"))
     # 和 notify.run 一样按 weekId 分派，否则周报只能拿日报的构造函数硬渲染
-    base = "https://example.github.io/feishu-ai-signal"
+    base = "https://example.github.io/ai-signal"
     week_id = str(brief.get("weekId") or "")
     if week_id:
         card = notify.build_weekly_card(brief, notify.weekly_detail_url(base, week_id))

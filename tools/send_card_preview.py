@@ -19,7 +19,7 @@ def run() -> int:
     parser.add_argument("--input", default="site/data/brief-latest.json")
     parser.add_argument("--open-id")
     parser.add_argument("--chat-id")
-    parser.add_argument("--base-url", default=config.PUBLIC_BASE_URL or "https://bruceyan1028.github.io/feishu-ai-signal")
+    parser.add_argument("--base-url", default=config.PUBLIC_BASE_URL or "https://bruceyan1028.github.io/ai-signal")
     args = parser.parse_args()
     if bool(args.chat_id) == bool(args.open_id):
         parser.error("请指定 --chat-id 或 --open-id 之一")

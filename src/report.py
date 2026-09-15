@@ -802,7 +802,7 @@ def render_html(data: dict[str, Any]) -> str:
 <title>AI 信号情报简报 · {_esc(data.get('date_label',''))}</title>
 <style>{CSS}</style></head><body>
 <div class="topbar"><div class="inner">
-  <div class="brand"><span class="dot"></span>AI Signal</div>
+  <div class="brand"><span class="dot"></span>AI-Signal</div>
   <div class="meta"><span>{_esc(data.get('period_label',''))}</span>
     <span>{stats['total']} 条 · {stats['sources']} 源</span>
     <span>生成于 {gen}</span></div>
@@ -847,7 +847,7 @@ def render_html(data: dict[str, Any]) -> str:
     <div class="sources">{src_html}</div>
   </section>
 
-  <div class="foot">本报告由 feishu-ai-signal 自动生成 · 数据源自飞书「信号条目表」· 分析与评分由多模型产出,仅供参考</div>
+  <div class="foot">本报告由 ai-signal 自动生成 · 数据源自飞书「信号条目表」· 分析与评分由多模型产出,仅供参考</div>
 </div>
 <script>{JS}</script>
 </body></html>"""

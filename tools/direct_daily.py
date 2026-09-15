@@ -126,7 +126,7 @@ def run(day: str, output: Path) -> None:
     analyzed.sort(key=lambda s: (s["impact"], s["novelty"], s["actionability"]), reverse=True)
     signals, technical, video, podcast, social = daily.partition_output_signals(analyzed, config.DAILY_SIGNAL_LIMIT, technical_ids)
     bullets = [{"title": s["titleCn"], "text": s["summary"], "refs": [i]} for i, s in enumerate(signals[:5], 1)]
-    payload = {"date": day, "title": f"AI Signal 每日情报 · {day}", "intro": "今日简报基于已入库信号的原文与编辑整理生成。重点覆盖模型产品、AI 安全、产业投入与开源进展。", "bullets": bullets, "signals": signals, "technicalSignals": technical, "videoSignals": video, "podcastSignals": podcast, "socialPosts": social}
+    payload = {"date": day, "title": f"AI-Signal 每日情报 · {day}", "intro": "今日简报基于已入库信号的原文与编辑整理生成。重点覆盖模型产品、AI 安全、产业投入与开源进展。", "bullets": bullets, "signals": signals, "technicalSignals": technical, "videoSignals": video, "podcastSignals": podcast, "socialPosts": social}
     table_id = config.FEISHU_BRIEF_TABLE_ID or feishu.ensure_daily_brief_table(token)
     payload["briefRecordId"] = daily._upsert_brief(token, table_id, payload)
     payload["briefTableId"] = table_id

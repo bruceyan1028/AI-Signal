@@ -866,7 +866,7 @@ class DeliveryTests(unittest.TestCase):
     def sample_brief(self) -> dict:
         return {
             "date": "2026-07-13",
-            "title": "AI Signal 每日情报 · 2026-07-13",
+            "title": "AI-Signal 每日情报 · 2026-07-13",
             "intro": "今日真实情报。",
             "bullets": [{"text": "一条要点", "refs": [1]}],
             "signals": [
@@ -947,7 +947,7 @@ class DeliveryTests(unittest.TestCase):
         self.assertEqual(
             [item["content"] for item in headings],
             [
-                "<font color='red'>**AI Signal 每日情报 · 2026-07-13**</font>",
+                "<font color='red'>**AI-Signal 每日情报 · 2026-07-13**</font>",
                 "<font color='blue'>**🚀 前沿模型公司**</font>",
                 "<font color='wathet'>**📰 中文媒体**</font>",
             ],
@@ -1376,7 +1376,7 @@ class DeliveryTests(unittest.TestCase):
             {"record_id": "brief1", "fields": {"简报ID": "2026-07-13", "发送状态": "待发送"}}
         ]
         with patch.object(
-            config, "FEISHU_RECIPIENT_CHAT_NAME_BY_ID", {"oc_group": "AI Signal 每日情报"}
+            config, "FEISHU_RECIPIENT_CHAT_NAME_BY_ID", {"oc_group": "AI-Signal 每日情报"}
         ):
             result = notify.send_many(
                 self.sample_brief(),
@@ -1385,7 +1385,7 @@ class DeliveryTests(unittest.TestCase):
                 chat_ids=["oc_group"],
             )
         self.assertEqual(result["messageIds"], {"oc_group": "group-msg"})
-        self.assertEqual(result["recipientStatuses"], {"AI Signal 每日情报": "success"})
+        self.assertEqual(result["recipientStatuses"], {"AI-Signal 每日情报": "success"})
         send_message.assert_called_once_with(
             "token", "oc_group", ANY, receive_id_type="chat_id"
         )

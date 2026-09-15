@@ -25,7 +25,7 @@ MYSQL_HOST = _env("MYSQL_HOST", "127.0.0.1")
 MYSQL_PORT = int(os.environ.get("MYSQL_PORT", "3306"))
 MYSQL_USER = _env("MYSQL_USER", "root")
 MYSQL_PASSWORD = os.environ.get("MYSQL_PASSWORD", "")
-MYSQL_DATABASE = _env("MYSQL_DATABASE", "feishu_ai_signal")
+MYSQL_DATABASE = _env("MYSQL_DATABASE", "ai_signal")
 MYSQL_CHARSET = _env("MYSQL_CHARSET", "utf8mb4")
 MYSQL_CONNECT_TIMEOUT = int(os.environ.get("MYSQL_CONNECT_TIMEOUT", "10"))
 

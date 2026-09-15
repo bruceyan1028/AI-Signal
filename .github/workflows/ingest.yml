@@ -1,4 +1,4 @@
-name: AI Signal Ingest
+name: AI-Signal Ingest
 
 on:
   # 每日拉取由 daily-brief 工作流统一完成（其 Ingest 步骤即 src.main）。

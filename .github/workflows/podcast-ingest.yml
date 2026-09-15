@@ -1,4 +1,4 @@
-name: AI Signal Podcast Ingest
+name: AI-Signal Podcast Ingest
 
 on:
   schedule:

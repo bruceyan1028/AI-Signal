@@ -1,4 +1,4 @@
-# 飞书 AI 情报（feishu-ai-signal）
+# AI-Signal
 
 端到端 AI 行业情报系统：从配置库读取源配置，采集网页 / RSS / 视频 / 社媒 / 播客，清洗去重后写入条目表，再用 LLM 生成每日简报与周报，发布到 GitHub Pages，并通过飞书卡片推送到群聊。数据层支持飞书多维表和 MySQL。
 
@@ -307,7 +307,7 @@ python -m src.health --days 30
 ```json
 {
   "date": "2026-08-22",
-  "title": "AI Signal 每日情报 · 2026-08-22",
+  "title": "AI-Signal 每日情报 · 2026-08-22",
   "intro": "两句导语",
   "bullets": [{"title": "...", "text": "...", "refs": [1]}],
   "signals": [{ "recordId": "...", "sourceId": "...", "titleCn": "...", "summary": "...", "mediaAssets": {} }]
@@ -529,7 +529,7 @@ python -m src.sources_api    # http://127.0.0.1:8787 ，只绑回环
 
 ## GitHub Actions 与 Runner
 
-日报 / 周报的 **build** 跑在自建 Runner：`[self-hosted, macOS, ARM64, feishu-ai-signal]`。原因：LLM 网关（如 `llm-center.modelbest.co`）只允许办公网，GitHub 托管出口会被拦。
+日报 / 周报的 **build** 跑在自建 Runner：`[self-hosted, macOS, ARM64, ai-signal]`。原因：LLM 网关（如 `llm-center.modelbest.co`）只允许办公网，GitHub 托管出口会被拦。
 
 部署 Pages 在 `ubuntu-latest`，不再从公网打 LLM。群卡片不在定时里发。
 
@@ -542,7 +542,7 @@ python -m src.sources_api    # http://127.0.0.1:8787 ，只绑回环
 | `social-ingest.yml` | 仅手动（未启用定时） | X 筛选已落地；缺 API credits，先不跑 |
 | `podcast-ingest.yml` | 每天 | 播客，装 ffmpeg，超时更长 |
 
-Runner 目录一般在本机 `~/actions-runner-feishu-ai-signal/`。可用 `./run.sh` 或 LaunchAgent `svc.sh`。Runner **offline** 时日报会一直 queued。访问 Google/YouTube 若 IPv6 黑洞，`src.main` 的 Media 可能长时间 `SYN_SENT`；本机补跑可用：
+Runner 目录一般在本机 `~/actions-runner-ai-signal/`。可用 `./run.sh` 或 LaunchAgent `svc.sh`。Runner **offline** 时日报会一直 queued。访问 Google/YouTube 若 IPv6 黑洞，`src.main` 的 Media 可能长时间 `SYN_SENT`；本机补跑可用：
 
 ```bash
 python -m src.main --method RSS --method Scrape
@@ -550,7 +550,7 @@ python -m src.main --method RSS --method Scrape
 
 回写 `site/` 的 bot 提交常用 `[skip ci]`，避免再触发日报。只改前端时靠 `pages-preview.yml`。
 
-GitHub Pages：仓库 Settings → Pages → Source = GitHub Actions。公网形如 `https://<user>.github.io/feishu-ai-signal/`。
+GitHub Pages：仓库 Settings → Pages → Source = GitHub Actions。公网形如 `https://<user>.github.io/ai-signal/`。
 
 ---
 

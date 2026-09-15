@@ -252,7 +252,7 @@ class WeeklyReportTest(unittest.TestCase):
         两张卡片发到同一个群，视觉必须是同一套。
         """
         brief = {
-            "title": "AI Signal 自动周报 · 2026-W34",
+            "title": "AI-Signal 自动周报 · 2026-W34",
             "headline": "本周主线",
             "thesis": "本周综述",
             "metrics": [{"label": "信号总数", "value": "2"}],

@@ -27,7 +27,7 @@ concurrency:
 jobs:
   recheck:
     # 与 daily-brief 同一台自建 Mac：健康记录只在它的 output/ 里，LLM 也只有它能连
-    runs-on: [self-hosted, macOS, ARM64, feishu-ai-signal]
+    runs-on: [self-hosted, macOS, ARM64, ai-signal]
     timeout-minutes: 30
     env:
       FEISHU_APP_ID: ${{ secrets.FEISHU_APP_ID }}
@@ -50,8 +50,7 @@ jobs:
 
       - name: Use prebuilt local Python environment
         run: |
-          test -x /Users/batlap/Projects/feishu-ai-signal/.venv/bin/python
-          echo "/Users/batlap/Projects/feishu-ai-signal/.venv/bin" >> "$GITHUB_PATH"
+          python -m pip install -r requirements.txt
 
       - name: Recheck violated sources (LLM only when violations exist)
         run: |

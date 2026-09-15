@@ -1,4 +1,4 @@
-name: Daily AI Signal Brief
+name: Daily AI-Signal Brief
 
 on:
   schedule:
@@ -22,7 +22,7 @@ jobs:
   build:
     # LLM Center 仅允许本机飞连网络访问；使用专用 Mac Runner，
     # 避免 GitHub 托管 Runner 的动态公网出口被 WAF 拦截。
-    runs-on: [self-hosted, macOS, ARM64, feishu-ai-signal]
+    runs-on: [self-hosted, macOS, ARM64, ai-signal]
     timeout-minutes: 90
     outputs:
       need_brief: ${{ steps.gate.outputs.need_brief }}
@@ -67,7 +67,7 @@ jobs:
       - name: Skip if today's brief is already in the repo
         id: gate
         run: |
-          /Users/batlap/Projects/feishu-ai-signal/.venv/bin/python - <<'PY'
+          python - <<'PY'
           import json
           import os
           from datetime import datetime
@@ -92,8 +92,7 @@ jobs:
       - name: Use prebuilt local Python environment
         if: steps.gate.outputs.need_brief == 'true'
         run: |
-          test -x /Users/batlap/Projects/feishu-ai-signal/.venv/bin/python
-          echo "/Users/batlap/Projects/feishu-ai-signal/.venv/bin" >> "$GITHUB_PATH"
+          python -m pip install -r requirements.txt
 
       - name: Verify dependencies
         if: steps.gate.outputs.need_brief == 'true'

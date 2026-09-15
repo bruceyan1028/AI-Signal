@@ -176,7 +176,7 @@ def build_card(brief: dict[str, Any], url: str) -> dict[str, Any]:
     groups = group_signals(signals)
     shown = sum(len(items) for _, items in groups)
 
-    title = str(brief.get("title") or "AI Signal 每日情报")
+    title = str(brief.get("title") or "AI-Signal 每日情报")
     elements: list[dict[str, Any]] = [_band("red-100", "red", title, size="heading")]
     for name, items in groups:
         background, font = CATEGORY_THEMES.get(name, DEFAULT_THEME)
@@ -232,7 +232,7 @@ def build_weekly_card(brief: dict[str, Any], url: str) -> dict[str, Any]:
         if record_id in by_id
     ][:MAX_ITEMS_PER_GROUP]
 
-    title = str(brief.get("title") or "AI Signal 自动周报")
+    title = str(brief.get("title") or "AI-Signal 自动周报")
     elements: list[dict[str, Any]] = [_band("red-100", "red", title, size="heading")]
 
     headline = _short(brief.get("headline"), 60)

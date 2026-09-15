@@ -317,7 +317,7 @@ def load_recent_briefs(
         briefs.append(
             {
                 "date": date,
-                "title": str(daily.scalar(fields.get("简报标题")) or f"AI Signal 每日情报 · {date}"),
+                "title": str(daily.scalar(fields.get("简报标题")) or f"AI-Signal 每日情报 · {date}"),
                 "intro": str(daily.scalar(fields.get("导语")) or ""),
                 "bullets": _json_cell(fields.get("关键要点"), []),
                 "signals": signals,

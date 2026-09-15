@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<title>AI Signal · 一条信息源的全链路流程图</title>
+<title>AI-Signal · 一条信息源的全链路流程图</title>
 <style>
   :root { --ink:#16130f; --muted:#6b6b6b; --line:#e5e1da; --red:#b42318; --amber:#a06600; --green:#1f7a45; --blue:#2b6cb0; }
   body { font-family: -apple-system, "PingFang SC", "Helvetica Neue", Arial, sans-serif; color: var(--ink); margin: 0; background:#fbfaf7; }
@@ -30,7 +30,7 @@
 </head>
 <body>
 <header>
-  <h1>AI Signal · 一条信息源从「配置」到「飞书卡片」的全链路</h1>
+  <h1>AI-Signal · 一条信息源从「配置」到「飞书卡片」的全链路</h1>
   <p>基于 <code>src/</code> 当前代码梳理（2026-09-02）。红色节点 = 条目被丢弃；橙色 = 截断/取舍点；绿色 = 落盘或写库；虚线框 = 可选/条件分支。文件:行号可直接在仓库里定位。</p>
 </header>
 <nav>
@@ -473,7 +473,7 @@ flowchart TB
   SIG --> AGG["attach_aggregations cluster.py:344<br/>事件聚合四分组：官方来源(primary 或 L1) / 交叉验证(论文/arxiv) / 相关报道(L2,L3) / 补充视角(其余)"]
   AGG --> SYN["LLM 综述 :1262（一次调用，输入 [i] title — summary ×30）<br/>intro 2 句中文导语<br/>bullets 3-6 个 {title, text, refs}"]
   SYN --> BUL["bullets 后处理 :1270-1283<br/>text 为空跳过 · refs 只留数字<br/>title 强制覆盖 = referenced_signal_title(首条被引用信号的原标题) :327<br/>取不到 → brief_bullet_title(text 首分隔符前 28 字)<br/>硬上限 6 条 · 全失败 → 取 signals[:3] 兜底"]
-  BUL --> OUT["payload{title='AI Signal 每日情报 · {day}', intro, bullets, signals}<br/>→ 飞书 每日简报表 upsert(简报ID=日期) · output/daily-brief.json"]
+  BUL --> OUT["payload{title='AI-Signal 每日情报 · {day}', intro, bullets, signals}<br/>→ 飞书 每日简报表 upsert(简报ID=日期) · output/daily-brief.json"]
   classDef drop fill:#fde8e6,stroke:#b42318,color:#7a1610;
   classDef cut fill:#fff3e0,stroke:#a06600,color:#5c3a00;
   classDef store fill:#e8f5ec,stroke:#1f7a45;

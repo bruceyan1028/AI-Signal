@@ -1,4 +1,4 @@
-name: Weekly AI Signal Report
+name: Weekly AI-Signal Report
 
 on:
   schedule:
@@ -22,7 +22,7 @@ concurrency:
 
 jobs:
   build:
-    runs-on: [self-hosted, macOS, ARM64, feishu-ai-signal]
+    runs-on: [self-hosted, macOS, ARM64, ai-signal]
     timeout-minutes: 45
     env:
       FEISHU_APP_ID: ${{ secrets.FEISHU_APP_ID }}
@@ -45,8 +45,7 @@ jobs:
 
       - name: Use prebuilt local Python environment
         run: |
-          test -x /Users/batlap/Projects/feishu-ai-signal/.venv/bin/python
-          echo "/Users/batlap/Projects/feishu-ai-signal/.venv/bin" >> "$GITHUB_PATH"
+          python -m pip install -r requirements.txt
 
       - name: Verify dependencies
         run: python -m pip check

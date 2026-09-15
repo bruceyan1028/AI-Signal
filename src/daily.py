@@ -1846,7 +1846,7 @@ def generate(day: str | None = None) -> dict[str, Any]:
         ]
     payload = {
         "date": day or today_cn(),
-        "title": f"AI Signal 每日情报 · {day or today_cn()}",
+        "title": f"AI-Signal 每日情报 · {day or today_cn()}",
         "intro": str(synth.get("intro") or "今日 AI 信号已完成采集与分析。"),
         "bullets": bullets,
         "signals": signals,

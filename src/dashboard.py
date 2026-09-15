@@ -65,7 +65,7 @@ _LD_JSON_RE = re.compile(
     r'<script[^>]+type="application/ld\+json"[^>]*>(.*?)</script>', re.S | re.I
 )
 # 分档页是网页而非接口，带上项目标识便于对方在日志里认出这点访问量。
-_PAGE_HEADERS = {"User-Agent": "feishu-ai-signal (+https://artificialanalysis.ai)"}
+_PAGE_HEADERS = {"User-Agent": "ai-signal (+https://artificialanalysis.ai)"}
 
 HF_SITE = "https://huggingface.co"
 # 首页那一栏只给 5 条，跟着它，不要自作主张取 12——「本周在看什么」是个短名单
@@ -99,7 +99,7 @@ HF_KINDS: tuple[tuple[str, str, str, tuple[str, ...]], ...] = (
         ("author", "downloads", "likes", "trendingScore", "lastModified"),
     ),
 )
-_HF_HEADERS = {"User-Agent": "feishu-ai-signal (+https://huggingface.co/)"}
+_HF_HEADERS = {"User-Agent": "ai-signal (+https://huggingface.co/)"}
 
 # runtime.stage 的取值里只有这几个算「现在能点开就用」，其余（BUILDING、
 # RUNTIME_ERROR、PAUSED…）都不算。

@@ -453,7 +453,7 @@ def generate(end_day: date | None = None) -> dict[str, Any]:
         "periodStart": start_day.isoformat(),
         "periodEnd": end_day.isoformat(),
         "period": f"{start_day.isoformat()} → {end_day.isoformat()}",
-        "title": f"AI Signal 自动周报 · {current_week}",
+        "title": f"AI-Signal 自动周报 · {current_week}",
         "metrics": metrics,
         "breakdowns": breakdowns,
         "signals": signals,
