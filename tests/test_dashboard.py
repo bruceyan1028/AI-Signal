@@ -859,6 +859,13 @@ class PublishIntegrationTest(unittest.TestCase):
 
 
 class FrontendContractTest(unittest.TestCase):
+    def test_live_market_refresh_does_not_rerender_the_page(self):
+        template = Path("index.html").read_text(encoding="utf-8")
+        block = template.split("async function refreshLiveMarket(){")[1].split("async function loadDashboard")[0]
+        self.assertIn("refreshDataRail();", block)
+        self.assertNotIn("render();", block)
+        self.assertIn("liveMarketRefreshing", block)
+
     def test_index_renders_both_boards_from_static_json(self):
         template = Path("index.html").read_text(encoding="utf-8")
         self.assertIn("data/dashboard-latest.json", template)

@@ -1343,14 +1343,34 @@ async function fetchLiveMarket(){
   return { sourceUrl: 'https://stockapp.finance.qq.com/', updatedAt: stamp, error: '', live: true, quotes };
 }
 
+let liveMarketRefreshing = false;
+
+function refreshDataRail(){
+  const current = document.querySelector('.feed-data');
+  if(!current) return;
+  const scrollTop = current.scrollTop;
+  const replacement = document.createElement('div');
+  replacement.innerHTML = dataRailHtml(computeAccents()).trim();
+  const next = replacement.firstElementChild;
+  if(!next) return;
+  current.replaceWith(next);
+  next.scrollTop = scrollTop;
+}
+
 async function refreshLiveMarket(){
+  if(liveMarketRefreshing) return;
+  liveMarketRefreshing = true;
   try {
     const market = await fetchLiveMarket();
     dashboard.market = market;
     if(!dashboardStatus.error) dashboardStatus.loading = false;
-    render();
+    // 行情每分钟更新一次。整页 render 会销毁信息流、重置滚动并让读者误以为
+    // 页面在自动刷新；这里仅替换右侧数据栏。
+    refreshDataRail();
   } catch(error) {
     // 实时接口挂了就继续用日报快照，不要把已经画出来的行情抹掉
+  } finally {
+    liveMarketRefreshing = false;
   }
 }
 
