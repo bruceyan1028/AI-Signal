@@ -107,6 +107,15 @@ jobs:
         if: steps.gate.outputs.need_brief == 'true'
         run: python -m src.main
 
+      - name: Upload source health report
+        if: steps.gate.outputs.need_brief == 'true' && always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: source-health-${{ github.run_id }}
+          path: output/health
+          if-no-files-found: warn
+          retention-days: 30
+
       - name: Check capture_spec violations (deterministic, no LLM)
         if: steps.gate.outputs.need_brief == 'true'
         continue-on-error: true
