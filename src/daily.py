@@ -944,7 +944,12 @@ def analyze_signal(fields: dict[str, Any]) -> dict[str, Any]:
     analysis_text = clean_body(
         str(scalar(fields.get("原文")) or ""),
         str(scalar(fields.get("来源")) or ""),
-    )[:12000]
+    )
+    # Full article bodies can be tens of thousands of characters and make the
+    # analysis request exceed the gateway read budget. Dedicated paper/PDF and
+    # policy branches below replace this with their authoritative evidence.
+    if not is_paper and not is_policy:
+        analysis_text = analysis_text[: config.DAILY_ANALYSIS_BODY_MAX_CHARS]
     paper_metrics: dict[str, Any] = {}
     paper_full_text: dict[str, Any] = {}
     if is_paper:
@@ -1200,7 +1205,7 @@ def _ensure_content_category(
         analysis["category"] = cached
         return {}
     category = normalize_thematic_category(analysis.get("category"))
-    if not category:
+    if not category and config.DAILY_CLASSIFY_CONTENT_WITH_LLM:
         prompt = f"""只判断下面这篇 AI 资讯的内容主题，输出严格 JSON：
 {{"category":"..."}}。
 category 必须从前沿模型公司、技术研究开源、算力芯片云、政策监管地缘、模型评测基准、
@@ -1637,7 +1642,8 @@ def generate(day: str | None = None) -> dict[str, Any]:
         # 详情页展示深度解读而不是整篇译文；存量条目在首次入选时补齐。
         update_fields.update(_ensure_deep_analysis(fields, analysis))
         # 照抄原文的中文稿改为展示清理排版后的版本，页脚模板不进详情页。
-        update_fields.update(_ensure_readable_body(fields))
+        if config.DAILY_POLISH_VERBATIM_BODY:
+            update_fields.update(_ensure_readable_body(fields))
         # 「中文媒体」是来源属性；卡片需要另按文章内容归入主题板块。
         update_fields.update(_ensure_content_category(fields, analysis))
         if update_fields:

@@ -5,6 +5,7 @@ import argparse
 import hashlib
 import json
 import logging
+import os
 import re
 import shutil
 from concurrent.futures import ThreadPoolExecutor
@@ -848,7 +849,10 @@ def run() -> int:
                 current.get(section) or [], pool, threshold=0.85
             )
         briefs = [current, *[item for item in briefs if item["date"] != current["date"]]][:7]
-    curate_web_media(briefs)
+    if os.environ.get("PUBLISH_SKIP_MEDIA_CURATION", "").strip() != "1":
+        curate_web_media(briefs)
+    else:
+        log.info("跳过网页媒体整理（PUBLISH_SKIP_MEDIA_CURATION=1）")
     site = build_site(briefs, args.site_dir, params=params)
     dashboard_path = Path(site) / "data" / "dashboard-latest.json"
     try:

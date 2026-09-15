@@ -200,6 +200,9 @@ def _llm_json_with_provider(
     for mode, url in endpoints:
         body: dict[str, Any] = {"model": selected_model}
         if mode == "responses":
+            # OpenAI Responses uses a different token-limit field from
+            # chat/completions. Some compatible gateways reject max_tokens.
+            body["max_output_tokens"] = max(1, config.LLM_MAX_OUTPUT_TOKENS)
             if image_urls:
                 body["input"] = [
                     {
@@ -216,6 +219,7 @@ def _llm_json_with_provider(
             else:
                 body["input"] = prompt
         else:
+            body["max_tokens"] = max(1, config.LLM_MAX_OUTPUT_TOKENS)
             content: Any = prompt
             if image_urls:
                 content = [

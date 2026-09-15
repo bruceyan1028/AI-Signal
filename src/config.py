@@ -19,6 +19,17 @@ def _require(name: str) -> str:
     return value
 
 
+# 数据存储后端：feishu（兼容旧部署）或 mysql（本地/公司统一平台）。
+DB_BACKEND = _env("DB_BACKEND", "feishu").lower()
+MYSQL_HOST = _env("MYSQL_HOST", "127.0.0.1")
+MYSQL_PORT = int(os.environ.get("MYSQL_PORT", "3306"))
+MYSQL_USER = _env("MYSQL_USER", "root")
+MYSQL_PASSWORD = os.environ.get("MYSQL_PASSWORD", "")
+MYSQL_DATABASE = _env("MYSQL_DATABASE", "feishu_ai_signal")
+MYSQL_CHARSET = _env("MYSQL_CHARSET", "utf8mb4")
+MYSQL_CONNECT_TIMEOUT = int(os.environ.get("MYSQL_CONNECT_TIMEOUT", "10"))
+
+
 # --- 飞书 ---
 FEISHU_APP_ID = _env("FEISHU_APP_ID")
 FEISHU_APP_SECRET = _env("FEISHU_APP_SECRET")
@@ -45,6 +56,21 @@ FEISHU_TRACKED_ENTITY_TABLE_ID = os.environ.get(
 FEISHU_TRACKED_EVENT_TABLE_ID = os.environ.get(
     "FEISHU_TRACKED_EVENT_TABLE_ID", ""
 ).strip()
+
+if DB_BACKEND == "mysql":
+    # Logical table names are stable keys when no Feishu table IDs exist.
+    FEISHU_PARAM_TABLE_ID = FEISHU_PARAM_TABLE_ID or "一级参数"
+    FEISHU_ENTRY_TABLE_ID = FEISHU_ENTRY_TABLE_ID or "条目表"
+    FEISHU_PAPER_CONFIG_TABLE_ID = FEISHU_PAPER_CONFIG_TABLE_ID or "二级参数-论文"
+    FEISHU_WECHAT_CONFIG_TABLE_ID = FEISHU_WECHAT_CONFIG_TABLE_ID or "二级参数-公众号"
+    FEISHU_VIDEO_CONFIG_TABLE_ID = FEISHU_VIDEO_CONFIG_TABLE_ID or "二级参数-视频"
+    FEISHU_SOCIAL_CONFIG_TABLE_ID = FEISHU_SOCIAL_CONFIG_TABLE_ID or "二级参数-社媒"
+    FEISHU_GITHUB_CONFIG_TABLE_ID = FEISHU_GITHUB_CONFIG_TABLE_ID or "二级参数-GitHub"
+    FEISHU_BRIEF_TABLE_ID = FEISHU_BRIEF_TABLE_ID or "每日简报"
+    FEISHU_WEEKLY_TABLE_ID = FEISHU_WEEKLY_TABLE_ID or "AI 周报"
+    FEISHU_WEEKLY_PENDING_TABLE_ID = FEISHU_WEEKLY_PENDING_TABLE_ID or "周报待分析"
+    FEISHU_TRACKED_ENTITY_TABLE_ID = FEISHU_TRACKED_ENTITY_TABLE_ID or "追踪对象"
+    FEISHU_TRACKED_EVENT_TABLE_ID = FEISHU_TRACKED_EVENT_TABLE_ID or "追踪事件"
 
 
 def require_tables(*names: str) -> None:
@@ -108,6 +134,16 @@ LLM_CONNECT_TIMEOUT_SECONDS = float(os.environ.get("LLM_CONNECT_TIMEOUT_SECONDS"
 LLM_READ_TIMEOUT_SECONDS = float(os.environ.get("LLM_READ_TIMEOUT_SECONDS", "45"))
 LLM_TOTAL_TIMEOUT_SECONDS = float(os.environ.get("LLM_TOTAL_TIMEOUT_SECONDS", "60"))
 LLM_MAX_RETRIES = int(os.environ.get("LLM_MAX_RETRIES", "3"))
+# Bound response generation so a long editorial analysis cannot hold a gateway
+# connection indefinitely. Providers that ignore the OpenAI-compatible field
+# retain their own default behavior.
+LLM_MAX_OUTPUT_TOKENS = int(os.environ.get("LLM_MAX_OUTPUT_TOKENS", "1800"))
+# Keep ordinary article prompts within a predictable latency budget. Paper and
+# policy evidence use their dedicated full-text paths and are not truncated by
+# this setting.
+DAILY_ANALYSIS_BODY_MAX_CHARS = int(
+    os.environ.get("DAILY_ANALYSIS_BODY_MAX_CHARS", "6000")
+)
 # 备用模型必须是独立供应商/网关，才可规避单点限流或网络故障。任一组缺字段即跳过。
 LLM_FALLBACK_PROVIDERS = tuple(
     {
@@ -186,6 +222,14 @@ DAILY_ANALYSIS_CONCURRENCY = int(os.environ.get("DAILY_ANALYSIS_CONCURRENCY", "3
 # 历史条目的长解读是可异步补全内容；日报主链路不应因它逐条等待模型。
 DAILY_FILL_LEGACY_DEEP_ANALYSIS = os.environ.get(
     "DAILY_FILL_LEGACY_DEEP_ANALYSIS", "0"
+).strip().lower() in {"1", "true", "yes", "on"}
+# Topic assignment and article polish are presentation refinements. Keep them
+# out of the daily critical path unless explicitly enabled.
+DAILY_CLASSIFY_CONTENT_WITH_LLM = os.environ.get(
+    "DAILY_CLASSIFY_CONTENT_WITH_LLM", "0"
+).strip().lower() in {"1", "true", "yes", "on"}
+DAILY_POLISH_VERBATIM_BODY = os.environ.get(
+    "DAILY_POLISH_VERBATIM_BODY", "0"
 ).strip().lower() in {"1", "true", "yes", "on"}
 # 技术开源板块（论文、GitHub 及技术研究开源来源）独立于新闻主池。
 DAILY_TECHNICAL_LIMIT = int(os.environ.get("DAILY_TECHNICAL_LIMIT", "12"))
@@ -270,6 +314,10 @@ TIER_LABEL = {
 
 def validate() -> None:
     """启动时校验必填密钥与目标表。"""
+    if DB_BACKEND == "mysql":
+        if not MYSQL_DATABASE:
+            raise ConfigError("MYSQL_DATABASE 不能为空")
+        return
     _require("FEISHU_APP_ID")
     _require("FEISHU_APP_SECRET")
     _require("FEISHU_BASE_ID")
