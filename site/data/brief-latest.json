@@ -113,7 +113,7 @@
       "bodyVerbatim": true,
       "eventRole": "",
       "eventPerspective": "",
-      "qualityScore": 0.0,
+      "qualityScore": 0,
       "eventAggregation": {
         "total": 1,
         "groups": [
@@ -224,7 +224,7 @@
       "bodyVerbatim": true,
       "eventRole": "",
       "eventPerspective": "",
-      "qualityScore": 0.0,
+      "qualityScore": 0,
       "eventAggregation": {
         "total": 1,
         "groups": [
@@ -283,7 +283,7 @@
       "editorialStructure": "",
       "eventRole": "",
       "eventPerspective": "",
-      "qualityScore": 0.0,
+      "qualityScore": 0,
       "eventAggregation": {
         "total": 1,
         "groups": [
@@ -357,7 +357,7 @@
       "bodyVerbatim": true,
       "eventRole": "",
       "eventPerspective": "",
-      "qualityScore": 0.0,
+      "qualityScore": 0,
       "eventAggregation": {
         "total": 2,
         "groups": [
@@ -433,7 +433,7 @@
       "bodyVerbatim": true,
       "eventRole": "",
       "eventPerspective": "",
-      "qualityScore": 0.0,
+      "qualityScore": 0,
       "eventAggregation": {
         "total": 1,
         "groups": [
@@ -533,7 +533,7 @@
       "bodyVerbatim": true,
       "eventRole": "",
       "eventPerspective": "",
-      "qualityScore": 0.0,
+      "qualityScore": 0,
       "eventAggregation": {
         "total": 1,
         "groups": [
@@ -620,7 +620,7 @@
       "bodyVerbatim": true,
       "eventRole": "",
       "eventPerspective": "",
-      "qualityScore": 0.0,
+      "qualityScore": 0,
       "eventAggregation": {
         "total": 1,
         "groups": [
@@ -755,7 +755,7 @@
       "bodyVerbatim": true,
       "eventRole": "",
       "eventPerspective": "",
-      "qualityScore": 0.0,
+      "qualityScore": 0,
       "eventAggregation": {
         "total": 2,
         "groups": [
@@ -828,7 +828,7 @@
       "editorialStructure": "source",
       "eventRole": "",
       "eventPerspective": "",
-      "qualityScore": 0.0,
+      "qualityScore": 0,
       "eventAggregation": {
         "total": 1,
         "groups": [
@@ -888,7 +888,7 @@
       "editorialStructure": "",
       "eventRole": "",
       "eventPerspective": "",
-      "qualityScore": 0.0,
+      "qualityScore": 0,
       "eventAggregation": {
         "total": 1,
         "groups": [
@@ -953,7 +953,7 @@
         "cover": "media/articles/092de246-6c53-4ce2-a156-6450e9de4cfb-5386da54acff.png",
         "curatedBy": "vision",
         "curationVersion": 2,
-        "coverConfidence": 0.0,
+        "coverConfidence": 0,
         "coverVisualQuality": 0.18
       },
       "topComments": [],
@@ -961,7 +961,7 @@
       "editorialStructure": "",
       "eventRole": "",
       "eventPerspective": "",
-      "qualityScore": 0.0,
+      "qualityScore": 0,
       "eventAggregation": {
         "total": 1,
         "groups": [
@@ -1020,7 +1020,7 @@
       "editorialStructure": "",
       "eventRole": "",
       "eventPerspective": "",
-      "qualityScore": 0.0,
+      "qualityScore": 0,
       "eventAggregation": {
         "total": 1,
         "groups": [
@@ -1119,7 +1119,7 @@
       "bodyVerbatim": true,
       "eventRole": "",
       "eventPerspective": "",
-      "qualityScore": 0.0,
+      "qualityScore": 0,
       "eventAggregation": {
         "total": 1,
         "groups": [
@@ -1163,11 +1163,18 @@
         "监管",
         "产品"
       ],
-      "imageUrl": "",
+      "imageUrl": "media/articles/dd8cf6cd-d688-4f59-a6c0-d20f56b3b59b-b6fc8f3e6603.png",
       "mediaAssets": {
-        "images": [],
+        "images": [
+          {
+            "url": "media/huxiu/dd8cf6cd-d688-4f59-a6c0-d20f56b3b59b-1.png",
+            "alt": "AI会杀死我们吗，为什么最懂的人现在最害怕？",
+            "kind": "article-figure",
+            "layout": "wide"
+          }
+        ],
         "videos": [],
-        "cover": "",
+        "cover": "media/articles/dd8cf6cd-d688-4f59-a6c0-d20f56b3b59b-b6fc8f3e6603.png",
         "curatedBy": "vision",
         "curationVersion": 2,
         "coverConfidence": 0.68,
@@ -1181,7 +1188,7 @@
       "bodyVerbatim": true,
       "eventRole": "",
       "eventPerspective": "",
-      "qualityScore": 0.0,
+      "qualityScore": 0,
       "eventAggregation": {
         "total": 1,
         "groups": [
@@ -1259,7 +1266,7 @@
       "bodyVerbatim": true,
       "eventRole": "",
       "eventPerspective": "",
-      "qualityScore": 0.0,
+      "qualityScore": 0,
       "eventAggregation": {
         "total": 1,
         "groups": [
@@ -1312,7 +1319,7 @@
       "editorialStructure": "",
       "eventRole": "",
       "eventPerspective": "",
-      "qualityScore": 0.0,
+      "qualityScore": 0,
       "eventAggregation": {
         "total": 1,
         "groups": [
@@ -1371,7 +1378,7 @@
       "editorialStructure": "",
       "eventRole": "",
       "eventPerspective": "",
-      "qualityScore": 0.0,
+      "qualityScore": 0,
       "eventAggregation": {
         "total": 1,
         "groups": [
@@ -1444,7 +1451,7 @@
       "editorialStructure": "source",
       "eventRole": "",
       "eventPerspective": "",
-      "qualityScore": 0.0,
+      "qualityScore": 0,
       "eventAggregation": {
         "total": 2,
         "groups": [
@@ -1513,7 +1520,7 @@
       "editorialStructure": "",
       "eventRole": "",
       "eventPerspective": "",
-      "qualityScore": 0.0,
+      "qualityScore": 0,
       "eventAggregation": {
         "total": 1,
         "groups": [
@@ -1566,7 +1573,7 @@
       "editorialStructure": "",
       "eventRole": "",
       "eventPerspective": "",
-      "qualityScore": 0.0,
+      "qualityScore": 0,
       "eventAggregation": {
         "total": 1,
         "groups": [
@@ -1620,7 +1627,7 @@
       "editorialStructure": "",
       "eventRole": "",
       "eventPerspective": "",
-      "qualityScore": 0.0,
+      "qualityScore": 0,
       "eventAggregation": {
         "total": 1,
         "groups": [
@@ -1966,7 +1973,7 @@
       "editorialStructure": "",
       "eventRole": "",
       "eventPerspective": "",
-      "qualityScore": 41.0,
+      "qualityScore": 41,
       "eventAggregation": {
         "total": 1,
         "groups": [
@@ -2441,7 +2448,7 @@
       "editorialStructure": "",
       "eventRole": "",
       "eventPerspective": "",
-      "qualityScore": 0.0,
+      "qualityScore": 0,
       "eventAggregation": {
         "total": 1,
         "groups": [
@@ -2598,7 +2605,7 @@
       "editorialStructure": "",
       "eventRole": "",
       "eventPerspective": "",
-      "qualityScore": 0.0,
+      "qualityScore": 0,
       "eventAggregation": {
         "total": 1,
         "groups": [
@@ -2791,7 +2798,7 @@
       "editorialStructure": "",
       "eventRole": "",
       "eventPerspective": "",
-      "qualityScore": 69.0,
+      "qualityScore": 69,
       "eventAggregation": {
         "total": 1,
         "groups": [
@@ -2982,7 +2989,7 @@
       "eventRole": "",
       "eventPerspective": "",
       "eventPeers": [],
-      "qualityScore": 87.0
+      "qualityScore": 87
     }
   ],
   "briefRecordId": "8105ffd3-d3f3-47fe-b900-02e77ab056f8",

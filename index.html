@@ -3311,6 +3311,13 @@ function bodyImagePlacer(s, images, paraCount){
       pending = rest;
       return matched;
     },
+    // AI 摘要会压缩或改写原文，图的 afterText 有时无法逐字命中。此时只从
+    // 没有小标题锚点的剩余图中取一张，避免把应挂在明确章节后的图提前放错。
+    takeFallback(){
+      const index = pending.findIndex(item => !String(item.afterHeading || item.after_heading || '').trim());
+      if(index < 0) return null;
+      return pending.splice(index, 1)[0] || null;
+    },
     next(){ return images[placed] ? images[placed++] : null; },
     rest(){ return llmPlaced ? pending : images.slice(placed); },
   };
@@ -3411,26 +3418,14 @@ function articleBody(A, s){
     if(!item?.url) return false;
     return item.url.split('?')[0].toLowerCase() !== coverUrl;
   }).slice(0,6);
-  let pendingImages = images.slice();
-  const headingOf = item => String(item.afterHeading || item.after_heading || '').trim();
-  const takeForHeading = heading => {
-    const key = String(heading||'').trim();
-    if(!llmPlaced || !key) return [];
-    const matched = [];
-    const rest = [];
-    pendingImages.forEach(item=>{
-      const h = headingOf(item);
-      if(h && (h === key || key.includes(h) || h.includes(key))) matched.push(item);
-      else rest.push(item);
-    });
-    pendingImages = rest;
-    return matched;
-  };
-  const flushHeading = heading => takeForHeading(heading).forEach(item=>blocks.push(figure(item)));
   const videos = s.kind==='视频' ? [] : (s.mediaAssets?.videos || []).filter(item=>item?.embedUrl).slice(0,1);
   const policy = s.mediaAssets?.policy || {};
   const documents = (s.mediaAssets?.documents || []).filter(item=>item?.url).slice(0,4);
   const deepParas = splitParagraphs(s.deepAnalysis);
+  const placer = bodyImagePlacer(s, images, deepParas.length);
+  const fallbackStep = !['论文'].includes(s.kind) && images.length && deepParas.length
+    ? Math.max(1, Math.ceil(deepParas.length / images.length))
+    : 0;
   const sourceStructured = s.editorialStructure === 'source';
   const blocks = [];
   const paperFramework = s.kind==='论文' && s.deepAnalysis
@@ -3476,8 +3471,9 @@ function articleBody(A, s){
         </div>
         ${sourceSection[2].trim()?`<div style="font-size:15px;line-height:2.08;color:${UI.text2};${proseStyle}">${zhProseHtml(esc(sourceSection[2].trim()).replace(/\n/g,'<br>'))}</div>`:''}
       </section>`);
-      flushHeading(headCn);
-      flushHeading(sourceSection[1]);
+      placer.forHeading(headCn).forEach(item=>blocks.push(figure(item)));
+      placer.forHeading(sourceSection[1]).forEach(item=>blocks.push(figure(item)));
+      placer.forParagraph(sourceSection[2]).forEach(item=>blocks.push(figure(item)));
     } else if(section){
       const isPodcastBoundary = s.kind==='播客' && /信息边界|资料边界/.test(section[1]);
       if(isPodcastBoundary){
@@ -3512,7 +3508,8 @@ function articleBody(A, s){
             ${section[2].trim()?`<div style="padding:15px 17px 16px;font-size:14.5px;line-height:2;color:${UI.text2};${proseStyle}">${zhProseHtml(esc(section[2].trim()).replace(/\n/g,'<br>'))}</div>`:''}
           </section>`);
         }
-        flushHeading(section[1]);
+        placer.forHeading(section[1]).forEach(item=>blocks.push(figure(item)));
+        placer.forParagraph(section[2]).forEach(item=>blocks.push(figure(item)));
       }
     } else if(sourceStructured) {
       blocks.push(`<p style="margin:0 0 20px;font-size:15px;line-height:2.08;color:${UI.text2};${proseStyle}">${zhProseHtml(esc(para).replace(/\n/g,'<br>'))}</p>`);
@@ -3527,8 +3524,12 @@ function articleBody(A, s){
     } else if(!llmPlaced && s.kind!=='论文' && imageStep && (index + 1) % imageStep === 0 && images[placedImages]){
       blocks.push(figure(images[placedImages++]));
     }
+    if(fallbackStep && (index + 1) % fallbackStep === 0){
+      const item = placer.takeFallback();
+      if(item) blocks.push(figure(item));
+    }
   });
-  if(llmPlaced) pendingImages.forEach(item=> blocks.push(figure(item)));
+  if(llmPlaced) placer.rest().forEach(item=> blocks.push(figure(item)));
   else images.slice(placedImages).forEach(item=> blocks.push(figure(item)));
   videos.forEach(item=> blocks.push(`<div style="margin:24px 0;background:#000;">${videoFacadeHtml(item, s.zhTitle, s.url, s.imageUrl)}</div>`));
 
