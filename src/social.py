@@ -699,7 +699,10 @@ def fetch_social_sources(
         resolved = _resolve_accounts(_account_names(feed), state, bearer=bearer)
         result.cursor_states[source_id] = state
         tiers = feed.get("account_tiers") or {}
-        poll_hours = (feed.get("social_params") or {}).get("poll_hours") or {"P0": 24, "P1": 24}
+        poll_hours = (feed.get("social_params") or {}).get("poll_hours") or {
+            "P0": config.SOCIAL_POLL_HOURS_P0,
+            "P1": config.SOCIAL_POLL_HOURS_P1,
+        }
         now_ms = int(datetime.now(timezone.utc).timestamp() * 1000)
         for username, profile in resolved.items():
             tier = str(tiers.get(username) or feed.get("priority") or "P1").upper()

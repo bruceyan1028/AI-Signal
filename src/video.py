@@ -4,6 +4,7 @@ from __future__ import annotations
 import logging
 import os
 import re
+import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Any
 
@@ -18,13 +19,23 @@ _DURATION_RE = re.compile(
 
 
 def _api_get(resource: str, *, key: str, params: dict[str, Any]) -> dict[str, Any]:
-    response = requests.get(
-        f"{_API}/{resource}",
-        params={**params, "key": key},
-        timeout=20,
-    )
-    response.raise_for_status()
-    return response.json()
+    # A transient Google connection timeout previously made every concurrent
+    # channel look unavailable. Retry only transport failures: API/auth errors
+    # are deterministic and should be surfaced immediately.
+    for attempt in range(3):
+        try:
+            response = requests.get(
+                f"{_API}/{resource}",
+                params={**params, "key": key},
+                timeout=20,
+            )
+            response.raise_for_status()
+            return response.json()
+        except (requests.ConnectionError, requests.Timeout):
+            if attempt == 2:
+                raise
+            time.sleep(attempt + 1)
+    raise RuntimeError("unreachable")
 
 
 def parse_duration(value: str) -> int:

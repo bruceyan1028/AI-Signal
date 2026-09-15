@@ -219,6 +219,10 @@ DAILY_CANDIDATE_LIMIT = int(os.environ.get("DAILY_CANDIDATE_LIMIT", "30"))
 DAILY_SIGNAL_LIMIT = int(os.environ.get("DAILY_SIGNAL_LIMIT", "30"))
 # 单条日报分析会触发文本/视觉 LLM，保守并发以避免网关限流后重试反而拉长总耗时。
 DAILY_ANALYSIS_CONCURRENCY = int(os.environ.get("DAILY_ANALYSIS_CONCURRENCY", "3"))
+# X timelines are incremental and cursor-backed. Poll P0 accounts often enough
+# to keep the social column current without repeatedly spending read credits.
+SOCIAL_POLL_HOURS_P0 = int(os.environ.get("SOCIAL_POLL_HOURS_P0", "6"))
+SOCIAL_POLL_HOURS_P1 = int(os.environ.get("SOCIAL_POLL_HOURS_P1", "12"))
 # 历史条目的长解读是可异步补全内容；日报主链路不应因它逐条等待模型。
 DAILY_FILL_LEGACY_DEEP_ANALYSIS = os.environ.get(
     "DAILY_FILL_LEGACY_DEEP_ANALYSIS", "0"
