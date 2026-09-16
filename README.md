@@ -8,6 +8,21 @@
 
 设置 `DB_BACKEND=mysql` 及 `MYSQL_HOST`、`MYSQL_PORT`、`MYSQL_USER`、`MYSQL_PASSWORD`、`MYSQL_DATABASE`。安装依赖后运行 `python3 -m src.mysql_backend` 初始化表结构。MySQL 模式使用 `records` 保存完整字段归档，同时维护 `sources` 和 `signals` 两张规范化查询表；`sources` 不再使用无业务价值的 `tier` 字段。
 
+### 公共与个人数据
+
+数据库采用两种数据范围：`public` 为全员共享，`personal` 必须绑定一个公司身份 `user_id`。历史 `records` 迁移时默认归入 `public`，现有采集、日报和公开静态站也只读取公共数据，因此不会在未上线登录前意外读取个人内容。
+
+| 数据 | 表 / 归属 |
+| --- | --- |
+| 公共源、公共条目、公共日报 | 既有 `records`、`sources`、`signals`，范围为 `public` |
+| 个人源、个人条目、个人日报草稿 | `records`，范围为 `personal` + `owner_user_id` |
+| 个人偏好 | `users`、`user_preferences` |
+| 订阅公共源、关键词与通知规则 | `subscriptions` |
+| 已读、收藏、标签、笔记 | `user_signal_state` |
+| 图片、PDF、音视频 | 对象存储；`media_assets` 仅保存 URL、哈希、类型和范围，不保存二进制文件 |
+
+个人数据接口必须由认证层传入可信的公司 `user_id`，不可相信浏览器提交的 `owner_user_id`。当前公开站是只读静态页，尚未开放个人登录与个人配置 UI；在引入统一身份认证前，不应创建或读取 `personal` 数据。
+
 常用查询示例：
 
 ```sql
