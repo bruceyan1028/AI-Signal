@@ -204,6 +204,26 @@ jobs:
             git push origin HEAD:main
           fi
 
+      - name: Mirror generated site data to CodeHub
+        env:
+          CODEHUB_TOKEN: ${{ secrets.CODEHUB_TOKEN }}
+        run: |
+          if [ -z "$CODEHUB_TOKEN" ]; then
+            echo "CODEHUB_TOKEN is not configured; skip CodeHub mirror"
+            exit 0
+          fi
+          askpass="$RUNNER_TEMP/codehub-askpass"
+          cat > "$askpass" <<'EOF'
+          #!/bin/sh
+          case "$1" in
+            *Username*) printf '%s\n' private-token ;;
+            *Password*) printf '%s\n' "$CODEHUB_TOKEN" ;;
+          esac
+          EOF
+          chmod 700 "$askpass"
+          git remote add codehub https://codehub.devcloud.cn-north-4.huaweicloud.com/3eb453fa50484f75bb1f1b58ca07e498/AI-Signal.git
+          GIT_ASKPASS="$askpass" GIT_TERMINAL_PROMPT=0 git push codehub HEAD:main
+
       - uses: actions/configure-pages@v5
         with:
           enablement: true

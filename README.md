@@ -1,6 +1,8 @@
 # AI-Signal
 
-端到端 AI 行业情报系统：从配置库读取源配置，采集网页 / RSS / 视频 / 社媒 / 播客，清洗去重后写入条目表，再用 LLM 生成每日简报与周报，发布到 GitHub Pages，并通过飞书卡片推送到群聊。数据层支持飞书多维表和 MySQL。
+端到端 AI 行业情报系统：从配置库读取源配置，采集网页 / RSS / 视频 / 社媒 / 播客，清洗去重后写入条目表，再用 LLM 生成每日简报与周报，发布到公司应用平台，并通过飞书卡片推送到群聊。数据层支持飞书多维表和 MySQL。
+
+生产公网地址：<https://ai-signal.modelbest.co/>。
 
 ## MySQL 部署
 
@@ -33,7 +35,7 @@ RSS / Scrape / Media / Social / Podcast
 飞书条目表 ──► LLM 分析 ──► 每日简报 / 周报 / 动向追踪
         │
         ▼
-site/（GitHub Pages） + 飞书消息卡片
+site/（公司应用平台静态站） + 飞书消息卡片
 ```
 
 网页沿用 `index.html` 的视觉与交互。数据看板、信号列表、详情、周报、动向追踪是真实数据；评论/笔记、多模型辩论等仍是前端本地模拟。
@@ -75,7 +77,7 @@ site/（GitHub Pages） + 飞书消息卡片
 6. **公开站不带筛选规则**。`keyword_regex`、`min_content_chars`、`dedup_key`、`extra_config` 不得出现在 `site/data/sources.json`。
 7. 列表抽取是解析器问题，不要用 LLM 替代。模型只适合临界内容精筛（社媒已有；网页媒体可按源开关加）。
 8. `open_id` / `chat_id` 由自建应用签发、跨应用不通用。换应用必须重取，并把机器人重新拉进目标群。
-9. 本地 `127.0.0.1` 预览别人打不开。发给别人看的是 GitHub Pages 公网地址。
+9. 本地 `127.0.0.1` 预览别人打不开。发给别人看的是生产公网地址 `https://ai-signal.modelbest.co/`。
 
 ---
 
@@ -90,7 +92,7 @@ site/（GitHub Pages） + 飞书消息卡片
 | `data/items/` `data/tagged/` | 每日条目 JSONL 与打标结果；热力图的输入 |
 | `tools/export_seed.py` | 从现行飞书表反写种子 |
 | `index.html` | 前端单页；发布时复制到 `site/index.html` |
-| `site/` | GitHub Pages 产物：`index.html` + `data/*.json` + `media/` |
+| `site/` | 公司应用平台静态站产物：`index.html` + `data/*.json` + `media/` |
 | `tests/` | `unittest` |
 | `.github/workflows/` | 日报、周报、社媒、播客、Pages 预览 |
 | `output/` | 本地诊断/简报 JSON，已 gitignore |
@@ -111,7 +113,7 @@ site/（GitHub Pages） + 飞书消息卡片
 | `site/data/timeline-latest.json` | 动向追踪 | 产物 |
 | `site/data/dashboard-latest.json` | 首页数据看板（模型榜单 + AI 概念股） | 产物，外部行情快照 |
 
-配置台（`python -m src.sources_api`）在本机把飞书参数表现成可写 UI；公开 Pages 永远只读快照。
+配置台（`python -m src.sources_api`）在本机把飞书参数表现成可写 UI；公开站永远只读快照。
 
 ---
 
@@ -458,7 +460,7 @@ python -m src.sources_api    # http://127.0.0.1:8787 ，只绑回环
 
 `python -m src.notify --input site/data/brief-latest.json`
 
-定时日报只生成网页、不发群。确认 Pages 上 `data/brief-YYYY-MM-DD.json` 的 `date` 已是当天后再跑上面这条。群里点的是公网站；本机 `site/` 写好不等于别人打得开。`notify` 会请求 `{PUBLIC_BASE_URL}/data/brief-YYYY-MM-DD.json`，确认 `date` 对上才发送，否则拒绝。
+定时日报只生成网页、不发群。确认生产站上 `data/brief-YYYY-MM-DD.json` 的 `date` 已是当天后再跑上面这条。群里点的是生产站；本机 `site/` 写好不等于别人打得开。`notify` 会请求 `{PUBLIC_BASE_URL}/data/brief-YYYY-MM-DD.json`，确认 `date` 对上才发送，否则拒绝。
 
 - 接收群：`FEISHU_RECIPIENT_CHAT_IDS`（逗号分隔，优先）。配置后不再逐人私聊
 - 接收人回退：`FEISHU_RECIPIENT_OPEN_IDS`（仅未配置群聊时使用），名称 `FEISHU_RECIPIENT_NAMES` 按序对应
@@ -533,13 +535,13 @@ python -m src.sources_api    # http://127.0.0.1:8787 ，只绑回环
 
 日报 / 周报的 **build** 跑在自建 Runner：`[self-hosted, macOS, ARM64, ai-signal]`。原因：LLM 网关（如 `llm-center.modelbest.co`）只允许办公网，GitHub 托管出口会被拦。
 
-部署 Pages 在 `ubuntu-latest`，不再从公网打 LLM。群卡片不在定时里发。
+采集和生成仍由 GitHub 自建 Runner 执行；生成的 `site/` 会提交到 GitHub 并同步到 CodeHub。公司应用平台从 CodeHub 构建、发布生产静态站；GitHub Pages 仅保留兼容备份，不作为对外地址。群卡片不在每日定时里发。
 
 | 工作流 | 触发 | 做什么 |
 | --- | --- | --- |
-| `daily-brief.yml` | 每天北京 10:30 起，到 13:30 每半小时重试；仓库已有当日简报则跳过。可手动 | 测试 → `main` → `daily` → `publish`（含看板重拉） → `timeline` → 话题打标/热力图 → 回写 `site/` → Pages。不发飞书卡片 |
-| `weekly-report.yml` | 周一 UTC 03:30 | 周报 + 部署 + 推送 |
-| `pages-preview.yml` | 推送 `site/**` 或 `index.html` | 只部署当前仓库里的 `site/` |
+| `daily-brief.yml` | 每天北京 10:30 起，到 13:30 每半小时重试；仓库已有当日简报则跳过。可手动 | 测试 → `main` → `daily` → `publish`（含看板重拉） → `timeline` → 话题打标/热力图 → 回写 `site/` → 同步 CodeHub。不发飞书卡片 |
+| `weekly-report.yml` | 周一 UTC 03:30 | 周报 → 同步 CodeHub；飞书卡片固定链接到生产站 |
+| `pages-preview.yml` | 推送 `site/**` 或 `index.html` | 兼容备份：部署当前仓库里的 `site/` 到 GitHub Pages |
 | `ingest.yml` | 仅手动 | 单独采集 |
 | `social-ingest.yml` | 仅手动（未启用定时） | X 筛选已落地；缺 API credits，先不跑 |
 | `podcast-ingest.yml` | 每天 | 播客，装 ffmpeg，超时更长 |
@@ -552,7 +554,11 @@ python -m src.main --method RSS --method Scrape
 
 回写 `site/` 的 bot 提交常用 `[skip ci]`，避免再触发日报。只改前端时靠 `pages-preview.yml`。
 
-GitHub Pages：仓库 Settings → Pages → Source = GitHub Actions。公网形如 `https://<user>.github.io/ai-signal/`。
+公司生产站：`https://ai-signal.modelbest.co/`。组件从 CodeHub 的 `main` 构建，Dockerfile 为根目录 `Dockerfile`，容器端口 `8080`，健康检查为 `/healthz` 和 `/readyz`。GitHub Pages 仅保留兼容备份。
+
+自动同步到 CodeHub：在 GitHub 仓库 Settings → Secrets and variables → Actions 中添加 `CODEHUB_TOKEN`。值为 CodeHub 的“访问令牌”，权限需“读/写仓库”；工作流以用户名 `private-token` 使用该令牌。令牌不可写入 `.env`、工作流明文或代码仓。
+
+CodeHub 收到代码后，当前公司平台仍需构建并发布新镜像，生产站才会更新。若已在平台侧配置 CodeHub 推送后的自动构建与自动发布，可在 GitHub Actions Variables 中设置 `COMPANY_PLATFORM_AUTO_DEPLOY=true`，周报工作流才会在确认生产站新 JSON 就绪后发送飞书卡片；未配置该变量时周报只生成并同步数据，不会误发旧链接。
 
 ---
 
@@ -611,8 +617,9 @@ python -m src.publish --input output/daily-brief.json
 python -m src.timeline --output site/data/timeline-latest.json
 # publish 已重拉 dashboard-latest.json；也可单独再跑 python -m src.dashboard
 python -m src.aggregate --seed-mock   # 预览热力图；有 tagged 数据后改跑不带 --seed-mock
-# 提交并推送 site/，等 pages-preview 部署成功、公网 brief-YYYY-MM-DD.json 可访问
-# 不要在 Pages 上线前发卡片：群里点开的是公网站
+# 提交并推送 site/ 到 CodeHub，在公司应用平台构建并发布新镜像后，
+# 确认生产站 brief-YYYY-MM-DD.json 可访问。
+# 不要在生产站上线前发卡片：群里点开的是生产公网地址。
 python -m src.notify --input site/data/brief-latest.json
 ```
 
@@ -663,7 +670,7 @@ python -m tools.export_seed
 公开站是上次 `publish` 的快照。本机用 `sources_api` 才实时。改完参数要重新 `publish` 或等日报。
 
 **只改了 `index.html`**  
-复制到 `site/index.html`（`pages-preview` 也会在 CI 里 `cp`），推 `main` 才会上线。未要求部署就不要推。
+复制到 `site/index.html`，推送 CodeHub `main`，再在公司应用平台构建并发布新镜像才会在线上生效。未要求部署就不要推。
 
 **前端模拟功能**  
 评论、笔记、多模型辩论不要当成已接后端。不要为它们加飞书表，除非明确要产品化。

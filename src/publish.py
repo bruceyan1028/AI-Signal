@@ -1,4 +1,4 @@
-"""将飞书中的真实简报生成为 GitHub Pages 静态站。"""
+"""将飞书中的真实简报生成供公网静态站容器托管的 site/ 目录。"""
 from __future__ import annotations
 
 import argparse

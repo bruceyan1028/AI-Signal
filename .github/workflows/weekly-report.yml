@@ -107,6 +107,26 @@ jobs:
             git push origin HEAD:main
           fi
 
+      - name: Mirror generated site data to CodeHub
+        env:
+          CODEHUB_TOKEN: ${{ secrets.CODEHUB_TOKEN }}
+        run: |
+          if [ -z "$CODEHUB_TOKEN" ]; then
+            echo "CODEHUB_TOKEN is not configured; skip CodeHub mirror"
+            exit 0
+          fi
+          askpass="$RUNNER_TEMP/codehub-askpass"
+          cat > "$askpass" <<'EOF'
+          #!/bin/sh
+          case "$1" in
+            *Username*) printf '%s\n' private-token ;;
+            *Password*) printf '%s\n' "$CODEHUB_TOKEN" ;;
+          esac
+          EOF
+          chmod 700 "$askpass"
+          git remote add codehub https://codehub.devcloud.cn-north-4.huaweicloud.com/3eb453fa50484f75bb1f1b58ca07e498/AI-Signal.git
+          GIT_ASKPASS="$askpass" GIT_TERMINAL_PROMPT=0 git push codehub HEAD:main
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -128,8 +148,11 @@ jobs:
         uses: actions/deploy-pages@v4
 
       - name: Send Feishu weekly card
+        # CodeHub 同步后必须已有公司平台的自动构建/发布，生产站才会出现本周 JSON。
+        # 未配置时不发卡片，避免群里链接落到上一次发布的周报。
+        if: vars.COMPANY_PLATFORM_AUTO_DEPLOY == 'true'
         env:
-          PUBLIC_BASE_URL: ${{ steps.deployment.outputs.page_url }}
+          PUBLIC_BASE_URL: https://ai-signal.modelbest.co
           FORCE_FLAG: ${{ inputs.force_send && '--force' || '' }}
-        # notify 会轮询公网 weekly-Wxx.json，确认 Pages 已是本周周报才发卡片
+        # notify 会轮询生产站 weekly-Wxx.json，确认公司平台已发布才发卡片
         run: python -m src.notify --input site/data/weekly-latest.json $FORCE_FLAG
