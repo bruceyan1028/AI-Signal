@@ -9,6 +9,12 @@ from src import web
 
 
 class StaticSiteHandlerTest(unittest.TestCase):
+    def test_container_keeps_web_module_and_site_under_the_same_root(self):
+        dockerfile = Path("Dockerfile").read_text(encoding="utf-8")
+        self.assertIn("COPY src/web.py /app/src/web.py", dockerfile)
+        self.assertIn("COPY site /app/site", dockerfile)
+        self.assertIn("python /app/src/web.py", dockerfile)
+
     def setUp(self):
         self.temp_dir = tempfile.TemporaryDirectory()
         Path(self.temp_dir.name, "index.html").write_text("<h1>AI-Signal</h1>", encoding="utf-8")
