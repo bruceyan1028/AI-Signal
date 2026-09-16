@@ -67,7 +67,7 @@ jobs:
       - name: Skip if today's brief is already in the repo
         id: gate
         run: |
-          python - <<'PY'
+          python3 - <<'PY'
           import json
           import os
           from datetime import datetime
@@ -92,19 +92,19 @@ jobs:
       - name: Use prebuilt local Python environment
         if: steps.gate.outputs.need_brief == 'true'
         run: |
-          python -m pip install -r requirements.txt
+          python3 -m pip install -r requirements.txt
 
       - name: Verify dependencies
         if: steps.gate.outputs.need_brief == 'true'
-        run: python -m pip check
+        run: python3 -m pip check
 
       - name: Run tests
         if: steps.gate.outputs.need_brief == 'true'
-        run: python -m unittest discover -s tests -v
+        run: python3 -m unittest discover -s tests -v
 
       - name: Ingest real RSS signals
         if: steps.gate.outputs.need_brief == 'true'
-        run: python -m src.main
+        run: python3 -m src.main
 
       - name: Upload source health report
         if: steps.gate.outputs.need_brief == 'true' && always()
@@ -118,31 +118,31 @@ jobs:
       - name: Check capture_spec violations (deterministic, no LLM)
         if: steps.gate.outputs.need_brief == 'true'
         continue-on-error: true
-        run: python -m src.spec_check --exit-code
+        run: python3 -m src.spec_check --exit-code
 
       - name: Analyze and write daily brief
         if: steps.gate.outputs.need_brief == 'true'
-        run: python -m src.daily --output output/daily-brief.json
+        run: python3 -m src.daily --output output/daily-brief.json
 
       - name: Build static site from Feishu
         if: steps.gate.outputs.need_brief == 'true'
-        run: python -m src.publish --input output/daily-brief.json
+        run: python3 -m src.publish --input output/daily-brief.json
 
       - name: Update tracked entity timelines
         if: steps.gate.outputs.need_brief == 'true'
-        run: python -m src.timeline --output site/data/timeline-latest.json
+        run: python3 -m src.timeline --output site/data/timeline-latest.json
 
       - name: Refresh Google / X topic trends
         if: steps.gate.outputs.need_brief == 'true'
         continue-on-error: true
-        run: python -m src.trends --output site/data/heatmap-trends.json
+        run: python3 -m src.trends --output site/data/heatmap-trends.json
 
       - name: Tag today's brief and refresh topic heatmap
         if: steps.gate.outputs.need_brief == 'true'
         continue-on-error: true
         run: |
-          python -m src.tag_topics --ingest-brief site/data/brief-latest.json
-          python -m src.aggregate
+          python3 -m src.tag_topics --ingest-brief site/data/brief-latest.json
+          python3 -m src.aggregate
 
       - name: Upload generated site
         if: steps.gate.outputs.need_brief == 'true'
