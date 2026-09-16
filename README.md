@@ -464,7 +464,7 @@ python -m src.sources_api    # http://127.0.0.1:8787 ，只绑回环
 - 标题为了居中放进正文色块，卡片不再带 `header`
 - 本地预览：`python -m tools.preview_card`，渲染 `notify.build_card` 的真实 JSON，不连飞书
 - 发预览到群验收：`python -m tools.send_card_preview --chat-id oc_xxx`，只发消息不改简报发送状态
-- 跳转：`PUBLIC_BASE_URL/?date=YYYY-MM-DD`；周报为 `?page=tasks&tab=report&week=`
+- 跳转：日报始终打开固定主页 `PUBLIC_BASE_URL/`（首页的「今日简报」读取最新快照）；周报为 `?page=tasks&tab=report&week=`
 - 默认一天不重发；`--force` 强制
 - 代理断开时上传/发送有重试
 

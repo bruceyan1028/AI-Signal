@@ -46,8 +46,9 @@ CATEGORY_THEMES = {
 DEFAULT_THEME = ("grey-100", "grey")
 
 
-def detail_url(base_url: str, day: str) -> str:
-    return f"{base_url.rstrip('/')}/?{urlencode({'date': day})}"
+def detail_url(base_url: str, _day: str) -> str:
+    """日报入口始终回到固定主页，首页自行加载最新简报板块。"""
+    return f"{base_url.rstrip('/')}/"
 
 
 def public_daily_json_url(base_url: str, day: str) -> str:
@@ -194,7 +195,7 @@ def build_card(brief: dict[str, Any], url: str) -> dict[str, Any]:
                     {
                         "tag": "button",
                         "type": "primary",
-                        "text": {"tag": "plain_text", "content": "查看完整网页简报"},
+                        "text": {"tag": "plain_text", "content": "打开 AI-Signal"},
                         "url": url,
                     }
                 ],

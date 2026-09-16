@@ -900,7 +900,7 @@ class DeliveryTests(unittest.TestCase):
             self.assertEqual(latest["signals"][0]["title"], "真实标题")
             self.assertTrue((site / "index.html").exists())
         url = notify.detail_url("https://example.github.io/demo/", brief["date"])
-        self.assertEqual(url, "https://example.github.io/demo/?date=2026-07-13")
+        self.assertEqual(url, "https://example.github.io/demo/")
         card = notify.build_card(brief, url)
         self.assertIn("真实中文标题", json.dumps(card, ensure_ascii=False))
         self.assertIn(url, json.dumps(card, ensure_ascii=False))
