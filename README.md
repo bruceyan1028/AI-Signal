@@ -16,6 +16,10 @@ ORDER BY s.published_at DESC LIMIT 20;
 
 已有飞书数据可执行 `DB_BACKEND=feishu python3 -m tools.migrate_feishu_to_mysql` 完成一次迁移；核对输出的各表行数后，将运行环境切换为 `DB_BACKEND=mysql`。飞书机器人消息仍需配置飞书凭据，数据库读写不再依赖飞书 Base。
 
+## 公司应用平台静态站部署
+
+`Dockerfile` 仅托管已生成的 `site/` 静态日报，不启动本地可写的 `sources_api`，也不需要在组件环境变量中填写数据库或飞书密钥。容器监听 `8080`，并提供 `/healthz` 和 `/readyz` 健康检查。部署前需先将最新日报产物写入 `site/`，平台组件参数填 `Dockerfile`、构建上下文 `.`、容器端口 `8080`。
+
 ```
 飞书一级参数表（源配置，运行时唯一真相）
         │
