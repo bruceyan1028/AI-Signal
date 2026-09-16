@@ -1,9 +1,7 @@
 name: AI-Signal Podcast Ingest
 
 on:
-  schedule:
-    # 每天 02:20（北京时间）处理白名单节目，避开每日简报主流水线。
-    - cron: "20 18 * * *"
+  # 定时播客采集已暂停；保留手动触发以便需要时补跑。
   workflow_dispatch: {}
 
 concurrency:

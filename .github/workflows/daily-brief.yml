@@ -1,11 +1,7 @@
 name: Daily AI-Signal Brief
 
 on:
-  schedule:
-    # 北京 10:30 开工。GitHub 定时可能再晚几分钟。
-    # 若本轮没把当日简报写进仓库，11:00–13:30 每半小时再试，已有当日简报则秒过。
-    - cron: "30 2 * * *"
-    - cron: "0,30 3,4,5 * * *"
+  # 定时日报已暂停；保留手动触发以便需要时补跑。
   workflow_dispatch: {}
 
 permissions:

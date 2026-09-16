@@ -5,9 +5,7 @@ name: spec-recheck
 # 没有违约源时只跑一次确定性检查就退出，不花 LLM、不动飞书、不 commit。
 
 on:
-  schedule:
-    # UTC 04:05（北京 12:05），排在日报 10:30 首轮之后
-    - cron: "5 4 * * *"
+  # 定时规格重检已暂停；保留手动触发以便需要时补跑。
   workflow_dispatch:
     inputs:
       force_source:
