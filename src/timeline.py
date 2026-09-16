@@ -598,10 +598,24 @@ def run() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--entity-id", help="只回填指定追踪对象")
     parser.add_argument("--output", default="site/data/timeline-latest.json")
+    parser.add_argument(
+        "--allow-empty",
+        action="store_true",
+        help="允许零追踪对象覆盖已有静态时间线",
+    )
     args = parser.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
     payload = sync(args.entity_id)
-    output = write_payload(payload, args.output)
+    output = Path(args.output)
+    if not args.allow_empty and not payload["entities"] and output.is_file():
+        try:
+            previous = json.loads(output.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            previous = {}
+        if previous.get("entities"):
+            log.warning("追踪对象表为空，保留已有静态时间线：%s", output)
+            return 0
+    output = write_payload(payload, output)
     log.info(
         "时间线已更新：%d 个对象，新增 %d 个事件 → %s",
         len(payload["entities"]),
