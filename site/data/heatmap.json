@@ -43,7 +43,7 @@
         14,
         45,
         15,
-        3
+        8
       ],
       [
         0,
@@ -52,7 +52,7 @@
         12,
         13,
         6,
-        1
+        4
       ],
       [
         0,
@@ -61,7 +61,7 @@
         9,
         22,
         7,
-        1
+        4
       ],
       [
         0,
@@ -70,7 +70,7 @@
         7,
         9,
         2,
-        1
+        3
       ],
       [
         0,
@@ -79,7 +79,7 @@
         0,
         13,
         3,
-        0
+        1
       ],
       [
         5,
@@ -88,7 +88,7 @@
         6,
         26,
         10,
-        2
+        12
       ],
       [
         0,
@@ -97,7 +97,7 @@
         4,
         9,
         2,
-        2
+        3
       ],
       [
         2,
@@ -106,7 +106,7 @@
         0,
         18,
         3,
-        8
+        13
       ],
       [
         4,
@@ -115,7 +115,7 @@
         5,
         26,
         21,
-        2
+        6
       ],
       [
         8,
@@ -124,7 +124,7 @@
         1,
         15,
         5,
-        4
+        7
       ],
       [
         0,
@@ -133,7 +133,7 @@
         0,
         23,
         6,
-        1
+        2
       ]
     ],
     "normalized": [
@@ -144,7 +144,7 @@
         0.3111,
         1.0,
         0.3333,
-        0.0667
+        0.1778
       ],
       [
         0.0,
@@ -153,7 +153,7 @@
         0.9231,
         1.0,
         0.4615,
-        0.0769
+        0.3077
       ],
       [
         0.0,
@@ -162,7 +162,7 @@
         0.4091,
         1.0,
         0.3182,
-        0.0455
+        0.1818
       ],
       [
         0.0,
@@ -171,7 +171,7 @@
         0.7778,
         1.0,
         0.2222,
-        0.1111
+        0.3333
       ],
       [
         0.0,
@@ -180,7 +180,7 @@
         0.0,
         1.0,
         0.2308,
-        0.0
+        0.0769
       ],
       [
         0.1923,
@@ -189,7 +189,7 @@
         0.2308,
         1.0,
         0.3846,
-        0.0769
+        0.4615
       ],
       [
         0.0,
@@ -198,7 +198,7 @@
         0.4444,
         1.0,
         0.2222,
-        0.2222
+        0.3333
       ],
       [
         0.1111,
@@ -207,7 +207,7 @@
         0.0,
         1.0,
         0.1667,
-        0.4444
+        0.7222
       ],
       [
         0.1538,
@@ -216,7 +216,7 @@
         0.1923,
         1.0,
         0.8077,
-        0.0769
+        0.2308
       ],
       [
         0.5333,
@@ -225,7 +225,7 @@
         0.0667,
         1.0,
         0.3333,
-        0.2667
+        0.4667
       ],
       [
         0.0,
@@ -234,7 +234,7 @@
         0.0,
         1.0,
         0.2609,
-        0.0435
+        0.087
       ]
     ]
   },
@@ -703,11 +703,22 @@
       "recvuMBkvfz9IT"
     ],
     "other|2026-W38": [
-      "8c3db9b7-bd65-4158-99b9-05939fea20b4"
+      "8c3db9b7-bd65-4158-99b9-05939fea20b4",
+      "8bcd41df-6921-4027-9110-09c070a6912c"
     ],
     "infra|2026-W38": [
       "a73346e1-1cf6-40ca-ab95-f6a7bd842bb8",
-      "4b97cf0a-770d-48e8-930b-829812e388bd"
+      "4b97cf0a-770d-48e8-930b-829812e388bd",
+      "f22720c6-a266-4175-874e-e9291e2b65f1",
+      "3b42662a-a4fc-414d-9a2b-63119d4b59e6",
+      "7451763c-fe3e-4af7-994b-87a197a52529",
+      "ea52e598-35a9-47c4-8154-00abcc2edd33",
+      "bab4c0d3-944d-49a8-a04b-aa03fc2fda06",
+      "27118dc8-3699-489b-91b7-70addfea9c25",
+      "8520b7b5-99e2-4121-99d0-21164555f34f",
+      "e83de592-820f-4823-bf65-c16ec899701d",
+      "590c228e-4bb7-4567-9904-ac30be8a7129",
+      "559b1cfb-33f9-4b89-b281-84fe43c62a9c"
     ],
     "safety-policy|2026-W38": [
       "0729416e-1c7e-40a7-ac01-4a14ca9e95c2",
@@ -717,35 +728,64 @@
       "092de246-6c53-4ce2-a156-6450e9de4cfb",
       "bedaa4b3-6eff-43c2-9f60-a010a436f8fb",
       "dd8cf6cd-d688-4f59-a6c0-d20f56b3b59b",
-      "e719bea2-2391-470d-b080-5048011c3bcd"
+      "e719bea2-2391-470d-b080-5048011c3bcd",
+      "2beb710d-b9a9-4ee7-8792-1f490da51203",
+      "7664802a-2524-47ca-8072-2f42b62d8487",
+      "8520b7b5-99e2-4121-99d0-21164555f34f",
+      "1a3af3f5-89ec-4743-a775-a6e1cc767018",
+      "15217821-002e-4e36-a84b-8451fd6c8d3e"
     ],
     "agent|2026-W38": [
       "2329013c-c599-438c-9167-3f852578cf09",
       "c15a0b35-2bd3-451e-8a50-8bbb0fcbb794",
-      "eec76c26-aeeb-434b-aaba-f50336bf2a74"
+      "eec76c26-aeeb-434b-aaba-f50336bf2a74",
+      "efd296a7-7ab4-4abb-804e-89027a144947",
+      "83083b7c-daea-42c6-a223-1d2bc0107a4d",
+      "27118dc8-3699-489b-91b7-70addfea9c25",
+      "e83de592-820f-4823-bf65-c16ec899701d",
+      "12d87005-6699-4be6-88c0-088ab557f859"
     ],
     "open-source-model|2026-W38": [
-      "25d355e9-2e80-4fa6-95c7-4b73e1fde734"
+      "25d355e9-2e80-4fa6-95c7-4b73e1fde734",
+      "3e3adc93-004e-42d9-94c2-a2b5953b249a",
+      "12d87005-6699-4be6-88c0-088ab557f859"
     ],
     "embodied|2026-W38": [
       "49f00809-94b1-4a3c-a82e-caf3b40bdef6",
-      "2a205df8-17af-480c-86e2-ee7c4cfb7d46"
+      "2a205df8-17af-480c-86e2-ee7c4cfb7d46",
+      "8f892b88-5aa6-4e75-8a33-74df331f6aa9"
     ],
     "multimodal|2026-W38": [
-      "2a205df8-17af-480c-86e2-ee7c4cfb7d46"
+      "2a205df8-17af-480c-86e2-ee7c4cfb7d46",
+      "efd296a7-7ab4-4abb-804e-89027a144947",
+      "83083b7c-daea-42c6-a223-1d2bc0107a4d",
+      "99aaead5-f8fb-4061-8a53-39eeec57a222"
     ],
     "reasoning|2026-W38": [
-      "6d39b8ad-1988-44a3-8aa6-609a9da9308c"
+      "6d39b8ad-1988-44a3-8aa6-609a9da9308c",
+      "3e3adc93-004e-42d9-94c2-a2b5953b249a",
+      "4d2cbc7c-7442-4b60-8a03-791846f5f751",
+      "8f892b88-5aa6-4e75-8a33-74df331f6aa9"
     ],
     "funding|2026-W38": [
       "0266c840-83a1-4943-bd6e-547d23e5ed60",
       "c15a0b35-2bd3-451e-8a50-8bbb0fcbb794",
       "bedaa4b3-6eff-43c2-9f60-a010a436f8fb",
-      "0562f7a4-feb5-40b4-8f4a-ea2dc27afaa3"
+      "0562f7a4-feb5-40b4-8f4a-ea2dc27afaa3",
+      "c8c8040c-36f0-4af0-b10b-5a0d3775695c",
+      "bf5bfd48-095f-43fa-8533-8bf97f3c9508",
+      "590c228e-4bb7-4567-9904-ac30be8a7129"
     ],
     "product|2026-W38": [
       "eec76c26-aeeb-434b-aaba-f50336bf2a74",
-      "0562f7a4-feb5-40b4-8f4a-ea2dc27afaa3"
+      "0562f7a4-feb5-40b4-8f4a-ea2dc27afaa3",
+      "4d2cbc7c-7442-4b60-8a03-791846f5f751",
+      "948ae8b7-67cb-41ba-8504-bf575d3e6a20",
+      "61fbad30-bb29-4b93-a0ef-270fb45cc435",
+      "15217821-002e-4e36-a84b-8451fd6c8d3e"
+    ],
+    "rag-search|2026-W38": [
+      "bf5bfd48-095f-43fa-8533-8bf97f3c9508"
     ]
   },
   "itemIndex": {
@@ -2228,20 +2268,150 @@
       "title": "听见人工智能如何让自然重获新生：TechCrunch Disrupt 2026",
       "source": "TechCrunch AI",
       "url": "https://techcrunch.com/2026/09/14/hear-how-ai-can-engineer-natures-comeback-at-techcrunch-disrupt-2026"
+    },
+    "f22720c6-a266-4175-874e-e9291e2b65f1": {
+      "title": "中国电子信息制造业“十五五”规划聚焦芯片全链条、AI硬件与新兴行业电子化",
+      "source": "虎嗅",
+      "url": "https://www.huxiu.com/article/4891511.html"
+    },
+    "3e3adc93-004e-42d9-94c2-a2b5953b249a": {
+      "title": "英伟达开源 Nemotron IMO 金牌级数学推理系统",
+      "source": "AI科技评论 / 雷峰网",
+      "url": "https://www.leiphone.com/category/ai/a3z1i1e1p15o83no.html"
+    },
+    "3b42662a-a4fc-414d-9a2b-63119d4b59e6": {
+      "title": "OpenAI用AI参与设计首款推理芯片Jalapeño",
+      "source": "MIT Technology Review China",
+      "url": "https://www.mittrchina.com/news/detail/16956"
+    },
+    "efd296a7-7ab4-4abb-804e-89027a144947": {
+      "title": "Google 发布 Gemini 3.8 Live 与 Extended Thinking 实时语音模型",
+      "source": "Google DeepMind Blog",
+      "url": "https://deepmind.google/blog/introducing-gemini-3-8-live-and-3-8-live-extended-thinking"
+    },
+    "83083b7c-daea-42c6-a223-1d2bc0107a4d": {
+      "title": "苹果推出基于谷歌 Gemini 的新版 Siri 测试版，暂不在欧盟上线",
+      "source": "The Decoder",
+      "url": "https://the-decoder.com/apple-brings-a-fully-revamped-siri-built-on-googles-gemini-but-not-to-the-eu"
+    },
+    "7451763c-fe3e-4af7-994b-87a197a52529": {
+      "title": "NVIDIA DSX：以智能功耗调度提升AI工厂每兆瓦产出",
+      "source": "NVIDIA Blog",
+      "url": "https://blogs.nvidia.com/blog/from-megawatts-to-tokens-how-nvidia-maximizes-ai-factory-production"
+    },
+    "2beb710d-b9a9-4ee7-8792-1f490da51203": {
+      "title": "AI 实验室的数据可信度问题尚未被现有政策解决",
+      "source": "The Decoder",
+      "url": "https://the-decoder.com/ai-labs-have-a-data-trust-problem-that-their-policies-havent-solved"
+    },
+    "4d2cbc7c-7442-4b60-8a03-791846f5f751": {
+      "title": "Salesforce基于NVIDIA Nemotron推出首个CRM推理模型Koa",
+      "source": "NVIDIA Blog",
+      "url": "https://blogs.nvidia.com/blog/jensen-huang-dreamforce"
+    },
+    "99aaead5-f8fb-4061-8a53-39eeec57a222": {
+      "title": "阶跃发布StepAudio 3系列，多项语音模型登顶Artificial Analysis榜单",
+      "source": "AI科技评论 / 雷峰网",
+      "url": "https://www.leiphone.com/category/industrynews/bqwumrrwgynqhzxz.html"
+    },
+    "ea52e598-35a9-47c4-8154-00abcc2edd33": {
+      "title": "联发科发布天玑9600 Pro：2nm制程与双NPU融合计算旗舰平台",
+      "source": "AI科技评论 / 雷峰网",
+      "url": "https://www.leiphone.com/category/industrynews/q1k5b0zq8ymkm91n.html"
+    },
+    "bab4c0d3-944d-49a8-a04b-aa03fc2fda06": {
+      "title": "英伟达展示 Vera Rubin 与 DSX 平台的 AI 工厂每瓦 Token 效率",
+      "source": "NVIDIA Blog",
+      "url": "https://blogs.nvidia.com/blog/ai-infra-summit-vera-rubin-dsx-energy-efficiencies-tokens-per-watt-ai-factories"
+    },
+    "c8c8040c-36f0-4af0-b10b-5a0d3775695c": {
+      "title": "盖茨基金会两年投入至少10亿美元推动AI惠及低收入地区",
+      "source": "The Decoder",
+      "url": "https://the-decoder.com/after-warning-ai-is-too-dangerous-bill-gates-bets-a-billion-on-its-upside"
+    },
+    "27118dc8-3699-489b-91b7-70addfea9c25": {
+      "title": "英特尔称AI智能体推高CPU缺口，18A量产、14A拟明年一季度投产",
+      "source": "华尔街见闻",
+      "url": "https://wallstreetcn.com/articles/3781851"
+    },
+    "7664802a-2524-47ca-8072-2f42b62d8487": {
+      "title": "黄仁勋反对新增AI监管，主张由企业自主把控安全",
+      "source": "华尔街见闻",
+      "url": "https://wallstreetcn.com/articles/3781837"
+    },
+    "8520b7b5-99e2-4121-99d0-21164555f34f": {
+      "title": "黄仁勋反对因AI末日论减速：支持安全评估，强调基础设施与应用竞争",
+      "source": "MIT Technology Review China",
+      "url": "https://www.mittrchina.com/news/detail/16955"
+    },
+    "8bcd41df-6921-4027-9110-09c070a6912c": {
+      "title": "Sabi 推出毛线帽形态非侵入式脑机接口，瞄准意念打字",
+      "source": "MIT Technology Review China",
+      "url": "https://www.mittrchina.com/news/detail/16957"
+    },
+    "bf5bfd48-095f-43fa-8533-8bf97f3c9508": {
+      "title": "AEO 初创公司 Profound 获 1.8 亿美元 D 轮融资，估值达 18 亿美元",
+      "source": "TechCrunch AI",
+      "url": "https://techcrunch.com/2026/09/15/aeo-startup-profound-hits-unicorn-valuation-raises-180m-series-d-7-months-after-last-round"
+    },
+    "8f892b88-5aa6-4e75-8a33-74df331f6aa9": {
+      "title": "机器人打球演示的自主性边界：从外部追踪到真实生产力",
+      "source": "虎嗅",
+      "url": "https://www.huxiu.com/article/4891532.html"
+    },
+    "948ae8b7-67cb-41ba-8504-bf575d3e6a20": {
+      "title": "Meta 推出 Meta One 订阅服务，扩展 AI 用量与创作者企业工具",
+      "source": "Meta Newsroom AI",
+      "url": "https://about.fb.com/news/2026/09/presentation-de-meta-one-un-service-dabonnement-offrant-davantage-de-fonctionnalites-et-dia-pour-creer-se-connecter-et-se-demarquer"
+    },
+    "61fbad30-bb29-4b93-a0ef-270fb45cc435": {
+      "title": "AI墓地：未能存活的项目与创业公司清单",
+      "source": "TechCrunch AI",
+      "url": "https://techcrunch.com/2026/09/15/the-ai-graveyard-a-running-list-of-projects-and-startups-that-didnt-make-it"
+    },
+    "e83de592-820f-4823-bf65-c16ec899701d": {
+      "title": "腾讯云EdgeOne入选IDC全球托管边缘服务领导者",
+      "source": "AI科技评论 / 雷峰网",
+      "url": "https://www.leiphone.com/category/industrynews/pxm3ht4tsvtrgyis.html"
+    },
+    "12d87005-6699-4be6-88c0-088ab557f859": {
+      "title": "DeepSeek算子工程师谈AI替代、转业与开源普惠",
+      "source": "虎嗅",
+      "url": "https://www.huxiu.com/article/4891500.html"
+    },
+    "590c228e-4bb7-4567-9904-ac30be8a7129": {
+      "title": "淬思科技获亿元融资，拟为端侧场景定制6纳米推理芯片",
+      "source": "MIT Technology Review China",
+      "url": "https://www.mittrchina.com/news/detail/16954"
+    },
+    "1a3af3f5-89ec-4743-a775-a6e1cc767018": {
+      "title": "AI安全讨论在商业利益与国家竞争中被重塑",
+      "source": "虎嗅",
+      "url": "https://www.huxiu.com/article/4891503.html"
+    },
+    "559b1cfb-33f9-4b89-b281-84fe43c62a9c": {
+      "title": "TechCrunch Disrupt 2026：从原型走向量产与真实部署",
+      "source": "TechCrunch AI",
+      "url": "https://techcrunch.com/2026/09/15/discover-how-to-take-your-startup-from-prototype-to-production-at-techcrunch-disrupt-2026"
+    },
+    "15217821-002e-4e36-a84b-8451fd6c8d3e": {
+      "title": "Threads在亚太推出青少年家长监管功能",
+      "source": "Meta Newsroom AI",
+      "url": "https://about.fb.com/news/2026/09/threads-introduces-parental-supervision-for-teens-in-apac"
     }
   },
   "trend": {
-    "agent": 0.652,
-    "reasoning": 0.583,
-    "multimodal": 0.606,
-    "open-source-model": 0.395,
-    "rag-search": 0.5,
-    "infra": 0.625,
-    "embodied": 0.769,
-    "safety-policy": 1.375,
-    "product": 1.369,
-    "funding": 0.682,
-    "other": 0.761
+    "agent": 0.833,
+    "reasoning": 0.833,
+    "multimodal": 0.833,
+    "open-source-model": 0.658,
+    "rag-search": 0.667,
+    "infra": 1.146,
+    "embodied": 0.962,
+    "safety-policy": 2.0,
+    "product": 1.607,
+    "funding": 0.909,
+    "other": 0.87
   },
   "window_end": "2026-W38"
 }

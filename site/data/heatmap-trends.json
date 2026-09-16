@@ -1,247 +1,393 @@
 {
-  "generatedAt": "2026-09-15T14:54:38+08:00",
+  "generatedAt": "2026-09-16T11:33:17+08:00",
   "days": [
-    "2026-09-09",
     "2026-09-10",
     "2026-09-11",
     "2026-09-12",
     "2026-09-13",
     "2026-09-14",
-    "2026-09-15"
+    "2026-09-15",
+    "2026-09-16"
   ],
   "topics": [
+    "siri-ai",
     "nvidia-ai",
-    "anthropic-ai",
     "openai",
-    "deepseek"
+    "ai-anthropic",
+    "gemini",
+    "deepseek",
+    "claude"
   ],
   "labels": {
+    "siri-ai": "siri ai",
     "nvidia-ai": "NVIDIA AI",
-    "anthropic-ai": "anthropic ai",
     "openai": "OpenAI",
-    "deepseek": "DeepSeek"
+    "ai-anthropic": "ai anthropic",
+    "gemini": "Google Gemini",
+    "deepseek": "DeepSeek",
+    "claude": "Claude AI"
   },
   "queries": {
+    "siri-ai": {
+      "g": "siri ai",
+      "x": "\"siri ai\" -is:retweet"
+    },
     "nvidia-ai": {
       "g": "NVIDIA AI",
       "x": "\"NVIDIA AI\" -is:retweet"
-    },
-    "anthropic-ai": {
-      "g": "anthropic ai",
-      "x": "\"anthropic ai\" -is:retweet"
     },
     "openai": {
       "g": "OpenAI",
       "x": "OpenAI -is:retweet"
     },
+    "ai-anthropic": {
+      "g": "ai anthropic",
+      "x": "\"ai anthropic\" -is:retweet"
+    },
+    "gemini": {
+      "g": "Google Gemini",
+      "x": "\"Google Gemini\" -is:retweet"
+    },
     "deepseek": {
       "g": "DeepSeek",
       "x": "DeepSeek -is:retweet"
+    },
+    "claude": {
+      "g": "Claude AI",
+      "x": "\"Claude AI\" -is:retweet"
     }
   },
   "scopes": {
+    "siri-ai": "global",
     "nvidia-ai": "global",
-    "anthropic-ai": "global",
     "openai": "global",
-    "deepseek": "global"
+    "ai-anthropic": "global",
+    "gemini": "global",
+    "deepseek": "global",
+    "claude": "global"
   },
   "marks": {
+    "siri-ai": "🌐",
     "nvidia-ai": "🌐",
-    "anthropic-ai": "🌐",
     "openai": "🌐",
-    "deepseek": "🌐"
+    "ai-anthropic": "🌐",
+    "gemini": "🌐",
+    "deepseek": "🌐",
+    "claude": "🌐"
   },
   "breakouts": [
+    "siri-ai",
     "nvidia-ai",
-    "anthropic-ai"
+    "openai"
   ],
   "selection": {
     "method": "google-trending-ai",
     "volumes": {
+      "siri-ai": 10000,
       "nvidia-ai": 0,
-      "anthropic-ai": 2000,
       "openai": 0,
-      "deepseek": 0
+      "ai-anthropic": 200,
+      "gemini": 0,
+      "deepseek": 0,
+      "claude": 0
     },
     "geos": {
+      "siri-ai": [
+        "IN"
+      ],
       "nvidia-ai": [],
-      "anthropic-ai": [
-        "AU",
+      "openai": [],
+      "ai-anthropic": [
         "CA"
       ],
-      "openai": [],
-      "deepseek": []
+      "gemini": [],
+      "deepseek": [],
+      "claude": []
     },
     "plot_geo": {
+      "siri-ai": "",
       "nvidia-ai": "",
-      "anthropic-ai": "",
       "openai": "",
-      "deepseek": ""
+      "ai-anthropic": "",
+      "gemini": "",
+      "deepseek": "",
+      "claude": ""
     },
     "breakouts": [
+      "siri-ai",
       "nvidia-ai",
-      "anthropic-ai"
+      "openai"
     ]
   },
   "google-trends": {
     "error": "",
     "topics": [
+      "siri-ai",
       "nvidia-ai",
-      "anthropic-ai",
       "openai",
-      "deepseek"
+      "ai-anthropic",
+      "gemini",
+      "deepseek",
+      "claude"
     ],
     "labels": {
+      "siri-ai": "siri ai",
       "nvidia-ai": "NVIDIA AI",
-      "anthropic-ai": "anthropic ai",
       "openai": "OpenAI",
-      "deepseek": "DeepSeek"
+      "ai-anthropic": "ai anthropic",
+      "gemini": "Google Gemini",
+      "deepseek": "DeepSeek",
+      "claude": "Claude AI"
     },
     "queries": {
+      "siri-ai": {
+        "g": "siri ai",
+        "x": "\"siri ai\" -is:retweet"
+      },
       "nvidia-ai": {
         "g": "NVIDIA AI",
         "x": "\"NVIDIA AI\" -is:retweet"
-      },
-      "anthropic-ai": {
-        "g": "anthropic ai",
-        "x": "\"anthropic ai\" -is:retweet"
       },
       "openai": {
         "g": "OpenAI",
         "x": "OpenAI -is:retweet"
       },
+      "ai-anthropic": {
+        "g": "ai anthropic",
+        "x": "\"ai anthropic\" -is:retweet"
+      },
+      "gemini": {
+        "g": "Google Gemini",
+        "x": "\"Google Gemini\" -is:retweet"
+      },
       "deepseek": {
         "g": "DeepSeek",
         "x": "DeepSeek -is:retweet"
+      },
+      "claude": {
+        "g": "Claude AI",
+        "x": "\"Claude AI\" -is:retweet"
       }
     },
     "scopes": {
+      "siri-ai": "global",
       "nvidia-ai": "global",
-      "anthropic-ai": "global",
       "openai": "global",
-      "deepseek": "global"
+      "ai-anthropic": "global",
+      "gemini": "global",
+      "deepseek": "global",
+      "claude": "global"
     },
     "marks": {
+      "siri-ai": "🌐",
       "nvidia-ai": "🌐",
-      "anthropic-ai": "🌐",
       "openai": "🌐",
-      "deepseek": "🌐"
+      "ai-anthropic": "🌐",
+      "gemini": "🌐",
+      "deepseek": "🌐",
+      "claude": "🌐"
     },
     "breakouts": [
+      "siri-ai",
       "nvidia-ai",
-      "anthropic-ai"
+      "openai"
     ],
     "selection": {
       "volumes": {
+        "siri-ai": 10000,
         "nvidia-ai": 0,
-        "anthropic-ai": 2000,
         "openai": 0,
-        "deepseek": 0
+        "ai-anthropic": 200,
+        "gemini": 0,
+        "deepseek": 0,
+        "claude": 0
       },
       "geos": {
+        "siri-ai": [
+          "IN"
+        ],
         "nvidia-ai": [],
-        "anthropic-ai": [
-          "AU",
+        "openai": [],
+        "ai-anthropic": [
           "CA"
         ],
-        "openai": [],
-        "deepseek": []
+        "gemini": [],
+        "deepseek": [],
+        "claude": []
       },
       "plot_geo": {
+        "siri-ai": "",
         "nvidia-ai": "",
-        "anthropic-ai": "",
         "openai": "",
-        "deepseek": ""
+        "ai-anthropic": "",
+        "gemini": "",
+        "deepseek": "",
+        "claude": ""
       },
       "method": "google-trending-ai"
     },
     "matrix": {
       "raw": [
         [
-          61.0,
-          55.0,
-          45.0,
-          31.0,
-          34.0,
-          66.0,
+          21.0,
+          12.0,
+          11.0,
+          10.0,
+          44.0,
+          100.0,
+          92.0
+        ],
+        [
+          63.0,
+          51.0,
+          37.0,
+          39.0,
+          72.0,
+          85.0,
           100.0
         ],
         [
           77.0,
-          85.0,
+          64.0,
+          49.0,
+          47.0,
           63.0,
-          51.0,
-          76.0,
-          86.0,
-          100.0
+          69.0,
+          81.0
+        ],
+        [
+          97.0,
+          74.0,
+          60.0,
+          91.0,
+          100.0,
+          83.0,
+          96.0
         ],
         [
           100.0,
-          79.0,
+          92.0,
+          71.0,
+          68.0,
+          75.0,
+          73.0,
+          82.0
+        ],
+        [
+          100.0,
+          82.0,
+          61.0,
+          59.0,
+          86.0,
+          72.0,
+          88.0
+        ],
+        [
+          90.0,
           66.0,
           49.0,
-          46.0,
-          68.0,
-          87.0
-        ],
-        [
-          85.0,
-          100.0,
-          81.0,
-          61.0,
-          57.0,
-          85.0,
-          88.0
+          49.0,
+          65.0,
+          66.0,
+          65.0
         ]
       ],
       "normalized": [
         [
-          0.61,
-          0.55,
-          0.45,
-          0.31,
-          0.34,
-          0.66,
-          1.0
+          0.21,
+          0.12,
+          0.11,
+          0.1,
+          0.44,
+          1.0,
+          0.92
         ],
         [
-          0.77,
-          0.85,
           0.63,
           0.51,
-          0.76,
-          0.86,
+          0.37,
+          0.39,
+          0.72,
+          0.85,
           1.0
         ],
         [
-          1.0,
-          0.79,
-          0.66,
-          0.49,
-          0.46,
-          0.68,
-          0.87
+          0.9506,
+          0.7901,
+          0.6049,
+          0.5802,
+          0.7778,
+          0.8519,
+          1.0
         ],
         [
-          0.85,
+          0.97,
+          0.74,
+          0.6,
+          0.91,
           1.0,
-          0.81,
+          0.83,
+          0.96
+        ],
+        [
+          1.0,
+          0.92,
+          0.71,
+          0.68,
+          0.75,
+          0.73,
+          0.82
+        ],
+        [
+          1.0,
+          0.82,
           0.61,
-          0.57,
-          0.85,
+          0.59,
+          0.86,
+          0.72,
           0.88
+        ],
+        [
+          1.0,
+          0.7333,
+          0.5444,
+          0.5444,
+          0.7222,
+          0.7333,
+          0.7222
         ]
       ]
     },
     "trend": {
-      "nvidia-ai": 2.055,
-      "anthropic-ai": 1.37,
-      "openai": 1.279,
-      "deepseek": 1.126
+      "siri-ai": 2.788,
+      "nvidia-ai": 1.729,
+      "openai": 1.317,
+      "ai-anthropic": 1.141,
+      "gemini": 1.027,
+      "deepseek": 1.148,
+      "claude": 1.013
     },
     "items": {
-      "nvidia-ai|2026-09-09": [
-        "g-nvidia-ai"
+      "siri-ai|2026-09-10": [
+        "g-siri-ai"
+      ],
+      "siri-ai|2026-09-11": [
+        "g-siri-ai"
+      ],
+      "siri-ai|2026-09-12": [
+        "g-siri-ai"
+      ],
+      "siri-ai|2026-09-13": [
+        "g-siri-ai"
+      ],
+      "siri-ai|2026-09-14": [
+        "g-siri-ai"
+      ],
+      "siri-ai|2026-09-15": [
+        "g-siri-ai"
+      ],
+      "siri-ai|2026-09-16": [
+        "g-siri-ai"
       ],
       "nvidia-ai|2026-09-10": [
         "g-nvidia-ai"
@@ -261,29 +407,8 @@
       "nvidia-ai|2026-09-15": [
         "g-nvidia-ai"
       ],
-      "anthropic-ai|2026-09-09": [
-        "g-anthropic-ai"
-      ],
-      "anthropic-ai|2026-09-10": [
-        "g-anthropic-ai"
-      ],
-      "anthropic-ai|2026-09-11": [
-        "g-anthropic-ai"
-      ],
-      "anthropic-ai|2026-09-12": [
-        "g-anthropic-ai"
-      ],
-      "anthropic-ai|2026-09-13": [
-        "g-anthropic-ai"
-      ],
-      "anthropic-ai|2026-09-14": [
-        "g-anthropic-ai"
-      ],
-      "anthropic-ai|2026-09-15": [
-        "g-anthropic-ai"
-      ],
-      "openai|2026-09-09": [
-        "g-openai"
+      "nvidia-ai|2026-09-16": [
+        "g-nvidia-ai"
       ],
       "openai|2026-09-10": [
         "g-openai"
@@ -303,8 +428,50 @@
       "openai|2026-09-15": [
         "g-openai"
       ],
-      "deepseek|2026-09-09": [
-        "g-deepseek"
+      "openai|2026-09-16": [
+        "g-openai"
+      ],
+      "ai-anthropic|2026-09-10": [
+        "g-ai-anthropic"
+      ],
+      "ai-anthropic|2026-09-11": [
+        "g-ai-anthropic"
+      ],
+      "ai-anthropic|2026-09-12": [
+        "g-ai-anthropic"
+      ],
+      "ai-anthropic|2026-09-13": [
+        "g-ai-anthropic"
+      ],
+      "ai-anthropic|2026-09-14": [
+        "g-ai-anthropic"
+      ],
+      "ai-anthropic|2026-09-15": [
+        "g-ai-anthropic"
+      ],
+      "ai-anthropic|2026-09-16": [
+        "g-ai-anthropic"
+      ],
+      "gemini|2026-09-10": [
+        "g-gemini"
+      ],
+      "gemini|2026-09-11": [
+        "g-gemini"
+      ],
+      "gemini|2026-09-12": [
+        "g-gemini"
+      ],
+      "gemini|2026-09-13": [
+        "g-gemini"
+      ],
+      "gemini|2026-09-14": [
+        "g-gemini"
+      ],
+      "gemini|2026-09-15": [
+        "g-gemini"
+      ],
+      "gemini|2026-09-16": [
+        "g-gemini"
       ],
       "deepseek|2026-09-10": [
         "g-deepseek"
@@ -323,120 +490,82 @@
       ],
       "deepseek|2026-09-15": [
         "g-deepseek"
+      ],
+      "deepseek|2026-09-16": [
+        "g-deepseek"
+      ],
+      "claude|2026-09-10": [
+        "g-claude"
+      ],
+      "claude|2026-09-11": [
+        "g-claude"
+      ],
+      "claude|2026-09-12": [
+        "g-claude"
+      ],
+      "claude|2026-09-13": [
+        "g-claude"
+      ],
+      "claude|2026-09-14": [
+        "g-claude"
+      ],
+      "claude|2026-09-15": [
+        "g-claude"
+      ],
+      "claude|2026-09-16": [
+        "g-claude"
       ]
     },
     "itemIndex": {
+      "g-siri-ai": {
+        "title": "Google Trends · siri ai",
+        "source": "Google Trends",
+        "url": "https://trends.google.com/trends/explore?date=now%207-d&q=siri%20ai"
+      },
       "g-nvidia-ai": {
         "title": "Google Trends · NVIDIA AI",
         "source": "Google Trends",
         "url": "https://trends.google.com/trends/explore?date=now%207-d&q=NVIDIA%20AI"
-      },
-      "g-anthropic-ai": {
-        "title": "Google Trends · anthropic ai",
-        "source": "Google Trends",
-        "url": "https://trends.google.com/trends/explore?date=now%207-d&q=anthropic%20ai"
       },
       "g-openai": {
         "title": "Google Trends · OpenAI",
         "source": "Google Trends",
         "url": "https://trends.google.com/trends/explore?date=now%207-d&q=OpenAI"
       },
+      "g-ai-anthropic": {
+        "title": "Google Trends · ai anthropic",
+        "source": "Google Trends",
+        "url": "https://trends.google.com/trends/explore?date=now%207-d&q=ai%20anthropic"
+      },
+      "g-gemini": {
+        "title": "Google Trends · Google Gemini",
+        "source": "Google Trends",
+        "url": "https://trends.google.com/trends/explore?date=now%207-d&q=Google%20Gemini"
+      },
       "g-deepseek": {
         "title": "Google Trends · DeepSeek",
         "source": "Google Trends",
         "url": "https://trends.google.com/trends/explore?date=now%207-d&q=DeepSeek"
+      },
+      "g-claude": {
+        "title": "Google Trends · Claude AI",
+        "source": "Google Trends",
+        "url": "https://trends.google.com/trends/explore?date=now%207-d&q=Claude%20AI"
       }
     }
   },
   "x": {
-    "error": "",
-    "topics": [
-      "anthropic"
-    ],
-    "labels": {
-      "anthropic": "Anthropic"
-    },
-    "queries": {
-      "anthropic": {
-        "g": "Anthropic",
-        "x": "Anthropic -is:retweet"
-      }
-    },
-    "scopes": {
-      "anthropic": "global"
-    },
-    "marks": {
-      "anthropic": "🌐"
-    },
-    "breakouts": [],
-    "selection": {
-      "volumes": {
-        "anthropic": 0
-      },
-      "geos": {
-        "anthropic": []
-      },
-      "plot_geo": {
-        "anthropic": ""
-      },
-      "method": "x-trends-by-woeid"
-    },
+    "error": "X 暂无达到热度门槛的 AI 话题",
+    "topics": [],
     "matrix": {
-      "raw": [
-        [
-          31986.0,
-          24847.0,
-          21978.0,
-          22578.0,
-          24450.0,
-          25459.0,
-          5491.0
-        ]
-      ],
-      "normalized": [
-        [
-          1.0,
-          0.7768,
-          0.6871,
-          0.7059,
-          0.7644,
-          0.7959,
-          0.1717
-        ]
-      ]
+      "raw": [],
+      "normalized": []
     },
-    "trend": {
-      "anthropic": 0.218
-    },
-    "items": {
-      "anthropic|2026-09-09": [
-        "x-anthropic"
-      ],
-      "anthropic|2026-09-10": [
-        "x-anthropic"
-      ],
-      "anthropic|2026-09-11": [
-        "x-anthropic"
-      ],
-      "anthropic|2026-09-12": [
-        "x-anthropic"
-      ],
-      "anthropic|2026-09-13": [
-        "x-anthropic"
-      ],
-      "anthropic|2026-09-14": [
-        "x-anthropic"
-      ],
-      "anthropic|2026-09-15": [
-        "x-anthropic"
-      ]
-    },
-    "itemIndex": {
-      "x-anthropic": {
-        "title": "X 热搜 · Anthropic -is:retweet",
-        "source": "X",
-        "url": "https://x.com/search?q=Anthropic%20-is%3Aretweet&src=typed_query&f=live"
-      }
+    "trend": {},
+    "items": {},
+    "itemIndex": {},
+    "selection": {
+      "method": "x-trends-by-woeid"
     }
   }
 }

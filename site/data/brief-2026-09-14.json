@@ -1,6 +1,6 @@
 {
   "date": "2026-09-14",
-  "title": "AI-Signal 每日情报 · 2026-09-14",
+  "title": "AI Signal 每日情报 · 2026-09-14",
   "intro": "本轮信号显示，前沿AI竞争正从单纯追求模型能力转向安全验证、智能体落地与端侧基础设施协同推进。与此同时，存储材料、具身系统、教育研究和生成式内容等外围技术也在加速形成新的产业入口，但量产、治理与长期效果仍存在明显不确定性。",
   "bullets": [
     {
@@ -1438,10 +1438,36 @@
         "推理",
         "开源"
       ],
-      "imageUrl": "",
+      "imageUrl": "media/papers/recvuAVZd2JcWr-p20-f1.png",
       "mediaAssets": {
-        "images": [],
-        "videos": []
+        "images": [
+          {
+            "url": "media/papers/recvuAVZd2JcWr-p20-f1.png",
+            "alt": "PDF 第 20 页图表：Figure 5: Ground truth classifications of Salinas A (a) and Pavia (b) HSI data sets.",
+            "kind": "pdf-page",
+            "layout": "wide"
+          },
+          {
+            "url": "media/papers/recvuAVZd2JcWr-p20-f2.png",
+            "alt": "PDF 第 20 页图表：Figure 6: Plots of accuracy results on HSI data sets, Salinas-A and Pavia data sets.",
+            "kind": "pdf-page",
+            "layout": "wide"
+          },
+          {
+            "url": "media/papers/recvuAVZd2JcWr-p22-f3.png",
+            "alt": "PDF 第 22 页图表：Table 3: “modulo” class labels. Each ground truth class is interpreted as a different “cluster” so that the resulting class structure has multiple clusters per class. For MNIST and FASHIONMNIST, there are 10 ground truth classes, and we take these classes modulo k = 3.",
+            "kind": "pdf-page",
+            "layout": "wide"
+          },
+          {
+            "url": "media/papers/recvuAVZd2JcWr-p26-f4.png",
+            "alt": "PDF 第 26 页图表：Table 4: Computational comparison between acquisition functions, where n = |X|, K is the number of classes, and r ≪n is the number of eigenvalues computed in the auxiliary matrix used in MCVOpt. SpSolve(L, n) represents the cost of a sparse linear solve with the graph Laplacian matrix L ∈Rn×n, which we assume to be sparse pursuant our use of k-nearest neighbor graphs.",
+            "kind": "pdf-page",
+            "layout": "wide"
+          }
+        ],
+        "videos": [],
+        "cover": "media/papers/recvuAVZd2JcWr-p20-f1.png"
       },
       "editorialStructure": "",
       "pdfUrl": "http://jmlr.org/papers/volume27/23-1489/23-1489.pdf",

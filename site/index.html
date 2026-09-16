@@ -1343,14 +1343,34 @@ async function fetchLiveMarket(){
   return { sourceUrl: 'https://stockapp.finance.qq.com/', updatedAt: stamp, error: '', live: true, quotes };
 }
 
+let liveMarketRefreshing = false;
+
+function refreshDataRail(){
+  const current = document.querySelector('.feed-data');
+  if(!current) return;
+  const scrollTop = current.scrollTop;
+  const replacement = document.createElement('div');
+  replacement.innerHTML = dataRailHtml(computeAccents()).trim();
+  const next = replacement.firstElementChild;
+  if(!next) return;
+  current.replaceWith(next);
+  next.scrollTop = scrollTop;
+}
+
 async function refreshLiveMarket(){
+  if(liveMarketRefreshing) return;
+  liveMarketRefreshing = true;
   try {
     const market = await fetchLiveMarket();
     dashboard.market = market;
     if(!dashboardStatus.error) dashboardStatus.loading = false;
-    render();
+    // 行情每分钟更新一次。整页 render 会销毁信息流、重置滚动并让读者误以为
+    // 页面在自动刷新；这里仅替换右侧数据栏。
+    refreshDataRail();
   } catch(error) {
     // 实时接口挂了就继续用日报快照，不要把已经画出来的行情抹掉
+  } finally {
+    liveMarketRefreshing = false;
   }
 }
 
@@ -1400,6 +1420,13 @@ const App = {
     const next = new Set(state.socialExpanded);
     if(next.has(recordId)) next.delete(recordId); else next.add(recordId);
     state.socialExpanded = [...next];
+    render();
+  },
+  setHeatmapSource(source){
+    state.heatmapSource = source === 'x' ? 'x' : 'google-trends';
+    state.heatmapPick = null;
+    if(heatSourceUsable(heatmapPayload, state.heatmapSource)) applyHeatPayload(heatmapPayload, state.heatmapSource);
+    else applyHeatDemo(state.heatmapSource);
     render();
   },
   goSources(){ state.page='sources'; state.detailRank=null; render(); },
@@ -1578,13 +1605,6 @@ const App = {
       fb.textContent = letters;
       parent.appendChild(fb);
     }
-  },
-  setHeatmapSource(source){
-    state.heatmapSource = source === 'x' ? 'x' : 'google-trends';
-    state.heatmapPick = null;
-    if(heatSourceUsable(heatmapPayload, state.heatmapSource)) applyHeatPayload(heatmapPayload, state.heatmapSource);
-    else applyHeatDemo(state.heatmapSource);
-    render();
   },
   setLeaderboardTab(key){
     state.leaderboardTab = key;
@@ -2651,7 +2671,7 @@ function heatmapHtml(A){
     const breakouts = heatmap.breakouts || [];
     const hasBreakouts = Array.isArray(breakouts) && breakouts.length;
     const isBreakout = hasBreakouts && breakouts.includes(topic);
-    const badge = isBreakout ? '🔥' : (!hasBreakouts && tr > 1.5 ? '🔥' : (tr < 0.5 ? '❄️' : ''));
+    const badge = isBreakout ? '🔥' : (!hasBreakouts && tr > 1.5 ? '🔥' : '');
     const cells = days.map((day, j)=>{
       const raw = (rawM[i] && rawM[i][j]) || 0;
       const norm = (normM[i] && normM[i][j]) || 0;
@@ -2668,7 +2688,7 @@ function heatmapHtml(A){
     const mark = (heatmap.marks && heatmap.marks[topic]) || '🌐';
     const scope = (heatmap.scopes && heatmap.scopes[topic]) || (mark==='🌐'?'global':'country');
     const markTitle = src==='x'
-      ? (scope==='country' ? 'X 上榜地区；格子为全球讨论量' : 'X 全球热搜；格子为全球讨论量')
+      ? (scope==='country' ? 'X 上榜地区；格子为帖子量' : 'X 全球热度；格子为帖子量')
       : (scope==='country' ? '上榜国家近 7 日' : '全球近 7 日');
     const newsQ = heatNewsQuery(topic);
     const newsUrl = heatNewsUrl(topic);
@@ -2700,7 +2720,7 @@ function heatmapHtml(A){
   const srcError = heatmap.error || '';
   const hasValues = rawM.flat().some(v => Number(v));
   const toggle = `
-    <div class="heat-toggle" role="group" aria-label="热搜来源">
+    <div class="heat-toggle" role="group" aria-label="热度来源">
       <button type="button" class="${src==='google-trends'?'on':''}" onclick="App.setHeatmapSource('google-trends')">Google</button>
       <button type="button" class="${src==='x'?'on':''}" onclick="App.setHeatmapSource('x')">X</button>
     </div>`;
@@ -2717,7 +2737,7 @@ function heatmapHtml(A){
     </div>
     ${panel}
     <div id="heatTip" class="heat-tip" hidden></div>` : '';
-  const body = `${toggle}${status}${grid || (!srcError ? `<p class="heat-status">暂无热度数据</p>` : '')}`;
+  const body = `${toggle}${status}${grid || (!srcError ? `<p class="heat-status">暂无达到热度门槛的话题</p>` : '')}`;
 
   return `
     <section style="position: relative; background: #0a0a0a; border: 1.5px solid var(--ds-ink-line); box-shadow: 5px 5px 0 rgba(22,19,15,.10); overflow: hidden;">
@@ -2725,7 +2745,7 @@ function heatmapHtml(A){
       <div style="display: flex; align-items: center; gap: 8px; padding: 11px 14px; border-bottom: 1px solid ${LINE};">
         <span style="width: 6px; height: 6px; background: ${A.accent}; transform: rotate(45deg); flex: none;"></span>
         <span style="font-size: 13.5px; font-weight: 700; color: ${TXT};">话题热度</span>
-        <span style="font-size: 10px; color: ${DIM};">${heatmapStatus.demo ? '演示' : (src==='x' ? 'X 热搜 · AI' : 'Google 热搜 · AI')}</span>
+        <span style="font-size: 10px; color: ${DIM};">${heatmapStatus.demo ? '演示' : (src==='x' ? 'X 高热度话题 · AI' : 'Google 高热度搜索 · AI')}</span>
         <span style="margin-left: auto; font-family: 'Geist Mono', ui-monospace, Menlo, monospace; font-size: 9px; letter-spacing: .14em; color: ${DIM};">TOPIC HEAT</span>
       </div>
       ${body}
@@ -3463,6 +3483,11 @@ function articleBody(A, s){
     : 0;
   let sectionCount = 0;
   let placedImages = !llmPlaced && sourceStructured && images.length ? 1 : 0;
+  const pendingImages = [];
+  const flushHeading = heading => {
+    placer.forHeading(heading).forEach(item=>pendingImages.push(figure(item)));
+    blocks.push(...pendingImages.splice(0));
+  };
   deepParas.forEach((para, index)=>{
     const sourceSection = sourceStructured ? para.match(/^##\s+([^\n]+)\n?([\s\S]*)$/) : null;
     const section = para.match(/^【([^】]+)】[：:]?\s*([\s\S]*)$/);
@@ -3477,8 +3502,8 @@ function articleBody(A, s){
         </div>
         ${sourceSection[2].trim()?`<div style="font-size:15px;line-height:2.08;color:${UI.text2};${proseStyle}">${zhProseHtml(esc(sourceSection[2].trim()).replace(/\n/g,'<br>'))}</div>`:''}
       </section>`);
-      placer.forHeading(headCn).forEach(item=>blocks.push(figure(item)));
-      placer.forHeading(sourceSection[1]).forEach(item=>blocks.push(figure(item)));
+      flushHeading(headCn);
+      flushHeading(sourceSection[1]);
       placer.forParagraph(sourceSection[2]).forEach(item=>blocks.push(figure(item)));
     } else if(section){
       const isPodcastBoundary = s.kind==='播客' && /信息边界|资料边界/.test(section[1]);
@@ -3519,7 +3544,7 @@ function articleBody(A, s){
             ${section[2].trim()?`<div style="padding:15px 17px 16px;font-size:14.5px;line-height:2;color:${UI.text2};${proseStyle}">${zhProseHtml(esc(section[2].trim()).replace(/\n/g,'<br>'))}</div>`:''}
           </section>`);
         }
-        placer.forHeading(section[1]).forEach(item=>blocks.push(figure(item)));
+        flushHeading(section[1]);
         placer.forParagraph(section[2]).forEach(item=>blocks.push(figure(item)));
       }
     } else if(sourceStructured) {
