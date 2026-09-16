@@ -770,6 +770,18 @@ def _build_site_into(
         json.dumps(briefs[0], ensure_ascii=False, indent=2),
         encoding="utf-8",
     )
+    # 历史页只需先读取这份轻量索引，再并行拉取各日期的日报快照。
+    (data_dir / "archive-index.json").write_text(
+        json.dumps(
+            {
+                "generatedAt": datetime.now(CN_TZ).isoformat(),
+                "dates": [str(brief["date"]) for brief in briefs if brief.get("date")],
+            },
+            ensure_ascii=False,
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
     # 公开站只读快照：writable 为空，前端据此把开关渲染成不可点。
     (data_dir / "sources.json").write_text(
         json.dumps(

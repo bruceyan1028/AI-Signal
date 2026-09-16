@@ -406,6 +406,17 @@
     .top-actions { margin-left: auto; gap: 6px !important; }
     .top-stats { display: none !important; }
 
+    .history-page { padding: 20px 12px 44px !important; }
+    .history-layout { display: block !important; }
+    .history-sidebar { position: static !important; margin-bottom: 16px; }
+    .history-sidebar > .history-dimensions { display: flex !important; flex-flow: row wrap !important; gap: 5px !important; }
+    .history-sidebar button { width: auto !important; padding: 0 9px !important; }
+    .history-controls > *, .history-facets > * { max-width: 100% !important; }
+    .history-controls input { width: 100% !important; }
+    .history-card-grid { grid-template-columns: minmax(0,1fr) !important; gap:10px !important; }
+    .history-archive-card { min-height:160px !important; }
+    .history-card-media { width:108px !important; }
+
     /* --- 版心:去掉左右虚线轨道,收紧留白 --- */
     .page-rail { border-left: none !important; border-right: none !important; }
     .sec-pad { padding: 22px 16px 30px !important; }
@@ -542,6 +553,13 @@ const state = {
   sourceStamp: '',
   sourceOrigin: 'feishu',
   briefWindowDays: 0,
+  historyFilter: '全部',
+  historyGroupBy: 'topic',
+  historyFacetPanel: 'topic',
+  historyFacets: { topic:'全部', content:'全部', source:'全部', date:'全部' },
+  historyQuery: '',
+  historySource: '全部',
+  historyStatus: { loading: false, error: '' },
   socialAccount: '*',
   socialExpanded: [],
   sources: [],
@@ -586,6 +604,8 @@ const sourceUrls = {
   'Apple ML Research': 'https://machinelearning.apple.com/',
   'YouTube · AI Explained': 'https://www.youtube.com/@aiexplained-official',
 };
+
+let historySignals = [];
 
 let signals = [
   { rank: 3, impact: 90, urgency: '高', zhTitle: 'Claude Sonnet 5 登陆 AWS:Anthropic 最强 Sonnet 模型上线 Bedrock', title: "Introducing Claude Sonnet 5 on AWS: Anthropic's most capable Sonnet model", source: 'AWS AI / Bedrock Blog', cat: '算力芯片云', date: '2026-06-30', summary: 'Anthropic 最新、最强的 Sonnet 模型 Claude Sonnet 5 正式上线 Amazon Bedrock 与 AWS 上的 Claude Platform。官方基准显示其在代码生成、长上下文推理与工具调用上全面超越前代,同时保持与 Sonnet 4.5 相同的定价档位,现有 Bedrock 集成可零改造直接切换模型 ID 完成升级。', why: '头部模型在主流云的可得性,直接决定企业能多快用上 SOTA 能力。同价位的能力升级意味着现有工作负载的性价比立即改善——建议尽快在内部评测集上做回归验证,评估是否将其设为默认模型,并同步复核 token 预算假设。', novel: 75, action: 82, tags: ['Claude', '模型上线', 'Bedrock'] },
@@ -1136,6 +1156,51 @@ async function loadBrief(){
     render();
   }
 }
+async function loadHistory(){
+  state.historyStatus = { loading:true, error:'' };
+  try {
+    const indexResponse = await fetch('data/archive-index.json', { cache:'no-store' });
+    if(!indexResponse.ok) throw new Error(`HTTP ${indexResponse.status}`);
+    const index = await indexResponse.json();
+    const dates = Array.isArray(index.dates) ? index.dates : [];
+    const reports = await Promise.all(dates.map(async date => {
+      const response = await fetch(`data/brief-${encodeURIComponent(date)}.json`, { cache:'no-store' });
+      if(!response.ok) throw new Error(`${date}: HTTP ${response.status}`);
+      return response.json();
+    }));
+    const seen = new Set();
+    const sections = ['signals', 'technicalSignals', 'paperSignals', 'videoSignals', 'podcastSignals', 'socialPosts'];
+    historySignals = reports.flatMap(report => sections.flatMap(section => (report[section] || []).map(item => ({...item, archiveDate:report.date || ''}))))
+      .filter(item => {
+        const key = item.recordId || item.url || `${item.titleCn || item.title}|${item.source}|${item.publishedDate}`;
+        if(!key || seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      })
+      .map((item, index) => ({
+        rank: 200000 + index,
+        recordId: item.recordId || '', sourceId: item.sourceId || '', impact: Number(item.impact) || 0,
+        urgency: item.urgency || '中', contentType: item.contentType || item.kind || '文章', kind: item.contentType || item.kind || '文章',
+        zhTitle: item.titleCn || item.title || '未命名信号', title: item.title || '', source: item.source || '未知来源', url: item.url || '',
+        cat: normalizeCategory(item.category), date: item.publishedDate || item.archiveDate || '', summary: item.summary || '',
+        deepAnalysis: item.deepAnalysis || '', body: item.body || '', bodyVerbatim: !!item.bodyVerbatim, bodyTruncated: !!item.bodyTruncated,
+        editorialStructure: item.editorialStructure || '', why: item.why || '', novel: Number(item.novelty) || 0,
+        action: Number(item.actionability) || 0, tags: Array.isArray(item.tags) ? item.tags : [], image: item.imageUrl || '',
+        mediaAssets: item.mediaAssets || {images:[],videos:[]}, transcriptEvidence: item.transcriptEvidence || '',
+        podcastMetrics: item.podcastMetrics || null, socialMetrics: item.socialMetrics || null,
+        topComments: Array.isArray(item.topComments) ? item.topComments : [], commentFetchError: item.commentFetchError || '',
+        eventAggregation: item.eventAggregation || null, priority: item.priority || '', pdfUrl: item.pdfUrl || '',
+        paperFullTextSource: item.paperFullTextSource || '', paperPages: Number(item.paperPages) || 0,
+        paperCaptions: Array.isArray(item.paperCaptions) ? item.paperCaptions : [],
+      }))
+      .sort((a,b) => String(b.date).localeCompare(String(a.date)) || b.impact - a.impact);
+    state.historyStatus = { loading:false, error:'' };
+  } catch(error) {
+    historySignals = [];
+    state.historyStatus = { loading:false, error:String(error.message || error) };
+  }
+  if(state.page === 'history') render();
+}
 function weeklySignalById(recordId){
   return weeklySignals.find(s=>s.recordId===String(recordId));
 }
@@ -1415,6 +1480,13 @@ async function loadHeatmap(){
 }
 const App = {
   goBrief(){ state.page='brief'; state.detailRank=null; render(); },
+  goHistory(){ state.page='history'; state.detailRank=null; render(); if(!historySignals.length && !state.historyStatus.loading) loadHistory(); },
+  setHistoryFilter(value){ state.historyFilter=value; render(); },
+  setHistoryGroupBy(value){ state.historyGroupBy=value; state.historyFacetPanel=value; render(); },
+  setHistoryFacet(key, value){ state.historyFacets[key]=value; render(); },
+  setHistorySource(value){ state.historySource=value; render(); },
+  setHistoryQuery(value){ state.historyQuery=value; render(); },
+  openHistoryDetail(rank){ const signal=historySignals.find(item=>item.rank===rank); if(!signal) return; state.detailSignal=signal; state.detailRank=rank; state.detailTab='正文'; state.notesOpen=false; state.dialogueOpen=false; renderDetailLayer(); const ov=document.querySelector('.detail-overlay'); if(ov) ov.scrollTop=0; },
   pickSocialAccount(account){ state.socialAccount=account; render(); },
   toggleSocialText(recordId){
     const next = new Set(state.socialExpanded);
@@ -1904,6 +1976,7 @@ function previewNotice(title, description){
 function headerHtml(A){
   const items = [
     { key: 'brief',   label: '今日简报', act: 'App.goBrief()',   icon: '<path d="M4 5h16M4 10h16M4 15h10M4 20h7"/>' },
+    { key: 'history', label: '历史条目', act: 'App.goHistory()', icon: '<path d="M4 5h16v14H4zM8 9h8M8 13h5M4 5l2-2h12l2 2"/>' },
     { key: 'sources', label: '信号源', act: 'App.goSources()', icon: '<path d="M12 3v18M5 8l7-5 7 5M5 8v8l7 5 7-5V8"/>' },
     { key: 'timeline', label: '动向追踪', act: 'App.goTimeline()', icon: '<path d="M4 19V5M4 19h16M8 15l3-4 3 2 5-7"/>' },
     { key: 'tasks',   label: '任务视图', act: 'App.goTasks()', icon: '<rect x="3" y="4" width="7" height="7" rx="1.4"/><rect x="14" y="4" width="7" height="4" rx="1.4"/><rect x="3" y="15" width="7" height="5" rx="1.4"/><rect x="14" y="11" width="7" height="9" rx="1.4"/>' },
@@ -1930,6 +2003,84 @@ function headerHtml(A){
 // 底部 AI 对话条:浅色底,输入区附方角卡片层(历史见左侧栏)
 function bottomBarHtml(A){
   return '';
+}
+
+function historyHtml(A){
+  const mono = "'Geist Mono', ui-monospace, Menlo, monospace";
+  const dimensions = [
+    { key:'topic', label:'主题领域', value:item=>item.cat || '其他' },
+    { key:'content', label:'内容类型', value:item=>item.contentType || '文章' },
+    { key:'source', label:'信号源', value:item=>item.source || '未知来源' },
+    { key:'date', label:'归档日期', value:item=>item.date || '未知日期' },
+  ];
+  const dimension = dimensions.find(item=>item.key===state.historyGroupBy) || dimensions[0];
+  const compareGroup = (a,b) => dimension.key === 'date' ? b.localeCompare(a) : a.localeCompare(b, 'zh-CN');
+  const facetValues = Object.fromEntries(dimensions.map(item => [
+    item.key,
+    ['全部', ...Array.from(new Set(historySignals.map(item.value))).sort(item.key === 'date' ? (a,b)=>b.localeCompare(a) : (a,b)=>a.localeCompare(b, 'zh-CN'))],
+  ]));
+  const activeFacet = dimensions.find(item=>item.key===state.historyFacetPanel) || dimension;
+  const activeFacetValues = facetValues[activeFacet.key] || ['全部'];
+  const query = state.historyQuery.trim().toLowerCase();
+  const visible = historySignals.filter(item =>
+    dimensions.every(dimension => state.historyFacets[dimension.key] === '全部' || dimension.value(item) === state.historyFacets[dimension.key]) &&
+    (!query || `${item.zhTitle} ${item.title} ${item.summary} ${(item.tags||[]).join(' ')}`.toLowerCase().includes(query))
+  );
+  const grouped = visible.reduce((groups, item) => {
+    const key = dimension.value(item);
+    (groups[key] ||= []).push(item);
+    return groups;
+  }, {});
+  const cards = Object.entries(grouped).sort(([a],[b])=>compareGroup(a,b)).map(([group, items]) => `
+    <section style="margin-bottom:30px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;padding-bottom:8px;border-bottom:1.5px solid var(--ds-ink-line);">
+        <span style="width:8px;height:8px;background:${A.accent};transform:rotate(45deg);"></span>
+        <h2 style="margin:0;font-size:16px;line-height:1.2;">${esc(group)}</h2>
+        <span style="font-family:${mono};font-size:10px;color:${UI.text3};">${items.length} 条</span>
+      </div>
+      <div class="history-card-grid" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;">
+        ${items.map(item => { const tp=topicFor(item); const cover=item.image || topicImageUrl(item); return `<article class="history-archive-card" onclick="App.openHistoryDetail(${item.rank})" style="display:flex;min-height:184px;background:#fff;border:1px solid #c9d5db;border-radius:14px;overflow:hidden;cursor:pointer;">
+          <div class="history-card-media" style="position:relative;flex:none;width:168px;background:${tp.bg};overflow:hidden;">
+            <span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:${mono};font-size:28px;font-weight:700;color:${tp.color};opacity:.55;">${tp.t}</span>
+            <img src="${esc(cover)}" alt="" loading="lazy" onerror="this.remove()" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div style="display:flex;flex:1;min-width:0;flex-direction:column;padding:15px 16px;">
+            <div style="display:flex;align-items:center;gap:7px;margin-bottom:10px;font-family:${mono};font-size:10px;color:${UI.text3};min-width:0;">
+              ${avatarHtml(item.source)}<span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${esc(item.source)}</span><span style="flex:none;padding:2px 5px;border:1px solid ${A.accentBorder};border-radius:4px;color:${A.accentDeep};font-size:9px;font-weight:700;">${esc(item.contentType)}</span><span style="margin-left:auto;flex:none;">${esc(item.date)}</span>
+            </div>
+            <h3 style="margin:0 0 8px;font-size:16px;line-height:1.45;color:${UI.text};display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">${esc(item.zhTitle)}</h3>
+            <p style="margin:0;font-size:12.5px;line-height:1.65;color:${UI.text2};display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;">${esc(item.summary || item.why)}</p>
+          </div>
+        </article>`; }).join('')}
+      </div>
+    </section>`).join('');
+  const status = state.historyStatus.loading
+    ? '<p style="margin:34px 0;font-size:13px;color:var(--ds-text-3);">正在汇总历史条目...</p>'
+    : state.historyStatus.error
+      ? `<p style="margin:34px 0;font-size:13px;color:#a33b31;">历史条目加载失败：${esc(state.historyStatus.error)}</p>`
+      : !visible.length ? '<p style="margin:34px 0;font-size:13px;color:var(--ds-text-3);">没有匹配的历史条目。</p>'
+      : cards;
+  return `<main class="history-page" style="max-width:1480px;margin:0 auto;padding:30px 24px 64px;">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:22px;border-bottom:1.5px solid var(--ds-ink-line);padding-bottom:16px;">
+      <div><div style="font-family:${mono};font-size:10px;font-weight:700;letter-spacing:.12em;color:${A.accent};margin-bottom:7px;">ARCHIVE / ALL SOURCES</div><h1 style="margin:0;font-size:25px;line-height:1.2;">历史条目</h1></div>
+      <div style="font-family:${mono};font-size:11px;color:${UI.text3};white-space:nowrap;">${historySignals.length} 条已归档</div>
+    </div>
+    <div class="history-layout" style="display:grid;grid-template-columns:282px minmax(0,1fr);gap:28px;align-items:start;">
+      <aside class="history-sidebar" style="position:sticky;top:82px;background:#0b0b0b;color:#fff;border-radius:12px;padding:16px;box-shadow:0 10px 28px rgba(22,19,15,.12);">
+        <label style="display:block;font-family:${mono};font-size:10px;font-weight:800;letter-spacing:.12em;color:#a8a298;margin-bottom:10px;">浏览方式</label>
+        <div class="history-dimensions" style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:18px;">${dimensions.map(item=>`<button onclick="App.setHistoryGroupBy('${item.key}')" style="height:38px;border:1px solid ${state.historyGroupBy===item.key?A.accent:'rgba(255,255,255,.28)'};border-radius:6px;text-align:left;padding:0 9px;background:#0b0b0b;color:#fff;font:700 12px inherit;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;box-shadow:${state.historyGroupBy===item.key?`inset 3px 0 0 ${A.accent}`:'none'};">${item.key==='topic'?'◇ ':item.key==='content'?'▤ ':item.key==='source'?'◉ ':'▦ '}${esc(item.label)}</button>`).join('')}</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;border-top:1px solid rgba(255,255,255,.14);padding-top:14px;"><span style="font-family:${mono};font-size:10px;font-weight:800;letter-spacing:.1em;color:#a8a298;">${esc(activeFacet.label)}</span><span style="font-family:${mono};font-size:10px;color:#a8a298;">${activeFacetValues.length-1} 项</span></div>
+        <div class="history-facet-options" style="display:flex;flex-direction:column;gap:3px;max-height:310px;overflow:auto;padding-right:3px;">${activeFacetValues.map(value=>`<button onclick="App.setHistoryFacet('${activeFacet.key}', '${esc(value)}')" style="min-height:31px;border:0;border-radius:5px;text-align:left;padding:0 8px;background:${state.historyFacets[activeFacet.key]===value?A.accent:'transparent'};color:#fff;font:600 12px inherit;cursor:pointer;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${esc(value)} <span style="float:right;opacity:.72;">${value==='全部'?historySignals.length:historySignals.filter(item=>activeFacet.value(item)===value).length}</span></button>`).join('')}</div>
+      </aside>
+      <div>
+        <div class="history-controls" style="display:flex;gap:8px;align-items:center;margin-bottom:22px;flex-wrap:wrap;">
+          <input value="${esc(state.historyQuery)}" oninput="App.setHistoryQuery(this.value)" placeholder="搜索标题、摘要或标签" aria-label="搜索历史条目" style="width:240px;max-width:100%;height:34px;box-sizing:border-box;padding:0 10px;border:1.5px solid var(--ds-ink-line);background:#fff;font:12px inherit;outline:none;">
+          <span style="font-family:${mono};font-size:10px;color:${UI.text3};">按${esc(dimension.label)}展示 · ${visible.length} 条</span>
+        </div>
+        ${status}
+      </div>
+    </div>
+  </main>`;
 }
 
 // 机构 logo / 头像:优先真实 logo(favicon),失败回退圆形单色字标
@@ -4468,7 +4619,7 @@ function render(){
   const scrollY = stay ? window.scrollY : 0;
   const railTop = stay ? (document.querySelector('.feed-data') || {}).scrollTop || 0 : 0;
   const A = computeAccents();
-  const page = state.page==='brief' ? briefHtml(A) : state.page==='sources' ? sourcesHtml(A) : state.page==='timeline' ? tasksHtml(A, true) : tasksHtml(A);
+  const page = state.page==='brief' ? briefHtml(A) : state.page==='history' ? historyHtml(A) : state.page==='sources' ? sourcesHtml(A) : state.page==='timeline' ? tasksHtml(A, true) : tasksHtml(A);
   document.getElementById('app').innerHTML = `<div style="position: relative; z-index: 1; min-height: 100vh; background: ${UI.canvas}; padding-bottom: 48px;">${headerHtml(A)}${page}</div>${bottomBarHtml(A)}`;
   renderedPage = state.page;
   // 换页从头看,别把上一页的滚动深度带过来
@@ -4658,6 +4809,7 @@ window.addEventListener('resize', ()=>{ applyPointsShift(); });
 if(location.hash === '#social') state.activeFilter = SOCIAL_FILTER;
 render();
 loadBrief();
+loadHistory();
 loadSources();
 loadWeekly();
 loadPending();
